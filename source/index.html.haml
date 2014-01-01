@@ -1,0 +1,14 @@
+- content_for :javascripts do
+  = javascript_include_tag "pages/index"
+
+- content_for :stylesheets do
+  = stylesheet_link_tag "index"
+
+/= partial :dialog
+
+%ul
+  - blog.articles[0...10].each do |article|
+    %li
+      = link_to article.title, article
+      %span
+        = article.date.strftime('%b %e, %Y')

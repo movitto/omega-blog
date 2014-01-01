@@ -1,0 +1,29 @@
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge,chrome=1", :"http-equiv" => "X-UA-Compatible"}
+    %title
+      = current_article ? current_article.title : (current_page.data.title || "The Omega Project Blog")
+
+    = stylesheet_link_tag "normalize", "all"
+    = stylesheet_link_tag "normalize", "omega"
+    = yield_content :stylesheets
+
+    = javascript_include_tag  "all"
+    = yield_content :javascripts
+  
+  = image_tag("omega-large-logo.png")
+  %div{:style => "clear: both"}
+
+  #nav
+    .nav_link
+      = link_to "the omegaverse",  "http://omegaverse.info"
+    .nav_link
+      = link_to "omega",  "http://github.com/movitto/omega"
+    .nav_link
+      = link_to "forum/mailing list", "https://groups.google.com/forum/#!forum/omegaverse"
+  %div{:style => "clear: both"}
+  <br/>
+
+  %body{:class => page_classes}
+    = yield
