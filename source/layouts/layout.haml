@@ -18,6 +18,10 @@
                       :alt   => "Fork me on GitHub"),
             "http://github.com/movitto/omega-blog"
 
+  = link_to image_tag("feed.png",
+                      :style => "position: absolute; top: 0; right: 0; border: 0;"),
+            "#{blog.options.prefix.to_s}/feed.xml"
+
   = image_tag("omega-large-logo.png")
   %div{:style => "clear: both"}
 
