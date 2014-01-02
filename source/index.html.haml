@@ -6,9 +6,11 @@
 
 /= partial :dialog
 
-%ul
+%ul#post_list
   - blog.articles[0...10].each do |article|
-    %li
-      = link_to article.title, article
-      %span
+    %li.post_list_item
+      %span.post_list_item_link
+        = link_to article.title, article
+      %span.post_list_item_time
         = article.date.strftime('%b %e, %Y')
+    %div{:style => "clear: both;"}
