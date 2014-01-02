@@ -1,0 +1,27 @@
+---
+title: Destination Based Movement
+author: Mo Morsi
+date: 2014-01-02 11:31:05 -05:00
+---
+= omega_blog_title
+
+.post.justify_post
+  %p
+    Be sure to checkout the latest #{commit_link "commit", "587b0ff"} to Omega
+    which adds destination based movements.
+
+  %p
+    Old & New Screenshots:
+  = screenshot_thumb("old_destination_selection.png",
+                     :style => "float: left; padding-right: 20px; width: 45%")
+  = screenshot_thumb("new_destination_selection.png",
+                     :style => "float: left; width: 45%;")
+  %div{:style => "clear: both;"}
+
+  %p
+    Previously when moving a ship the user had to manually specify the
+    coordinates to move to. This functionality is still available as it
+    offers the most flexability but in addition the web client will now
+    lookup and present this information to the user in a convenient manner.
+
+= omega_blog_footer
