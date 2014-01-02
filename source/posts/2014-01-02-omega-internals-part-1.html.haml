@@ -1,0 +1,157 @@
+---
+title: Omega Internals (Part 1)
+author: Mo Morsi
+date: 2014-01-02 13:44:44 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  = image_tag("https://raw.github.com/wiki/movitto/omega/arch2.png",
+              :style => "float: right; width: 60%; padding-left: 10px")
+  %p{:style => "padding-top: 50px;"}
+    Omega consists of several subsystems which are heirarchial dependent.
+    Each subsystem defines core entity classes for the primary objects
+    in that subsystem as well as various JSON-RPC methods which end users
+    may invoke.
+  %div{:style => 'clear: both;'}
+  %p
+    Subsystems are defined in the #{project_link "lib", "lib/"} dir and
+    their rjr methods defined in the #{project_link "rjr", "lib/motel/rjr"}
+    dirs underneath. Overall the directory structure is organized as follows:
+  %ul
+    %li
+      <b>#{project_link "bin/", "bin/"}</b>: command line executables
+      %ul
+        %li <b>bin/omega-server</b>: main omega server command
+        %li
+          <b>bin/omega-backup</b>: utility to backup an omega process to
+          the directory specified in the omega config
+        %li <b>bin/omega-restore</b>: utility to restore the latest omega backup
+        %li
+          <b>#{project_link "bin/util/", "bin/util/"}</b>: utility executables
+          %ul
+            %li
+              <b>bin/util/omega-console</b>:
+              a #{link_to "pry", "http://pryrepl.org/"}
+              based command prompt to a running Omega instance
+            %li
+              <b>bin/util/omega-monitor</b>:
+              a #{link_to "ncurses", "http://en.wikipedia.org/wiki/Ncurses"}
+              based monitoring interface to Omega
+            %li
+              <b>bin/util/omega-cosmos-retrieve</b>:
+              a utility to retrieve Cosmos and Manufactured Info
+            %li
+              <b>bin/util/omega-users-retrieve</b>:
+              a utility to retrieve user information & lists
+            %li
+              <b>bin/util/omega-status</b>:
+              a server status and statistic lookup mechanism
+            %li
+              <b>bin/util/mission-runner</b>:
+              a utility script to automate mission execution & validation
+    %li
+      <b>#{project_link "examples/", "examples"}</b>: many example and demo scripts
+      for all sorts of custom universes and simulations
+    %li
+      %p
+        <b>#{project_link "lib/", "lib/"}</b>: the main Omega server and
+        client logic. Each subsystem is represented with a subdirectory
+        here each of which in return contains the subsystem entity class
+        definitions and a #{link_to "rjr", "http://github.com/movitto/rjr"}
+        directory containing the JSON-RPC method definitions.
+      %p
+        <b>Note</b>: the <b>omega</b> module/subdir under <b>lib/</b> is
+        a special module. It does not define any JSON-RPC methods of its
+        own, but defines all the central logic which the other subsystems
+        and clients share to fully execute.
+      %p
+        <b>Node</b>: the <b>#{project_link "init", "lib/cosmos/rjr/init.rb"}</b>
+        rjr module in each subsystem takes on special connotation as it the entry
+        point into the module, the "dispatch_subsystem_rjr_init" method being
+        the method invoked by <b>bin/omega-server</b> to set things up.
+      %ul
+        %li
+          <b>#{project_link "lib/cosmos/", "lib/cosmos/"}</b>: cosmos entity
+          tracking, eg galaxies, solar systems, stars, planets, moons, asteroids,
+          jump gates, and resources. Admin users have full read/write access,
+          other end-users will typically only have read access. Other subsystems
+          may have limited write access internally.
+        %li
+          <b>#{project_link "lib/manufactured/", "lib/manufactured/"}</b>:
+          player owned entity tracking, ship, stations, loot. End-users have
+          access to view and modify the entities they own and have been granted
+          permission to
+        %li
+          <b>#{project_link "lib/missions/", "lib/missions/"}</b>:
+          event and workflow customization, mechnisms to setup sequences of
+          dynamic actions to be periodically run and/or triggered upon various
+          events in the universe. Interacts with most other subsystems on the
+          backend to richly define the user's experience
+        %li
+          <b>#{project_link "lib/motel/", "lib/motel/"}</b>: Movable Object Tracking
+          Encompassing Locations, the 3D location tracker. A location is defined
+          as a set of x/y/z coordinates in cartesian space coupled with an
+          orientation and movement strategy. Entities in other subsystems such
+          as cosmos entities and ships/stations are associated with locations
+          which motel will periodically update. End users typically have read
+          only access to locations as they are modified internally by other
+          subsystems in the context of their operations
+        %li
+          <b>#{project_link "lib/omega/", "lib/omega/"}</b>: the central omega module
+          containing server and client helper classes and methods to assist
+          the other subsystems. Of particular note:
+          %ul
+            %li
+              <b>#{project_file_link "lib/omega/roles.rb", "lib/omega/roles.rb"}</b>:
+              the default roles created on server startup
+            %li
+              <b>#{project_file_link "lib/omega/server/registry.rb",      |
+                                     "lib/omega/server/registry.rb"}</b>: |
+              the central registry class which each subsystem subclasses and instantiates
+              once. Tracks all persistent entities managed by Omega as well as the other
+              'meta-entities' such as events, commands, event handlers, and more. Provides
+              mechanisms to run various loops required by the different subsystems as
+              well as a flat file backup/restoration mechanism (db support may be added
+              as an optional feature in the future)
+            %li
+              <b>#{project_file_link "lib/omega/client/dsl.rb", "lib/omega/client/dsl.rb"}</b>:
+              the primary client dsl, used to define / setup a universe simultation
+              (see the <b>examples/</b> directory for usage)
+            %li
+              <b>#{project_file_link "lib/omega/client/mixins.rb", "lib/omega/client/mixins.rb"}</b>:
+              various client mixins which can be used by developers in their own classes to
+              add native support to interface and interact with Omega. More mixins specific
+              to custom client and bot funcationality can be found in the entities subdir.
+      %ul
+        %li
+          <b>#{project_link "lib/stats/", "lib/stats/"}</b>: high level
+          simulation statistics and user-ranking mechanisms. Everything
+          in this subsystem is generated directly from the internal server
+          and is provided with global read access. No private user or
+          simulation data is made available here.
+      %ul
+        %li
+          <b>#{project_link "lib/users/", "lib/users/"}</b>: user, session,
+          and access control mechanisms. Full RBAC access control implementation,
+          could possibly be interfaces with optional external auth backends in
+          the future
+    %li
+      <b>#{project_link "site/", "site/"}</b>: The Omega Web Frontend based
+      on #{link_to "middleman", "http://middlemanapp.com"} and
+      #{link_to "three.js", "http://threejs.com"}. Includes full test suite.
+      This component will be convered in more detail in another post.
+    %li
+      <b>#{project_link "spec/", "spec/"}</b>: the main test suite for the Omega
+      project, the minimum goal is to have 100% test coverage of the lib/ directory
+      (plus the bin/ directory if feasible). Tests can be run by running the
+      'rake specs' command on the command line, though this requires additional
+      dependencies to run, see the project #{project_file_link "Gemfile", "Gemfile"}
+      for a complete list (detailed spec/test usage blog post coming soon)
+
+  Well that's it for now, in the next 'internals' blog post I'd like to discuss and
+  detail the call sequence which the omega-server goes through on startup and when
+  a request is received.
+
+
+= omega_blog_footer

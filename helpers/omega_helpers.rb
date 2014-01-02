@@ -10,6 +10,14 @@ module OmegaHelpers
     link_to '<< back', '/', :class => 'back_link'
   end
 
+  def project_link(text, dir)
+    link_to text, "http://github.com/movitto/omega/tree/master/#{dir}"
+  end
+
+  def project_file_link(text, file)
+    link_to text, "http://github.com/movitto/omega/blob/master/#{file}"
+  end
+
   def commit_link(text, commit)
     link_to text, "http://github.com/movitto/omega/commit/" + commit
   end
