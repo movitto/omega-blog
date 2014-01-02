@@ -9,4 +9,12 @@ module OmegaHelpers
   def omega_blog_footer
     link_to '<< back', '/', :class => 'back_link'
   end
+
+  def commit_link(text, commit)
+    link_to text, "http://github.com/movitto/omega/commit/" + commit
+  end
+
+  def screenshot_thumb(id, opts={})
+    link_to image_tag("/images/screenshots/thumbs/#{id}", opts), "/images/screenshots/#{id}"
+  end
 end
