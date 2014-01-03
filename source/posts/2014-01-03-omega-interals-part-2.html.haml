@@ -1,0 +1,103 @@
+---
+title: Omega Internals (Part 2)
+author: Mo Morsi
+date: 2014-01-03 12:44:15 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    In yesterday's #{post_link "post", "omega-internals-part-1"} we discussed
+    the Omega project subsystems and #{project_link "directory structure"}.
+    Today we will continue with the sequence of events an Omega node goes
+    through on startup and on a #{link_to "json-rpc", "http://en.wikipedia.org/wiki/JSON-RPC"}
+    request being received.
+  %p
+    After #{wiki_link "installing dependencies", "INSTALL"} the end user will
+    typically run the #{project_file_link "omega-server", "bin/omega-server"}
+    binary which is responsible for setting up the RJR method handlers and the
+    transports on which requests will be received and responses returned.
+  %p
+    <b>Note</b>: the Omega subsystem modules (eg the <b>lib/</b> dir) needs
+    to be available for inclusion by omega commands. By default dependencies
+    are gem installed and are automatically available and the Omega library
+    itself can be added to the load path like so:
+
+  %pre.code
+    :preserve
+      # if running ./bin/omega-server from the root dir of a source checkout:
+      $ export RUBYLIB='lib'
+
+      # if running omega-server from a rpm install
+      $ export RUBYLIB='/usr/share/omega/lib'
+
+  %p
+    This needs to be run in every terminal session before invoking omega
+    related commands
+
+  %p
+    At a high level, omega-server will
+    %ul
+      %li
+        Read available config files / options
+      %li
+        Initialize #{rjr_link "RJR"} transports (rjr is used to serve
+        the json-rpc requests)
+      %li
+        Call the subsystem init methods defined in
+        <b>lib/<i>&lt;subsystem&gt;</i>/rjr/init.rb</b>
+      %li
+        Setup signals (eg SIGTERM or CTRL-C to gracefully kill the process)
+      %li
+        Block indefinetly
+  %p
+    Internally RJR uses #{link_to "eventmachine", "http://rubyeventmachine.com/"}
+    to listen for events on the configured transports (tcp, http, and more).
+
+  %p
+    Once a valid json-rpc message is received RJR:
+    %ul
+      %li
+        Executes the remaining steps in a thread pool worker so as to free up
+        the event reactor so it can go back to listening for transport events.
+
+      %li
+        Looks up the handler registered for the method being invoked
+        (RJR also accepts regular expressions so handlers can be mapped to methods
+        in custom ways)
+      %li
+        Sets up a custom / insolated environment to execute the handler in.
+      %li
+        Provides various request-related
+        #{link_to "variables", "https://github.com/movitto/rjr#advanced" }
+        variables to the handler.
+      %li
+        Extends the handler scope with previously-registered custom
+        #{link_to "environments", "http://rubydoc.info/github/movitto/rjr/master/RJR/Dispatcher:env"}
+        %p
+          These are ruby modules that get mixed into the 
+          execution context that the handlers are invoked in. Thus all method and variables in
+          that module are be available to handlers the environments are registered with
+        %p
+          All Omega subsystems register the '<i>Subsystem</i>::RJR' modules as an environment
+          in their initialization (see #{project_file_link "lib/cosmos/rjr/init.rb", "lib/cosmos/rjr/init.rb#90"}
+          for example), thus central components such as #{project_file_link "registries", "lib/cosmos/rjr/init.rb#75"}
+          are easily accessible
+      %li
+        Invokes the handler in the setup context
+      %li
+        After the handler finishes executing or error out RJR will wrap up the result into
+        a JSON-RPC response and send it back to the client via the same transport which
+        they invoked the request (eg the tcp socket, the http response, the client's amqp
+        queue, etc).
+        %p
+          If the client sent a notification message instead of a request, a response is
+          not returned (and thus the client doesn't have to block / wait for a response)
+
+  %p
+    All Omega subsystems implement the same workflow and all internal communication mechanisms
+    between subsystems use the same JSON-RPC interface (albiet running over the optimized 'local'
+    transport). Thus subsystems are isolated by strict boundaries and can make use of the extensive
+    Role Based Access Control system which Omega implements (more on this in a future post).
+
+= omega_blog_footer
