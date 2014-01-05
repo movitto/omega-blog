@@ -1,0 +1,105 @@
+---
+title: Playing Omega (First Steps)
+author: Mo Morsi
+date: 2014-01-05 07:57:39 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  TODO UPDATE DATE
+  %p
+    The following will guide you through the user registration
+    process and then through your first steps into The Omegaverse!
+
+  .note
+    %p
+      %b *Note*
+      While users can register on
+      #{link_to "omegaverse.info", "http://omegaverse.info"},
+      the #{project_file_link "post-registration script", "examples/hooks.rb"}
+      has not been run on the hosted instance yet (on the roadmap for
+      the near future).
+
+    %p
+      These instructions assume you have #{wiki_link "setup", "INSTALL"}
+      a running Omega instance of your own or otherwise have access to
+      one
+
+  %p
+    %h3 Viewing the universe
+    = screenshot_thumb("anon-view-locations.png", :class => 'inline_screen_left')
+    %p{:class => "inline_screen_text"}
+      By default before the user logs in the Omega web frontend will
+      attempt to load the systems with the most user entities and the
+      galaxies that those systems reside in. Simply click on any of
+      these in the locations menu to view.
+      %div{:class => 'clear_both spacer'}
+
+    = screenshot_thumb("anon-view-entity.png", :class => 'inline_screen_right')
+    %p{:class => "inline_screen_text"}
+      Click on any entity in the galaxy or system to load and/or
+      view details. Once logged in, users with the required privileges
+      will be given access to manipulate certain entities
+      %div{:class => 'clear_both'}
+
+  %p
+    %h3 Register
+    = screenshot_thumb("registration.png", :class => 'inline_screen_left')
+    %p{:class => "inline_screen_text"}
+      To register a new account click the register button in the upper left,
+      a valid username / password and email is required as well as a
+      recaptcha confirmation to block registration bots.
+      %div{:class => 'clear_both'}
+
+    = screenshot_thumb("confirm-email2.png", :class => 'inline_screen_right')
+    %p{:class => "inline_screen_text"}
+      An email will be sent to the specified account containing the confirmation
+      link. Simply click on this any you're good to go!
+      %div{:class => 'clear_both'}
+
+  %p
+    %h3 Login
+    = screenshot_thumb("login.png", :class => 'inline_screen_left')
+    %p{:class => "inline_screen_text"}
+      Once registered login in via the link in the primary navigation
+      %div{:class => 'clear_both'}
+
+    = screenshot_thumb("post-login1.png", :class => 'inline_screen_right')
+    %p{:class => "inline_screen_text"}
+      The entities you own will now be loaded in the entities list and
+      the system and galaxies they reside in will be loaded in the locations list
+      %div{:class => 'clear_both'}
+
+    Click on any entity to view details and commands.
+    %div{:class => 'clear_both'}
+
+  %p
+    %h3 Move Ship
+    = screenshot_thumb("ship-moving.png", :class => 'inline_screen_right')
+    %p{:class => "inline_screen_text"}
+      Click 'move' with a ship selected. The user can specify specific coordiantes
+      to move to and/or select an entity in the ship which to move in proximity to.
+    %p
+      The ship will rotate to face it's destination before moving in a linear fashion
+      until its target. The user may set a new trajectory for the ship anytime simply
+      by clicking the move button and entering a new destination
+      %div{:class => 'clear_both'}
+
+  %p
+    %h3 Jump Inbetween systems
+    = screenshot_thumb("trigger-jump-gate.png", :class => 'inline_screen_left')
+    %p{:class => "inline_screen_text"}
+      If in the proximity of a jump gate, any ships a user owns will be jumped to the 
+      destination system when the user triggers the gate.
+    %p
+      Setting up the systems and links between them (visible when viewing a galaxy)
+      is the responsobility of an Omega admin or otherwise privileged user beforehand.
+      That being said system / galaxy discovery by players is on the
+      #{wiki_link "roadmap", "TODO"} so make sure to check back often!
+      %div{:class => 'clear_both'}
+
+  %p
+    Thats it for now, there is plenty more to discuss in the next 'Playing Omega' post
+    including the mining, construction, and attack commands, user ranking, and more!
+
+= omega_blog_footer
