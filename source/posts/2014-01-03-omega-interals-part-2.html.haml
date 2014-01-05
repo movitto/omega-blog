@@ -55,12 +55,11 @@ date: 2014-01-03 12:44:15 -05:00
     to listen for events on the configured transports (tcp, http, and more).
 
   %p
-    Once a valid json-rpc message is received RJR:
-    %ul
-      %li
-        Executes the remaining steps in a thread pool worker so as to free up
-        the event reactor so it can go back to listening for transport events.
+    Once a valid json-rpc message is received RJR executes the following in
+    via a thread pool worker so as to free up the event reactor so it can go
+    back to handling transport events.
 
+    %ul
       %li
         Looks up the handler registered for the method being invoked
         (RJR also accepts regular expressions so handlers can be mapped to methods
