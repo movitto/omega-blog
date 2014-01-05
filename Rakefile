@@ -12,6 +12,11 @@ task 'build' do
   exec("middleman build")
 end
 
+desc 'Deploy the site'
+task 'deploy', [:dest] do |t, args|
+  exec("rsync -av build/ #{args.dest}")
+end
+
 desc "Adapt specified screenshot to blog"
 task "convert_screenshot", [:screenshot] do |t, args|
   Dir.chdir 'source/images/screenshots'
