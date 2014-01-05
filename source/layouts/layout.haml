@@ -1,10 +1,12 @@
 %html
-  %head
+  %head{:profile => "http://www.w3.org/2005/10/profile"}
     %meta{:charset => "utf-8"}
     %meta{:content => "IE=edge,chrome=1", :"http-equiv" => "X-UA-Compatible"}
     %title
       = current_article ? current_article.title : (current_page.data.title || "The Omega Project Blog")
     = feed_tag :rss, "#{blog.options.prefix.to_s}/feed.xml", :title => "RSS Feed"
+    %link{:rel => :icon, :type => "image/x-icon",
+          :href => "http://blog.omegaverse.info/images/favicon.ico"}
 
     = stylesheet_link_tag "normalize", "all"
     = stylesheet_link_tag "normalize", "omega"
