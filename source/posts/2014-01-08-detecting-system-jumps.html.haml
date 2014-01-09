@@ -1,0 +1,59 @@
+---
+title: Detecting System Jumps
+author: Mo Morsi
+date: 2014-01-08 19:38:50 -05:00
+---
+= omega_blog_title
+
+.post.justify_post
+  %p
+    Over the last couple of days a #{commit_link "few", "c49fcbb0"},
+    #{commit_link "related", "7a022a354"},
+    #{commit_link "commits", "5f5902c4"}, were pushed modifying the server-side
+    manufactured subsystem to emit a 'system_jump' event whenever ships
+    or stations jump from one system to another. Clients can subscribe
+    to this event and handle accordingly, as the #{commit_link "ui", "a9684d6"}
+    now does. (it adds ships jumping into the currently selected system
+    to the canvas scene)
+
+  %p
+    This patch took a little while longer than anticipated (a developer
+    classic!) since the manufactured subsystem did not previously support
+    subsystem-wide events Callbacks could and still can be registered
+    with specified entities such as ships &amp; stations for various
+    entity-specific events (such as attacking and construction related events).
+    Now users can register event handlers for subsystem-wide events,
+    such as when any entity jumps into and out of a system (permission
+    checks still apply, if the user does not have access to specific entities,
+    they will not receive callbacks related to events in which those
+    entities partipate)
+
+  %p
+    The core event and event handling logic is provided by the central
+    #{project_file_link "Omega Subsystem", "lib/omega/server/event.rb"}.
+    The core
+    #{project_file_link "Omega Registry Component", "lib/omega/server/registry.rb#L327"}
+    is responsible for running through events tossed onto the entities
+    list by subsystems, and retrieving/executing the handlers registered
+    for those events.
+
+  %p
+    Subsystems may easily subclass the
+    #{project_file_link "event class", "lib/manufactured/events/system_jump.rb"} and
+    #{project_file_link "event handler", "lib/manufactured/event_handler.rb"}
+    class to add custom logic for their own purposes. To raise events,
+    make sure your subsystem permits event and handler
+    #{project_file_link "registration", "lib/manufactured/registry.rb#L79"}
+    and #{project_file_link "processes them", "lib/manufactured/registry.rb#L100"}
+    in its registry. From there it's as simple as
+    #{project_file_link "tossing an event", "lib/manufactured/rjr/movement.rb#L126"} or
+    #{project_file_link "event handler", "lib/manufactured/rjr/events.rb#L89"} on your
+    entities list and waiting for the next iteration of the event cycle!
+
+  %p
+    Events and EventHandlers are just a couple of the reusable components that
+    Omega provides to developers to implement various modules and subsystems
+    for their purposes. Make sure to check back in the near future for more
+    detailed analysis of Omega and how to construct a subsystem of your own!
+
+= omega_blog_footer
