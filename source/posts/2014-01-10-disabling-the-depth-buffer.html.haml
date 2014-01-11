@@ -1,0 +1,50 @@
+---
+title: Disabling The Depth Buffer 
+author: Mo Morsi
+date: 2014-01-10 21:16:45 -05:00
+---
+= omega_blog_title
+
+.post.justify_post
+  %p
+    Recently one of the various #{commit_link "fixes", "0207742"}
+    to the Omega UI incorporated the disabling of the
+    #{commit_link "depth buffers", "0207742#diff-9282a523dcd5c1c881daf5467027edcaL149"}
+    in various scene components of some Omega JS entities. I've personally been
+    picking up alot concerning
+    #{link_to "WebGL", "http://en.wikipedia.org/wiki/WebGL"} development
+    and figure I'd share the reason why this was done. But they say a picture
+    is worth a thousand words, thus two must be worth two thousand and here
+    are the before / after shots of the system interconnections in the galaxy view:
+
+  = captioned_screenshot "depth_buffer-galaxy-old.png", "Blocky interaction between particles"
+  = captioned_screenshot "depth_buffer-galaxy-new.png", "Smoother particle interaction"
+  %div{:class => 'clear_both'}
+
+  %p
+    Also here are the before / after shots around the particle stream in a
+    selected jump gate:
+
+  = captioned_screenshot "depth_buffer-jump_gate-old.png", "Jump Gate selection sphere hiding particles"
+  = captioned_screenshot "depth_buffer-jump_gate-new.png", "Issue fixed"
+  %div{:class => 'clear_both'}
+
+  %p
+    This #{link_to "stack overflow", "http://stackoverflow.com/a/3390094/1033020"}
+    answer really does a good job explaining the issue but to make a long story
+    short the
+    #{link_to "depth buffer", "http://www.opengl.org/sdk/docs/man/xhtml/glDepthMask.xml"}
+    is OpenGL's mechanism for determining which vertex or
+    3D fragment is rendered to the screen (eg the color of its pixel displayed)
+    when there are multiple vertices infront/behind each other (from the camera's
+    perspective). If the depth buffer of the translucent materials is enabled and
+    it is the top most material, only it will be rendered, visibly blocking those
+    behind it.
+
+  %p
+    Since components were being rendered in the correct order depth wise anyways
+    (as enforced by the entities' 'components' arrays containing all the graphical
+    components to render to the 3D scene) all we had to do was disable the depth
+    buffer write on the translucent entities to get the desired effect!
+
+= omega_blog_footer

@@ -10,6 +10,12 @@ module OmegaHelpers
     link_to '<< back', '/', :class => 'back_link'
   end
 
+  def captioned_screenshot(id, caption, opts={})
+    "<div class='captioned_screenshot'> #{screenshot_thumb(id, opts)}" \
+    "<br/><span class='caption'>#{caption}</span>"\
+    "</div>"
+  end
+
   def rjr_link(text)
     link_to text, "http://github.com/movitto/rjr"
   end
