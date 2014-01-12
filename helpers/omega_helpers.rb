@@ -43,4 +43,8 @@ module OmegaHelpers
   def screenshot_thumb(id, opts={})
     link_to image_tag("/images/screenshots/thumbs/#{id}", opts), "/images/screenshots/#{id}"
   end
+
+  def issue_link(text, id)
+    link_to text, "https://github.com/movitto/omega/issues/#{id}"
+  end
 end
