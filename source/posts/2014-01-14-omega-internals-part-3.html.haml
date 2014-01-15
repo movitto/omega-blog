@@ -1,0 +1,105 @@
+---
+title: Omega Internals (Part 3) - Event Callbacks
+author: Mo Morsi
+date: 2014-01-14 22:02:54 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    In the #{post_link "last", "omega-internals-part-1"}
+    #{post_link "two", "omega-internals-part-2"} Omega Internals
+    posts we discussed the overall system heirarchy and filesystem
+    layout as well as the sequence of events which occur to satisfy
+    a #{link_to "JSON-RPC", "http://en.wikipedia.org/wiki/JSON-RPC"} request.
+    Today we will continue by exploring how a client subscribes to server
+    side events.
+
+  %p
+    Like all other client-initiated operations, the process starts when any
+    authenticated RJR endpoint sends a json-rpc request for a subscription
+    method. These methods include:
+  
+  %ul
+    %li
+      motel::track_movement - track linear movement of locations' coordinates
+    %li
+      motel::track_rotation - track angular rotation of locations' orientations
+    %li
+      motel::track_proximity - track proximity events between two specified locations
+    %li
+      motel::track_strategy - track changes in a location's movement strategy
+    %li
+      motel::track_stop - track location stops (movement strategy changed to the
+      #{project_file_link "stopped instance", "lib/motel/movement_strategies/stopped.rb"})
+    %li
+      manufactured::subscribe_to - track serverside events on specific entities or
+      subsystem-wide. These events currently include:
+      %ul
+        %li
+          attack related: attacked, defended, attacked_stop, defended_stop, destroyed
+        %li
+          mining related: mining_stopped (with reason), resource_collected, resource_depleted
+        %li
+          construction related: partial_construction, construction_failed, construction_completed
+        %li
+          subsystem wide events: system jumps
+    %li
+      users::subscribe_to - track serverside events pertaining to the users subsystem
+      (for now just user registration, more to be added)
+
+  %p
+    The user may remove callbacks be invoking the corresponding 'remove' method,
+    optionally with the type of callback to be removed. If no type is specified
+    all callbacks will be removed for the client endpoint.
+
+  %p
+    Also if the user attempts to register multiple callbacks for an event, only
+    the last received will be used, the server enforces uniqueness of event
+    type / client endpoint id's.
+
+  %p
+    Upon receiving an event subscription method request, the server runs through
+    the following steps (using track_location as an example):
+
+  %ul
+    %li
+      The RJR request #{project_file_link "comes in", "lib/motel/rjr/track.rb#L224"}
+      and #{project_file_link "is handled", "lib/motel/rjr/track.rb#L81"}.
+    %li
+      A new #{project_file_link "parameterized callback", "lib/motel/rjr/track.rb#L92"}
+      is created based on the #{project_file_link "arguments", "lib/motel/rjr/track.rb#L20"}
+      the user provided.
+    %li
+      A #{project_file_link "persistent transport, valid client endpoint", "lib/motel/rjr/track.rb#L95"}
+      are required. eg a TCP socket, a Websocket, or similar. HTTP connections which are <b>not</b>
+      persistent are <b>not</b> allowed
+    %li
+      The server #{project_file_link "adds", "lib/motel/rjr/track.rb#L103"}
+      a method to be executed when the callback is triggered,
+      this method makes sure the user has permissions to view the location
+      (needs to be done at this point incase permissions are modified after
+      the callback is registered) and then
+      #{project_file_link "invokes", "lib/motel/rjr/track.rb#L123"}
+      the callback json-rpc method.
+    %li
+      If there are any errors during the callback,
+      #{project_file_link "it is removed", "lib/motel/rjr/track.rb#L138"}.
+      If the connection is closed
+      #{project_file_link "it is removed", "lib/motel/rjr/track.rb#L148"}
+    %li
+      The callback is #{project_file_link "added", "lib/motel/rjr/track.rb#L153"}
+      to the location (the previously registered
+      callbacks the client registered for the event will be removed)
+
+  %p
+    And that's it! The subscription method will immediately return, allowing
+    the client to continue its business and/or block, being notified of server
+    side events via JSON-RPC notifications.
+
+  %p
+    Next time we'll look into the omega-server config file and cmd line options
+    in a little more detail as well as some of the utility tools which are
+    available for end users and admins alike!
+
+= omega_blog_footer
