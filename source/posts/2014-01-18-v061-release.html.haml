@@ -1,0 +1,78 @@
+---
+title: v0.6.1 Release
+author: Mo Morsi
+date: 2014-01-18 14:00:54 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    I'm pleased to announce the 0.6.1 release of Omega.
+    The release has been cut and tagged on #{project_link "github", "/"}
+    and the update deployed to #{link_to "omegaverse.info", "http://omegaverse.info"}
+
+  %p
+    Changes since the 0.5.2 version of Omega:
+
+  %ul
+    %li
+      Destination based movement : the user no longer has to enter coordinates of
+      where they want to go, they can also select from a list of destinations in
+      the current system
+    %li
+      Right click based movement : even easier simply right click on an entity with
+      a ship selected and the ship will start moving towards it
+    %li
+      Better graphics
+      %ul
+        %li{:style => "margin-bottom: 10px"}
+          #{post_link "Improved stars", "omega-the-hackathon"}
+        %li{:style => "margin-bottom: 10px"}
+          %p
+            Ship HP Bars & trajectory graphics
+          = fw_screenshot "ship-hp-and-trajectory.png", :height => "35%"
+          %div{:class => "clear_both"}
+        %li{:style => "margin-bottom: 10px"}
+          %p
+            Construction Progress Bars
+          = fw_screenshot "station-construction-progress.png", :height => "35%"
+          %div{:class => "clear_both"}
+        %li
+          Add spin effect to planets
+    %li
+      Audio support in web client, preliminary audio effects for clicking
+      ships and construction completion
+
+    %li
+      Many server side improvements:
+      %ul
+        %li
+          Verification of transport persistence before registering callbacks
+        %li
+          Added a 'system_jump' event to the manufactured subsystem so clients can detect
+          arbitrary jumps into and out of systems (provided they have permissions to access
+          the entities themselves)
+        %li
+          Added mechanism to auto-stop locations in Motel so callbacks do not need to be
+          relied on to do so
+        %li
+          Return max ship hp & shield level in JSON
+        %li
+          Resolved many various edge cases especially around states in the
+          manufactured subsystem
+
+    %li
+      Many various other simplifications and optimizations.
+      All tests have been kept up to date and expanded as new
+      functionality has been added, things are really looking solid!
+
+  %p
+    This release also includes the 1000th commit to the codebase + several more.
+    Again I'd like to thank Nico for contributing some awesome features
+    (including the right click movement), Nitesh for working towards packing up
+    dependencies, and everyone reading this blog for your support.
+
+  %p
+    That's it until next time!
+
+= omega_blog_footer

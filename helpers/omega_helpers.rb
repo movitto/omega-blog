@@ -16,6 +16,11 @@ module OmegaHelpers
     "</div>"
   end
 
+  def fw_screenshot(id, opts={})
+    "<div class='fw_screenshot'> #{screenshot_thumb(id, opts)}" \
+    "</div>"
+  end
+
   def rjr_link(text)
     link_to text, "http://github.com/movitto/rjr"
   end
