@@ -1,0 +1,54 @@
+---
+title: Simulation Videos
+author: Mo Morsi
+date: 2014-01-24 19:13:54 -05:00
+---
+= omega_blog_title
+
+.post
+  %p
+    You know when it's been a little while there's alot in the works for Omega!
+
+  %p
+    Recently I've been starting to throw together some videos around interacting
+    with the simulation through the web interface. Recording and editing one's
+    desktop is incredibly easy in linux, simply
+  
+  %ul{:style => "text-align: justify"}
+    %li
+      run the <b>xwminfo</b> command and click on the window to capture to get
+      its ID
+    %li
+      pass that into recordmydesktop I usually run it with:
+      %p
+        <b>`recordmydesktop --windowid <id> --no-sound -o<file>`</b>
+
+      (hit ctrl-c when your done)
+      
+    %li
+      The video may take a little while to encode but when its done you can
+      edit the file with #{link_to "openshot", "http://www.openshot.org/"}
+      to split it up, speed up and slow down portions, add transitions and
+      overview text
+    %li
+      = "..."
+    %li
+      Profit!
+
+  Below you can find some initial videos I threw together. They are still a
+  little rough (as is all of Omega!) and running the omega server, webgl
+  frontend, and video recorder all at the same time does put a bit of strain
+  on my system so it's a little choppy. But that being said I thought they
+  turned out well and start to convey the possiblities Omega provides!
+
+  %iframe{:width => "420", :height=> "315", :frameborder => "0",
+          :allowfullscreen => true,
+          :style => "padding: 20px",
+          :src   => "//www.youtube.com/embed/hKGr6idoLx4"}
+
+  %iframe{:width => "420", :height=> "315", :frameborder => "0",
+          :allowfullscreen => true,
+          :style => "padding: 20px",
+          :src   => "//www.youtube.com/embed/r25zk_J_8mI"}
+
+= omega_blog_footer

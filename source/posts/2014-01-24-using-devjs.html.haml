@@ -1,0 +1,165 @@
+---
+title: Using Dev.js
+author: Mo Morsi
+date: 2014-01-24 21:17:54 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    One of the features the Omega Web Frontend supports is a
+    developer sandbox which may be found in
+    #{project_link "dev.js", "site/source/javascripts/pages/dev.js"}.
+    This page simply includes / sets up the base components
+    and provides an easily extendable hook for custom developer
+    operations.
+
+  %p
+    The dev can do whatever they want there including instantiating
+    Omega entities and three.js / webgl components and adding them
+    to the canvas
+
+  %p
+    For example see the following diff/video containing a sample
+    particle effect:
+
+  %pre.code
+    :preserve
+      $ git diff site/source/javascripts/pages/dev.js
+      diff --git a/site/source/javascripts/pages/dev.js b/site/source/javascripts/pages/dev.js
+      index 5e290a0..d7a2e5d 100644
+      --- a/site/source/javascripts/pages/dev.js
+      +++ b/site/source/javascripts/pages/dev.js
+      @@ -30,6 +30,75 @@ Omega.Pages.Dev.prototype = {
+         },
+       
+         custom_operations : function(){
+      +    var _this = this;
+      +    this.canvas.setup();
+      +    this.canvas.cam.position.set(0, 0, 100);
+      +    this.canvas.focus_on({x:0,y:0,z:0});
+      +
+      +    var light = new THREE.DirectionalLight(0xFFFFFF, 1.0);
+      +    this.canvas.scene.add(light);
+      +
+      +    this.canvas.skybox.set(1, this.config, function(){_this.canvas.animate();})
+      +    this.canvas.add(this.canvas.skybox);
+      +
+      +    var particle_path = this.config.url_prefix + this.config.images_path +
+      +                        "/smokeparticle.png";
+      +
+      +    var particleGroup = new ShaderParticleGroup({
+      +      texture: THREE.ImageUtils.loadTexture(particle_path),
+      +      maxAge: 2, blending: THREE.AdditiveBlending
+      +    });
+      +
+      +    var particleEmitter1 =
+      +      new ShaderParticleEmitter({
+      +        type: 'sphere',
+      +        position: new THREE.Vector3(0, 0, 0),
+      +        radius: 5,
+      +        //radiusSpread: 1,
+      +        radiusScale: 10,
+      +        speed: 1,
+      +        colorStart: new THREE.Color('red'),
+      +        colorEnd:   new THREE.Color('orange'),
+      +        size: 50,
+      +        sizeSpread: 1,
+      +        sizeEnd: 5,
+      +        opacityStart: 1,
+      +        opacityEnd: 1,
+      +        particlesPerSecond: 500,
+      +        //maxAge: 1000,
+      +      });
+      +
+      +    var particleEmitter2 =
+      +      new ShaderParticleEmitter({
+      +        type: 'disk',
+      +        position: new THREE.Vector3(0, 0, 0),
+      +        radius: 10,
+      +        //radiusSpread: 2,
+      +        radiusScale: 10,
+      +        speed: 2,
+      +        colorStart: new THREE.Color('red'),
+      +        colorEnd:   new THREE.Color('orange'),
+      +        size: 50,
+      +        //sizeSpread: 1,
+      +        //sizeEnd: 5,
+      +        opacityStart: 1,
+      +        opacityEnd: 1,
+      +        particlesPerSecond: 500,
+      +        //maxAge: 1000,
+      +      });
+      +
+      +    // Add emitters to the group.
+      +    particleGroup.addEmitter( particleEmitter1 );
+      +    particleGroup.addEmitter( particleEmitter2 );
+      +
+      +    var clock = new THREE.Clock();
+      +    particleGroup.run_effects = function(){
+      +      particleGroup.tick(clock.getDelta());
+      +    };
+      +
+      +    this.canvas.scene.add(particleGroup.mesh);
+      +    this.effects_player.add(particleGroup);
+      +    this.canvas.animate();
+         }
+       };
+
+  %iframe{:width => "840", :height=> "630", :frameborder => "0",
+          :allowfullscreen => true,
+          :style => "padding: 20px",
+          :src   => "//www.youtube.com/embed/dcAMpwZIlWs"}
+
+  %p
+    One can also leverage
+    #{project_link "gen.js", "site/source/javascripts/omega/gen.js"}
+    to generate common js entities such as galaxies and ships with
+    default (and overridable) properties to be added to the scene.
+
+  %p
+    For example see the simple scene setup with common Omega entities
+
+  %pre.code
+    :preserve
+      $ git diff site/source/javascripts/pages/dev.js
+      diff --git a/site/source/javascripts/pages/dev.js b/site/source/javascripts/pages/dev.js
+      index 5e290a0..787799b 100644
+      --- a/site/source/javascripts/pages/dev.js
+      +++ b/site/source/javascripts/pages/dev.js
+      @@ -30,6 +30,25 @@ Omega.Pages.Dev.prototype = {
+         },
+       
+         custom_operations : function(){
+      +    var _this = this;
+      +    this.canvas.setup();
+      +
+      +    this.canvas.cam.position.set(2500, 2500, 2500);
+      +    this.canvas.focus_on({x:0,y:0,z:0});
+      +
+      +    this.canvas.skybox.set(1, this.config, function(){_this.canvas.animate();})
+      +    this.canvas.add(this.canvas.skybox);
+      +
+      +    var star = new Omega.Star({location : new Omega.Location({x:0,y:0,z:0})});
+      +    this.canvas.add(star);
+      +
+      +    var ship = Omega.Gen.ship();
+      +    ship.location.x = 500;
+      +    ship.location.y = 1500;
+      +    ship.location.z = 1500;
+      +    this.canvas.add(ship);
+      +
+      +    this.canvas.animate();
+         }
+       };
+
+  %p
+    From there it's up to the dev what they want to do. They have
+    the complete / raw power of OpenGL at their fingertips + a
+    several reliable conneciton and communication mechanisms to
+    a persistant and robust location manager and data store.
+
+  %p
+    The Universe is at your fingertips!!! :-)
+
+= omega_blog_footer
