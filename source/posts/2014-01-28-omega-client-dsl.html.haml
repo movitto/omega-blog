@@ -1,0 +1,297 @@
+---
+title: Omega Client DSL
+author: Mo Morsi
+date: 2014-01-28 18:10:45 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    A powerfull feature provided by the central
+    #{project_link "Omega", "lib/omega"} subsystem is the
+    client #{project_file_link "dsl", "lib/omega/client/dsl.rb"}.
+    #{link_to "Domain Specific Languages", "http://en.wikipedia.org/wiki/Domain-specific_language"}
+    allow developers to use language constructs coupled closely
+    to the domain of the functionality they are invoking. For
+    example the #{link_to 'rspec', "http://rspec.info/"} dsl allows
+    a dev to write tests by describing the behaviour of their code
+    using the rspec dsl. This is not specific to Ruby (though the
+    concept has been heavily embraced by many Ruby communities) for
+    example the Omega web frontend test suite includes
+    #{link_to "pavlov.js", "https://github.com/mmonteleone/pavlov"} and
+    #{link_to "sinon.js", "http://sinonjs.org/docs/"} to improve the
+    readability of code.
+
+  %p
+    The Omega Client DSL can be used to do many things, examples of
+    which can be see in the #{project_link "examples/", "examples/"}
+    directory
+
+  %ul
+    %li
+      #{project_file_link "examples/universes", "examples/universes/small.rb"}
+      contains many example universes containing galaxies, systems, stars,
+      planets, asteroids, jump gates, and resources
+    %li
+      #{project_file_link "examples/users.rb", "examples/users.rb"} is a utility
+      script that will create a new user with the specified username and
+      password (ARG1 & ARG2) with the specified roles (ARG4+) as well as a
+      few ships and a station in the specified system (ARG3)
+    %li
+      #{project_file_link "examples/bot.rb", "examples/bot.rb"} is a simple bot
+      which will automatically detect user owned ships and run them along
+      particular algorithms depending on their type. Mining ships will
+      continuously look for resources, mine them, look for a station to
+      transfer them to, transfer them, ad inf. Corvettes will continously
+      patrol the cosmos looking for enemy ships to attack and destroy. Stations
+      will continously take given resources and construct new entities.
+      And as those are created they will begin to be controlled via the same
+      algorithms just described
+    %li
+      There are many one off scripts in the examples dir such as
+      %ul
+        %li
+          #{project_file_link "examples/construct.rb", "examples/construct.rb"} runs a one off construction
+          operation
+        %li
+          #{project_file_link "examples/mining.rb", "examples/mining.rb"} runs a simple mining algorithm
+        %li
+          #{project_file_link "examples/patrol.rb", "examples/patrol.rb"} runs a simple patrol algorithm
+    %li
+      #{project_file_link "story.rb", "examples/story.rb"} contains many example
+      missions which once created any user w/ the necessary privileges may
+      accept. The #{project_file_link "Omega Missions DSL", "lib/missions/dsl.rb"}
+      will be discussed in more detail in the future but this rich interface
+      allows the admin/dev to easily setup series of events to be triggered
+      on certain conditions.
+
+      %p
+        The user may pass story.rb to the
+        #{project_file_link "mission runner", "bin/util/mission-runner.rb"}
+        script which will run through all the missions in the simulation testing
+        them w/ a privileged administrative account. This will setup the necessary
+        conditions to fully verify the mission workflow and results
+
+    %li
+      The #{project_link "distributed", "examples/distributed"} dir contains a
+      complete distributed example in which a ship jumps between two systems
+      running in two completely independent processes. An admin running an omega
+      server can start each of these processes on a different machine, editing
+      the omega.yml config file to reference the other, and simply run the
+      #{project_file_link "runner.rb", "examples/distributed/runner.rb"} script
+      to seed the simulation and start the cycle. The configured user's
+      ships will continuously search for the jump gate corresponding to the
+      remote system, travel to it, and jump to the remote server.
+
+      %p
+        From there the user's ship could find another machine to jump to,
+        ad infinitum accross the Internet
+
+  %p
+    See the follow example use of the Omega Client DSL:
+
+  %pre.code
+    :preserve
+      require 'omega'
+      require 'omega/client/dsl'
+      require 'rjr/nodes/tcp'
+      
+      include Omega::Client::DSL
+      
+      include Motel
+      include Motel::MovementStrategies
+      
+      RJR::Logger.log_level= ::Logger::INFO
+      
+      #========================================== Login to Omega over TCP
+      
+      dsl.rjr_node =
+        RJR::Nodes::TCP.new(:node_id =>    'seeder',
+                            :host    => 'localhost',
+                            :port    =>        8181)
+      login 'admin', 'nimda'
+      
+      #========================================== Universe:
+      galaxy 'Odin' do |g|
+        system 'Loki', 'HR1925', :location => loc(950,-20,-230) do |sys|
+        end
+        system 'Thor',   'HU1792', :location => loc(-954,27,881)  do |sys|
+          planet 'Freya', :movement_strategy =>
+            orbit(:e => 0.65, :speed => 0.008, :p => 6000,
+                  :direction => random_axis(:orthogonal_to => [0,1,0]))
+        end
+      end
+      
+      loki    = system('Loki')
+      thor    = system('Thor')
+      
+      jump_gate loki, thor,   :location => loc( 1050, 1050, 1050)
+      jump_gate thor, loki,   :location => loc(-1050, 1050,-1050)
+      
+      #========================================== Users:
+      
+      [['mmorsi', 'secret1', :corvette],
+       ['nico',   'secret2', :transport],
+       ['host1',  'secret3', :corvette],
+       ['host2',  'secret4', :mining]].each { |args|
+        username, pass, ship_type = *args
+        coin_flip = ((rand * 2).floor == 0)
+        starting_system = coin_flip ? loki : thor
+      
+        user = user username, pass do |u| role :regular_user end
+      
+        station("\#{user.id}-station") do |station|
+          station.type         = :manufacturing
+          station.user_id      = user.id
+          station.solar_system = starting_system
+          station.location     = rand_location(:min => 1000, :max => 2000)
+        end
+      
+        ship("\#{user.id}-ship") do |ship|
+          ship.type            = ship_type
+          ship.user_id         = user.id
+          ship.solar_system    = starting_system
+          ship.location        = rand_location(:min => 1000, :max => 2000)
+        end
+      }
+
+  %p
+    Going through it line by line
+
+  %pre.code
+    :preserve
+      require 'omega'
+      require 'omega/client/dsl'
+      require 'rjr/nodes/tcp'
+
+  %p
+    Requires the core omega classes, the client dsl, and the TCP transport
+
+  %pre.code
+    :preserve
+      include Omega::Client::DSL
+      
+      include Motel
+      include Motel::MovementStrategies
+
+  %p
+    Includes all classes defined in those modules in the top level namespace
+    so those modules do not continuously need to be referenced (eg we can use
+    Location instead of Motel::Location for coniceness)
+
+  %pre.code
+    :preserve
+      RJR::Logger.log_level= ::Logger::INFO
+      
+      #========================================== Login to Omega over TCP
+      
+      dsl.rjr_node =
+        RJR::Nodes::TCP.new(:node_id =>    'seeder',
+                            :host    => 'localhost',
+                            :port    =>        8181)
+      login 'admin', 'nimda'
+
+  %p
+    Sets the log level to info, creates the node which we will use to
+    communicate with the server and logs the 'admin' user in with the
+    password 'nimda'
+
+  %pre.code
+    :preserve
+      galaxy 'Odin' do |g|
+
+  %p
+    The Omega DSL will attempt to retrieve a galaxy by the name of 'Odin'
+    and if it does not exist create it. The specified block will be
+    invoked with the retrieved galaxy
+
+  %pre.code
+    :preserve
+        system 'Loki', 'HR1925', :location => loc(950,-20,-230) do |sys|
+        end
+  
+  %p
+    The same for system. The system dsl method will also create a star in
+    the system with the specified id. In this case we are also specifying the
+    location of the system in the galaxy
+
+  %pre.code
+    :preserve
+        system 'Thor',   'HU1792', :location => loc(-954,27,881)  do |sys|
+          planet 'Freya', :movement_strategy =>
+            orbit(:e => 0.65, :speed => 0.008, :p => 6000,
+                  :direction => random_axis(:orthogonal_to => [0,1,0]))
+        end
+
+  %p
+    Create another system, this one w/ a planet w/ an orbit orthorogonal to
+    the specified axis
+
+  %pre.code
+    :preserve
+      loki    = system('Loki')
+      thor    = system('Thor')
+      
+      jump_gate loki, thor,   :location => loc( 1050, 1050, 1050)
+      jump_gate thor, loki,   :location => loc(-1050, 1050,-1050)
+
+  %p
+    Retrieves the created systems and sets up jump gates between them
+
+  %pre.code
+    :preserve
+      [['mmorsi', 'secret1', :corvette],
+       ['nico',   'secret2', :transport],
+       ['host1',  'secret3', :corvette],
+       ['host2',  'secret4', :mining]].each { |args|
+
+  %p
+    Creates and iterates the metadata for four users. The metadata
+    specified the username, password, and type of ship to create for
+    user
+
+  %pre.code
+    :preserve
+        username, pass, ship_type = *args
+        coin_flip = ((rand * 2).floor == 0)
+        starting_system = coin_flip ? loki : thor
+
+  %p
+    We randomize the system each user's ship starts off in
+
+  %pre.code
+    :preserve
+        user = user username, pass do |u| role :regular_user end
+
+  %p
+    We create the user and assign them the 'regular_user' role (entailing
+    all standard user permissions such as the ability to view cosmos entities
+    and the ability to modify one's own ships and such)
+
+  %pre.code
+    :preserve
+        station("\#{user.id}-station") do |station|
+          station.type         = :manufacturing
+          station.user_id      = user.id
+          station.solar_system = starting_system
+          station.location     = rand_location(:min => 1000, :max => 2000)
+        end
+      
+        ship("\#{user.id}-ship") do |ship|
+          ship.type            = ship_type
+          ship.user_id         = user.id
+          ship.solar_system    = starting_system
+          ship.location        = rand_location(:min => 1000, :max => 2000)
+        end
+
+  %p
+    Finally we create the user's ship and station with the specified id and
+    properties. The ship & station dsl methods will invoke the block <b>before</b>
+    creating the specified entity, allowing the user to set entity properties.
+
+  %p
+    And thats it! The user may write another script and/or extend this one to
+    run the various entities according to any number of strategies. See the
+    examples directory for how to do so!
+
+= omega_blog_footer
