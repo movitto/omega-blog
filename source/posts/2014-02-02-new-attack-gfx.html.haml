@@ -1,0 +1,267 @@
+---
+title: New Attack & Destruction GFX
+author: Mo Morsi
+date: 2014-02-02 12:21:27 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    Be sure to checkout the
+    #{link_to "commit log", "https://github.com/movitto/omega/commits/master"}
+    for a series of updates to the Omega Web UI, componentizing graphics and
+    effects. Thus a developer can tailor / tweak and add / remove specific
+    effects easily and in a componentized / isolated manner.
+
+  %p
+    Also just added is a feature #{commit_link "improving", "1ed6cf3123"}
+    the ship attack and destruction gfx. A video of the new effect in action can
+    be seen here:
+
+  %iframe{:width => "840", :height=> "630", :frameborder => "0",
+          :allowfullscreen => true,
+          :style => "padding: 20px",
+          :src   => "//www.youtube.com/embed/ZORWn_4LGrQ"}
+
+  %p
+    #{post_link "Previously demo'd", "using-devjs"} the
+    #{link_to "ShaderParticleEngine", "https://github.com/squarefeet/ShaderParticleEngine"}
+    library allows us to easily generate particle engine graphics on the fly.
+
+  %p
+    The developer leverages the ShaderParticleEngine library by initializing
+    pre-allocated buffers of particles via instances of the ShaderParticleGroup
+    and manipulating those via registered instances of ShaderParticleEmitters.
+
+  %p
+    The emitters are responsible for initializing & updating the particles in
+    the set in accordance with any number of algorithms and parameters.
+    The emitters offload most of the work to the shader used to render the
+    particles, thus offloading alot of the computational strain onto the user's
+    graphics card. Multiple emitters may be added to a group, and certain ones
+    activated at a time.
+
+  %p
+    Creating a ShaderParticleGroup is straightforward, specify
+    parameters such as the max age of a particle (eg its lifetime),
+    the texture to use to render particles, and how particles are to
+    be rendered
+
+  %pre.code
+    :preserve
+      var particle_texture =
+        THREE.ImageUtils.loadTexture('particle.png', {}, function(){
+          canvas.animate();
+        });
+
+      var particle_group = new ShaderParticleGroup({
+          texture:  particle_texture,
+          maxAge:   0.5,
+          blending: THREE.AdditiveBlending
+        });
+
+  %p
+    The parameters passed to the Emitter initializer are dependent on the
+    context of the type of emitter you are trying to create. General
+    emitter classes are specified by the 'type' parameter. Current
+    support types include:
+
+  %ul
+    %li
+      cube : default type, particles move in a linear fasion in the specified area
+    %li
+      sphere : particles are emitted from center outwards towards the boundaries
+      of a sphere
+    %li
+      disk : particles are emitted from center outwards towards the boundaries
+      of a two dimensional disk
+    %li
+      #{link_to "spiral", "https://github.com/squarefeet/ShaderParticleEngine/issues/22"} :
+      particles are 'collected' from points on spiral towards center
+      (currently in process)
+
+  %p
+    The valid Emitter initialization parameters are determined by its
+    type. The initialization of some common Emitter types can be seen below:
+
+  %pre.code
+    :preserve
+      var emitter1 = new ShaderParticleEmitter({
+        type:             'sphere',
+        positionSpread:   new THREE.Vector3(10, 10, 10),
+        radius:              1,
+        speed:             100,
+        sizeStart:          30,
+        sizeStartSpread:    30,
+        sizeEnd:             0,
+        opacityStart:        1,
+        opacityEnd:          0,
+        colorStart:       new THREE.Color('yellow'),
+        colorStartSpread: new THREE.Vector3(0, 10, 0),
+        colorEnd:         new THREE.Color('red'),
+        particleCount:    1000,
+        duration:         0.05,
+      });
+
+      var emitter2 =
+        new ShaderParticleEmitter({
+          positionSpread: new THREE.Vector3(this.size, this.size, this.size),
+          acceleration:   new THREE.Vector3(0, 0, 10),
+          velocity:       new THREE.Vector3(0, 0, 10),
+          colorStart:     new THREE.Color('white'),
+          colorEnd:       new THREE.Color('white'),
+          sizeStart:          50,
+          sizeEnd:           150,
+          opacityStart:        0,
+          opacityMiddle:       1,
+          opacityEnd:          0,
+          particlesPerSecond: 50
+      });
+
+      var emitter3 = new ShaderParticleEmitter({
+        type           : 'spiral',
+        spiralSkew     : 1.4,
+        spiralRotation : 1.4,
+        position     : new THREE.Vector3(0, 0, 0),
+        radius       : 1000,
+        radiusSpread : 2000,
+        radiusScale  :  150,
+        speed        :  50,
+        colorStart   : new THREE.Color('yellow'),
+        colorEnd     : new THREE.Color('white'),
+        size         : 1000,
+        //sizeSpread : 1,
+        sizeEnd      : 100,
+        opacityStart : 1,
+        opacityEnd   : 0,
+        particlesPerSecond: 5000,
+      });
+
+      particle_group.addEmitter(emitter1);
+      particle_group.addEmitter(emitter2);
+      particle_group.addEmitter(emitter3);
+
+  %p
+    To generate new particles and animate the existing ones already emitted
+    you will need to periodically update the particle group by invoking the
+    'tick' method with the time elapsed since the last tick. This can be
+    accomplished by using THREE.Clock instance like so:
+
+  %pre.code
+    :preserve
+      var clock = new THREE.Clock();
+
+      // & periodically run:
+      particle_groupgroup.tick(clock.getDelta());
+
+  %p
+    Finally putting it all together, you can produce and effect like so
+
+  %pre.code
+    :preserve
+      $ git diff site/source/javascripts/pages/dev.js
+      diff --git a/site/source/javascripts/pages/dev.js b/site/source/javascripts/pages/dev.js
+      index ed21736..d6cf9b5 100644
+      --- a/site/source/javascripts/pages/dev.js
+      +++ b/site/source/javascripts/pages/dev.js
+      @@ -31,6 +31,91 @@ Omega.Pages.Dev.prototype = {
+         },
+       
+         custom_operations : function(){
+      +    var _this = this;
+      +    this.canvas.setup();
+      +    this.canvas.cam.position.set(1500, 1500, 1500);
+      +    this.canvas.focus_on({x:0,y:0,z:0});
+      +
+      +    var light = new THREE.DirectionalLight(0xFFFFFF, 1.0);
+      +    this.canvas.scene.add(light);
+      +
+      +    this.canvas.skybox.set(1, this.config, function(){_this.canvas.animate();})
+      +    this.canvas.add(this.canvas.skybox);
+      +
+      +    var particle_texture =
+      +      THREE.ImageUtils.loadTexture('/womega/images/particle.png', {}, function(){
+      +        _this.canvas.animate();
+      +      });
+      +
+      +    var particle_group = new ShaderParticleGroup({
+      +        texture:  particle_texture,
+      +        maxAge:   0.5,
+      +        blending: THREE.AdditiveBlending
+      +      });
+      +
+      +    var emitter1 = new ShaderParticleEmitter({
+      +      type:             'sphere',
+      +      positionSpread:   new THREE.Vector3(10, 10, 10),
+      +      radius:            1000,
+      +      speed:             100,
+      +      sizeStart:          150,
+      +      sizeStartSpread:    30,
+      +      sizeEnd:             0,
+      +      opacityStart:        1,
+      +      opacityEnd:          0,
+      +      colorStart:       new THREE.Color('yellow'),
+      +      colorStartSpread: new THREE.Vector3(0, 10, 0),
+      +      colorEnd:         new THREE.Color('red'),
+      +      particleCount:    2000,
+      +      duration:         0.05,
+      +    });
+      +
+      +    var emitter2 =
+      +      new ShaderParticleEmitter({
+      +        positionSpread: new THREE.Vector3(5000, 5000, 5000),
+      +        acceleration:   new THREE.Vector3(0, 0, 10),
+      +        velocity:       new THREE.Vector3(0, 0, 10),
+      +        colorStart:     new THREE.Color('white'),
+      +        colorEnd:       new THREE.Color('white'),
+      +        sizeStart:          50,
+      +        sizeEnd:           150,
+      +        opacityStart:        0,
+      +        opacityMiddle:       1,
+      +        opacityEnd:          0,
+      +        particlesPerSecond: 150
+      +    });
+      +
+      +    var emitter3 = new ShaderParticleEmitter({
+      +      type           : 'spiral',
+      +      spiralSkew     : 1.4,
+      +      spiralRotation : 1.4,
+      +      position     : new THREE.Vector3(0, 0, 0),
+      +      radius       : 1000,
+      +      radiusSpread : 2000,
+      +      radiusScale  :  150,
+      +      speed        :  50,
+      +      colorStart   : new THREE.Color('yellow'),
+      +      colorEnd     : new THREE.Color('white'),
+      +      size         : 1000,
+      +      //sizeSpread : 1,
+      +      sizeEnd      : 100,
+      +      opacityStart : 1,
+      +      opacityEnd   : 0,
+      +      particlesPerSecond: 5000,
+      +    });
+      +
+      +    particle_group.addEmitter(emitter1);
+      +    particle_group.addEmitter(emitter2);
+      +    particle_group.addEmitter(emitter3);
+      +
+      +    var clock = new THREE.Clock();
+      +    particle_group.run_effects = function(){
+      +      particle_group.tick(clock.getDelta());
+      +    };
+      +
+      +    this.canvas.scene.add(particle_group.mesh)
+      +    this.effects_player.add(particle_group);
+      +    this.canvas.animate();
+         }
+       };
+
+  %iframe{:width => "840", :height=> "630", :frameborder => "0",
+          :allowfullscreen => true,
+          :style => "padding: 20px",
+          :src   => "//www.youtube.com/embed/9eqyW3gHaes"}
+
+  %p
+    <b>Ahhh the power of particles!</b>
+
+= omega_blog_footer
