@@ -1,0 +1,28 @@
+- content_for :javascripts do
+  %script{:type => "text/javascript"}
+    :plain
+      $(document).ready(function(){
+        $.fn.fullpage();
+      });
+
+- content_for :stylesheets do
+  = stylesheet_link_tag "about", "jquery.fullPage.css"
+
+
+= image_tag "down-arrow.png", :id => "next_section"
+
+#about_section1.about_section.section
+  .about_content
+    %h2
+      Omega: A Universe Over IP!!!!
+    %div{:class => "clear_both"}
+
+#about_section2.about_section.section
+  .about_content
+    %h2
+      Calling all Star Travellers Your Ships Are Waiting!
+
+#about_section3.about_section.section
+  .about_content
+    %h2
+      Engines are warmed up, torpedos are ready, The Universe Is The Limit!
