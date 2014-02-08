@@ -1,0 +1,123 @@
+---
+title: Bunch O' Stuff
+author: Mo Morsi
+date: 2014-02-08 08:57:27 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    Just a bunch of random stuff today
+
+  %h3 Code & Doc Updates:
+
+  %p
+    Recent updates to the code base have mostly been around refactoring
+    and documentation. The #{project_file_link "README", "README.md"}
+    &amp; #{link_to "Wiki", "https://github.com/movitto/omega/wiki"}
+    have been greatly reorganized, simplified, and split up into sections,
+    be sure to check it out if it's been a while!
+
+  %h3 Entity-Component Design Pattern
+
+  %p
+    The #{link_to "mailing list", "https://groups.google.com/forum/#!forum/omegaverse"}
+    and #{link_to "chat channel", "http://webchat.freenode.net/?channels=omegaverse"}
+    are growing by the day, this link came in from
+    <b>#{link_to "dr_", "https://github.com/drew-r"}</b> on the freenode channel:
+    #{link_to "Entity component system (Wikipedia)", "http://en.wikipedia.org/wiki/Entity_component_system"}.
+    Omega implements a pattern similar to the one described here where the core entities
+    in the simulation are composed of multiple components, being managed by different
+    subsystems. Planet and ship entities for example have components representaitons
+    in the primary system which
+    manages it (cosmos and manufactured respectively) but also in the motel subsystem
+    (which manages their locations) and in the web interface which manages their
+    graphical appearance (rendering them a certain way).
+
+  %p
+    Other components could be easily added to entities in the same manner, whether
+    they are managed by different subsystems in the server, or by external clients/
+    bots/interfaces, the mechanism which it is all managed is the
+    #{link_to "same", "http://en.wikipedia.org/wiki/JSON-RPC"}.
+
+  %h3 Blog features
+
+  %p
+    Be sure to checkout our new
+    #{link_to "promo page", "http://blog.omegaverse.info/about.html"}
+    (oh ya **ahem** &lt;shameless-self-promotion&gt; :-p)
+
+  %p
+    Also be sure to checkout the new Omegaverse status widget in the lower
+    left hand corner. The code implementing it can be found in the
+    #{link_to "omega-blog", "https://github.com/movitto/omega-blog/blob/master/source/javascripts/omega-easy.js"}
+    #{link_to "code repo", "https://github.com/movitto/omega-blog/blob/master/source/javascripts/omega-node-status.js"}.
+
+  %p
+    Like all code in the omega-blog repo, these modules are licensed under
+    the <b>MIT License</b> feel free to include them in your site and expand to
+    interface w/ the Omegaverse for any purpose!
+
+  %h3 Testing
+
+  %p
+    And finally some random links concerning testing
+
+  %ul
+    %li
+      #{link_to "Good article", "http://devblog.orgsync.com/maintaining-a-large-test-suite-a-dry-approach-to-rspec/"}
+      on RSpec Best Practices, the Omega spec suite definetly could incorporate some of these!
+      (while they cover the majority of the code suite, the tests themselves could be cleaned up and such)
+
+    %li
+      Also be sure to checkout
+      #{link_to "pavlov.js", "https://github.com/mmonteleone/pavlov"} and
+      #{link_to "sinon.js", "http://sinonjs.org/docs/"} both of which are used in
+      the Omega JS test suite. They really bring alot of the power behind
+      the rspec DSL and mocking mechanisms to javascript and make it simple
+      to expressively test your code.
+
+  %pre.code
+    :preserve
+      pavlov.specify("Omega.Location", function(){
+      describe("Omega.Location", function(){
+
+        describe("#orientation", function(){
+          it("returns orientation array", function(){
+            var loc = new Omega.Location({orientation_x : 0,
+                                          orientation_y : 1,
+                                          orientation_z : 0});
+            assert(loc.orientation()).isSameAs([0,1,0]);
+          });
+        });
+
+        //...
+
+      pavlov.specify("Omega.Ship", function(){
+      describe("Omega.Ship", function(){
+        describe("#init_gfx", function(){
+          var type = 'corvette';
+          var ship, type;
+      
+          before(function(){
+            ship = new Omega.Ship({type: type,
+              location : new Omega.Location({x: 100, y: -100, z: 200})});
+          });
+      
+          it("clones Ship highlight effects", function(){
+            var mesh = new Omega.ShipHighlightEffects();
+            sinon.stub(Omega.Ship.gfx[type].highlight, 'clone').returns(mesh);
+            ship.init_gfx();
+            assert(ship.highlight).equals(mesh);
+          });
+
+          //...
+
+  %p
+    Next up on the Omega backlog is continuing to improve the gfx, adding more
+    simulation and frontend features, and continuing the community outreach.
+
+  %p
+    Stay tuned for updates!
+
+= omega_blog_footer
