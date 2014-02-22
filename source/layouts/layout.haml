@@ -15,17 +15,20 @@
     = yield_content :javascripts
   
   = link_to image_tag("https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png",
-                      :style => "position: fixed; top: 0; left: 0; border: 0;",
+                      :style => "position: fixed; top: 0; left: 0; border: 0; z-index: 1",
                       :alt   => "Fork me on GitHub"),
             "http://github.com/movitto/omega-blog"
 
   = link_to image_tag("support.png",
-                      :style => "position: fixed; bottom: 10px; right: 10px; border: 0;"),
+                      :style => "position: fixed; bottom: 10px; right: 10px; border: 0; z-index: 1"),
             "http://webchat.freenode.net/?channels=omegaverse"
 
   = link_to image_tag("feed.png",
-                      :style => "position: fixed; top: 0; right: 0; border: 0;"),
+                      :style => "position: fixed; top: 0; right: 0; border: 0; z-index: 1"),
             "#{blog.options.prefix.to_s}/feed.xml"
+
+  = link_to "Find Out More!", "http://about.omegaverse.info",
+            :style => "display: block; position: fixed; top: 13px; right: 50px; padding: 2px; color: blue; font-weight: bold; text-decoration: none; z-index: 1;"
 
   = link_to image_tag("omega-large-logo.png"), "/"
 
