@@ -1,0 +1,127 @@
+---
+title: v0.7.1 Release
+author: Mo Morsi
+date: 2014-02-22 07:39:08 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    I'm pleased to announce the 0.7.1 release of Omega.
+    The release has been cut and tagged on #{project_link "github", "/"}
+    and the update deployed to #{link_to "omegaverse.info", "http://omegaverse.info"}
+
+  %p
+    Changes since the #{post_link "0.6.1", "v061-release"} version:
+
+  %ul
+    %li
+      %p Improved GFX
+      %ul
+        %li
+          %p New galaxy effects
+
+          = screenshot_thumb("new-galaxy.png",
+                             :style => "width: 95%")
+
+          = screenshot_thumb("new-galaxy2.png",
+                             :style => "width: 95%")
+
+        %li
+          %p Ship smoke effects (rendered when ship < 50% HP)
+
+        %li
+          %p Better ship explosion & destruction effects
+
+          %iframe{:width => "95%", :height=> "630", :frameborder => "0",
+                  :allowfullscreen => true,
+                  :style => "padding: 20px",
+                  :src   => "//www.youtube.com/embed/VxtwrRCsvVQ"}
+
+        %li
+          %p Better mining effects
+
+          %iframe{:width => "95%", :height=> "630", :frameborder => "0",
+                  :allowfullscreen => true,
+                  :style => "padding: 20px",
+                  :src   => "//www.youtube.com/embed/nz1h7vOD8X4"}
+
+        %li
+          %p Many audio effects for various events
+        %li
+          %p Fixed planet spin
+
+    %li
+      %p
+        Many more gfx and frontend optimizations, added mechanism to
+        enforce constant framerate in UI
+
+    %li
+      %p
+        Added canvas mouse hover detection, used for various effects
+
+      = screenshot_thumb("click-system.png",
+                         :style => "width: 95%")
+
+    %li
+      %p
+        Locations following other locations can now orient themselves
+        towards their target as they move (nico)
+
+    %li
+      %p
+        Added support for entities to follow others in the UI (nico)
+
+    %li
+      %p
+        Packaging up the project and submitting it to Fedora is in
+        process, you can track it's process
+        #{link_to "here", "https://docs.google.com/spreadsheet/ccc?key=0AobFGzrrFYAQdDM5UFZxTGU5X1hHUHlkejFENE1zeVE#gid=0"}
+        (Nitesh)
+
+    %li
+      %p Testing and improvements to the windows install process (Kendhia)
+
+    %li
+      %p
+        Added cutscene/title page with intro sequence w/ music.
+        See it #{link_to "here", "http://omegaverse.info/title.html?autoplay=intro"}
+
+    %li
+      %p
+        Added ability to follow planet, ships, and any other entities
+        w/ UI camera
+
+      %iframe{:width => "95%", :height=> "630", :frameborder => "0",
+              :allowfullscreen => true,
+              :style => "padding: 20px",
+              :src   => "//www.youtube.com/embed/hc_OaEvLGfQ"}
+
+    %li
+      %p
+        Added a splash dialog to the UI containing notices, tips,
+        and screenshots
+
+    %li
+      %p
+        Hosted development docs & APIs for Omega and dependencies at
+        #{link_to "docs.omegaverse.info", "http://docs.omegaverse.info"}
+
+    %li
+      %p
+        Setup a custom omegaverse #{link_to "subdomain", "http://about.omegaverse.info"}
+        for the promo page.
+
+    %li
+      %p
+        Fix to system_with_most entities stat, now will return all systems,
+        even those w/ no entities
+
+    %li
+      %p
+        Many other various fixes
+
+  %p
+    Many more things coming down the line, make sure to stay tuned for updates!
+
+= omega_blog_footer
