@@ -9,6 +9,9 @@ end
 
 page "/feed.xml", layout: false
 
+page "/docs.html",     layout: 'basic'
+page "/docs/*",        layout: false
+
 set :css_dir, 'stylesheets'
 
 set :js_dir, 'javascripts'

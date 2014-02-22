@@ -1,0 +1,11 @@
+- content_for :javascripts do
+  = javascript_include_tag "jquery-2.0.3.min"
+  = javascript_include_tag "docs_page"
+
+- content_for :stylesheets do
+  = stylesheet_link_tag "docs"
+
+= partial :docs_nav
+
+%iframe{:id     => "docs_content",
+        :name   => "docs_content"}
