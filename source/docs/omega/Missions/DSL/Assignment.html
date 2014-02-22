@@ -1,0 +1,710 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Missions::DSL::Assignment
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (A)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Missions.html" title="Missions (module)">Missions</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../DSL.html" title="Missions::DSL (module)">DSL</a></span></span>
+     &raquo; 
+    <span class="title">Assignment</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Missions::DSL::Assignment
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/missions/dsl.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Mission Assignment</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_resource-class_method" title="add_resource (class method)">+ (Object) <strong>add_resource</strong>(entity_id, rs_params = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Add a resource to the specified manufactured entity.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_asteroid-class_method" title="create_asteroid (class method)">+ (Object) <strong>create_asteroid</strong>(id, entity_params = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create an asteroid w/ the specified params.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_entity-class_method" title="create_entity (class method)">+ (Object) <strong>create_entity</strong>(id, entity_params = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a ship with the specified params.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_resource-class_method" title="create_resource (class method)">+ (Object) <strong>create_resource</strong>(entity_id, rs_params = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Associate a resource w/ an existing cosmos entity.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#schedule_expiration_event-class_method" title="schedule_expiration_event (class method)">+ (Object) <strong>schedule_expiration_event</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Add an event to the registry for mission timeout/expiration.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#store-class_method" title="store (class method)">+ (Object) <strong>store</strong>(id, lookup) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Invoke the specified lookup proc and store the result in the mission data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subscribe_to-class_method" title="subscribe_to (class method)">+ (Object) <strong>subscribe_to</strong>(entities, evnt, handlers) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Subcribe node to event on specified entity(ies) invoking handler(s) when
+event occurs.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="add_resource-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>add_resource</strong>(entity_id, rs_params = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add a resource to the specified manufactured entity</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+208
+209
+210
+211
+212
+213
+214
+215</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/missions/dsl.rb', line 208</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_add_resource'>add_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_entity_id'>entity_id</span><span class='comma'>,</span> <span class='id identifier rubyid_rs_params'>rs_params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_mission'>mission</span><span class='op'>|</span>
+    <span class='id identifier rubyid_entity'>entity</span> <span class='op'>=</span> <span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_mission_data'>mission_data</span><span class='lbracket'>[</span><span class='id identifier rubyid_entity_id'>entity_id</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_rs'>rs</span>  <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Resource</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_gen_uuid'>gen_uuid</span><span class='comma'>,</span>
+                                <span class='symbol'>:entity</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_entity'>entity</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_rs_params'>rs_params</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='const'>Missions</span><span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_notify'>notify</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::add_resource</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_rs'>rs</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_asteroid-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>create_asteroid</strong>(id, entity_params = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create an asteroid w/ the specified params</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/missions/dsl.rb', line 186</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_asteroid'>create_asteroid</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_entity_params'>entity_params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_mission'>mission</span><span class='op'>|</span>
+    <span class='id identifier rubyid_entity_params'>entity_params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_gen_uuid'>gen_uuid</span> <span class='kw'>if</span> <span class='id identifier rubyid_entity_params'>entity_params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_entity_params'>entity_params</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_entity_params'>entity_params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_entity_params'>entity_params</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_ast'>ast</span> <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>Asteroid</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_entity_params'>entity_params</span>
+    <span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_mission_data'>mission_data</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_ast'>ast</span>
+    <span class='const'>Missions</span><span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_ast'>ast</span>
+    <span class='const'>Missions</span><span class='op'>::</span><span class='const'>DSL</span><span class='period'>.</span><span class='id identifier rubyid_update_mission'>update_mission</span> <span class='id identifier rubyid_mission'>mission</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_entity-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>create_entity</strong>(id, entity_params = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a ship with the specified params</p>
+
+<p>TODO rename or expand to also create stations</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/missions/dsl.rb', line 172</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_entity'>create_entity</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_entity_params'>entity_params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_mission'>mission</span><span class='op'>|</span>
+    <span class='comment'># create new entity using specified params
+</span>    <span class='id identifier rubyid_entity_params'>entity_params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_gen_uuid'>gen_uuid</span> <span class='kw'>if</span> <span class='id identifier rubyid_entity_params'>entity_params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_entity'>entity</span> <span class='op'>=</span> <span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_entity_params'>entity_params</span>
+    <span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_mission_data'>mission_data</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_entity'>entity</span>
+
+    <span class='comment'># TODO only if ship does not exist
+</span>    <span class='const'>Missions</span><span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_entity'>entity</span><span class='rparen'>)</span>
+    <span class='const'>Missions</span><span class='op'>::</span><span class='const'>DSL</span><span class='period'>.</span><span class='id identifier rubyid_update_mission'>update_mission</span> <span class='id identifier rubyid_mission'>mission</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_resource-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>create_resource</strong>(entity_id, rs_params = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Associate a resource w/ an existing cosmos entity</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+198
+199
+200
+201
+202
+203
+204
+205</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/missions/dsl.rb', line 198</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create_resource'>create_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_entity_id'>entity_id</span><span class='comma'>,</span> <span class='id identifier rubyid_rs_params'>rs_params</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_mission'>mission</span><span class='op'>|</span>
+    <span class='id identifier rubyid_entity'>entity</span> <span class='op'>=</span> <span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_mission_data'>mission_data</span><span class='lbracket'>[</span><span class='id identifier rubyid_entity_id'>entity_id</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_rs'>rs</span>  <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Resource</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_gen_uuid'>gen_uuid</span><span class='comma'>,</span>
+                                <span class='symbol'>:entity</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_entity'>entity</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_rs_params'>rs_params</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='const'>Missions</span><span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_notify'>notify</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::set_resource</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_rs'>rs</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="schedule_expiration_event-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>schedule_expiration_event</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add an event to the registry for mission timeout/expiration</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/missions/dsl.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_schedule_expiration_event'>schedule_expiration_event</span>
+  <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_mission'>mission</span><span class='op'>|</span>
+    <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>mission-</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>-expired</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_expired'>expired</span> <span class='op'>=</span> <span class='const'>Omega</span><span class='op'>::</span><span class='const'>Server</span><span class='op'>::</span><span class='const'>Event</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span>
+                <span class='symbol'>:timestamp</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_assigned_time'>assigned_time</span> <span class='op'>+</span> <span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_timeout'>timeout</span><span class='comma'>,</span>
+                <span class='symbol'>:handlers</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+                   <span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_failed!'>failed!</span> <span class='comment'># if mission.expired? TODO?
+</span>                   <span class='const'>Missions</span><span class='op'>::</span><span class='const'>DSL</span><span class='period'>.</span><span class='id identifier rubyid_update_mission'>update_mission</span> <span class='id identifier rubyid_mission'>mission</span>
+                 <span class='rbrace'>}</span><span class='rbracket'>]</span>
+
+    <span class='const'>Missions</span><span class='op'>::</span><span class='const'>RJR</span><span class='period'>.</span><span class='id identifier rubyid_registry'>registry</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_expired'>expired</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="store-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>store</strong>(id, lookup) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Invoke the specified lookup proc and store the result in the mission data</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+162
+163
+164
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/missions/dsl.rb', line 162</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_store'>store</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_lookup'>lookup</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_mission'>mission</span><span class='op'>|</span>
+    <span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_mission_data'>mission_data</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_lookup'>lookup</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_mission'>mission</span><span class='rparen'>)</span>
+    <span class='const'>Missions</span><span class='op'>::</span><span class='const'>DSL</span><span class='period'>.</span><span class='id identifier rubyid_update_mission'>update_mission</span> <span class='id identifier rubyid_mission'>mission</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="subscribe_to-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>subscribe_to</strong>(entities, evnt, handlers) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Subcribe node to event on specified entity(ies) invoking handler(s) when
+event occurs</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/missions/dsl.rb', line 219</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_subscribe_to'>subscribe_to</span><span class='lparen'>(</span><span class='id identifier rubyid_entities'>entities</span><span class='comma'>,</span> <span class='id identifier rubyid_evnt'>evnt</span><span class='comma'>,</span> <span class='id identifier rubyid_handlers'>handlers</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_mission'>mission</span><span class='op'>|</span>
+    <span class='id identifier rubyid_entities'>entities</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_entities'>entities</span><span class='rbracket'>]</span> <span class='kw'>unless</span> <span class='id identifier rubyid_entities'>entities</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_handlers'>handlers</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_handlers'>handlers</span><span class='rbracket'>]</span> <span class='kw'>unless</span> <span class='id identifier rubyid_handlers'>handlers</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_entities'>entities</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_entity'>entity</span><span class='op'>|</span>
+      <span class='comment'># this could be an array
+</span>      <span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_mission'>mission</span><span class='period'>.</span><span class='id identifier rubyid_mission_data'>mission_data</span><span class='lbracket'>[</span><span class='id identifier rubyid_entity'>entity</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='id identifier rubyid_entity'>entity</span>
+    <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_entity'>entity</span><span class='op'>|</span>
+      <span class='comment'># add handler to registry
+</span>      <span class='id identifier rubyid_eid'>eid</span>     <span class='op'>=</span> <span class='const'>Missions</span><span class='op'>::</span><span class='const'>Events</span><span class='op'>::</span><span class='const'>Manufactured</span><span class='period'>.</span><span class='id identifier rubyid_gen_id'>gen_id</span><span class='lparen'>(</span><span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_evnt'>evnt</span><span class='rparen'>)</span>
+      <span class='comment'># TODO mark event handler as persistant &amp;
+</span>      <span class='comment'># remove handlers on mission completion/failure
+</span>      <span class='id identifier rubyid_handler'>handler</span> <span class='op'>=</span> <span class='const'>Omega</span><span class='op'>::</span><span class='const'>Server</span><span class='op'>::</span><span class='const'>EventHandler</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:event_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_eid'>eid</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+                  <span class='id identifier rubyid_handlers'>handlers</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_h'>h</span><span class='op'>|</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_mission'>mission</span><span class='comma'>,</span> <span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+                <span class='rbrace'>}</span>
+      <span class='const'>Missions</span><span class='op'>::</span><span class='const'>RJR</span><span class='period'>.</span><span class='id identifier rubyid_registry'>registry</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_handler'>handler</span>
+
+      <span class='comment'># subscribe to server side events
+</span>      <span class='const'>Missions</span><span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::subscribe_to</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_evnt'>evnt</span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:32 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

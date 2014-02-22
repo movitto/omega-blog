@@ -1,0 +1,1812 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Motel::MovementStrategies::Elliptical
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (E)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Motel.html" title="Motel (module)">Motel</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../MovementStrategies.html" title="Motel::MovementStrategies (module)">MovementStrategies</a></span></span>
+     &raquo; 
+    <span class="title">Elliptical</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Motel::MovementStrategies::Elliptical
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../MovementStrategy.html" title="Motel::MovementStrategy (class)">Motel::MovementStrategy</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../MovementStrategy.html" title="Motel::MovementStrategy (class)">Motel::MovementStrategy</a></span></li>
+          
+            <li class="next">Motel::MovementStrategies::Elliptical</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/motel/movement_strategies/elliptical.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The Elliptical MovementStrategy moves a location on an elliptical path
+described by major/minor axis direction vectors, and an eccentricity /
+semi_latus_rectum.</p>
+
+<p>The path equation also depends on the value of the relative_to field
+indicating if the parent location is the center or a foci of the ellipse.
+Lastly a speed value is required indicating the angular velocity of the
+location.</p>
+
+<p>To be valid you must specify eccentricity, semi_latus_rectum, and speed at
+a minimum</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="CENTER-constant" class="">CENTER =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Indicates that parent location is at center of elliptical path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>center</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="FOCI-constant" class="">FOCI =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Indicates that parent location is at one of the focis of the elliptical
+path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>foci</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dmajx-instance_method" title="#dmajx (instance method)">- (Object) <strong>dmajx</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Direction vector corresponding to the major axis of the elliptical path.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dmajy-instance_method" title="#dmajy (instance method)">- (Object) <strong>dmajy</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Direction vector corresponding to the major axis of the elliptical path.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dmajz-instance_method" title="#dmajz (instance method)">- (Object) <strong>dmajz</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Direction vector corresponding to the major axis of the elliptical path.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dminx-instance_method" title="#dminx (instance method)">- (Object) <strong>dminx</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Direction vector corresponding to the minor axis of the elliptical path.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dminy-instance_method" title="#dminy (instance method)">- (Object) <strong>dminy</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Direction vector corresponding to the minor axis of the elliptical path.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dminz-instance_method" title="#dminz (instance method)">- (Object) <strong>dminz</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Direction vector corresponding to the minor axis of the elliptical path.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#e-instance_method" title="#e (instance method)">- (Object) <strong>e</strong> </a>
+    
+
+    
+      (also: #eccentricity)
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Describes the elliptical path through which the location moves.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#p-instance_method" title="#p (instance method)">- (Object) <strong>p</strong> </a>
+    
+
+    
+      (also: #semi_latus_rectum)
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Describes the elliptical path through which the location moves.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#relative_to-instance_method" title="#relative_to (instance method)">- (Object) <strong>relative_to</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><dl class="rdoc-list label-list"><dt>CENTER, FOCI
+<dd>
+<p>value indicates if the parent.</p>
+</dd></dl>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#speed-instance_method" title="#speed (instance method)">- (Object) <strong>speed</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Distance the location moves per second.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../MovementStrategy.html" title="Motel::MovementStrategy (class)">Motel::MovementStrategy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../MovementStrategy.html#step_delay-instance_method" title="Motel::MovementStrategy#step_delay (method)">#step_delay</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#direction-instance_method" title="#direction (instance method)">- (Object) <strong>direction</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Combined direction vector.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dmaj-instance_method" title="#dmaj (instance method)">- (Object) <strong>dmaj</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Combined major direction vector.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dmin-instance_method" title="#dmin (instance method)">- (Object) <strong>dmin</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Combined minor direction vector.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Elliptical) <strong>initialize</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Motel::MovementStrategies::Elliptical initializer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#move-instance_method" title="#move (instance method)">- (Object) <strong>move</strong>(loc, elapsed_seconds) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Implementation of <span class='object_link'><a href="../MovementStrategy.html#move-instance_method" title="Motel::MovementStrategy#move (method)">Motel::MovementStrategy#move</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_json-instance_method" title="#to_json (instance method)">- (Object) <strong>to_json</strong>(*a) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert movement strategy to json representation and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (Object) <strong>to_s</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert movement strategy to human readable string and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#valid%3F-instance_method" title="#valid? (instance method)">- (Boolean) <strong>valid?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean indicating if this movement strategy is valid.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../MovementStrategy.html" title="Motel::MovementStrategy (class)">Motel::MovementStrategy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../MovementStrategy.html#change%3F-instance_method" title="Motel::MovementStrategy#change? (method)">#change?</a></span>, <span class='object_link'><a href="../MovementStrategy.html#json_create-class_method" title="Motel::MovementStrategy.json_create (method)">json_create</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Motel::MovementStrategies::Elliptical (class)">Elliptical</a></span></tt>) <strong>initialize</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Motel::MovementStrategies::Elliptical initializer</p>
+
+<p>Direction vectors will be normalized if not already</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to initialize the elliptical movement strategy with</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:direction</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>array containing x,y,z coords of major and minor direction vectors</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:dmajx</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>x coordinate of major direction vector</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:dmajy</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>y coordinate of major direction vector</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:dmajz</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>z coordinate of major direction vector</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:dminx</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>x coordinate of minor direction vector</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:dminy</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>y coordinate of minor direction vector</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:dminz</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>z coordinate of minor direction vector</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:speed</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>speed to assign to movement strategy</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:relative_to</span>
+          <span class="type">(<tt><span class='object_link'><a href="#CENTER-constant" title="Motel::MovementStrategies::Elliptical::CENTER (constant)">CENTER</a></span></tt>, <tt><span class='object_link'><a href="#FOCI-constant" title="Motel::MovementStrategies::Elliptical::FOCI (constant)">FOCI</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>how the parent location is related to this elliptical path</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:e</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>eccentricity to assign to elliptical path</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:p</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>semi latus rectum to assign to elliptical path</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../InvalidMovementStrategy.html" title="Motel::InvalidMovementStrategy (class)">Motel::InvalidMovementStrategy</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if movement strategy is not valid (see <span class='object_link'><a href="#valid%3F-instance_method" title="Motel::MovementStrategies::Elliptical#valid? (method)">#valid?</a></span>)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 93</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+   <span class='ivar'>@dmajx</span><span class='comma'>,</span> <span class='ivar'>@dmajy</span><span class='comma'>,</span> <span class='ivar'>@dmajz</span><span class='comma'>,</span> <span class='ivar'>@dminx</span><span class='comma'>,</span> <span class='ivar'>@dminy</span><span class='comma'>,</span> <span class='ivar'>@dminz</span> <span class='op'>=</span>
+     <span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:direction</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>direction</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
+
+   <span class='id identifier rubyid_dmaj'>dmaj</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:dmaj</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dmaj</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='ivar'>@dmajx</span><span class='comma'>,</span><span class='ivar'>@dmajy</span><span class='comma'>,</span><span class='ivar'>@dmajz</span><span class='rbracket'>]</span>
+   <span class='id identifier rubyid_dmin'>dmin</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:dmin</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dmin</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='ivar'>@dminx</span><span class='comma'>,</span><span class='ivar'>@dminy</span><span class='comma'>,</span><span class='ivar'>@dminz</span><span class='rbracket'>]</span>
+   <span class='ivar'>@dmajx</span><span class='comma'>,</span> <span class='ivar'>@dmajy</span><span class='comma'>,</span> <span class='ivar'>@dmajz</span> <span class='op'>=</span> <span class='id identifier rubyid_dmaj'>dmaj</span>
+   <span class='ivar'>@dminx</span><span class='comma'>,</span> <span class='ivar'>@dminy</span><span class='comma'>,</span> <span class='ivar'>@dminz</span> <span class='op'>=</span> <span class='id identifier rubyid_dmin'>dmin</span>
+
+  <span class='id identifier rubyid_attr_from_args'>attr_from_args</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span>
+    <span class='symbol'>:relative_to</span>  <span class='op'>=&gt;</span> <span class='const'>CENTER</span><span class='comma'>,</span>
+    <span class='symbol'>:speed</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:e</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='symbol'>:p</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+    <span class='symbol'>:dmajx</span> <span class='op'>=&gt;</span>   <span class='ivar'>@dmajx</span><span class='comma'>,</span> <span class='symbol'>:dmajy</span> <span class='op'>=&gt;</span>   <span class='ivar'>@dmajy</span><span class='comma'>,</span> <span class='symbol'>:dmajz</span> <span class='op'>=&gt;</span>   <span class='ivar'>@dmajz</span><span class='comma'>,</span>
+    <span class='symbol'>:dminx</span> <span class='op'>=&gt;</span>   <span class='ivar'>@dminx</span><span class='comma'>,</span> <span class='symbol'>:dminy</span> <span class='op'>=&gt;</span>   <span class='ivar'>@dminy</span><span class='comma'>,</span> <span class='symbol'>:dminz</span> <span class='op'>=&gt;</span>   <span class='ivar'>@dminz</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@dmajx</span><span class='comma'>,</span> <span class='ivar'>@dmajy</span><span class='comma'>,</span> <span class='ivar'>@dmajz</span> <span class='op'>=</span> <span class='const'>Motel</span><span class='op'>::</span><span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='ivar'>@dmajx</span><span class='comma'>,</span> <span class='ivar'>@dmajy</span><span class='comma'>,</span> <span class='ivar'>@dmajz</span><span class='rparen'>)</span>
+  <span class='ivar'>@dminx</span><span class='comma'>,</span> <span class='ivar'>@dminy</span><span class='comma'>,</span> <span class='ivar'>@dminz</span> <span class='op'>=</span> <span class='const'>Motel</span><span class='op'>::</span><span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='ivar'>@dminx</span><span class='comma'>,</span> <span class='ivar'>@dminy</span><span class='comma'>,</span> <span class='ivar'>@dminz</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="dmajx=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="dmajx-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dmajx</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Direction vector corresponding to the major axis of the elliptical path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dmajx'>dmajx</span>
+  <span class='ivar'>@dmajx</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="dmajy=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="dmajy-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dmajy</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Direction vector corresponding to the major axis of the elliptical path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dmajy'>dmajy</span>
+  <span class='ivar'>@dmajy</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="dmajz=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="dmajz-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dmajz</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Direction vector corresponding to the major axis of the elliptical path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dmajz'>dmajz</span>
+  <span class='ivar'>@dmajz</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="dminx=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="dminx-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dminx</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Direction vector corresponding to the minor axis of the elliptical path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dminx'>dminx</span>
+  <span class='ivar'>@dminx</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="dminy=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="dminy-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dminy</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Direction vector corresponding to the minor axis of the elliptical path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dminy'>dminy</span>
+  <span class='ivar'>@dminy</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="dminz=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="dminz-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dminz</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Direction vector corresponding to the minor axis of the elliptical path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dminz'>dminz</span>
+  <span class='ivar'>@dminz</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="e=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="e-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>e</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='eccentricity-instance_method'>eccentricity</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Describes the elliptical path through which the location moves</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='ivar'>@e</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="p=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="p-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>p</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='semi_latus_rectum-instance_method'>semi_latus_rectum</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Describes the elliptical path through which the location moves</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_p'>p</span>
+  <span class='ivar'>@p</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="relative_to=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="relative_to-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>relative_to</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <dl class="rdoc-list label-list"><dt>CENTER, FOCI
+<dd>
+<p>value indicates if the parent</p>
+</dd></dl>
+
+<pre class="code ruby"><code class="ruby">of the location tracked by this strategy is at the center or the foci
+of the ellipse.</code></pre>
+
+<p>Affects how elliptical path is calculated</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 43</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_relative_to'>relative_to</span>
+  <span class='ivar'>@relative_to</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="speed=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="speed-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>speed</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Distance the location moves per second</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 46</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_speed'>speed</span>
+  <span class='ivar'>@speed</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="direction-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>direction</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Combined direction vector</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 72</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_direction'>direction</span>
+  <span class='id identifier rubyid_dmaj'>dmaj</span> <span class='op'>+</span> <span class='id identifier rubyid_dmin'>dmin</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dmaj-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dmaj</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Combined major direction vector</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dmaj'>dmaj</span>
+  <span class='lbracket'>[</span><span class='ivar'>@dmajx</span><span class='comma'>,</span> <span class='ivar'>@dmajy</span><span class='comma'>,</span> <span class='ivar'>@dmajz</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dmin-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dmin</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Combined minor direction vector</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dmin'>dmin</span>
+  <span class='lbracket'>[</span><span class='ivar'>@dminx</span><span class='comma'>,</span> <span class='ivar'>@dminy</span><span class='comma'>,</span> <span class='ivar'>@dminz</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="move-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>move</strong>(loc, elapsed_seconds) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Implementation of <span class='object_link'><a href="../MovementStrategy.html#move-instance_method" title="Motel::MovementStrategy#move (method)">Motel::MovementStrategy#move</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_move'>move</span><span class='lparen'>(</span><span class='id identifier rubyid_loc'>loc</span><span class='comma'>,</span> <span class='id identifier rubyid_elapsed_seconds'>elapsed_seconds</span><span class='rparen'>)</span>
+  <span class='comment'># make sure this movement strategy is valid
+</span>  <span class='kw'>unless</span> <span class='id identifier rubyid_valid?'>valid?</span>
+     <span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>elliptical movement strategy not valid, not proceeding with move</span><span class='tstring_end'>&quot;</span></span>
+     <span class='kw'>return</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># make sure location is on ellipse
+</span>  <span class='kw'>unless</span> <span class='id identifier rubyid_location_valid?'>location_valid?</span> <span class='id identifier rubyid_loc'>loc</span>
+     <span class='id identifier rubyid_cx'>cx</span><span class='comma'>,</span><span class='id identifier rubyid_cy'>cy</span><span class='comma'>,</span><span class='id identifier rubyid_cz'>cz</span> <span class='op'>=</span> <span class='id identifier rubyid_closest_coordinates'>closest_coordinates</span> <span class='id identifier rubyid_loc'>loc</span>
+     <span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>location </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_loc'>loc</span><span class='embexpr_end'>}</span><span class='tstring_content'> not on ellipse, adjusting to closest location </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cx'>cx</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cy'>cy</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cz'>cz</span><span class='embexpr_end'>}</span><span class='tstring_content'> before moving</span><span class='tstring_end'>&quot;</span></span>
+     <span class='comment'># FIXME raise error if cx,cy,cz is nil
+</span>     <span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_z'>z</span> <span class='op'>=</span> <span class='id identifier rubyid_cx'>cx</span><span class='comma'>,</span><span class='id identifier rubyid_cy'>cy</span><span class='comma'>,</span><span class='id identifier rubyid_cz'>cz</span>
+  <span class='kw'>end</span>
+
+  <span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>moving location </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'> via elliptical movement strategy</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='comment'># calculate distance moved and update x,y,z accordingly
+</span>  <span class='id identifier rubyid_distance'>distance</span> <span class='op'>=</span> <span class='id identifier rubyid_speed'>speed</span> <span class='op'>*</span> <span class='id identifier rubyid_elapsed_seconds'>elapsed_seconds</span>
+
+  <span class='id identifier rubyid_nX'>nX</span><span class='comma'>,</span><span class='id identifier rubyid_nY'>nY</span><span class='comma'>,</span><span class='id identifier rubyid_nZ'>nZ</span> <span class='op'>=</span> <span class='id identifier rubyid_coordinates_from_theta'>coordinates_from_theta</span><span class='lparen'>(</span><span class='id identifier rubyid_theta'>theta</span><span class='lparen'>(</span><span class='id identifier rubyid_loc'>loc</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_distance'>distance</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='id identifier rubyid_nX'>nX</span>
+  <span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='id identifier rubyid_nY'>nY</span>
+  <span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_z'>z</span> <span class='op'>=</span> <span class='id identifier rubyid_nZ'>nZ</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_json-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_json</strong>(*a) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert movement strategy to json representation and return it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 164</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>json_class</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data</span><span class='tstring_end'>&#39;</span></span>       <span class='op'>=&gt;</span> <span class='lbrace'>{</span> <span class='symbol'>:step_delay</span>   <span class='op'>=&gt;</span> <span class='id identifier rubyid_step_delay'>step_delay</span><span class='comma'>,</span>
+                      <span class='symbol'>:speed</span>        <span class='op'>=&gt;</span> <span class='id identifier rubyid_speed'>speed</span><span class='comma'>,</span>
+                      <span class='symbol'>:relative_to</span>  <span class='op'>=&gt;</span> <span class='id identifier rubyid_relative_to'>relative_to</span><span class='comma'>,</span>
+                      <span class='symbol'>:e</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span><span class='comma'>,</span>
+                      <span class='symbol'>:p</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_p'>p</span><span class='comma'>,</span>
+                      <span class='symbol'>:dmajx</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_dmajx'>dmajx</span><span class='comma'>,</span>
+                      <span class='symbol'>:dmajy</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_dmajy'>dmajy</span><span class='comma'>,</span>
+                      <span class='symbol'>:dmajz</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_dmajz'>dmajz</span><span class='comma'>,</span>
+                      <span class='symbol'>:dminx</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_dminx'>dminx</span><span class='comma'>,</span>
+                      <span class='symbol'>:dminy</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_dminy'>dminy</span><span class='comma'>,</span>
+                      <span class='symbol'>:dminz</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_dminz'>dminz</span> <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_s</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert movement strategy to human readable string and return it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+181
+182
+183</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 181</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>elliptical-(rt_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_relative_to'>relative_to</span><span class='embexpr_end'>}</span><span class='tstring_content'>/s</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_speed'>speed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/e</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='embexpr_end'>}</span><span class='tstring_content'>/p</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_p'>p</span><span class='embexpr_end'>}</span><span class='tstring_content'>/d</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_direction'>direction</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="valid?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>valid?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean indicating if this movement strategy is valid</p>
+
+<p>Tests the various attributes of the elliptical movement strategy, returning
+&#39;true&#39; if everything is consistent, else false.</p>
+
+<p>Currently tests</p>
+<ul><li>
+<p>direction vectors are normalized</p>
+</li><li>
+<p>direction vectors are orthogonal</p>
+</li><li>
+<p>eccentricity is a valid numeric &gt; 0</p>
+</li><li>
+<p>semi latus rectum is a valid numeric &gt; 0</p>
+</li><li>
+<p>speed is a valid numeric &gt; 0</p>
+</li><li>
+<p>relative_to is CENTER or FOCI</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+126
+127
+128
+129
+130
+131
+132
+133
+134</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/movement_strategies/elliptical.rb', line 126</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span>
+  <span class='const'>Motel</span><span class='op'>::</span><span class='id identifier rubyid_normalized?'>normalized?</span><span class='lparen'>(</span><span class='ivar'>@dmajx</span><span class='comma'>,</span> <span class='ivar'>@dmajy</span><span class='comma'>,</span> <span class='ivar'>@dmajz</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='const'>Motel</span><span class='op'>::</span><span class='id identifier rubyid_normalized?'>normalized?</span><span class='lparen'>(</span><span class='ivar'>@dminx</span><span class='comma'>,</span> <span class='ivar'>@dminy</span><span class='comma'>,</span> <span class='ivar'>@dminz</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='const'>Motel</span><span class='op'>::</span><span class='id identifier rubyid_orthogonal?'>orthogonal?</span><span class='lparen'>(</span><span class='ivar'>@dmajx</span><span class='comma'>,</span> <span class='ivar'>@dmajy</span><span class='comma'>,</span> <span class='ivar'>@dmajz</span><span class='comma'>,</span> <span class='ivar'>@dminx</span><span class='comma'>,</span> <span class='ivar'>@dminy</span><span class='comma'>,</span> <span class='ivar'>@dminz</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='ivar'>@e</span><span class='period'>.</span><span class='id identifier rubyid_numeric?'>numeric?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@e</span> <span class='op'>&gt;=</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@e</span> <span class='op'>&lt;=</span> <span class='int'>1</span> <span class='op'>&amp;&amp;</span>
+  <span class='ivar'>@p</span><span class='period'>.</span><span class='id identifier rubyid_numeric?'>numeric?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@p</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span>
+  <span class='ivar'>@speed</span><span class='period'>.</span><span class='id identifier rubyid_numeric?'>numeric?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@speed</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span>
+  <span class='lbracket'>[</span><span class='const'>CENTER</span><span class='comma'>,</span> <span class='const'>FOCI</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='ivar'>@relative_to</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:40 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

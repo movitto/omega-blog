@@ -1,0 +1,1536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Users::Registry
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Users.html" title="Users (module)">Users</a></span></span>
+     &raquo; 
+    <span class="title">Registry</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Users::Registry
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Users::Registry</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="../Omega/Server/Registry.html" title="Omega::Server::Registry (module)">Omega::Server::Registry</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/users/registry.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Primary server side entity tracker for the Users module.</p>
+
+<p>Provides a thread safe registry through which users can be accessed and
+managed.</p>
+
+<p>Also provides thread safe methods which to query users and privileges based
+on a session id and other parameters</p>
+
+<p>Singleton class, access via Users::Registry.instance.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../Omega/Server/Registry.html" title="Omega::Server::Registry (module)">Omega::Server::Registry</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Omega/Server/Registry.html#DEFAULT_COMMAND_POLL-constant" title="Omega::Server::Registry::DEFAULT_COMMAND_POLL (constant)">Omega::Server::Registry::DEFAULT_COMMAND_POLL</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#DEFAULT_EVENT_POLL-constant" title="Omega::Server::Registry::DEFAULT_EVENT_POLL (constant)">Omega::Server::Registry::DEFAULT_EVENT_POLL</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#DEFAULT_LOOP_POLL-constant" title="Omega::Server::Registry::DEFAULT_LOOP_POLL (constant)">Omega::Server::Registry::DEFAULT_LOOP_POLL</a></span></p>
+
+
+  <h2>Config options <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_perms_enabled-class_method" title="user_perms_enabled (class method)">+ (Object) <strong>user_perms_enabled</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Boolean toggling if user permission system is enabled / disabled.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="../Omega/Server/Registry.html" title="Omega::Server::Registry (module)">Omega::Server::Registry</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Omega/Server/Registry.html#backup_excludes-instance_method" title="Omega::Server::Registry#backup_excludes (method)">#backup_excludes</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#node-instance_method" title="Omega::Server::Registry#node (method)">#node</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#retrieval-instance_method" title="Omega::Server::Registry#retrieval (method)">#retrieval</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#user-instance_method" title="Omega::Server::Registry#user (method)">#user</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#validation_methods-instance_method" title="Omega::Server::Registry#validation_methods (method)">#validation_methods</a></span></p>
+
+
+  
+    <h2>
+      Config options
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_config-class_method" title="set_config (class method)">+ (Object) <strong>set_config</strong>(config) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set config options using Omega::Config instance.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#check_privilege-instance_method" title="#check_privilege (instance method)">- (true, false) <strong>check_privilege</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return true/false indicating if user correspoding to current session has
+specified privileges.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_session-instance_method" title="#create_session (instance method)">- (Object) <strong>create_session</strong>(user, source_node) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return session for the specified user, if none exists create one first.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#current_session-instance_method" title="#current_session (instance method)">- (Users::Session<sup>?</sup>) <strong>current_session</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the active <span class='object_link'><a href="Session.html" title="Users::Session (class)">Session</a></span> cooresponding to the specified id.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#current_user-instance_method" title="#current_user (instance method)">- (Users::User<sup>?</sup>) <strong>current_user</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the <span class='object_link'><a href="User.html" title="Users::User (class)">User</a></span> corresponding to the specified active session id
+If session has expired, it is invalided and nil is returned.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destroy_session-instance_method" title="#destroy_session (instance method)">- (Object) <strong>destroy_session</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Destroy the session specified by the given args.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Registry) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Users::Registry intitializer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#require_privilege-instance_method" title="#require_privilege (instance method)">- (Object) <strong>require_privilege</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Wrapper around <span class='object_link'><a href="#check_privilege-instance_method" title="Users::Registry#check_privilege (method)">#check_privilege</a></span> that raises error if user does not have
+privilege.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#valid_login%3F-instance_method" title="#valid_login? (instance method)">- (true/false) <strong>valid_login?</strong>(user_id, password) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean indicating if login credentials for the specified user are
+valid.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Omega/Server/Registry.html" title="Omega::Server::Registry (module)">Omega::Server::Registry</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Omega/Server/Registry.html#%3C%3C-instance_method" title="Omega::Server::Registry#&lt;&lt; (method)">#<<</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#cleanup_event-instance_method" title="Omega::Server::Registry#cleanup_event (method)">#cleanup_event</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#clear%21-instance_method" title="Omega::Server::Registry#clear! (method)">#clear!</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#delete-instance_method" title="Omega::Server::Registry#delete (method)">#delete</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#entities-instance_method" title="Omega::Server::Registry#entities (method)">#entities</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#entity-instance_method" title="Omega::Server::Registry#entity (method)">#entity</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#exclude_from_backup-instance_method" title="Omega::Server::Registry#exclude_from_backup (method)">#exclude_from_backup</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#join-instance_method" title="Omega::Server::Registry#join (method)">#join</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#on-instance_method" title="Omega::Server::Registry#on (method)">#on</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#proxies_for-instance_method" title="Omega::Server::Registry#proxies_for (method)">#proxies_for</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#proxy_for-instance_method" title="Omega::Server::Registry#proxy_for (method)">#proxy_for</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#raise_event-instance_method" title="Omega::Server::Registry#raise_event (method)">#raise_event</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#restore-instance_method" title="Omega::Server::Registry#restore (method)">#restore</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#run-instance_method" title="Omega::Server::Registry#run (method)">#run</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#running%3F-instance_method" title="Omega::Server::Registry#running? (method)">#running?</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#safe_exec-instance_method" title="Omega::Server::Registry#safe_exec (method)">#safe_exec</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#save-instance_method" title="Omega::Server::Registry#save (method)">#save</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#start-instance_method" title="Omega::Server::Registry#start (method)">#start</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#stop-instance_method" title="Omega::Server::Registry#stop (method)">#stop</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#to_s-instance_method" title="Omega::Server::Registry#to_s (method)">#to_s</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#update-instance_method" title="Omega::Server::Registry#update (method)">#update</a></span>, <span class='object_link'><a href="../Omega/Server/Registry.html#validation_callback-instance_method" title="Omega::Server::Registry#validation_callback (method)">#validation_callback</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Users::Registry (class)">Registry</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Users::Registry intitializer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+  <span class='id identifier rubyid_init_registry'>init_registry</span>
+
+  <span class='id identifier rubyid_exclude_from_backup'>exclude_from_backup</span> <span class='const'>Users</span><span class='op'>::</span><span class='const'>Session</span>
+  <span class='id identifier rubyid_exclude_from_backup'>exclude_from_backup</span> <span class='const'>Omega</span><span class='op'>::</span><span class='const'>Server</span><span class='op'>::</span><span class='const'>EventHandler</span>
+
+  <span class='comment'># validate user/role id or session&#39;s user id is unique on creation
+</span>  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_validation_callback'>validation_callback</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='comma'>,</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+    <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Omega</span><span class='op'>::</span><span class='const'>Server</span><span class='op'>::</span><span class='const'>Event</span><span class='rparen'>)</span> <span class='op'>||</span>
+    <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Omega</span><span class='op'>::</span><span class='const'>Server</span><span class='op'>::</span><span class='const'>EventHandler</span><span class='rparen'>)</span> <span class='op'>||</span>
+    <span class='lparen'>(</span><span class='lbracket'>[</span><span class='const'>User</span><span class='comma'>,</span> <span class='const'>Role</span><span class='comma'>,</span> <span class='const'>Session</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+
+     <span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Session</span><span class='rparen'>)</span> <span class='op'>?</span>
+        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span>  <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_re'>re</span><span class='op'>|</span> <span class='id identifier rubyid_re'>re</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Session</span><span class='rparen'>)</span>      <span class='rbrace'>}</span><span class='period'>.</span>
+          <span class='id identifier rubyid_find'>find</span>    <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>  <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>:</span>
+        <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span>    <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_re'>re</span><span class='op'>|</span> <span class='id identifier rubyid_re'>re</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_re'>re</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+
+  <span class='comment'># set user timestamps on creation
+</span>  <span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='symbol'>:added</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>User</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_created_at'>created_at</span>       <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+      <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_last_modified_at'>last_modified_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+    <span class='kw'>end</span>
+  <span class='rbrace'>}</span>
+
+  <span class='comment'># sanity checks on user
+</span>  <span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='symbol'>:added</span><span class='rparen'>)</span>   <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>    <span class='id identifier rubyid_check_user'>check_user</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>    <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Users</span><span class='op'>::</span><span class='const'>User</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='symbol'>:updated</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='comma'>,</span><span class='id identifier rubyid_oe'>oe</span><span class='op'>|</span> <span class='id identifier rubyid_check_user'>check_user</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='comma'>,</span><span class='id identifier rubyid_oe'>oe</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Users</span><span class='op'>::</span><span class='const'>User</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
+  <span class='comment'># sanity checks on session
+</span>  <span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='symbol'>:added</span><span class='rparen'>)</span>   <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>    <span class='id identifier rubyid_check_session'>check_session</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Users</span><span class='op'>::</span><span class='const'>Session</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
+  <span class='comment'># uniqueness checks on event handlers
+</span>  <span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='symbol'>:added</span><span class='rparen'>)</span>   <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_sanitize_event_handlers'>sanitize_event_handlers</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Omega</span><span class='op'>::</span><span class='const'>Server</span><span class='op'>::</span><span class='const'>EventHandler</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+
+  <span class='comment'># run local events
+</span>  <span class='id identifier rubyid_run'>run</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_run_events'>run_events</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="user_perms_enabled=-class_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="user_perms_enabled-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>user_perms_enabled</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Boolean toggling if user permission system is enabled / disabled. Disabling
+permissions will result in all require/check privileges calls returning
+true</p>
+
+<p>TODO ideally would have this in rjr adapter like user_attributes. To do
+this, all require/check privilege calls (as invoked by other subsystems)
+would have to go through rjr</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_user_perms_enabled'>user_perms_enabled</span>
+  <span class='ivar'>@user_perms_enabled</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="set_config-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>set_config</strong>(config) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set config options using Omega::Config instance</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>config</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Omega/Config.html" title="Omega::Config (class)">Omega::Config</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>object containing config options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_config'>set_config</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_user_perms_enabled'>user_perms_enabled</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_user_perms_enabled'>user_perms_enabled</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="check_privilege-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>check_privilege</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return true/false indicating if user correspoding to current session has
+specified privileges</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to use in permission check</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:session</span>
+          <span class="type">(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>id of session to use to lookup user</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:privilege</span>
+          <span class="type">(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>id of privilege which to check on user</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:entity</span>
+          <span class="type">(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>id or of entity corresponding to privilege to check</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:any</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Array.html" title="Array (class)">Array</a></span>&lt;Hash&lt;Symbol,<span class='object_link'><a href="../String.html" title="String (class)">String</a></span>&gt;&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>array of hashes containing :privilege and :entity attributes corresponding
+to ids of privileges and corresponding entities to look for. So long as the
+user has *at least one* of these privilege / entity pairs, true will be
+returned</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if user has / does not have privilege</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 203</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_check_privilege'>check_privilege</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>unless</span> <span class='const'>Registry</span><span class='period'>.</span><span class='id identifier rubyid_user_perms_enabled'>user_perms_enabled</span>
+
+  <span class='comment'># TODO incorporate session privilege checks into a larger generic rjr ACL subsystem (allow generic acl validation objects to be registered for each handler)
+</span>  <span class='id identifier rubyid_session_id'>session_id</span>    <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:session</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_privilege_ids'>privilege_ids</span> <span class='op'>=</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:privilege</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_entity_ids'>entity_ids</span>    <span class='op'>=</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:entity</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:any</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pe'>pe</span><span class='op'>|</span>
+    <span class='id identifier rubyid_privilege_ids'>privilege_ids</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_pe'>pe</span><span class='lbracket'>[</span><span class='symbol'>:privilege</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_entity_ids'>entity_ids</span>    <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_pe'>pe</span><span class='lbracket'>[</span><span class='symbol'>:entity</span><span class='rbracket'>]</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_log_args'>log_args</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_k'>k</span> <span class='op'>==</span> <span class='symbol'>:registry</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
+
+  <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='id identifier rubyid_entities'>entities</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Session</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_session_id'>session_id</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>check_privilege(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_log_args'>log_args</span><span class='embexpr_end'>}</span><span class='tstring_content'>): session not found</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_timed_out?'>timed_out?</span>
+    <span class='id identifier rubyid_destroy_session'>destroy_session</span> <span class='symbol'>:session_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+    <span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>check_privilege(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_log_args'>log_args</span><span class='embexpr_end'>}</span><span class='tstring_content'>): session timeout</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+
+  <span class='int'>0</span><span class='period'>.</span><span class='id identifier rubyid_upto'>upto</span><span class='lparen'>(</span><span class='id identifier rubyid_privilege_ids'>privilege_ids</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pi'>pi</span><span class='op'>|</span>
+    <span class='id identifier rubyid_privilege_id'>privilege_id</span> <span class='op'>=</span> <span class='id identifier rubyid_privilege_ids'>privilege_ids</span><span class='lbracket'>[</span><span class='id identifier rubyid_pi'>pi</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_entity_id'>entity_id</span>    <span class='op'>=</span> <span class='id identifier rubyid_entity_ids'>entity_ids</span><span class='lbracket'>[</span><span class='id identifier rubyid_pi'>pi</span><span class='rbracket'>]</span>
+
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_entity_id'>entity_id</span> <span class='op'>!=</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_has_privilege_on?'>has_privilege_on?</span><span class='lparen'>(</span><span class='id identifier rubyid_privilege_id'>privilege_id</span><span class='comma'>,</span> <span class='id identifier rubyid_entity_id'>entity_id</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>||</span>
+       <span class='lparen'>(</span><span class='id identifier rubyid_entity_id'>entity_id</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_has_privilege?'>has_privilege?</span><span class='lparen'>(</span><span class='id identifier rubyid_privilege_id'>privilege_id</span><span class='rparen'>)</span><span class='rparen'>)</span>
+         <span class='kw'>return</span> <span class='kw'>true</span>
+    <span class='kw'>end</span>
+  <span class='rbrace'>}</span>
+
+  <span class='kw'>return</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_session-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>create_session</strong>(user, source_node) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return session for the specified user, if none exists create one first</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="User.html" title="Users::User (class)">Users::User</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>which to create the session for</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>source_node</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>id of rjr node which this session was established on</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 139</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_session'>create_session</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='id identifier rubyid_source_node'>source_node</span><span class='rparen'>)</span>
+  <span class='comment'># just return user session if already existing
+</span>  <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_entities'>entities</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+    <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Session</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+
+  <span class='comment'># remove session if timed out
+</span>  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_timed_out?'>timed_out?</span>
+    <span class='id identifier rubyid_destroy_session'>destroy_session</span> <span class='symbol'>:session_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+    <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_session'>session</span> <span class='kw'>unless</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_last_login_at'>last_login_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+  <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='const'>Session</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:user</span>           <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='comma'>,</span>
+                        <span class='symbol'>:refreshed_time</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_last_login_at'>last_login_at</span><span class='comma'>,</span>
+                        <span class='symbol'>:endpoint_id</span>    <span class='op'>=&gt;</span> <span class='id identifier rubyid_source_node'>source_node</span>
+  <span class='kw'>self</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_session'>session</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_session'>session</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="current_session-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Session.html" title="Users::Session (class)">Users::Session</a></span></tt><sup>?</sup>) <strong>current_session</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the active <span class='object_link'><a href="Session.html" title="Users::Session (class)">Session</a></span> cooresponding to the specified id. If
+session has expired, it is invalidated and nil is returned</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>options to use to lookup session</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:id</span>
+          <span class="type">(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>id of the session to lookup</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Session.html" title="Users::Session (class)">Users::Session</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>session corresponding to id or nil if not found or exipired</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 270</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_current_session'>current_session</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_session_id'>session_id</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_entity'>entity</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Session</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_session_id'>session_id</span> <span class='rbrace'>}</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_timed_out?'>timed_out?</span>
+    <span class='id identifier rubyid_destroy_session'>destroy_session</span> <span class='symbol'>:session_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_session'>session</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="current_user-instance_method">
+  
+    - (<tt><span class='object_link'><a href="User.html" title="Users::User (class)">Users::User</a></span></tt><sup>?</sup>) <strong>current_user</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the <span class='object_link'><a href="User.html" title="Users::User (class)">User</a></span> corresponding to the specified active session id
+If session has expired, it is invalided and nil is returned</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>session args which to lookup the user with</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:session</span>
+          <span class="type">(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>id of the session to lookup corresponding user for</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="User.html" title="Users::User (class)">Users::User</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>user corresponding to session or nil if not found or session timed out</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 249</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_session_id'>session_id</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:session</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_entities'>entities</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Session</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_session_id'>session_id</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_timed_out?'>timed_out?</span>
+    <span class='id identifier rubyid_destroy_session'>destroy_session</span> <span class='symbol'>:session_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="destroy_session-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>destroy_session</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Destroy the session specified by the given args</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to use to lookup sessions to delete</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>[String]</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+166
+167
+168
+169
+170
+171
+172</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 166</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_destroy_session'>destroy_session</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+    <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Session</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+    <span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>      <span class='op'>==</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:session_id</span><span class='rbracket'>]</span> <span class='op'>||</span>
+     <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="require_privilege-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>require_privilege</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Wrapper around <span class='object_link'><a href="#check_privilege-instance_method" title="Users::Registry#check_privilege (method)">#check_privilege</a></span> that raises error if user does not have
+privilege</p>
+
+<p>Takes same parameter list as <span class='object_link'><a href="#require_privilege-instance_method" title="Users::Registry#require_privilege (method)">#require_privilege</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Omega/PermissionError.html" title="Omega::PermissionError (class)">Omega::PermissionError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if none of the specified privileges can be found</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 180</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_require_privilege'>require_privilege</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_check_privilege'>check_privilege</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_log_args'>log_args</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='id identifier rubyid_k'>k</span> <span class='op'>==</span> <span class='symbol'>:registry</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
+    <span class='id identifier rubyid_err'>err</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>require_privilege(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_log_args'>log_args</span><span class='embexpr_end'>}</span><span class='tstring_content'>): user does not have required privilege</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='comment'># TODO custom error messages
+</span>    <span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_warn'>warn</span> <span class='id identifier rubyid_err'>err</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Omega</span><span class='op'>::</span><span class='const'>PermissionError</span><span class='comma'>,</span> <span class='id identifier rubyid_err'>err</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="valid_login?-instance_method">
+  
+    - (<tt>true/false</tt>) <strong>valid_login?</strong>(user_id, password) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean indicating if login credentials for the specified user are
+valid</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>id of user to lookup</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>password to match</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true/false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if specified user id/password are valid</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+126
+127
+128
+129
+130
+131
+132</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/users/registry.rb', line 126</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_valid_login?'>valid_login?</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+  <span class='ivar'>@lock</span><span class='period'>.</span><span class='id identifier rubyid_synchronize'>synchronize</span> <span class='lbrace'>{</span>
+    <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='ivar'>@entities</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>User</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_user_id'>user_id</span> <span class='rbrace'>}</span>
+    <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_valid_login?'>valid_login?</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:35 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

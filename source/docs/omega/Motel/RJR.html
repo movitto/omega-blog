@@ -1,0 +1,681 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Motel::RJR
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Motel.html" title="Motel (module)">Motel</a></span></span>
+     &raquo; 
+    <span class="title">RJR</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Motel::RJR
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><span class='object_link'><a href="../Motel.html" title="Motel (module)">Motel</a></span>, <span class='object_link'><a href="../Omega.html" title="Omega (module)">Omega</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html" title="Omega::Server::DSL (module)">Omega::Server::DSL</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/motel/rjr/inspect.rb<span class="defines">,<br />
+  lib/motel/rjr/get.rb,<br /> lib/motel/rjr/init.rb,<br /> lib/motel/rjr/state.rb,<br /> lib/motel/rjr/track.rb,<br /> lib/motel/rjr/update.rb,<br /> lib/motel/rjr/delete.rb,<br /> lib/motel/rjr/create.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>TODO</p>
+<ul><li>
+<p># times specified location was updated</p>
+</li><li>
+<p>location callbacks w/ their endpoints, callback params, and # of times
+invoked</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="GET_METHODS-constant" class="">GET_METHODS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='symbol'>:get_location</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_get_location'>get_location</span> <span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="STATE_METHODS-constant" class="">STATE_METHODS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='symbol'>:save_state</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_save_state'>save_state</span><span class='comma'>,</span>
+<span class='symbol'>:restore_state</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_restore_state'>restore_state</span> <span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="TRACK_METHODS-constant" class="">TRACK_METHODS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='symbol'>:track_handler</span>    <span class='op'>=&gt;</span> <span class='id identifier rubyid_track_handler'>track_handler</span><span class='comma'>,</span>
+<span class='symbol'>:remove_callbacks</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_remove_callbacks'>remove_callbacks</span> <span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="UPDATE_METHODS-constant" class="">UPDATE_METHODS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='symbol'>:update_location</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_update_location'>update_location</span> <span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="DELETE_METHODS-constant" class="">DELETE_METHODS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='symbol'>:delete_location</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_delete_location'>delete_location</span> <span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="CREATE_METHODS-constant" class="">CREATE_METHODS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='symbol'>:create_location</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_create_location'>create_location</span> <span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="INSPECT_METHODS-constant" class="">INSPECT_METHODS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='symbol'>:get_status</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_get_status'>get_status</span> <span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../Motel.html" title="Motel (module)">Motel</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Motel.html#CARTESIAN_NORMAL_VECTOR-constant" title="Motel::CARTESIAN_NORMAL_VECTOR (constant)">CARTESIAN_NORMAL_VECTOR</a></span>, <span class='object_link'><a href="../Motel.html#CLOSE_ENOUGH-constant" title="Motel::CLOSE_ENOUGH (constant)">CLOSE_ENOUGH</a></span>, <span class='object_link'><a href="../Motel.html#LOCATION_EVENTS-constant" title="Motel::LOCATION_EVENTS (constant)">LOCATION_EVENTS</a></span>, <span class='object_link'><a href="../Motel.html#MAJOR_CARTESIAN_AXIS-constant" title="Motel::MAJOR_CARTESIAN_AXIS (constant)">MAJOR_CARTESIAN_AXIS</a></span>, <span class='object_link'><a href="../Motel.html#MINOR_CARTESIAN_AXIS-constant" title="Motel::MINOR_CARTESIAN_AXIS (constant)">MINOR_CARTESIAN_AXIS</a></span></p>
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="../Omega/Server/DSL.html" title="Omega::Server::DSL (module)">Omega::Server::DSL</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Omega/Server/DSL.html#node-instance_method" title="Omega::Server::DSL#node (method)">#node</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#registry-class_method" title="registry (class method)">+ (Object) <strong>registry</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reset-class_method" title="reset (class method)">+ (Object) <strong>reset</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_registry-class_method" title="user_registry (class method)">+ (Object) <strong>user_registry</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cb_from_args-instance_method" title="#cb_from_args (instance method)">- (Object) <strong>cb_from_args</strong>(rjr_method, args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Helper to generate a new callback from the specified method &amp; args.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#registry-instance_method" title="#registry (instance method)">- (Object) <strong>registry</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_registry-instance_method" title="#user_registry (instance method)">- (Object) <strong>user_registry</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Omega/Server/DSL.html" title="Omega::Server::DSL (module)">Omega::Server::DSL</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Omega/Server/DSL.html#check_attribute-instance_method" title="Omega::Server::DSL#check_attribute (method)">#check_attribute</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#check_privilege-instance_method" title="Omega::Server::DSL#check_privilege (method)">#check_privilege</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#current_session-instance_method" title="Omega::Server::DSL#current_session (method)">#current_session</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#current_user-instance_method" title="Omega::Server::DSL#current_user (method)">#current_user</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#delete_event_handler_for-instance_method" title="Omega::Server::DSL#delete_event_handler_for (method)">#delete_event_handler_for</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#filter_properties-instance_method" title="Omega::Server::DSL#filter_properties (method)">#filter_properties</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#filters_from_args-instance_method" title="Omega::Server::DSL#filters_from_args (method)">#filters_from_args</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#from_valid_source%3F-instance_method" title="Omega::Server::DSL#from_valid_source? (method)">#from_valid_source?</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#handle_node_closed-instance_method" title="Omega::Server::DSL#handle_node_closed (method)">#handle_node_closed</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#in_subsystem-instance_method" title="Omega::Server::DSL#in_subsystem (method)">#in_subsystem</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#is_cmd%3F-instance_method" title="Omega::Server::DSL#is_cmd? (method)">#is_cmd?</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#is_node%3F-instance_method" title="Omega::Server::DSL#is_node? (method)">#is_node?</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#login-instance_method" title="Omega::Server::DSL#login (method)">#login</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#matching-instance_method" title="Omega::Server::DSL#matching (method)">#matching</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#persistent_transport%3F-instance_method" title="Omega::Server::DSL#persistent_transport? (method)">#persistent_transport?</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#remove_callbacks_for-instance_method" title="Omega::Server::DSL#remove_callbacks_for (method)">#remove_callbacks_for</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#require_attribute-instance_method" title="Omega::Server::DSL#require_attribute (method)">#require_attribute</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#require_persistent_transport%21-instance_method" title="Omega::Server::DSL#require_persistent_transport! (method)">#require_persistent_transport!</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#require_privilege-instance_method" title="Omega::Server::DSL#require_privilege (method)">#require_privilege</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#require_state-instance_method" title="Omega::Server::DSL#require_state (method)">#require_state</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#require_valid_source%21-instance_method" title="Omega::Server::DSL#require_valid_source! (method)">#require_valid_source!</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#validate_session_source%21-instance_method" title="Omega::Server::DSL#validate_session_source! (method)">#validate_session_source!</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#with-instance_method" title="Omega::Server::DSL#with (method)">#with</a></span>, <span class='object_link'><a href="../Omega/Server/DSL.html#with_id-instance_method" title="Omega::Server::DSL#with_id (method)">#with_id</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Motel.html" title="Motel (module)">Motel</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Motel.html#angle_between-class_method" title="Motel.angle_between (method)">angle_between</a></span>, <span class='object_link'><a href="../Motel.html#axis_angle-class_method" title="Motel.axis_angle (method)">axis_angle</a></span>, <span class='object_link'><a href="../Motel.html#cross_product-class_method" title="Motel.cross_product (method)">cross_product</a></span>, <span class='object_link'><a href="../Motel.html#dot_product-class_method" title="Motel.dot_product (method)">dot_product</a></span>, <span class='object_link'><a href="../Motel.html#elliptical_path-class_method" title="Motel.elliptical_path (method)">elliptical_path</a></span>, <span class='object_link'><a href="../Motel.html#gen_uuid-class_method" title="Motel.gen_uuid (method)">gen_uuid</a></span>, <span class='object_link'><a href="../Motel.html#normalize-class_method" title="Motel.normalize (method)">normalize</a></span>, <span class='object_link'><a href="../Motel.html#normalized%3F-class_method" title="Motel.normalized? (method)">normalized?</a></span>, <span class='object_link'><a href="../Motel.html#orthogonal%3F-class_method" title="Motel.orthogonal? (method)">orthogonal?</a></span>, <span class='object_link'><a href="../Motel.html#rand_vector-class_method" title="Motel.rand_vector (method)">rand_vector</a></span>, <span class='object_link'><a href="../Motel.html#random_axis-class_method" title="Motel.random_axis (method)">random_axis</a></span>, <span class='object_link'><a href="../Motel.html#rotate-class_method" title="Motel.rotate (method)">rotate</a></span>, <span class='object_link'><a href="../Motel.html#rotated_angle-class_method" title="Motel.rotated_angle (method)">rotated_angle</a></span></p>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="registry-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>registry</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/rjr/init.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_registry'>registry</span>
+  <span class='ivar'>@registry</span> <span class='op'>||=</span> <span class='const'>Motel</span><span class='op'>::</span><span class='const'>Registry</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>reset</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/rjr/init.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_reset'>reset</span>
+  <span class='const'>Motel</span><span class='op'>::</span><span class='const'>RJR</span><span class='period'>.</span><span class='id identifier rubyid_registry'>registry</span><span class='period'>.</span><span class='id identifier rubyid_clear!'>clear!</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="user_registry-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>user_registry</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/rjr/init.rb', line 17</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_user_registry'>user_registry</span>
+  <span class='const'>Users</span><span class='op'>::</span><span class='const'>RJR</span><span class='period'>.</span><span class='id identifier rubyid_registry'>registry</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="cb_from_args-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>cb_from_args</strong>(rjr_method, args) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Helper to generate a new callback from the specified method &amp; args.
+Will validate arguments in the context of their method</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/rjr/track.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cb_from_args'>cb_from_args</span><span class='lparen'>(</span><span class='id identifier rubyid_rjr_method'>rjr_method</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_rjr_method'>rjr_method</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>motel::track_movement</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_d'>d</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>distance must be &gt;0</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_numeric?'>numeric?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='const'>Callbacks</span><span class='op'>::</span><span class='const'>Movement</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:min_distance</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='comma'>,</span>
+                            <span class='symbol'>:rjr_event</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::on_movement</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                            <span class='symbol'>:event_type</span>   <span class='op'>=&gt;</span> <span class='symbol'>:movement</span><span class='rparen'>)</span>
+
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::track_rotation</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_rt'>rt</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_rt'>rt</span><span class='embexpr_end'>}</span><span class='tstring_content'> must &gt;0 &amp;&amp; &lt;4*PI</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_rt'>rt</span><span class='period'>.</span><span class='id identifier rubyid_numeric?'>numeric?</span> <span class='op'>&amp;&amp;</span>
+                                      <span class='id identifier rubyid_rt'>rt</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span>
+                                      <span class='lparen'>(</span><span class='int'>0</span><span class='op'>...</span><span class='int'>4</span><span class='op'>*</span><span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_rt'>rt</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_ax'>ax</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span>
+    <span class='id identifier rubyid_ay'>ay</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span>
+    <span class='id identifier rubyid_az'>az</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rotation axis must be normalized</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_ax'>ax</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_ay'>ay</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_az'>az</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span>
+                                                <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_normalized?'>normalized?</span><span class='lparen'>(</span><span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span> <span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span> <span class='id identifier rubyid_az'>az</span><span class='rparen'>)</span>
+
+    <span class='const'>Callbacks</span><span class='op'>::</span><span class='const'>Rotation</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:rot_theta</span>    <span class='op'>=&gt;</span> <span class='id identifier rubyid_rt'>rt</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='comma'>,</span>
+                            <span class='symbol'>:axis_x</span>       <span class='op'>=&gt;</span> <span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span>
+                            <span class='symbol'>:axis_y</span>       <span class='op'>=&gt;</span> <span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span>
+                            <span class='symbol'>:axis_z</span>       <span class='op'>=&gt;</span> <span class='id identifier rubyid_az'>az</span><span class='comma'>,</span>
+                            <span class='symbol'>:rjr_event</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::on_rotation</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                            <span class='symbol'>:event_type</span>   <span class='op'>=&gt;</span> <span class='symbol'>:rotation</span>
+
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::track_proximity</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_olid'>olid</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span>
+    <span class='id identifier rubyid_oloc'>oloc</span> <span class='op'>=</span> <span class='id identifier rubyid_registry'>registry</span><span class='period'>.</span><span class='id identifier rubyid_entity'>entity</span> <span class='op'>&amp;</span><span class='id identifier rubyid_with_id'>with_id</span><span class='lparen'>(</span><span class='id identifier rubyid_olid'>olid</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Omega</span><span class='op'>::</span><span class='const'>DataNotFound</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>loc specified by </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_olid'>olid</span><span class='embexpr_end'>}</span><span class='tstring_content'> not found</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_oloc'>oloc</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+    <span class='id identifier rubyid_pevent'>pevent</span>  <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span>
+    <span class='id identifier rubyid_vevents'>vevents</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>proximity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>entered_proximity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>left_proximity</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>event must be one of </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vevents'>vevents</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_vevents'>vevents</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_pevent'>pevent</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_d'>d</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dist must be &gt;0</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_numeric?'>numeric?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+
+    <span class='const'>Callbacks</span><span class='op'>::</span><span class='const'>Proximity</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:max_distance</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='comma'>,</span>
+                             <span class='symbol'>:to_location</span>  <span class='op'>=&gt;</span> <span class='id identifier rubyid_oloc'>oloc</span><span class='comma'>,</span>
+                             <span class='symbol'>:rjr_event</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::on_proximity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                             <span class='symbol'>:event_type</span>   <span class='op'>=&gt;</span> <span class='symbol'>:proximity</span>
+
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::track_stops</span><span class='tstring_end'>&#39;</span></span>
+    <span class='const'>Callbacks</span><span class='op'>::</span><span class='const'>Stopped</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:rjr_event</span>   <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::location_stopped</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                           <span class='symbol'>:event_type</span>  <span class='op'>=&gt;</span> <span class='symbol'>:stopped</span>
+
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::track_strategy</span><span class='tstring_end'>&#39;</span></span>
+    <span class='const'>Callbacks</span><span class='op'>::</span><span class='const'>ChangedStrategy</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:rjr_event</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::changed_strategy</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                                   <span class='symbol'>:event_type</span> <span class='op'>=&gt;</span> <span class='symbol'>:changed_strategy</span>
+
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="registry-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>registry</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/rjr/init.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_registry'>registry</span>
+  <span class='const'>Motel</span><span class='op'>::</span><span class='const'>RJR</span><span class='period'>.</span><span class='id identifier rubyid_registry'>registry</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="user_registry-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>user_registry</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/rjr/init.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_user_registry'>user_registry</span>
+  <span class='const'>Motel</span><span class='op'>::</span><span class='const'>RJR</span><span class='period'>.</span><span class='id identifier rubyid_user_registry'>user_registry</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:32 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

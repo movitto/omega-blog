@@ -1,0 +1,1284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Manufactured::Commands::Attack
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (A)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Manufactured.html" title="Manufactured (module)">Manufactured</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Commands.html" title="Manufactured::Commands (module)">Commands</a></span></span>
+     &raquo; 
+    <span class="title">Attack</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Manufactured::Commands::Attack
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../Omega/Server/Command.html" title="Omega::Server::Command (class)">Omega::Server::Command</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../../Omega/Server/Command.html" title="Omega::Server::Command (class)">Omega::Server::Command</a></span></li>
+          
+            <li class="next">Manufactured::Commands::Attack</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="../../Omega/Server/CommandHelpers.html" title="Omega::Server::CommandHelpers (module)">Omega::Server::CommandHelpers</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/manufactured/commands/attack.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Represents action of one <span class='object_link'><a href="../Ship.html" title="Manufactured::Ship (class)">Ship</a></span> attacking another</p>
+
+<p>Registered with the registry by a client when attacker commences attacking
+and periodically run by registry until attacked stops, defender is
+destroyed, or one of several other conditions occur.</p>
+
+<p>Invokes <span class='object_link'><a href="../../Omega/Server/Callback.html" title="Omega::Server::Callback (class)">Omega::Server::Callback</a></span>s registered with the attacker and
+defender before/during/after the attack cycle with the event type, the
+attacking ship, and the defending ship as params</p>
+
+<p>The callback events/types invoked include:</p>
+<ul><li>
+<p>&#39;attacked_stop&#39; - invoked on the attacker when attacker stops
+attacking</p>
+</li><li>
+<p>&#39;attacked_stop&#39; - invoked on the defender when attacker stops
+attacking</p>
+</li><li>
+<p>&#39;attacked&#39;      - invoked on the attacker when attacker actually
+launches the attack</p>
+</li><li>
+<p>&#39;defended&#39;      - invoked on the defender when attacker actually
+launches the attack</p>
+</li><li>
+<p>&#39;destroyed&#39;     - invoked on the defender if this attack cycle
+resulted in the defender hp becoming &lt;= 0</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#attacker-instance_method" title="#attacker (instance method)">- (Object) <strong>attacker</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p><span class='object_link'><a href="../Ship.html" title="Manufactured::Ship (class)">Ship</a></span> performing the attack.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#defender-instance_method" title="#defender (instance method)">- (Object) <strong>defender</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p><span class='object_link'><a href="../Ship.html" title="Manufactured::Ship (class)">Ship</a></span> receiving that attack.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../../Omega/Server/Command.html" title="Omega::Server::Command (class)">Omega::Server::Command</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Omega/Server/Command.html#added_at-instance_method" title="Omega::Server::Command#added_at (method)">#added_at</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#exec_rate-instance_method" title="Omega::Server::Command#exec_rate (method)">#exec_rate</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#hooks-instance_method" title="Omega::Server::Command#hooks (method)">#hooks</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#last_ran_at-instance_method" title="Omega::Server::Command#last_ran_at (method)">#last_ran_at</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#node-instance_method" title="Omega::Server::Command#node (method)">#node</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#ran_first_hooks-instance_method" title="Omega::Server::Command#ran_first_hooks (method)">#ran_first_hooks</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#registry-instance_method" title="Omega::Server::Command#registry (method)">#registry</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#after_hook-instance_method" title="#after_hook (instance method)">- (Object) <strong>after_hook</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#before_hook-instance_method" title="#before_hook (instance method)">- (Object) <strong>before_hook</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#first_hook-instance_method" title="#first_hook (instance method)">- (Object) <strong>first_hook</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#id-instance_method" title="#id (instance method)">- (Object) <strong>id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the unique id of this attack command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Attack) <strong>initialize</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Manufactured::Commands::Attack initializer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#last_hook-instance_method" title="#last_hook (instance method)">- (Object) <strong>last_hook</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#processes%3F-instance_method" title="#processes? (instance method)">- (Boolean) <strong>processes?</strong>(entity) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove%3F-instance_method" title="#remove? (instance method)">- (Boolean) <strong>remove?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run%21-instance_method" title="#run! (instance method)">- (Object) <strong>run!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#should_run%3F-instance_method" title="#should_run? (instance method)">- (Boolean) <strong>should_run?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_json-instance_method" title="#to_json (instance method)">- (Object) <strong>to_json</strong>(*a) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert command to json representation and return it.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../Omega/Server/CommandHelpers.html" title="Omega::Server::CommandHelpers (module)">Omega::Server::CommandHelpers</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Omega/Server/CommandHelpers.html#invoke-instance_method" title="Omega::Server::CommandHelpers#invoke (method)">#invoke</a></span>, <span class='object_link'><a href="../../Omega/Server/CommandHelpers.html#retrieve-instance_method" title="Omega::Server::CommandHelpers#retrieve (method)">#retrieve</a></span>, <span class='object_link'><a href="../../Omega/Server/CommandHelpers.html#run_callbacks-instance_method" title="Omega::Server::CommandHelpers#run_callbacks (method)">#run_callbacks</a></span>, <span class='object_link'><a href="../../Omega/Server/CommandHelpers.html#update_registry-instance_method" title="Omega::Server::CommandHelpers#update_registry (method)">#update_registry</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../../Omega/Server/Command.html" title="Omega::Server::Command (class)">Omega::Server::Command</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Omega/Server/Command.html#cmd_json-instance_method" title="Omega::Server::Command#cmd_json (method)">#cmd_json</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#json_create-class_method" title="Omega::Server::Command.json_create (method)">json_create</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#run_hooks-instance_method" title="Omega::Server::Command#run_hooks (method)">#run_hooks</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#to_s-instance_method" title="Omega::Server::Command#to_s (method)">#to_s</a></span>, <span class='object_link'><a href="../../Omega/Server/Command.html#update-instance_method" title="Omega::Server::Command#update (method)">#update</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Manufactured::Commands::Attack (class)">Attack</a></span></tt>) <strong>initialize</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Manufactured::Commands::Attack initializer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to initialize attack command with</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:attacker</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Ship.html" title="Manufactured::Ship (class)">Manufactured::Ship</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>ship attacking the defender</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:defender</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Ship.html" title="Manufactured::Ship (class)">Manufactured::Ship</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>ship receiving attack from the attacker</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_attr_from_args'>attr_from_args</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='symbol'>:attacker</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:defender</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="attacker=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="attacker-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>attacker</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p><span class='object_link'><a href="../Ship.html" title="Manufactured::Ship (class)">Ship</a></span> performing the attack</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_attacker'>attacker</span>
+  <span class='ivar'>@attacker</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="defender=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="defender-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>defender</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p><span class='object_link'><a href="../Ship.html" title="Manufactured::Ship (class)">Ship</a></span> receiving that attack</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_defender'>defender</span>
+  <span class='ivar'>@defender</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="after_hook-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>after_hook</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_after_hook'>after_hook</span>
+  <span class='comment'># persist entities to the registry
+</span>  <span class='id identifier rubyid_update_registry'>update_registry</span><span class='lparen'>(</span><span class='ivar'>@attacker</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_registry'>update_registry</span><span class='lparen'>(</span><span class='ivar'>@defender</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="before_hook-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>before_hook</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_before_hook'>before_hook</span>
+  <span class='comment'># update entities from registry
+</span>  <span class='ivar'>@attacker</span> <span class='op'>=</span> <span class='id identifier rubyid_retrieve'>retrieve</span><span class='lparen'>(</span><span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='ivar'>@defender</span> <span class='op'>=</span> <span class='id identifier rubyid_retrieve'>retrieve</span><span class='lparen'>(</span><span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+
+  <span class='comment'># update locations from motel
+</span>  <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='op'>=</span>
+    <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::get_location</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>with_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span> <span class='op'>=</span>
+    <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>motel::get_location</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>with_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="first_hook-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>first_hook</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_first_hook'>first_hook</span>
+  <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_start_attacking'>start_attacking</span><span class='lparen'>(</span><span class='ivar'>@defender</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_registry'>update_registry</span><span class='lparen'>(</span><span class='ivar'>@attacker</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="id-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>id</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the unique id of this attack command.</p>
+
+<p>Currently a ship may only attack one other at a time, TODO incorporate
+multiple weapons and area based weapons (multiple defenders) into this</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>attack-cmd-</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="last_hook-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>last_hook</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_last_hook'>last_hook</span>
+  <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_stop_attacking'>stop_attacking</span>
+
+  <span class='comment'># check if defender has been destroyed
+</span>  <span class='kw'>if</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_hp'>hp</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'> destroyed </span><span class='embexpr_beg'>#{</span><span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='comment'># update ship&#39;s movement strategy to stopped
+</span>    <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_movement_strategy'>movement_strategy</span> <span class='op'>=</span> <span class='const'>Motel</span><span class='op'>::</span><span class='const'>MovementStrategies</span><span class='op'>::</span><span class='const'>Stopped</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span>
+    <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>motel::update_location</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='rparen'>)</span>
+
+    <span class='comment'># TODO issue call to motel to lock destroyed ship&#39;s location
+</span>    <span class='comment'># (when that operation is supported)
+</span>
+    <span class='comment'># Stop commands related to destroyed ship.
+</span>    <span class='comment'># All commands should auto-stop if related entity is not alive
+</span>    <span class='comment'># but this stops the commands immediately so that it&#39;s done w/
+</span>    <span class='id identifier rubyid_registry'>registry</span><span class='period'>.</span><span class='id identifier rubyid_stop_commands_for'>stop_commands_for</span><span class='lparen'>(</span><span class='ivar'>@defender</span><span class='rparen'>)</span>
+
+    <span class='comment'># set user attributes
+</span>    <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users::update_attribute</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span>
+           <span class='const'>Users</span><span class='op'>::</span><span class='const'>Attributes</span><span class='op'>::</span><span class='const'>ShipsUserDestroyed</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span>  <span class='int'>1</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users::update_attribute</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span>
+           <span class='const'>Users</span><span class='op'>::</span><span class='const'>Attributes</span><span class='op'>::</span><span class='const'>UserShipsDestroyed</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span>  <span class='int'>1</span><span class='rparen'>)</span>
+
+    <span class='comment'># create loot if necessary
+</span>    <span class='kw'>unless</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_cargo_empty?'>cargo_empty?</span>
+      <span class='comment'># two entities (ship/loot) sharing same location
+</span>      <span class='id identifier rubyid_loot'>loot</span> <span class='op'>=</span> <span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Loot</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>-loot</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+               <span class='symbol'>:location</span>          <span class='op'>=&gt;</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='comma'>,</span>
+               <span class='symbol'>:system_id</span>         <span class='op'>=&gt;</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_system_id'>system_id</span><span class='comma'>,</span>
+               <span class='symbol'>:movement_strategy</span> <span class='op'>=&gt;</span> <span class='const'>Motel</span><span class='op'>::</span><span class='const'>MovementStrategies</span><span class='op'>::</span><span class='const'>Stopped</span><span class='period'>.</span><span class='id identifier rubyid_instance'>instance</span><span class='comma'>,</span>
+               <span class='symbol'>:cargo_capacity</span>    <span class='op'>=&gt;</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_cargo_capacity'>cargo_capacity</span>
+      <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_resources'>resources</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span> <span class='id identifier rubyid_loot'>loot</span><span class='period'>.</span><span class='id identifier rubyid_add_resource'>add_resource</span> <span class='id identifier rubyid_r'>r</span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_registry'>registry</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_loot'>loot</span>
+    <span class='kw'>end</span>
+
+    <span class='comment'># invoke defender&#39;s &#39;destroyed&#39; callbacks
+</span>    <span class='id identifier rubyid_run_callbacks'>run_callbacks</span><span class='lparen'>(</span><span class='ivar'>@defender</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>destroyed_by</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@attacker</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># invoke attackers&#39;s &#39;attacked_stop&#39; callbacks
+</span>  <span class='id identifier rubyid_run_callbacks'>run_callbacks</span><span class='lparen'>(</span><span class='ivar'>@attacker</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>attacked_stop</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@defender</span><span class='rparen'>)</span>
+
+  <span class='comment'># invoke defender&#39;s &#39;defended_stop&#39; callbacks
+</span>  <span class='id identifier rubyid_run_callbacks'>run_callbacks</span><span class='lparen'>(</span><span class='ivar'>@defender</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>defended_stop</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@attacker</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="processes?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>processes?</strong>(entity) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_processes?'>processes?</span><span class='lparen'>(</span><span class='id identifier rubyid_entity'>entity</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Ship</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_attacker'>attacker</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>||</span> <span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='id identifier rubyid_defender'>defender</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>remove?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+168
+169
+170
+171</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 168</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove?'>remove?</span>
+  <span class='comment'># remove if defender is destoryed
+</span>  <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_hp'>hp</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>||</span> <span class='op'>!</span><span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_can_attack?'>can_attack?</span><span class='lparen'>(</span><span class='ivar'>@defender</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="run!-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>run!</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run!'>run!</span>
+  <span class='kw'>super</span>
+  <span class='op'>::</span><span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>invoking attack command </span><span class='embexpr_beg'>#{</span><span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'> -&gt; </span><span class='embexpr_beg'>#{</span><span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='comment'># TODO incorporate a hit / miss probability into this
+</span>  <span class='comment'># TODO incorporate AC / other defense mechanisms into this
+</span>  <span class='comment'># TODO delay between launching attack and it arriving at defender
+</span>  <span class='comment'>#   (depending on distance and projectile speed)
+</span>
+  <span class='comment'># first reduce defender&#39;s shield then hp
+</span>  <span class='kw'>if</span> <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_damage_dealt'>damage_dealt</span> <span class='op'>&lt;=</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_shield_level'>shield_level</span>
+    <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_shield_level'>shield_level</span> <span class='op'>-=</span> <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_damage_dealt'>damage_dealt</span>
+
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_pips'>pips</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_damage_dealt'>damage_dealt</span> <span class='op'>-</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_shield_level'>shield_level</span><span class='rparen'>)</span>
+    <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_hp'>hp</span> <span class='op'>-=</span> <span class='id identifier rubyid_pips'>pips</span>
+    <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_shield_level'>shield_level</span> <span class='op'>=</span> <span class='int'>0</span>
+
+    <span class='kw'>if</span> <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_hp'>hp</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
+      <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_hp'>hp</span> <span class='op'>=</span> <span class='int'>0</span>
+      <span class='ivar'>@defender</span><span class='period'>.</span><span class='id identifier rubyid_destroyed_by'>destroyed_by</span> <span class='op'>=</span> <span class='ivar'>@attacker</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># invoke attacker&#39;s &#39;attacked&#39; callbacks
+</span>  <span class='id identifier rubyid_run_callbacks'>run_callbacks</span><span class='lparen'>(</span><span class='ivar'>@attacker</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>attacked</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@defender</span><span class='rparen'>)</span>
+
+  <span class='comment'># invoke defender&#39;s &#39;defended&#39; callbacks
+</span>  <span class='id identifier rubyid_run_callbacks'>run_callbacks</span><span class='lparen'>(</span><span class='ivar'>@defender</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>defended</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@attacker</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="should_run?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>should_run?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 133</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_should_run?'>should_run?</span>
+  <span class='kw'>super</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@attacker</span><span class='period'>.</span><span class='id identifier rubyid_can_attack?'>can_attack?</span><span class='lparen'>(</span><span class='ivar'>@defender</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_json-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_json</strong>(*a) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert command to json representation and return it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+174
+175
+176
+177
+178
+179
+180
+181</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/commands/attack.rb', line 174</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>json_class</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data</span><span class='tstring_end'>&#39;</span></span>       <span class='op'>=&gt;</span>
+      <span class='lbrace'>{</span><span class='symbol'>:attacker</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_attacker'>attacker</span><span class='comma'>,</span>
+       <span class='symbol'>:defender</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_defender'>defender</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_cmd_json'>cmd_json</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:38 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

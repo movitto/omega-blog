@@ -1,0 +1,3572 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Omega::Client::DSL
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (D)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Omega.html" title="Omega (module)">Omega</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Client.html" title="Omega::Client (module)">Client</a></span></span>
+     &raquo; 
+    <span class="title">DSL</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Omega::Client::DSL
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="DSL/Base.html" title="Omega::Client::DSL::Base (class)">Base</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/omega/client/dsl.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Omega Client DSL, works best if you including this module in the namespace
+you would like to use it, eg:</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>using the dsl</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_include'>include</span> <span class='const'>Omega</span><span class='op'>::</span><span class='const'>Client</span><span class='op'>::</span><span class='const'>DSL</span>
+
+<span class='comment'># create a new user
+</span><span class='id identifier rubyid_user'>user</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>newuser</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>withpass</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='comment'># create a new galaxy/system/planet
+</span><span class='id identifier rubyid_galaxy'>galaxy</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Zeus</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
+  <span class='id identifier rubyid_system'>system</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Athena</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HR1925</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:location</span> <span class='op'>=&gt;</span>
+    <span class='const'>Location</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:x</span> <span class='op'>=&gt;</span> <span class='int'>240</span><span class='comma'>,</span> <span class='symbol'>:y</span> <span class='op'>=&gt;</span> <span class='op'>-</span><span class='int'>360</span><span class='comma'>,</span> <span class='symbol'>:z</span> <span class='op'>=&gt;</span> <span class='int'>110</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_sys'>sys</span><span class='op'>|</span>
+      <span class='id identifier rubyid_planet'>planet</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Aphrodite</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:movement_strategy</span> <span class='op'>=&gt;</span>
+        <span class='const'>Elliptical</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:relative_to</span> <span class='op'>=&gt;</span> <span class='const'>Elliptical</span><span class='op'>::</span><span class='const'>RELATIVE_TO_FOCI</span><span class='comma'>,</span> <span class='symbol'>:speed</span> <span class='op'>=&gt;</span> <span class='float'>0.1</span><span class='comma'>,</span>
+                       <span class='symbol'>:eccentricity</span> <span class='op'>=&gt;</span> <span class='float'>0.16</span><span class='comma'>,</span> <span class='symbol'>:semi_latus_rectum</span> <span class='op'>=&gt;</span> <span class='int'>140</span><span class='comma'>,</span>
+                       <span class='symbol'>:direction</span> <span class='op'>=&gt;</span> <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_random_axis'>random_axis</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="DSL/Base.html" title="Omega::Client::DSL::Base (class)">Base</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#asteroid-instance_method" title="#asteroid (instance method)">- (Cosmos::Entities::Asteroid) <strong>asteroid</strong>(id, args = {}, &amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create new asteroid and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#asteroid_belt-instance_method" title="#asteroid_belt (instance method)">- (Array&lt;Cosmos::Entities::Asteroid&gt;) <strong>asteroid_belt</strong>(args = {}, &amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create an asteroid belt by creating an asteroid field along an elliptical
+path.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#asteroid_field-instance_method" title="#asteroid_field (instance method)">- (Array&lt;Cosmos::Entities::Asteroid&gt;) <strong>asteroid_field</strong>(args = {}, &amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a field of asteroids at the specified locations.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dock-instance_method" title="#dock (instance method)">- (Object) <strong>dock</strong>(ship_id, station_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Dock ship at the specified station.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dsl-instance_method" title="#dsl (instance method)">- (Object) <strong>dsl</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return handle to base dsl instance, use to get/set options such as
+node/parallel and run operations such as &#39;join&#39;, etc.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#galaxy-instance_method" title="#galaxy (instance method)">- (Cosmos::Entities::Galaxy) <strong>galaxy</strong>(name, &amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create and return a new galaxy.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gen_uuid-instance_method" title="#gen_uuid (instance method)">- (Object) <strong>gen_uuid</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate an return a random uuid.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#invoke-instance_method" title="#invoke (instance method)">- (Object) <strong>invoke</strong>(*args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Invoke request using the DSL node / endpoint.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#jump_gate-instance_method" title="#jump_gate (instance method)">- (Cosmos::Entities::JumpGate) <strong>jump_gate</strong>(system, endpoint, args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create new jump gate between two systems and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#loc-instance_method" title="#loc (instance method)">- (Object) <strong>loc</strong>(x, y, z) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Utility wrapper to simply return a new location.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#login-instance_method" title="#login (instance method)">- (Object) <strong>login</strong>(user_id, password) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Log specified user into the server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#logout-instance_method" title="#logout (instance method)">- (Object) <strong>logout</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Log the user out of the server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mission-instance_method" title="#mission (instance method)">- (Object) <strong>mission</strong>(id, args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a new Missions::Mission.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#missions_event_handler-instance_method" title="#missions_event_handler (instance method)">- (Object) <strong>missions_event_handler</strong>(event, handler_method, args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#moon-instance_method" title="#moon (instance method)">- (Cosmos::Entities::Moon) <strong>moon</strong>(name, args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create new moon and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#notify-instance_method" title="#notify (instance method)">- (Object) <strong>notify</strong>(*args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Invoke notification using the DSL node / endpoint.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#orbit-instance_method" title="#orbit (instance method)">- (Object) <strong>orbit</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Helper to create a new movement strategy specifying a planet&#39;s orbit.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#planet-instance_method" title="#planet (instance method)">- (Cosmos::Entities::Planet) <strong>planet</strong>(name, args = {}, &amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create new planet and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#proxied_system-instance_method" title="#proxied_system (instance method)">- (Cosmos::Entities::SolarSystem) <strong>proxied_system</strong>(system_id, proxy_id, system_args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a reference to a system running on a remote node.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rand_location-instance_method" title="#rand_location (instance method)">- (Object) <strong>rand_location</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate an return a new random <span class='object_link'><a href="../../Motel/Location.html" title="Motel::Location (class)">Motel::Location</a></span>, using the specified
+arguments.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rand_resource-instance_method" title="#rand_resource (instance method)">- (Object) <strong>rand_resource</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate an return a new random <span class='object_link'><a href="../../Cosmos/Resource.html" title="Cosmos::Resource (class)">Cosmos::Resource</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#random_axis-instance_method" title="#random_axis (instance method)">- (Object) <strong>random_axis</strong>(*args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Wrapper around Motel.random_axis.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resource-instance_method" title="#resource (instance method)">- (Cosmos::Resource) <strong>resource</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set new resource on an asteroid and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#role-instance_method" title="#role (instance method)">- (Object) <strong>role</strong>(nrole) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a new role, or if @user is set, simply add the specified role id to
+the user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#schedule_event-instance_method" title="#schedule_event (instance method)">- (Object) <strong>schedule_event</strong>(interval, event) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Schedule new periodic event w/ missions subsystem.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ship-instance_method" title="#ship (instance method)">- (Manufactured::Ship) <strong>ship</strong>(id, args = {}, &amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Retrieve ship with the specified id if it exists, else create new ship and
+return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#station-instance_method" title="#station (instance method)">- (Manufactured::Station) <strong>station</strong>(id, args = {}, &amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return station with the specified id if it exists, else create new station
+and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#system-instance_method" title="#system (instance method)">- (Cosmos::Entities::SolarSystem) <strong>system</strong>(name, star_name = nil, args = {}, &amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the system specified corresponding to the given id, else if not
+found created it and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user-instance_method" title="#user (instance method)">- (Users::User) <strong>user</strong>(user_id, password = nil, args = {}, &amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return user w/ the given user_id, else if it is not found create it w/ the
+specified password and attributes.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="asteroid-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Cosmos/Entities/Asteroid.html" title="Cosmos::Entities::Asteroid (class)">Cosmos::Entities::Asteroid</a></span></tt>) <strong>asteroid</strong>(id, args = {}, &amp;bl) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create new asteroid and return it.</p>
+
+<p>@system <em>must</em> be set to the Cosmos::Entities::SolarSystem</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_to'>to</span> <span class='id identifier rubyid_create'>create</span> <span class='id identifier rubyid_the'>the</span> <span class='id identifier rubyid_asteroid'>asteroid</span> <span class='id identifier rubyid_under'>under</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string id of asteroid created</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass directly to asteroid initializer</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option callback block parameter to call w/ the newly created asteroid</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Entities/Asteroid.html" title="Cosmos::Entities::Asteroid (class)">Cosmos::Entities::Asteroid</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>asteroid created</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 238</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_asteroid'>asteroid</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_system'>system</span> <span class='op'>=</span> <span class='ivar'>@solar_system</span> <span class='op'>||</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:solar_system</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>solar_system nil</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_system'>system</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='id identifier rubyid_aargs'>aargs</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span>
+                      <span class='symbol'>:solar_system</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_system'>system</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ast'>ast</span> <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>Asteroid</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_aargs'>aargs</span><span class='rparen'>)</span>
+
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating asteroid </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ast'>ast</span><span class='embexpr_end'>}</span><span class='tstring_content'> under </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_system'>system</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_ast'>ast</span>
+
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_ast'>ast</span><span class='comma'>,</span> <span class='symbol'>:asteroid</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ast'>ast</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span>
+  <span class='id identifier rubyid_ast'>ast</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="asteroid_belt-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../Cosmos/Entities/Asteroid.html" title="Cosmos::Entities::Asteroid (class)">Cosmos::Entities::Asteroid</a></span>&gt;</tt>) <strong>asteroid_belt</strong>(args = {}, &amp;bl) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create an asteroid belt by creating an asteroid field along an elliptical
+path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options used to generate elliptical path</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option callback block parameter to call w/ the newly created asteroids</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:p</span>
+          <span class="type">(<tt>Integer</tt>, <tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>semi_latus_rectum to use when generating the elliptical path</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:e</span>
+          <span class="type">(<tt>Integer</tt>, <tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>eccentricity to use when generating the elliptical path</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">Array<Array<Float>,Array<Float>]</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span>&gt;,<span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span>&gt;] :direction major/minor direction vectors of the elliptical path axis</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>:direction major/minor direction vectors of the elliptical path axis</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../Cosmos/Entities/Asteroid.html" title="Cosmos::Entities::Asteroid (class)">Cosmos::Entities::Asteroid</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>asteroids created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 281</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_asteroid_belt'>asteroid_belt</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='comment'># TODO make # of asteroids configurable
+</span>  <span class='id identifier rubyid_scale'>scale</span> <span class='op'>=</span> <span class='int'>30</span>
+
+  <span class='id identifier rubyid_p'>p</span><span class='comma'>,</span><span class='id identifier rubyid_e'>e</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:p</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:e</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_direction'>direction</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:direction</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_elliptical_path'>elliptical_path</span><span class='lparen'>(</span><span class='id identifier rubyid_p'>p</span><span class='comma'>,</span><span class='id identifier rubyid_e'>e</span><span class='comma'>,</span><span class='id identifier rubyid_direction'>direction</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_num'>num</span>  <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>/</span> <span class='id identifier rubyid_scale'>scale</span>
+  <span class='id identifier rubyid_locs'>locs</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='int'>0</span><span class='period'>.</span><span class='id identifier rubyid_upto'>upto</span><span class='lparen'>(</span><span class='id identifier rubyid_scale'>scale</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='lbracket'>[</span><span class='id identifier rubyid_num'>num</span><span class='op'>*</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_locs'>locs</span> <span class='op'>&lt;&lt;</span> <span class='const'>Motel</span><span class='op'>::</span><span class='const'>Location</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:x</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_p'>p</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:y</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_p'>p</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='symbol'>:z</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_p'>p</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_asteroid_field'>asteroid_field</span><span class='lparen'>(</span><span class='symbol'>:locations</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_locs'>locs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="asteroid_field-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../Cosmos/Entities/Asteroid.html" title="Cosmos::Entities::Asteroid (class)">Cosmos::Entities::Asteroid</a></span>&gt;</tt>) <strong>asteroid_field</strong>(args = {}, &amp;bl) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a field of asteroids at the specified locations</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass to asteroid initializers</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option callback block parameter to call w/ the newly created asteroids</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:locations</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../Motel/Location.html" title="Motel::Location (class)">Motel::Location</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>locations to assign to asteroids</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../Cosmos/Entities/Asteroid.html" title="Cosmos::Entities::Asteroid (class)">Cosmos::Entities::Asteroid</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>asteroids created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 259</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_asteroid_field'>asteroid_field</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_locs'>locs</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:locations</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_asts'>asts</span> <span class='op'>=</span>
+    <span class='id identifier rubyid_locs'>locs</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_loc'>loc</span><span class='op'>|</span>
+      <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_gen_uuid'>gen_uuid</span>
+      <span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_id'>id</span>
+      <span class='id identifier rubyid_asteroid'>asteroid</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:location</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_loc'>loc</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_asts'>asts</span><span class='comma'>,</span> <span class='symbol'>:asteroids</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_asts'>asts</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span>
+  <span class='id identifier rubyid_asts'>asts</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dock-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dock</strong>(ship_id, station_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Dock ship at the specified station</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+439
+440
+441
+442</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 439</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dock'>dock</span><span class='lparen'>(</span><span class='id identifier rubyid_ship_id'>ship_id</span><span class='comma'>,</span> <span class='id identifier rubyid_station_id'>station_id</span><span class='rparen'>)</span>
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Docking </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ship_id'>ship_id</span><span class='embexpr_end'>}</span><span class='tstring_content'> at </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_station_id'>station_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::dock</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_ship_id'>ship_id</span><span class='comma'>,</span> <span class='id identifier rubyid_station_id'>station_id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dsl-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dsl</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return handle to base dsl instance, use to get/set options such as
+node/parallel and run operations such as &#39;join&#39;, etc</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dsl'>dsl</span>
+  <span class='ivar'>@dsl_base</span> <span class='op'>||=</span> <span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="galaxy-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Cosmos/Entities/Galaxy.html" title="Cosmos::Entities::Galaxy (class)">Cosmos::Entities::Galaxy</a></span></tt>) <strong>galaxy</strong>(name, &amp;bl) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create and return a new galaxy</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>galaxy name to lookup / assign</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option callback block parameter to call w/ the newly created galaxy</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Entities/Galaxy.html" title="Cosmos::Entities::Galaxy (class)">Cosmos::Entities::Galaxy</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>galaxy created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+149
+150
+151
+152
+153
+154
+155
+156</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 149</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_galaxy'>galaxy</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_g'>g</span> <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>Galaxy</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:id</span>   <span class='op'>=&gt;</span> <span class='id identifier rubyid_gen_uuid'>gen_uuid</span><span class='comma'>,</span>
+                                   <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating galaxy </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_g'>g</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_g'>g</span>
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_g'>g</span><span class='comma'>,</span> <span class='symbol'>:galaxy</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_g'>g</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span>
+  <span class='id identifier rubyid_g'>g</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gen_uuid-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>gen_uuid</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate an return a random uuid</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../../Motel.html#gen_uuid-class_method" title="Motel.gen_uuid (method)">Motel.gen_uuid</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gen_uuid'>gen_uuid</span>
+  <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_gen_uuid'>gen_uuid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="invoke-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>invoke</strong>(*args) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Invoke request using the DSL node / endpoint</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 72</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_invoke'>invoke</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="jump_gate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Cosmos/Entities/JumpGate.html" title="Cosmos::Entities::JumpGate (class)">Cosmos::Entities::JumpGate</a></span></tt>) <strong>jump_gate</strong>(system, endpoint, args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create new jump gate between two systems and return it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>system</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Entities/SolarSystem.html" title="Cosmos::Entities::SolarSystem (class)">Cosmos::Entities::SolarSystem</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>source solar system containing the jump gate</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>endpoint</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Entities/SolarSystem.html" title="Cosmos::Entities::SolarSystem (class)">Cosmos::Entities::SolarSystem</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>destination solar system which the jump gate leads to</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass directly to jump gate initializer</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Entities/JumpGate.html" title="Cosmos::Entities::JumpGate (class)">Cosmos::Entities::JumpGate</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>jump gate created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 380</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_jump_gate'>jump_gate</span><span class='lparen'>(</span><span class='id identifier rubyid_system'>system</span><span class='comma'>,</span> <span class='id identifier rubyid_endpoint'>endpoint</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_jid'>jid</span>   <span class='op'>=</span> <span class='id identifier rubyid_gen_uuid'>gen_uuid</span>
+  <span class='id identifier rubyid_jargs'>jargs</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span>   <span class='op'>=&gt;</span> <span class='id identifier rubyid_jid'>jid</span><span class='comma'>,</span>
+                      <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_jid'>jid</span><span class='comma'>,</span>
+                      <span class='symbol'>:solar_system</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_system'>system</span><span class='comma'>,</span>
+                      <span class='symbol'>:endpoint</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_endpoint'>endpoint</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_gate'>gate</span>  <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>JumpGate</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_jargs'>jargs</span><span class='rparen'>)</span>
+
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating gate </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_gate'>gate</span><span class='embexpr_end'>}</span><span class='tstring_content'> under </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_system'>system</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_gate'>gate</span> <span class='op'>=</span> <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_gate'>gate</span>
+
+  <span class='id identifier rubyid_gate'>gate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="loc-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>loc</strong>(x, y, z) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Utility wrapper to simply return a new location</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_loc'>loc</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='id identifier rubyid_z'>z</span><span class='rparen'>)</span>
+  <span class='const'>Motel</span><span class='op'>::</span><span class='const'>Location</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:x</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='symbol'>:y</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='symbol'>:z</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_z'>z</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="login-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>login</strong>(user_id, password) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Log specified user into the server</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string id of the user to login</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>password of the user to login</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="User.html#login-class_method" title="Omega::Client::User.login (method)">User.login</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 88</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_login'>login</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'>Users</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span>
+                         <span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+  <span class='ivar'>@session</span> <span class='op'>=</span> <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users::login</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_rjr_node'>rjr_node</span><span class='period'>.</span><span class='id identifier rubyid_message_headers'>message_headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>session_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@session</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="logout-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>logout</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Log the user out of the server</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_logout'>logout</span>
+  <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users::logout</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@session</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='ivar'>@session</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_rjr_node'>rjr_node</span><span class='period'>.</span><span class='id identifier rubyid_message_headers'>message_headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>session_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="mission-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>mission</strong>(id, args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a new Missions::Mission</p>
+
+<p>@param[Hash[ args hash of options to pass directly to mission initializer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>id to assign to new mission</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+464
+465
+466
+467
+468
+469</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 464</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mission'>mission</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mission'>mission</span> <span class='op'>=</span> <span class='const'>Missions</span><span class='op'>::</span><span class='const'>Mission</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating mission </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_mission'>mission</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_notify'>notify</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>missions::create_mission</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_mission'>mission</span>
+  <span class='id identifier rubyid_mission'>mission</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="missions_event_handler-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>missions_event_handler</strong>(event, handler_method, args = {}) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+471
+472
+473
+474
+475
+476
+477
+478</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 471</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_missions_event_handler'>missions_event_handler</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='comma'>,</span> <span class='id identifier rubyid_handler_method'>handler_method</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dsl_handler'>dsl_handler</span> <span class='op'>=</span> <span class='const'>Missions</span><span class='op'>::</span><span class='const'>DSL</span><span class='op'>::</span><span class='const'>Client</span><span class='op'>::</span><span class='const'>EventHandler</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_handler_method'>handler_method</span><span class='comma'>,</span>
+                                           <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:event</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_event'>event</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_handler'>handler</span> <span class='op'>=</span> <span class='const'>Missions</span><span class='op'>::</span><span class='const'>EventHandler</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:event_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_event'>event</span><span class='comma'>,</span>
+                                       <span class='symbol'>:persist</span>  <span class='op'>=&gt;</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_handler'>handler</span><span class='period'>.</span><span class='id identifier rubyid_exec'>exec</span> <span class='id identifier rubyid_dsl_handler'>dsl_handler</span>
+  <span class='id identifier rubyid_handler'>handler</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="moon-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Cosmos/Entities/Moon.html" title="Cosmos::Entities::Moon (class)">Cosmos::Entities::Moon</a></span></tt>) <strong>moon</strong>(name, args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create new moon and return it.</p>
+
+<p>@planet <em>must</em> be set to the Cosmos::Entities::Planet to create the
+moon under</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string name of moon create</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass directly to moon initializer</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Entities/Moon.html" title="Cosmos::Entities::Moon (class)">Cosmos::Entities::Moon</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>moon created</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 361</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_moon'>moon</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>planet is nil</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@planet</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='id identifier rubyid_margs'>margs</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_gen_uuid'>gen_uuid</span><span class='comma'>,</span>
+                      <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+                      <span class='symbol'>:planet</span> <span class='op'>=&gt;</span> <span class='ivar'>@planet</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_moon'>moon</span> <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>Moon</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_margs'>margs</span><span class='rparen'>)</span>
+
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating moon </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_moon'>moon</span><span class='embexpr_end'>}</span><span class='tstring_content'> under </span><span class='embexpr_beg'>#{</span><span class='ivar'>@planet</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_notify'>notify</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_moon'>moon</span>
+  <span class='id identifier rubyid_moon'>moon</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="notify-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>notify</strong>(*args) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Invoke notification using the DSL node / endpoint</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 77</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_notify'>notify</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_notify'>notify</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="orbit-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>orbit</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Helper to create a new movement strategy specifying a planet&#39;s orbit</p>
+
+<p>Simply wraps Elliptical movement strategy constructor with some defaults
+for now</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass directly to Elliptical initializer</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+346
+347
+348
+349
+350
+351</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 346</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_orbit'>orbit</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='comment'># TODO if direction is not specified,
+</span>  <span class='comment'>#      set orthogonal to orientation of star in parent system?
+</span>  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:relative_to</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Motel</span><span class='op'>::</span><span class='const'>MovementStrategies</span><span class='op'>::</span><span class='const'>Elliptical</span><span class='op'>::</span><span class='const'>FOCI</span>
+  <span class='const'>Motel</span><span class='op'>::</span><span class='const'>MovementStrategies</span><span class='op'>::</span><span class='const'>Elliptical</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_args'>args</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="planet-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Cosmos/Entities/Planet.html" title="Cosmos::Entities::Planet (class)">Cosmos::Entities::Planet</a></span></tt>) <strong>planet</strong>(name, args = {}, &amp;bl) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create new planet and return it.</p>
+
+<p>@solar_system <em>must</em> be set to the Cosmos::Entities::SolarSystem to
+create the planet under</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string name of planet create</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass directly to planet initializer</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option callback block parameter to call w/ the newly created planet</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Entities/Planet.html" title="Cosmos::Entities::Planet (class)">Cosmos::Entities::Planet</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>planet created</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 326</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_planet'>planet</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>solar_system is nil</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@solar_system</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='id identifier rubyid_pargs'>pargs</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_gen_uuid'>gen_uuid</span><span class='comma'>,</span>
+                      <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+                      <span class='symbol'>:solar_system</span> <span class='op'>=&gt;</span> <span class='ivar'>@solar_system</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_planet'>planet</span> <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>Planet</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_pargs'>pargs</span><span class='rparen'>)</span>
+
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating planet </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_planet'>planet</span><span class='embexpr_end'>}</span><span class='tstring_content'> under </span><span class='embexpr_beg'>#{</span><span class='ivar'>@solar_system</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_planet'>planet</span>
+
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_planet'>planet</span><span class='comma'>,</span> <span class='symbol'>:planet</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_planet'>planet</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span>
+  <span class='id identifier rubyid_planet'>planet</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="proxied_system-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Cosmos/Entities/SolarSystem.html" title="Cosmos::Entities::SolarSystem (class)">Cosmos::Entities::SolarSystem</a></span></tt>) <strong>proxied_system</strong>(system_id, proxy_id, system_args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a reference to a system running on a remote node</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string id of the system</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>of the remote node proxy\ (proxy must be setup for this id on the server
+side)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Entities/SolarSystem.html" title="Cosmos::Entities::SolarSystem (class)">Cosmos::Entities::SolarSystem</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Proxied Solar System created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 216</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_proxied_system'>proxied_system</span><span class='lparen'>(</span><span class='id identifier rubyid_system_id'>system_id</span><span class='comma'>,</span> <span class='id identifier rubyid_proxy_id'>proxy_id</span><span class='comma'>,</span> <span class='id identifier rubyid_system_args'>system_args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='comment'># TODO how to send request to proxied server so that
+</span>  <span class='comment'># system properties (name, location) can just be copied ?
+</span>  <span class='id identifier rubyid_sargs'>sargs</span> <span class='op'>=</span> <span class='id identifier rubyid_system_args'>system_args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_system_id'>system_id</span><span class='comma'>,</span>
+                             <span class='symbol'>:proxy_to</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_proxy_id'>proxy_id</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sys'>sys</span>  <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>SolarSystem</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_sargs'>sargs</span><span class='rparen'>)</span>
+
+  <span class='comment'># create system
+</span>  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating proxy solar system </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_sys'>sys</span><span class='embexpr_end'>}</span><span class='tstring_content'> to </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy_id'>proxy_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_sys'>sys</span>
+  <span class='id identifier rubyid_sys'>sys</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rand_location-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>rand_location</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate an return a new random <span class='object_link'><a href="../../Motel/Location.html" title="Motel::Location (class)">Motel::Location</a></span>, using the specified
+arguments</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../../Motel/Location.html#random-class_method" title="Motel::Location.random (method)">Motel::Location.random</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rand_location'>rand_location</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='const'>Motel</span><span class='op'>::</span><span class='const'>Location</span><span class='period'>.</span><span class='id identifier rubyid_random'>random</span> <span class='id identifier rubyid_args'>args</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rand_resource-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>rand_resource</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate an return a new random <span class='object_link'><a href="../../Cosmos/Resource.html" title="Cosmos::Resource (class)">Cosmos::Resource</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>Resources.rand_resource</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rand_resource'>rand_resource</span>
+  <span class='const'>Omega</span><span class='op'>::</span><span class='const'>Resources</span><span class='period'>.</span><span class='id identifier rubyid_random'>random</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="random_axis-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>random_axis</strong>(*args) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Wrapper around Motel.random_axis</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_random_axis'>random_axis</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_random_axis'>random_axis</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="resource-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Cosmos/Resource.html" title="Cosmos::Resource (class)">Cosmos::Resource</a></span></tt>) <strong>resource</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set new resource on an asteroid and return it.</p>
+
+<p>@asteroid <em>must</em> be set to the Cosmos::Entities::Asteroid to
+assoicate the resource with</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass directly to resource initializer</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Resource.html" title="Cosmos::Resource (class)">Cosmos::Resource</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>resource created</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 306</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_resource'>resource</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>asteroid is nil</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@asteroid</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_rs'>rs</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:resource</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Resource</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rs'>rs</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>       <span class='op'>=</span> <span class='id identifier rubyid_gen_uuid'>gen_uuid</span>
+  <span class='id identifier rubyid_rs'>rs</span><span class='period'>.</span><span class='id identifier rubyid_entity'>entity</span>   <span class='op'>=</span> <span class='ivar'>@asteroid</span>
+  <span class='id identifier rubyid_rs'>rs</span><span class='period'>.</span><span class='id identifier rubyid_quantity'>quantity</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:quantity</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:quantity</span><span class='rparen'>)</span>
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating resource </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_rs'>rs</span><span class='embexpr_end'>}</span><span class='tstring_content'> at </span><span class='embexpr_beg'>#{</span><span class='ivar'>@asteroid</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_notify'>notify</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::set_resource</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_rs'>rs</span>
+  <span class='id identifier rubyid_rs'>rs</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="role-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>role</strong>(nrole) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a new role, or if @user is set, simply add the specified role id to
+the user</p>
+
+<p>Operates in one of two modes depending on if @user is set. If it is,
+specify a string role name to this function to be added to the user
+indicated by @user. Else specify a Users::Role to create on the server side</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>nrole</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Users/Role.html" title="Users::Role (class)">Users::Role</a></span></tt>, <tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>name of role to add to user or Users::Role to create on the server side</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 130</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_role'>role</span><span class='lparen'>(</span><span class='id identifier rubyid_nrole'>nrole</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@user</span>
+    <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Adding role </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_nrole'>nrole</span><span class='embexpr_end'>}</span><span class='tstring_content'> to </span><span class='embexpr_beg'>#{</span><span class='ivar'>@user</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users::add_role</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='ivar'>@user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_nrole'>nrole</span><span class='rparen'>)</span>
+
+  <span class='kw'>else</span>
+    <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating role </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_nrole'>nrole</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users::create_role</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_nrole'>nrole</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="schedule_event-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>schedule_event</strong>(interval, event) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Schedule new periodic event w/ missions subsystem</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>interval</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>which event should occur</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>event</span>
+      
+      
+        <span class='type'>(<tt>Missions::Event</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>event which to run at specified interval</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+450
+451
+452
+453
+454
+455
+456
+457
+458</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 450</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_schedule_event'>schedule_event</span><span class='lparen'>(</span><span class='id identifier rubyid_interval'>interval</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_evnt'>evnt</span> <span class='op'>=</span>
+    <span class='const'>Omega</span><span class='op'>::</span><span class='const'>Server</span><span class='op'>::</span><span class='const'>PeriodicEvent</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-scheduler</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+                                     <span class='symbol'>:interval</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_interval'>interval</span><span class='comma'>,</span>
+                                     <span class='symbol'>:template_event</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_event'>event</span>
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Scheduling event </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_evnt'>evnt</span><span class='embexpr_end'>}</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_event'>event</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_notify'>notify</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>missions::create_event</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_evnt'>evnt</span>
+  <span class='id identifier rubyid_evnt'>evnt</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ship-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Manufactured/Ship.html" title="Manufactured::Ship (class)">Manufactured::Ship</a></span></tt>) <strong>ship</strong>(id, args = {}, &amp;bl) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Retrieve ship with the specified id if it exists, else create new ship and
+return it.</p>
+
+<p>Note callback will be invoked <strong>before</strong> ship is created, you
+may use it to set ship parameters for creation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string id of ship create</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass directly to ship initializer</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option callback block parameter to call w/ ship before it is created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Manufactured/Ship.html" title="Manufactured::Ship (class)">Manufactured::Ship</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ship created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 427</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ship'>ship</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='kw'>begin</span> <span class='kw'>return</span> <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::get_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>with_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span> <span class='semicolon'>;</span> <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_sh'>sh</span> <span class='op'>=</span> <span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_sh'>sh</span><span class='comma'>,</span> <span class='symbol'>:ship</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_sh'>sh</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span>
+
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating ship </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_sh'>sh</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_sh'>sh</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="station-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Manufactured/Station.html" title="Manufactured::Station (class)">Manufactured::Station</a></span></tt>) <strong>station</strong>(id, args = {}, &amp;bl) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return station with the specified id if it exists, else create new station
+and return it.</p>
+
+<p>Note callback will be invoked <strong>before</strong> station is created,
+you may use it to set station parameters for creation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string id of station create</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass directly to station initializer</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option callback block parameter to call w/ station before it is created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Manufactured/Station.html" title="Manufactured::Station (class)">Manufactured::Station</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>station created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 406</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_station'>station</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='kw'>begin</span> <span class='kw'>return</span> <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::get_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>with_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span> <span class='semicolon'>;</span> <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_st'>st</span> <span class='op'>=</span> <span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Station</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_id'>id</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_st'>st</span><span class='comma'>,</span> <span class='symbol'>:station</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_st'>st</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span>
+
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating station </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_st'>st</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_st'>st</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="system-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Cosmos/Entities/SolarSystem.html" title="Cosmos::Entities::SolarSystem (class)">Cosmos::Entities::SolarSystem</a></span></tt>) <strong>system</strong>(name, star_name = nil, args = {}, &amp;bl) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the system specified corresponding to the given id, else if not
+found created it and return it.</p>
+
+<p>If system does not exist, and we are creating a new one, @galaxy
+<em>must</em> be set. Will optionally create star if star_name is set</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string name of system to return or create</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>star_name</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string name of star to create (only if system is being created)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to pass directly to system initializer</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option callback block parameter to call w/ the newly created system</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Cosmos/Entities/SolarSystem.html" title="Cosmos::Entities::SolarSystem (class)">Cosmos::Entities::SolarSystem</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>system found or created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 169</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_system'>system</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_star_name'>star_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='comment'># lookup / return system
+</span>  <span class='id identifier rubyid_sys'>sys</span> <span class='op'>=</span>
+    <span class='kw'>begin</span> <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::get_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>with_name</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span> <span class='semicolon'>;</span> <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_sys'>sys</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='comment'># require galaxy
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>galaxy nil</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@galaxy</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+    <span class='comment'># initialize system
+</span>    <span class='id identifier rubyid_sargs'>sargs</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_gen_uuid'>gen_uuid</span><span class='comma'>,</span>
+                        <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+                        <span class='symbol'>:galaxy</span> <span class='op'>=&gt;</span> <span class='ivar'>@galaxy</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_sys'>sys</span>  <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>SolarSystem</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_sargs'>sargs</span><span class='rparen'>)</span>
+
+    <span class='comment'># create system
+</span>    <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating solar system </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_sys'>sys</span><span class='embexpr_end'>}</span><span class='tstring_content'> under </span><span class='embexpr_beg'>#{</span><span class='ivar'>@galaxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_sys'>sys</span>
+
+    <span class='comment'># optionally create star
+</span>    <span class='kw'>unless</span> <span class='id identifier rubyid_star_name'>star_name</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+      <span class='comment'># initialize star
+</span>      <span class='id identifier rubyid_stargs'>stargs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:id</span>   <span class='op'>=&gt;</span> <span class='id identifier rubyid_gen_uuid'>gen_uuid</span><span class='comma'>,</span>
+                <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_star_name'>star_name</span><span class='comma'>,</span>
+                <span class='symbol'>:solar_system</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_sys'>sys</span><span class='rbrace'>}</span>
+      <span class='id identifier rubyid_star'>star</span> <span class='op'>=</span> <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>Star</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_stargs'>stargs</span>
+
+      <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating star </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_star'>star</span><span class='embexpr_end'>}</span><span class='tstring_content'> under </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_sys'>sys</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='id identifier rubyid_st'>st</span> <span class='op'>=</span> <span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos::create_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_star'>star</span>
+      <span class='id identifier rubyid_sys'>sys</span><span class='period'>.</span><span class='id identifier rubyid_add_child'>add_child</span> <span class='id identifier rubyid_st'>st</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># run callback
+</span>  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_sys'>sys</span><span class='comma'>,</span> <span class='symbol'>:solar_system</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_sys'>sys</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span>
+
+  <span class='comment'># return system
+</span>  <span class='id identifier rubyid_sys'>sys</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="user-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Users/User.html" title="Users::User (class)">Users::User</a></span></tt>) <strong>user</strong>(user_id, password = nil, args = {}, &amp;bl) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return user w/ the given user_id, else if it is not found create it w/ the
+specified password and attributes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user_id</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>string id to assign to the new user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>password to assign to the new user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>option callback block parameter to call w/ the newly created user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Users/User.html" title="Users::User (class)">Users::User</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>user created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/dsl.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='comment'># lookup / return user
+</span>  <span class='kw'>begin</span> <span class='kw'>return</span> <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users::get_entity</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>with_id</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span> <span class='semicolon'>;</span> <span class='kw'>end</span>
+
+  <span class='comment'># create / return user
+</span>  <span class='id identifier rubyid_u'>u</span> <span class='op'>=</span> <span class='const'>Users</span><span class='op'>::</span><span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span> <span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_password'>password</span><span class='comma'>,</span>
+                                  <span class='symbol'>:registration_code</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users::create_user</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_u'>u</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dsl'>dsl</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_u'>u</span><span class='comma'>,</span> <span class='symbol'>:user</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_u'>u</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span>
+  <span class='id identifier rubyid_u'>u</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:32 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

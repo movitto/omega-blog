@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="/docs/middleman/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: ファイルサイズ最適化</title>
+  </head>
+  <body>
+    <!-- BuySellAds Ad Code -->
+    <script type="text/javascript">
+    (function(){
+      var bsa = document.createElement('script');
+         bsa.type = 'text/javascript';
+         bsa.async = true;
+         bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+    })();
+    </script>
+    <!-- End BuySellAds Ad Code -->
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/docs/middleman/jp/"><img width="225" height="225" alt="Middleman" src="/images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <div id="search">
+        <form>
+          <input type="text" id="st-search-input" class="st-search-input" placeholder="Search the documentation" />
+        </form>
+        <div id="st-results-container"></div>
+        <script type="text/javascript">
+          var Swiftype = window.Swiftype || {};
+          (function() {
+            Swiftype.key = 'q3qjGN5LmX2oq6w1V47y';
+            Swiftype.inputElement = '#st-search-input';
+            Swiftype.resultContainingElement = '#st-results-container';
+            Swiftype.attachElement = '#st-search-input';
+            Swiftype.renderStyle = "overlay";
+
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = "//swiftype.com/embed.js";
+            var entry = document.getElementsByTagName('script')[0];
+            entry.parentNode.insertBefore(script, entry);
+          }());
+        </script>
+      </div>
+
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman の基礎</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/basics/getting-started/">はじめに</a></li>
+      <li><a href="/docs/middleman/jp/basics/templates/">テンプレート</a></li>
+      <li><a href="/docs/middleman/jp/basics/helpers/">テンプレートヘルパ</a></li>
+      <li><a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a></li>
+      <li><a href="/docs/middleman/jp/basics/dynamic-pages/">動的ページ</a></li>
+      <li><a href="/docs/middleman/jp/basics/asset-pipeline/">アセットパイプライン</a></li>
+      <li><a href="/docs/middleman/jp/basics/pretty-urls/">きれいな URL (ディレクトリインデックス)</a></li>
+      <li><a href="/docs/middleman/jp/basics/livereload/">LiveReload</a></li>
+      <li><a href="/docs/middleman/jp/basics/blogging/">ブログ機能</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>高度な機能</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/advanced/configuration/">設定</a></li>
+      <li><a href="/docs/middleman/jp/advanced/local-data/">ローカルデータ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/localization/">多言語化 (i18n)</a></li>
+      <li><a href="/docs/middleman/jp/advanced/sitemap/">サイトマップ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/rack-middleware/">Rack ミドルウェア</a></li>
+      <li><a href="/docs/middleman/jp/advanced/custom/">カスタム拡張</a></li>
+      <li><a href="/docs/middleman/jp/advanced/file-size-optimization/">ファイルサイズ最適化</a></li>
+      <li><a href="/docs/middleman/jp/advanced/improving-cacheability/">キャッシュ機能の改善</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>コミュニティ</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/all">拡張機能</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">プロジェクトテンプレート</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/deployment">デプロイ方法</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">コミュニティフォーラム</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub リポジトリ</a></li>
+      <li><a href="/docs/middleman/jp/community/built-using-middleman/">Middleman 採用サイト</a></li>
+  </ul>
+</div>
+
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="ファイルサイズ最適化">ファイルサイズ最適化</h1>
+
+<h2 id="css-と-javascript-の圧縮">CSS と JavaScript の圧縮</h2>
+
+<p>Middleman は CSS のミニファイや JavaScript の圧縮処理を行うので, ファイル最適化について心配する必要はありません。ほとんどのライブラリはデプロイを行うユーザのためにミニファイや圧縮されたバージョンを用意していますが, そのファイルは読めなかったり編集できなかったりします。 Middleman はプロジェクトの中にコメント付きのオリジナルファイルを取っておくので, 必要に応じて読んだり編集することができます。そして, プロジェクトのビルド時には Middleman は最適化処理を行います。</p>
+
+<p><code>config.rb</code> で, サイトのビルド時に <code>minify_css</code> 機能と <code>minify_javascript</code> 機能を有効化します。</p>
+
+<pre><code class="ruby">configure :build do
+  activate :minify_css
+  activate :minify_javascript
+end
+</code></pre>
+
+<p>ファイル名に <code>.min</code> を含む圧縮されたファイルを使っている場合, Middleman はそのファイルを最適化しません。作者によって事前に配慮された圧縮をおこなう jQuery のようなライブラリにはとても良い方法です。</p>
+
+<p><code>config.rb</code> で <code>:minify_javascript</code> 拡張を有効化する場合, <code>:compressor</code> オプションに Uglifier のカスタムインスタンスを設定することで JavaScript の圧縮方法をカスタマイズできます。詳細は <a href="https://github.com/lautis/uglifier">Uglifier&#39;s docs</a> を参照してください。例えば, 次のように危険な最適化やトップレベル変数名のシンボル化を有効化できます:</p>
+
+<pre><code class="ruby">set :js_compressor, Uglifier.new(:toplevel =&gt; true, :unsafe =&gt; true)
+</code></pre>
+
+<p>一部のファイルをミニファイ処理から除外したい場合, これらの拡張を有効化する際に <code>:ignore</code> オプションを渡し, 無視するファイルを識別する 1 つ以上のパターンマッチ, 正規表現や Proc を与えます。同じように, ファイル拡張子をリネームし変更するために <code>:exts</code> オプションを渡すこともできます。</p>
+
+<p><code>Gemfile</code> に次の gem を追加することで, JavaScript の圧縮(さらには CoffeeScript のビルド) を高速化できます。</p>
+
+<pre><code class="ruby">gem &#39;therubyracer&#39; # 高速な JS コンパイラ
+gem &#39;oj&#39; # 高速な JS コンパイラ
+</code></pre>
+
+<h2 id="テキストファイルの-gzip-化">テキストファイルの GZIP 化</h2>
+
+<p>対応するユーザエージェントに <a href="http://developer.yahoo.com/performance/rules.html#gzip">圧縮ファイルを配信する</a> のはいい考えです。多くの web サーバはオンザフライでファイルを gzip にする機能を持っていますが, ファイルが配信される度に CPU を使う必要があり, その結果としてほとんどのサーバでは最大圧縮が実行されません。 Middleman は通常のファイルと一緒に gzip バージョンの HTML, CSS や JavaScript を作ることができ,  Web サーバに GZIP ファイルを直接配信するように命じることができます。まず,  <code>:gzip</code> 拡張を有効化します:</p>
+
+<pre><code class="ruby">activate :gzip
+</code></pre>
+
+<p>そして, GZIP ファイルを配信するようにサーバを設定します。 Nginx を使用する場合, <a href="http://wiki.nginx.org/NginxHttpGzipStaticModule">gzip_static</a> モジュールを確認してください。 Apache の場合, 少しトリッキーなことをしなければなりません - 例として <a href="https://gist.github.com/2200790">Gist</a> を確認してください。</p>
+
+<h2 id="画像圧縮">画像圧縮</h2>
+
+<p>ビルド時に画像も圧縮したい場合, <a href="https://github.com/plasticine/middleman-imageoptim"><code>middleman-imageoptim</code></a> を試してみましょう。</p>
+
+<h2 id="html-圧縮">HTML 圧縮</h2>
+
+<p>Middleman は HTML 出力を圧縮する公式の拡張機能を提供しています。gem で簡単にインストールします:</p>
+
+<pre><code class="bash">gem install middleman-minify-html
+</code></pre>
+
+<p>Gemfile に <code>middleman-minify-html</code> を追加します:</p>
+
+<pre><code class="ruby">gem &quot;middleman-minify-html&quot;
+</code></pre>
+
+<p>さらに <code>config.rb</code> を開いて次を追加します:</p>
+
+<pre><code class="ruby">activate :minify_html
+</code></pre>
+
+<p>ソースを確認すると HTML が圧縮されていることがわかります。</p>
+
+    </article>
+
+    <div id="support">
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+
+  <div class="sponsor">
+    <h4>Sponsors</h4>
+
+    <a href="http://fjords.cc" target="_blank">
+      <img src="/images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+
+    <a href="http://www.maxcdn.com" target="_blank" id="max">
+      <img width="130" src="/images/maxcdn.svg" />
+    </a>
+  </div>
+
+  <div class="donate">
+    <script data-gittip-username="tdreyno"
+        src="//gttp.co/v1.js"></script>
+    <p><br><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">Donate!</a><br><br></p>
+  </div>
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/localizable/advanced/file-size-optimization.jp.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="/javascripts/toc.js" type="text/javascript"></script>
+    <link href="/docs/middleman/stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src='https://spacebox.io/embed/js/embed-v1.js'></script>
+    <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-90027-21']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4ef39d56613f5d017b000004');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+  </body>
+</html>

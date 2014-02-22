@@ -1,0 +1,238 @@
+digraph RGL__DirectedAdjacencyGraph {
+    Agathon [
+        fontsize = 8,
+        label = Agathon
+    ]
+
+    Isocrates [
+        fontsize = 8,
+        label = Isocrates
+    ]
+
+    Thais [
+        fontsize = 8,
+        label = Thais
+    ]
+
+    Timon [
+        fontsize = 8,
+        label = Timon
+    ]
+
+    Epaphras [
+        fontsize = 8,
+        label = Epaphras
+    ]
+
+    Myron [
+        fontsize = 8,
+        label = Myron
+    ]
+
+    Pelagia [
+        fontsize = 8,
+        label = Pelagia
+    ]
+
+    Lysander [
+        fontsize = 8,
+        label = Lysander
+    ]
+
+    Thales [
+        fontsize = 8,
+        label = Thales
+    ]
+
+    Nikias [
+        fontsize = 8,
+        label = Nikias
+    ]
+
+    Pericles [
+        fontsize = 8,
+        label = Pericles
+    ]
+
+    Tycho [
+        fontsize = 8,
+        label = Tycho
+    ]
+
+    Kleon [
+        fontsize = 8,
+        label = Kleon
+    ]
+
+    Theodora [
+        fontsize = 8,
+        label = Theodora
+    ]
+
+    Stephanos [
+        fontsize = 8,
+        label = Stephanos
+    ]
+
+    Zenobia [
+        fontsize = 8,
+        label = Zenobia
+    ]
+
+    Panther [
+        fontsize = 8,
+        label = Panther
+    ]
+
+    Xenia [
+        fontsize = 8,
+        label = Xenia
+    ]
+
+    Metrodora [
+        fontsize = 8,
+        label = Metrodora
+    ]
+
+    Lycus [
+        fontsize = 8,
+        label = Lycus
+    ]
+
+    Eugina [
+        fontsize = 8,
+        label = Eugina
+    ]
+
+    Agathon -> Isocrates [
+        fontsize = 8
+    ]
+
+    Isocrates -> Thais [
+        fontsize = 8
+    ]
+
+    Thais -> Timon [
+        fontsize = 8
+    ]
+
+    Thais -> Epaphras [
+        fontsize = 8
+    ]
+
+    Timon -> Myron [
+        fontsize = 8
+    ]
+
+    Timon -> Pelagia [
+        fontsize = 8
+    ]
+
+    Epaphras -> Eugina [
+        fontsize = 8
+    ]
+
+    Myron -> Lysander [
+        fontsize = 8
+    ]
+
+    Myron -> Thales [
+        fontsize = 8
+    ]
+
+    Myron -> Nikias [
+        fontsize = 8
+    ]
+
+    Pelagia -> Pericles [
+        fontsize = 8
+    ]
+
+    Pelagia -> Tycho [
+        fontsize = 8
+    ]
+
+    Pelagia -> Kleon [
+        fontsize = 8
+    ]
+
+    Thales -> Nikias [
+        fontsize = 8
+    ]
+
+    Nikias -> Metrodora [
+        fontsize = 8
+    ]
+
+    Pericles -> Theodora [
+        fontsize = 8
+    ]
+
+    Tycho -> Stephanos [
+        fontsize = 8
+    ]
+
+    Tycho -> Zenobia [
+        fontsize = 8
+    ]
+
+    Kleon -> Zenobia [
+        fontsize = 8
+    ]
+
+    Kleon -> Panther [
+        fontsize = 8
+    ]
+
+    Kleon -> Xenia [
+        fontsize = 8
+    ]
+
+    Theodora -> Tycho [
+        fontsize = 8
+    ]
+
+    Theodora -> Agathon [
+        fontsize = 8
+    ]
+
+    Stephanos -> Kleon [
+        fontsize = 8
+    ]
+
+    Stephanos -> Epaphras [
+        fontsize = 8
+    ]
+
+    Zenobia -> Panther [
+        fontsize = 8
+    ]
+
+    Panther -> Xenia [
+        fontsize = 8
+    ]
+
+    Xenia -> Thales [
+        fontsize = 8
+    ]
+
+    Metrodora -> Lycus [
+        fontsize = 8
+    ]
+
+    Metrodora -> Zenobia [
+        fontsize = 8
+    ]
+
+    Lycus -> Epaphras [
+        fontsize = 8
+    ]
+
+    Lycus -> Isocrates [
+        fontsize = 8
+    ]
+
+    Eugina -> Thais [
+        fontsize = 8
+    ]
+}

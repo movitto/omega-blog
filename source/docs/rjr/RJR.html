@@ -1,0 +1,541 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: RJR
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (R)</a> &raquo;
+    
+    
+    <span class="title">RJR</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: RJR
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/rjr/errors.rb<span class="defines">,<br />
+  lib/rjr/node.rb,<br /> lib/rjr/common.rb,<br /> lib/rjr/common.rb,<br /> lib/rjr/version.rb,<br /> lib/rjr/message.rb,<br /> lib/rjr/nodes/ws.rb,<br /> lib/rjr/nodes/tcp.rb,<br /> lib/rjr/nodes/web.rb,<br /> lib/rjr/dispatcher.rb,<br /> lib/rjr/em_adapter.rb,<br /> lib/rjr/nodes/unix.rb,<br /> lib/rjr/nodes/amqp.rb,<br /> lib/rjr/nodes/easy.rb,<br /> lib/rjr/thread_pool.rb,<br /> lib/rjr/nodes/local.rb,<br /> lib/rjr/nodes/multi.rb,<br /> lib/rjr/nodes/missing.rb,<br /> lib/rjr/nodes/template.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Thread Pool (second implementation)</p>
+
+<p>Copyright (C) 2010-2013 Mohammed Morsi &lt;mo@morsi.org&gt; Licensed under
+the Apache License, Version 2.0</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="RJR/Errors.html" title="RJR::Errors (module)">Errors</a></span>, <span class='object_link'><a href="RJR/MessageMixins.html" title="RJR::MessageMixins (module)">MessageMixins</a></span>, <span class='object_link'><a href="RJR/Nodes.html" title="RJR::Nodes (module)">Nodes</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="RJR/Dispatcher.html" title="RJR::Dispatcher (class)">Dispatcher</a></span>, <span class='object_link'><a href="RJR/EMAdapter.html" title="RJR::EMAdapter (class)">EMAdapter</a></span>, <span class='object_link'><a href="RJR/Logger.html" title="RJR::Logger (class)">Logger</a></span>, <span class='object_link'><a href="RJR/MessageUtil.html" title="RJR::MessageUtil (class)">MessageUtil</a></span>, <span class='object_link'><a href="RJR/Node.html" title="RJR::Node (class)">Node</a></span>, <span class='object_link'><a href="RJR/NodeCallback.html" title="RJR::NodeCallback (class)">NodeCallback</a></span>, <span class='object_link'><a href="RJR/NotificationMessage.html" title="RJR::NotificationMessage (class)">NotificationMessage</a></span>, <span class='object_link'><a href="RJR/Request.html" title="RJR::Request (class)">Request</a></span>, <span class='object_link'><a href="RJR/RequestMessage.html" title="RJR::RequestMessage (class)">RequestMessage</a></span>, <span class='object_link'><a href="RJR/ResponseMessage.html" title="RJR::ResponseMessage (class)">ResponseMessage</a></span>, <span class='object_link'><a href="RJR/Result.html" title="RJR::Result (class)">Result</a></span>, <span class='object_link'><a href="RJR/ThreadPool.html" title="RJR::ThreadPool (class)">ThreadPool</a></span>, <span class='object_link'><a href="RJR/ThreadPoolJob.html" title="RJR::ThreadPoolJob (class)">ThreadPoolJob</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0.18.2</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#invalid_json_class%3F-class_method" title="invalid_json_class? (class method)">+ (Boolean) <strong>invalid_json_class?</strong>(jc) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_json-class_method" title="parse_json (class method)">+ (Object) <strong>parse_json</strong>(js) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#persistent_nodes-class_method" title="persistent_nodes (class method)">+ (Object) <strong>persistent_nodes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the persistent rjr nodes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate_json_array-class_method" title="validate_json_array (class method)">+ (Object) <strong>validate_json_array</strong>(ja) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate_json_hash-class_method" title="validate_json_hash (class method)">+ (Object) <strong>validate_json_hash</strong>(jh) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="invalid_json_class?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>invalid_json_class?</strong>(jc) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/rjr/common.rb', line 201</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_invalid_json_class?'>invalid_json_class?</span><span class='lparen'>(</span><span class='id identifier rubyid_jc'>jc</span><span class='rparen'>)</span>
+  <span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_whitelist_json_classes'>whitelist_json_classes</span> <span class='op'>||=</span> <span class='kw'>false</span>
+
+  <span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_whitelist_json_classes'>whitelist_json_classes</span> <span class='op'>?</span>
+    <span class='comment'># only permit classes user explicitly authorizes
+</span>    <span class='op'>!</span><span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_permitted_json_classes'>permitted_json_classes</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_jc'>jc</span><span class='rparen'>)</span> <span class='op'>:</span>
+
+    <span class='comment'># allow any class
+</span>    <span class='id identifier rubyid_jc'>jc</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>::</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='const'>Object</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='comma'>,</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+      <span class='kw'>case</span>
+      <span class='kw'>when</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>  <span class='kw'>then</span> <span class='id identifier rubyid_p'>p</span>
+      <span class='kw'>when</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_constants'>constants</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span>
+        <span class='kw'>then</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span>
+      <span class='kw'>else</span>
+        <span class='kw'>nil</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_json-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>parse_json</strong>(js) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/rjr/common.rb', line 242</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_parse_json'>parse_json</span><span class='lparen'>(</span><span class='id identifier rubyid_js'>js</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_jp'>jp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_js'>js</span><span class='comma'>,</span> <span class='symbol'>:create_additions</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_jp'>jp</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_json_array'>validate_json_array</span><span class='lparen'>(</span><span class='id identifier rubyid_jp'>jp</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_jp'>jp</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_validate_json_hash'>validate_json_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_jp'>jp</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_jp'>jp</span>
+  <span class='kw'>end</span>
+  <span class='op'>::</span><span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_js'>js</span><span class='comma'>,</span> <span class='symbol'>:create_additions</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="persistent_nodes-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>persistent_nodes</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the persistent rjr nodes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/rjr/common.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_persistent_nodes'>persistent_nodes</span>
+  <span class='comment'># rerun each time (eg don&#39;t store in var) incase new nodes were included
+</span>  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Nodes</span><span class='period'>.</span><span class='id identifier rubyid_constants'>constants</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_n'>n</span><span class='op'>|</span>
+    <span class='id identifier rubyid_nc'>nc</span> <span class='op'>=</span> <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Nodes</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_nc'>nc</span><span class='period'>.</span><span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>==</span> <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Node</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_nc'>nc</span><span class='period'>.</span><span class='id identifier rubyid_persistent?'>persistent?</span> <span class='op'>?</span>
+    <span class='id identifier rubyid_nc'>nc</span> <span class='op'>:</span> <span class='kw'>nil</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="validate_json_array-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>validate_json_array</strong>(ja) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+232
+233
+234
+235
+236
+237
+238
+239
+240</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/rjr/common.rb', line 232</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_validate_json_array'>validate_json_array</span><span class='lparen'>(</span><span class='id identifier rubyid_ja'>ja</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ja'>ja</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_jai'>jai</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_jai'>jai</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_validate_json_array'>validate_json_array</span><span class='lparen'>(</span><span class='id identifier rubyid_jai'>jai</span><span class='rparen'>)</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_jai'>jai</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_validate_json_hash'>validate_json_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_jai'>jai</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="validate_json_hash-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>validate_json_hash</strong>(jh) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/rjr/common.rb', line 220</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_validate_json_hash'>validate_json_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_jh'>jh</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_jh'>jh</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_k'>k</span> <span class='op'>==</span> <span class='op'>::</span><span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_create_id'>create_id</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_invalid_json_class?'>invalid_json_class?</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>can&#39;t create json class </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_v'>v</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_validate_json_array'>validate_json_array</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span>
+    <span class='kw'>elsif</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_validate_json_hash'>validate_json_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:45:33 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

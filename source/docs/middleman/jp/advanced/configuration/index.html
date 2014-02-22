@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="/docs/middleman/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: 設定</title>
+  </head>
+  <body>
+    <!-- BuySellAds Ad Code -->
+    <script type="text/javascript">
+    (function(){
+      var bsa = document.createElement('script');
+         bsa.type = 'text/javascript';
+         bsa.async = true;
+         bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+    })();
+    </script>
+    <!-- End BuySellAds Ad Code -->
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/docs/middleman/jp/"><img width="225" height="225" alt="Middleman" src="/images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <div id="search">
+        <form>
+          <input type="text" id="st-search-input" class="st-search-input" placeholder="Search the documentation" />
+        </form>
+        <div id="st-results-container"></div>
+        <script type="text/javascript">
+          var Swiftype = window.Swiftype || {};
+          (function() {
+            Swiftype.key = 'q3qjGN5LmX2oq6w1V47y';
+            Swiftype.inputElement = '#st-search-input';
+            Swiftype.resultContainingElement = '#st-results-container';
+            Swiftype.attachElement = '#st-search-input';
+            Swiftype.renderStyle = "overlay";
+
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = "//swiftype.com/embed.js";
+            var entry = document.getElementsByTagName('script')[0];
+            entry.parentNode.insertBefore(script, entry);
+          }());
+        </script>
+      </div>
+
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman の基礎</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/basics/getting-started/">はじめに</a></li>
+      <li><a href="/docs/middleman/jp/basics/templates/">テンプレート</a></li>
+      <li><a href="/docs/middleman/jp/basics/helpers/">テンプレートヘルパ</a></li>
+      <li><a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a></li>
+      <li><a href="/docs/middleman/jp/basics/dynamic-pages/">動的ページ</a></li>
+      <li><a href="/docs/middleman/jp/basics/asset-pipeline/">アセットパイプライン</a></li>
+      <li><a href="/docs/middleman/jp/basics/pretty-urls/">きれいな URL (ディレクトリインデックス)</a></li>
+      <li><a href="/docs/middleman/jp/basics/livereload/">LiveReload</a></li>
+      <li><a href="/docs/middleman/jp/basics/blogging/">ブログ機能</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>高度な機能</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/advanced/configuration/">設定</a></li>
+      <li><a href="/docs/middleman/jp/advanced/local-data/">ローカルデータ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/localization/">多言語化 (i18n)</a></li>
+      <li><a href="/docs/middleman/jp/advanced/sitemap/">サイトマップ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/rack-middleware/">Rack ミドルウェア</a></li>
+      <li><a href="/docs/middleman/jp/advanced/custom/">カスタム拡張</a></li>
+      <li><a href="/docs/middleman/jp/advanced/file-size-optimization/">ファイルサイズ最適化</a></li>
+      <li><a href="/docs/middleman/jp/advanced/improving-cacheability/">キャッシュ機能の改善</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>コミュニティ</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/all">拡張機能</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">プロジェクトテンプレート</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/deployment">デプロイ方法</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">コミュニティフォーラム</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub リポジトリ</a></li>
+      <li><a href="/docs/middleman/jp/community/built-using-middleman/">Middleman 採用サイト</a></li>
+  </ul>
+</div>
+
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="設定">設定</h1>
+
+<h2 id="middleman-の設定を知る">Middleman の設定を知る</h2>
+
+<p>Middleman は驚くほどカスタマイズ可能で, 拡張機能はさらに機能を提供します。設定ごとに完璧なドキュメントを用意するより, 私たちは Middleman にどのような設定ができるか示す機能を与えました。</p>
+
+<p>プレビューサーバを立ち上げ, <code>http://localhost:4567/__middleman/config/</code> にアクセスすると, あらゆる設定や使用可能な拡張機能を確認できます。設定名, 簡単な説明, デフォルト値やあなたのサイトでどう設定されているのかを含みます。</p>
+
+<h2 id="設定変更">設定変更</h2>
+
+<p>ほとんどの設定の変更方法は <code>config.rb</code> で <code>set</code> を指定することです:</p>
+
+<pre><code class="ruby">set :js_dir, &#39;js&#39;
+</code></pre>
+
+<p>新しい構文を使うこともできます:</p>
+
+<pre><code class="ruby">config[:js_dir] = &#39;js&#39;
+</code></pre>
+
+<p>これらの書き方は Middleman のほとんどのグローバル設定に使われます。</p>
+
+<h2 id="拡張機能の設定">拡張機能の設定</h2>
+
+<p>拡張機能は有効化されたタイミングで設定されます。ほとんどの拡張では, <code>activate</code> する際にハッシュのオプションを渡すか, オプションを設定するためにブロックを使います:</p>
+
+<pre><code class="ruby">activate :asset_hash, :exts =&gt; %w(.jpg) # .jpg のみ有効化
+
+# もしくは:
+
+activate :asset_hash do |opts|
+  opts.exts += $(.ico)
+end
+</code></pre>
+
+<h2 id="環境に応じた設定">環境に応じた設定</h2>
+
+<p>ビルド時または develop 環境でのみ適用したい設定がある場合, ブロックの中で設定することができます:</p>
+
+<pre><code class="ruby">configure :development do
+  set :debug_assets, true
+end
+
+configure :build do
+  activate :minify_css
+end
+</code></pre>
+
+    </article>
+
+    <div id="support">
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+
+  <div class="sponsor">
+    <h4>Sponsors</h4>
+
+    <a href="http://fjords.cc" target="_blank">
+      <img src="/images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+
+    <a href="http://www.maxcdn.com" target="_blank" id="max">
+      <img width="130" src="/images/maxcdn.svg" />
+    </a>
+  </div>
+
+  <div class="donate">
+    <script data-gittip-username="tdreyno"
+        src="//gttp.co/v1.js"></script>
+    <p><br><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">Donate!</a><br><br></p>
+  </div>
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/localizable/advanced/configuration.jp.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="/javascripts/toc.js" type="text/javascript"></script>
+    <link href="/docs/middleman/stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src='https://spacebox.io/embed/js/embed-v1.js'></script>
+    <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-90027-21']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4ef39d56613f5d017b000004');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+  </body>
+</html>

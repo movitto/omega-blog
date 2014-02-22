@@ -1,0 +1,527 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: EventMachine::Protocols::Stomp
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../EventMachine.html" title="EventMachine (module)">EventMachine</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Protocols.html" title="EventMachine::Protocols (module)">Protocols</a></span></span>
+     &raquo; 
+    <span class="title">Stomp</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: EventMachine::Protocols::Stomp
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><span class='object_link'><a href="LineText2.html" title="EventMachine::Protocols::LineText2 (module)">LineText2</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/em/protocols/stomp.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Implements Stomp (http://docs.codehaus.org/display/STOMP/Protocol).</p>
+
+<p>== Usage example</p>
+
+<p>module StompClient
+   include EM::Protocols::Stomp</p>
+
+<p>def connection_completed
+     connect :login =&gt; ‘guest’, :passcode =&gt; ‘guest’
+   end</p>
+
+<p>def receive_msg msg
+     if msg.command == “CONNECTED”
+       subscribe ‘/some/topic’
+     else
+       p [‘got a message’, msg]
+       puts msg.body
+     end
+   end
+ end</p>
+
+<p>EM.run{
+   EM.connect ‘localhost’, 61613, StompClient
+ }</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Stomp/Message.html" title="EventMachine::Protocols::Stomp::Message (class)">Message</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="LineText2.html" title="EventMachine::Protocols::LineText2 (module)">LineText2</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="LineText2.html#MaxBinaryLength-constant" title="EventMachine::Protocols::LineText2::MaxBinaryLength (constant)">LineText2::MaxBinaryLength</a></span>, <span class='object_link'><a href="LineText2.html#MaxLineLength-constant" title="EventMachine::Protocols::LineText2::MaxLineLength (constant)">LineText2::MaxLineLength</a></span></p>
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ack-instance_method" title="#ack (instance method)">- (Object) <strong>ack</strong>(msgid) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>ACK command, for acknowledging receipt of messages.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connect-instance_method" title="#connect (instance method)">- (Object) <strong>connect</strong>(parms = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>CONNECT command, for authentication.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#receive_msg-instance_method" title="#receive_msg (instance method)">- (Object) <strong>receive_msg</strong>(msg) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Invoked with an incoming Stomp::Message received from the STOMP server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#send-instance_method" title="#send (instance method)">- (Object) <strong>send</strong>(destination, body, parms = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>SEND command, for publishing messages to a topic.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subscribe-instance_method" title="#subscribe (instance method)">- (Object) <strong>subscribe</strong>(dest, ack = false) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>SUBSCRIBE command, for subscribing to topics.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="LineText2.html" title="EventMachine::Protocols::LineText2 (module)">LineText2</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="LineText2.html#receive_data-instance_method" title="EventMachine::Protocols::LineText2#receive_data (method)">#receive_data</a></span>, <span class='object_link'><a href="LineText2.html#receive_end_of_binary_data-instance_method" title="EventMachine::Protocols::LineText2#receive_end_of_binary_data (method)">#receive_end_of_binary_data</a></span>, <span class='object_link'><a href="LineText2.html#set_binary_mode-instance_method" title="EventMachine::Protocols::LineText2#set_binary_mode (method)">#set_binary_mode</a></span>, <span class='object_link'><a href="LineText2.html#set_delimiter-instance_method" title="EventMachine::Protocols::LineText2#set_delimiter (method)">#set_delimiter</a></span>, <span class='object_link'><a href="LineText2.html#set_line_mode-instance_method" title="EventMachine::Protocols::LineText2#set_line_mode (method)">#set_line_mode</a></span>, <span class='object_link'><a href="LineText2.html#set_text_mode-instance_method" title="EventMachine::Protocols::LineText2#set_text_mode (method)">#set_text_mode</a></span>, <span class='object_link'><a href="LineText2.html#unbind-instance_method" title="EventMachine::Protocols::LineText2#unbind (method)">#unbind</a></span></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="ack-instance_method">
+  
+    - (<tt>Object</tt>) <strong>ack</strong>(msgid) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>ACK command, for acknowledging receipt of messages</p>
+
+<p>module StompClient
+   include EM::P::Stomp</p>
+
+<p>def connection_completed
+     connect :login =&gt; ‘guest’, :passcode =&gt; ‘guest’
+     # subscribe with ack mode
+     subscribe ‘/some/topic’, true
+   end</p>
+
+<p>def receive_msg msg
+     if msg.command == “MESSAGE”
+       ack msg.headers[‘message-id’]
+       puts msg.body
+     end
+   end
+ end</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+198
+199
+200</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/stomp.rb', line 198</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ack'>ack</span> <span class='id identifier rubyid_msgid'>msgid</span>
+  <span class='id identifier rubyid_send_frame'>send_frame</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACK</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>message-id</span><span class='tstring_end'>&#39;</span></span><span class='op'>=&gt;</span> <span class='id identifier rubyid_msgid'>msgid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="connect-instance_method">
+  
+    - (<tt>Object</tt>) <strong>connect</strong>(parms = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>CONNECT command, for authentication</p>
+
+<p>connect :login =&gt; ‘guest’, :passcode =&gt; ‘guest’</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+159
+160
+161</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/stomp.rb', line 159</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_connect'>connect</span> <span class='id identifier rubyid_parms'>parms</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_send_frame'>send_frame</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CONNECT</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_parms'>parms</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="receive_msg-instance_method">
+  
+    - (<tt>Object</tt>) <strong>receive_msg</strong>(msg) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Invoked with an incoming Stomp::Message received from the STOMP server</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+151
+152
+153</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/stomp.rb', line 151</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_receive_msg'>receive_msg</span> <span class='id identifier rubyid_msg'>msg</span>
+  <span class='comment'># stub, overwrite this in your handler
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="send-instance_method">
+  
+    - (<tt>Object</tt>) <strong>send</strong>(destination, body, parms = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>SEND command, for publishing messages to a topic</p>
+
+<p>send ‘/topic/name’, ‘some message here’</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/stomp.rb', line 167</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_send'>send</span> <span class='id identifier rubyid_destination'>destination</span><span class='comma'>,</span> <span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_parms'>parms</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_send_frame'>send_frame</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SEND</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_parms'>parms</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span> <span class='symbol'>:destination</span><span class='op'>=&gt;</span><span class='id identifier rubyid_destination'>destination</span> <span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_body'>body</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="subscribe-instance_method">
+  
+    - (<tt>Object</tt>) <strong>subscribe</strong>(dest, ack = false) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>SUBSCRIBE command, for subscribing to topics</p>
+
+<p>subscribe ‘/topic/name’, false</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+175
+176
+177</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/stomp.rb', line 175</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_subscribe'>subscribe</span> <span class='id identifier rubyid_dest'>dest</span><span class='comma'>,</span> <span class='id identifier rubyid_ack'>ack</span><span class='op'>=</span><span class='kw'>false</span>
+  <span class='id identifier rubyid_send_frame'>send_frame</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SUBSCRIBE</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:destination</span><span class='op'>=&gt;</span><span class='id identifier rubyid_dest'>dest</span><span class='comma'>,</span> <span class='symbol'>:ack</span><span class='op'>=&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_ack'>ack</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>client</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>auto</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 19:34:59 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

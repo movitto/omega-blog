@@ -1,0 +1,209 @@
+digraph RGL__DirectedAdjacencyGraph {
+    Asgrad [
+        fontsize = 8,
+        label = Asgrad
+    ]
+
+    Valhalla [
+        fontsize = 8,
+        label = Valhalla
+    ]
+
+    Saga [
+        fontsize = 8,
+        label = Saga
+    ]
+
+    Norn [
+        fontsize = 8,
+        label = Norn
+    ]
+
+    Ulle [
+        fontsize = 8,
+        label = Ulle
+    ]
+
+    Syn [
+        fontsize = 8,
+        label = Syn
+    ]
+
+    Surtr [
+        fontsize = 8,
+        label = Surtr
+    ]
+
+    Woden [
+        fontsize = 8,
+        label = Woden
+    ]
+
+    Hlin [
+        fontsize = 8,
+        label = Hlin
+    ]
+
+    Hel [
+        fontsize = 8,
+        label = Hel
+    ]
+
+    Runic [
+        fontsize = 8,
+        label = Runic
+    ]
+
+    Jord [
+        fontsize = 8,
+        label = Jord
+    ]
+
+    Ogres [
+        fontsize = 8,
+        label = Ogres
+    ]
+
+    Njord [
+        fontsize = 8,
+        label = Njord
+    ]
+
+    Skadi [
+        fontsize = 8,
+        label = Skadi
+    ]
+
+    Hermoda [
+        fontsize = 8,
+        label = Hermoda
+    ]
+
+    Asgrad -> Valhalla [
+        fontsize = 8
+    ]
+
+    Asgrad -> Saga [
+        fontsize = 8
+    ]
+
+    Asgrad -> Norn [
+        fontsize = 8
+    ]
+
+    Asgrad -> Woden [
+        fontsize = 8
+    ]
+
+    Asgrad -> Hlin [
+        fontsize = 8
+    ]
+
+    Valhalla -> Hel [
+        fontsize = 8
+    ]
+
+    Valhalla -> Asgrad [
+        fontsize = 8
+    ]
+
+    Saga -> Valhalla [
+        fontsize = 8
+    ]
+
+    Norn -> Valhalla [
+        fontsize = 8
+    ]
+
+    Ulle -> Valhalla [
+        fontsize = 8
+    ]
+
+    Syn -> Valhalla [
+        fontsize = 8
+    ]
+
+    Surtr -> Valhalla [
+        fontsize = 8
+    ]
+
+    Woden -> Valhalla [
+        fontsize = 8
+    ]
+
+    Woden -> Ulle [
+        fontsize = 8
+    ]
+
+    Woden -> Syn [
+        fontsize = 8
+    ]
+
+    Hlin -> Valhalla [
+        fontsize = 8
+    ]
+
+    Hlin -> Surtr [
+        fontsize = 8
+    ]
+
+    Hel -> Valhalla [
+        fontsize = 8
+    ]
+
+    Hel -> Njord [
+        fontsize = 8
+    ]
+
+    Runic -> Hel [
+        fontsize = 8
+    ]
+
+    Runic -> Ogres [
+        fontsize = 8
+    ]
+
+    Jord -> Hel [
+        fontsize = 8
+    ]
+
+    Jord -> Ogres [
+        fontsize = 8
+    ]
+
+    Jord -> Runic [
+        fontsize = 8
+    ]
+
+    Jord -> Hermoda [
+        fontsize = 8
+    ]
+
+    Ogres -> Hel [
+        fontsize = 8
+    ]
+
+    Njord -> Hel [
+        fontsize = 8
+    ]
+
+    Njord -> Skadi [
+        fontsize = 8
+    ]
+
+    Njord -> Jord [
+        fontsize = 8
+    ]
+
+    Skadi -> Hel [
+        fontsize = 8
+    ]
+
+    Hermoda -> Hel [
+        fontsize = 8
+    ]
+
+    Hermoda -> Ogres [
+        fontsize = 8
+    ]
+}

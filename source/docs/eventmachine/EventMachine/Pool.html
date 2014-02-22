@@ -1,0 +1,989 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: EventMachine::Pool
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../EventMachine.html" title="EventMachine (module)">EventMachine</a></span></span>
+     &raquo; 
+    <span class="title">Pool</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: EventMachine::Pool
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">EventMachine::Pool</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/em/pool.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>= EventMachine::Pool</p>
+
+<p>A simple async resource pool based on a resource and work queue. Resources
+are enqueued and work waits for resources to become available.</p>
+
+<p>Example:</p>
+
+<p>EM.run do
+     pool  = EM::Pool.new
+     spawn = lambda { pool.add EM::HttpRequest.new(‘http://example.org’) }
+     10.times { spawn[] }
+     done, scheduled = 0, 0</p>
+
+<pre class="code ruby"><code class="ruby"> check = lambda do
+   done += 1
+   if done &gt;= scheduled
+     EM.stop
+   end
+ end
+   
+ pool.on_error { |conn| spawn[] }
+   
+ 100.times do
+   pool.perform do |conn|
+     req = conn.get :path =&gt; &#39;/&#39;, :keepalive =&gt; true
+   
+     req.callback do
+       p [:success, conn.object_id, i, req.response.size]
+       check[]
+     end
+   
+     req.errback { check[] }
+   
+     req
+   end
+ end    end
+</code></pre>
+
+<p>Resources are expected to be controlled by an object responding to a
+deferrable/completion style API with callback and errback blocks.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add-instance_method" title="#add (instance method)">- (Object) <strong>add</strong>(resource) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#completion-instance_method" title="#completion (instance method)">- (Object) <strong>completion</strong>(deferrable, resource) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#contents-instance_method" title="#contents (instance method)">- (Object) <strong>contents</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a list for introspection purposes only.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#failure-instance_method" title="#failure (instance method)">- (Object) <strong>failure</strong>(resource) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Pool) <strong>initialize</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Pool.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#num_waiting-instance_method" title="#num_waiting (instance method)">- (Object) <strong>num_waiting</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A peek at the number of enqueued jobs waiting for resources.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_error-instance_method" title="#on_error (instance method)">- (Object) <strong>on_error</strong>(*a, &amp;b) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Define a default catch-all for when the deferrables returned by work
+blocks enter a failed state.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#perform-instance_method" title="#perform (instance method)">- (Object) <strong>perform</strong>(*a, &amp;b) </a>
+    
+
+    
+      (also: #reschedule)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Perform a given #call-able object or block.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#process-instance_method" title="#process (instance method)">- (Object) <strong>process</strong>(work, resource) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove-instance_method" title="#remove (instance method)">- (Object) <strong>remove</strong>(resource) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#removed%3F-instance_method" title="#removed? (instance method)">- (Boolean) <strong>removed?</strong>(resource) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Removed will show resources in a partial pruned state.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#requeue-instance_method" title="#requeue (instance method)">- (Object) <strong>requeue</strong>(resource) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="EventMachine::Pool (class)">Pool</a></span></tt>) <strong>initialize</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>A new instance of Pool</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
+  <span class='ivar'>@resources</span> <span class='op'>=</span> <span class='const'>EM</span><span class='op'>::</span><span class='const'>Queue</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@removed</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@contents</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@on_error</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="add-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add</strong>(resource) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='ivar'>@contents</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='id identifier rubyid_requeue'>requeue</span> <span class='id identifier rubyid_resource'>resource</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="completion-instance_method">
+  
+    - (<tt>Object</tt>) <strong>completion</strong>(deferrable, resource)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+134
+135
+136
+137</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 134</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_completion'>completion</span> <span class='id identifier rubyid_deferrable'>deferrable</span><span class='comma'>,</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='id identifier rubyid_deferrable'>deferrable</span><span class='period'>.</span><span class='id identifier rubyid_callback'>callback</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_requeue'>requeue</span> <span class='id identifier rubyid_resource'>resource</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_deferrable'>deferrable</span><span class='period'>.</span><span class='id identifier rubyid_errback'>errback</span>  <span class='lbrace'>{</span> <span class='id identifier rubyid_failure'>failure</span> <span class='id identifier rubyid_resource'>resource</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="contents-instance_method">
+  
+    - (<tt>Object</tt>) <strong>contents</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a list for introspection purposes only. You should <em>NEVER</em> call
+modification or work oriented methods on objects in this list. A good
+example use case is periodic statistics collection against a set of
+connection resources.</p>
+
+<p>For example: 
+    pool.contents.inject(0) { |sum, connection| connection.num_bytes }</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 69</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_contents'>contents</span>
+  <span class='ivar'>@contents</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="failure-instance_method">
+  
+    - (<tt>Object</tt>) <strong>failure</strong>(resource)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 123</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_failure'>failure</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='kw'>if</span> <span class='ivar'>@on_error</span>
+    <span class='ivar'>@contents</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='id identifier rubyid_resource'>resource</span>
+    <span class='ivar'>@on_error</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='id identifier rubyid_resource'>resource</span>
+    <span class='comment'># Prevent users from calling a leak.
+</span>    <span class='ivar'>@removed</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_requeue'>requeue</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="num_waiting-instance_method">
+  
+    - (<tt>Object</tt>) <strong>num_waiting</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>A peek at the number of enqueued jobs waiting for resources</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_num_waiting'>num_waiting</span>
+  <span class='ivar'>@resources</span><span class='period'>.</span><span class='id identifier rubyid_num_waiting'>num_waiting</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="on_error-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_error</strong>(*a, &amp;b) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Define a default catch-all for when the deferrables returned by work
+blocks enter a failed state. By default all that happens is that the
+resource is returned to the pool. If on_error is defined, this block is
+responsible for re-adding the resource to the pool if it is still usable.
+In other words, it is generally assumed that on_error blocks explicitly
+handle the rest of the lifetime of the resource.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_on_error'>on_error</span> <span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_b'>b</span>
+  <span class='ivar'>@on_error</span> <span class='op'>=</span> <span class='const'>EM</span><span class='op'>::</span><span class='const'>Callback</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="perform-instance_method">
+  
+    - (<tt>Object</tt>) <strong>perform</strong>(*a, &amp;b) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='reschedule-instance_method'>reschedule</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Perform a given #call-able object or block. The callable object will be
+called with a resource from the pool as soon as one is available, and is
+expected to return a deferrable.</p>
+
+<p>The deferrable will have callback and errback added such that when the
+deferrable enters a finished state, the object is returned to the pool.</p>
+
+<p>If on_error is defined, then objects are not automatically returned to the
+pool.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 92</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_perform'>perform</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_work'>work</span> <span class='op'>=</span> <span class='const'>EM</span><span class='op'>::</span><span class='const'>Callback</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@resources</span><span class='period'>.</span><span class='id identifier rubyid_pop'>pop</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_resource'>resource</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_removed?'>removed?</span> <span class='id identifier rubyid_resource'>resource</span>
+      <span class='ivar'>@removed</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='id identifier rubyid_resource'>resource</span>
+      <span class='id identifier rubyid_reschedule'>reschedule</span> <span class='id identifier rubyid_work'>work</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_process'>process</span> <span class='id identifier rubyid_work'>work</span><span class='comma'>,</span> <span class='id identifier rubyid_resource'>resource</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="process-instance_method">
+  
+    - (<tt>Object</tt>) <strong>process</strong>(work, resource)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 139</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process'>process</span> <span class='id identifier rubyid_work'>work</span><span class='comma'>,</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='id identifier rubyid_deferrable'>deferrable</span> <span class='op'>=</span> <span class='id identifier rubyid_work'>work</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_deferrable'>deferrable</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>EM</span><span class='op'>::</span><span class='const'>Deferrable</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_completion'>completion</span> <span class='id identifier rubyid_deferrable'>deferrable</span><span class='comma'>,</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>deferrable expected from work</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>rescue</span> <span class='const'>Exception</span>
+  <span class='id identifier rubyid_failure'>failure</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='id identifier rubyid_raise'>raise</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove</strong>(resource) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove'>remove</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='ivar'>@contents</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='ivar'>@removed</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_resource'>resource</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="removed?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>removed?</strong>(resource) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Removed will show resources in a partial pruned state. Resources in the
+removed list may not appear in the contents list if they are currently in
+use.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+114
+115
+116</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 114</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_removed?'>removed?</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='ivar'>@removed</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_resource'>resource</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="requeue-instance_method">
+  
+    - (<tt>Object</tt>) <strong>requeue</strong>(resource)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/pool.rb', line 119</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_requeue'>requeue</span> <span class='id identifier rubyid_resource'>resource</span>
+  <span class='ivar'>@resources</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_resource'>resource</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 19:34:59 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

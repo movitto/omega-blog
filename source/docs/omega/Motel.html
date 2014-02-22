@@ -1,0 +1,2325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Motel
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (M)</a> &raquo;
+    
+    
+    <span class="title">Motel</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Motel
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Motel/RJR.html" title="Motel::RJR (module)">RJR</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/motel/errors.rb<span class="defines">,<br />
+  lib/motel/common.rb,<br /> lib/motel/location.rb,<br /> lib/motel/registry.rb,<br /> lib/motel/callbacks/stopped.rb,<br /> lib/motel/movement_strategy.rb,<br /> lib/motel/callbacks/movement.rb,<br /> lib/motel/callbacks/rotation.rb,<br /> lib/motel/callbacks/proximity.rb,<br /> lib/motel/movement_strategies/rotate.rb,<br /> lib/motel/movement_strategies/linear.rb,<br /> lib/motel/movement_strategies/follow.rb,<br /> lib/motel/callbacks/changed_strategy.rb,<br /> lib/motel/movement_strategies/stopped.rb,<br /> lib/motel/movement_strategies/elliptical.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>FIXME use the Motel#elliptical_path helper method here</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Motel/Callbacks.html" title="Motel::Callbacks (module)">Callbacks</a></span>, <span class='object_link'><a href="Motel/MovementStrategies.html" title="Motel::MovementStrategies (module)">MovementStrategies</a></span>, <span class='object_link'><a href="Motel/RJR.html" title="Motel::RJR (module)">RJR</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Motel/InvalidMovementStrategy.html" title="Motel::InvalidMovementStrategy (class)">InvalidMovementStrategy</a></span>, <span class='object_link'><a href="Motel/Location.html" title="Motel::Location (class)">Location</a></span>, <span class='object_link'><a href="Motel/MovementStrategy.html" title="Motel::MovementStrategy (class)">MovementStrategy</a></span>, <span class='object_link'><a href="Motel/Registry.html" title="Motel::Registry (class)">Registry</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="LOCATION_EVENTS-constant" class="">LOCATION_EVENTS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='symbol'>:movement</span><span class='comma'>,</span> <span class='symbol'>:rotation</span><span class='comma'>,</span> <span class='symbol'>:proximity</span><span class='comma'>,</span>
+<span class='symbol'>:stopped</span><span class='comma'>,</span> <span class='symbol'>:changed_strategy</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="CLOSE_ENOUGH-constant" class="">CLOSE_ENOUGH =
+          
+        </dt>
+        <dd><pre class="code"><span class='float'>0.0001</span></pre></dd>
+      
+        <dt id="MAJOR_CARTESIAN_AXIS-constant" class="">MAJOR_CARTESIAN_AXIS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="MINOR_CARTESIAN_AXIS-constant" class="">MINOR_CARTESIAN_AXIS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>0</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="CARTESIAN_NORMAL_VECTOR-constant" class="">CARTESIAN_NORMAL_VECTOR =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>1</span><span class='rbracket'>]</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#angle_between-class_method" title="angle_between (class method)">+ (Float) <strong>angle_between</strong>(x1, y1, z1, x2, y2, z2) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the angle between vectors.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#axis_angle-class_method" title="axis_angle (class method)">+ (Array&lt;Float&gt;) <strong>axis_angle</strong>(x1, y1, z1, x2, y2, z2) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Retrieve the axis angle representation of the rotation between the two
+specified vectors.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cross_product-class_method" title="cross_product (class method)">+ (Array&lt;Float&gt;) <strong>cross_product</strong>(x1, y1, z1, x2, y2, z2) </a>
+    
+
+    
+      (also: normal_vector)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the cross product of the specified vectors.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dot_product-class_method" title="dot_product (class method)">+ (Float) <strong>dot_product</strong>(x1, y1, z1, x2, y2, z2) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return dot product of two vectors.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#elliptical_path-class_method" title="elliptical_path (class method)">+ (Object) <strong>elliptical_path</strong>(p, e, direction) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return path of coordinates corresponding to the elliptical path specified
+by the parameters.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gen_uuid-class_method" title="gen_uuid (class method)">+ (Object) <strong>gen_uuid</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate and return a random id.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#normalize-class_method" title="normalize (class method)">+ (Array&lt;Float,Float,Float&gt;) <strong>normalize</strong>(x, y, z) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Normalize and return specified vector.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#normalized%3F-class_method" title="normalized? (class method)">+ (true, false) <strong>normalized?</strong>(x, y, z) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean indicating if the specified vector is normalized.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#orthogonal%3F-class_method" title="orthogonal? (class method)">+ (true, false) <strong>orthogonal?</strong>(x1, y1, z1, x2, y2, z2) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean inidicating if two vectors are orthogonal.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rand_vector-class_method" title="rand_vector (class method)">+ (Object) <strong>rand_vector</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate and reutrn a random normalized vector.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#random_axis-class_method" title="random_axis (class method)">+ (Array&lt;Array&lt;Float,Float,Float&gt;,Array&lt;Float,Float,Float&gt;&gt;) <strong>random_axis</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate and return two orthogonal, normalized vectors.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rotate-class_method" title="rotate (class method)">+ (Array&lt;Float&gt;) <strong>rotate</strong>(x, y, z, angle, ax, ay, az) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Rotate specified point by angle around specified axis angle.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rotated_angle-class_method" title="rotated_angle (class method)">+ (Object) <strong>rotated_angle</strong>(x, y, z, ox, oy, oz, ax, ay, az) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return angle which corresponds to specified coordinate when rotated from
+original coordinate on specified axis.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="angle_between-class_method">
+  
+    + (<tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>) <strong>angle_between</strong>(x1, y1, z1, x2, y2, z2) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the angle between vectors</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>x1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>x2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of second vector</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>angle between specified vectors</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98
+99
+100
+101
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_angle_between'>angle_between</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_z2'>z2</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_d'>d</span>  <span class='op'>=</span> <span class='id identifier rubyid_dot_product'>dot_product</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_s1'>s1</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='op'>**</span><span class='int'>2</span><span class='op'>+</span><span class='id identifier rubyid_y1'>y1</span><span class='op'>**</span><span class='int'>2</span><span class='op'>+</span><span class='id identifier rubyid_z1'>z1</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_s2'>s2</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_x2'>x2</span><span class='op'>**</span><span class='int'>2</span><span class='op'>+</span><span class='id identifier rubyid_y2'>y2</span><span class='op'>**</span><span class='int'>2</span><span class='op'>+</span><span class='id identifier rubyid_z2'>z2</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mag'>mag</span> <span class='op'>=</span> <span class='id identifier rubyid_s1'>s1</span> <span class='op'>*</span> <span class='id identifier rubyid_s2'>s2</span>
+  <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_acos'>acos</span><span class='lparen'>(</span><span class='id identifier rubyid_d'>d</span><span class='op'>/</span><span class='id identifier rubyid_mag'>mag</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="axis_angle-class_method">
+  
+    + (<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;</tt>) <strong>axis_angle</strong>(x1, y1, z1, x2, y2, z2) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Retrieve the axis angle representation of the rotation between the two
+specified vectors.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>x1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>x2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of second vector</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>array containing angle and x,y,z components of rotation axis</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118
+119
+120
+121
+122
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 116</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_axis_angle'>axis_angle</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_a'>a</span>  <span class='op'>=</span> <span class='id identifier rubyid_angle_between'>angle_between</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='lbracket'>[</span><span class='id identifier rubyid_a'>a</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='const'>CARTESIAN_NORMAL_VECTOR</span> <span class='kw'>if</span> <span class='id identifier rubyid_a'>a</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>||</span>          <span class='comment'># special case, parallel
+</span>                                          <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span> <span class='op'>==</span> <span class='const'>Math</span><span class='op'>::</span> <span class='const'>PI</span> <span class='comment'># vectors, no rotation
+</span>  <span class='id identifier rubyid_ax'>ax</span> <span class='op'>=</span> <span class='id identifier rubyid_normal_vector'>normal_vector</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ax'>ax</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_ax'>ax</span><span class='rparen'>)</span>
+  <span class='lbracket'>[</span><span class='id identifier rubyid_a'>a</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='id identifier rubyid_ax'>ax</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cross_product-class_method">
+  
+    + (<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;</tt>) <strong>cross_product</strong>(x1, y1, z1, x2, y2, z2) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='normal_vector-class_method'>normal_vector</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the cross product of the specified vectors</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>x1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>x2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of second vector</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>array containing x,y,z coordinates of normal vector</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cross_product'>cross_product</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x3'>x3</span> <span class='op'>=</span> <span class='id identifier rubyid_y1'>y1</span> <span class='op'>*</span> <span class='id identifier rubyid_z2'>z2</span> <span class='op'>-</span> <span class='id identifier rubyid_z1'>z1</span> <span class='op'>*</span> <span class='id identifier rubyid_y2'>y2</span>
+  <span class='id identifier rubyid_y3'>y3</span> <span class='op'>=</span> <span class='id identifier rubyid_z1'>z1</span> <span class='op'>*</span> <span class='id identifier rubyid_x2'>x2</span> <span class='op'>-</span> <span class='id identifier rubyid_x1'>x1</span> <span class='op'>*</span> <span class='id identifier rubyid_z2'>z2</span>
+  <span class='id identifier rubyid_z3'>z3</span> <span class='op'>=</span> <span class='id identifier rubyid_x1'>x1</span> <span class='op'>*</span> <span class='id identifier rubyid_y2'>y2</span> <span class='op'>-</span> <span class='id identifier rubyid_y1'>y1</span> <span class='op'>*</span> <span class='id identifier rubyid_x2'>x2</span>
+  <span class='lbracket'>[</span><span class='id identifier rubyid_x3'>x3</span><span class='comma'>,</span> <span class='id identifier rubyid_y3'>y3</span><span class='comma'>,</span> <span class='id identifier rubyid_z3'>z3</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dot_product-class_method">
+  
+    + (<tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>) <strong>dot_product</strong>(x1, y1, z1, x2, y2, z2) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return dot product of two vectors</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>x1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>x2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of second vector</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>angle between specified vectors</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_dot_product'>dot_product</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span> <span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x1'>x1</span> <span class='op'>*</span> <span class='id identifier rubyid_x2'>x2</span> <span class='op'>+</span> <span class='id identifier rubyid_y1'>y1</span> <span class='op'>*</span> <span class='id identifier rubyid_y2'>y2</span> <span class='op'>+</span> <span class='id identifier rubyid_z1'>z1</span> <span class='op'>*</span> <span class='id identifier rubyid_z2'>z2</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="elliptical_path-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>elliptical_path</strong>(p, e, direction) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return path of coordinates corresponding to the elliptical path specified
+by the parameters</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>p</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>semi_latus_rectum of the elliptical path</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>e</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>eccentricity of the elliptical path</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>direction</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;,<span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash representing major/major axis&#39; of path</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 192</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_elliptical_path'>elliptical_path</span><span class='lparen'>(</span><span class='id identifier rubyid_p'>p</span><span class='comma'>,</span> <span class='id identifier rubyid_e'>e</span><span class='comma'>,</span> <span class='id identifier rubyid_direction'>direction</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='comment'># direction
+</span>  <span class='id identifier rubyid_majx'>majx</span> <span class='op'>=</span> <span class='id identifier rubyid_direction'>direction</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_majy'>majy</span> <span class='op'>=</span> <span class='id identifier rubyid_direction'>direction</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_majz'>majz</span> <span class='op'>=</span> <span class='id identifier rubyid_direction'>direction</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_minx'>minx</span> <span class='op'>=</span> <span class='id identifier rubyid_direction'>direction</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_miny'>miny</span> <span class='op'>=</span> <span class='id identifier rubyid_direction'>direction</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_minz'>minz</span> <span class='op'>=</span> <span class='id identifier rubyid_direction'>direction</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span>
+
+  <span class='comment'># intercepts
+</span>  <span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='id identifier rubyid_p'>p</span> <span class='op'>/</span> <span class='lparen'>(</span><span class='int'>1</span> <span class='op'>-</span> <span class='id identifier rubyid_e'>e</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_p'>p</span> <span class='op'>*</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+
+  <span class='comment'># linear eccentricity
+</span>  <span class='id identifier rubyid_le'>le</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>-</span> <span class='id identifier rubyid_b'>b</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
+
+  <span class='comment'># center (assumes location&#39;s movement_strategy.relative to is set to foci
+</span>  <span class='id identifier rubyid_cx'>cx</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span> <span class='op'>*</span> <span class='id identifier rubyid_majx'>majx</span> <span class='op'>*</span> <span class='id identifier rubyid_le'>le</span>
+  <span class='id identifier rubyid_cy'>cy</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span> <span class='op'>*</span> <span class='id identifier rubyid_majy'>majy</span> <span class='op'>*</span> <span class='id identifier rubyid_le'>le</span>
+  <span class='id identifier rubyid_cz'>cz</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span> <span class='op'>*</span> <span class='id identifier rubyid_majz'>majz</span> <span class='op'>*</span> <span class='id identifier rubyid_le'>le</span>
+
+  <span class='comment'># axis plane rotation
+</span>  <span class='id identifier rubyid_nv1'>nv1</span> <span class='op'>=</span> <span class='id identifier rubyid_cross_product'>cross_product</span><span class='lparen'>(</span><span class='id identifier rubyid_majx'>majx</span><span class='comma'>,</span><span class='id identifier rubyid_majy'>majy</span><span class='comma'>,</span><span class='id identifier rubyid_majz'>majz</span><span class='comma'>,</span><span class='id identifier rubyid_minx'>minx</span><span class='comma'>,</span><span class='id identifier rubyid_miny'>miny</span><span class='comma'>,</span><span class='id identifier rubyid_minz'>minz</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ab1'>ab1</span> <span class='op'>=</span> <span class='id identifier rubyid_angle_between'>angle_between</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>1</span><span class='comma'>,</span><span class='id identifier rubyid_nv1'>nv1</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_nv1'>nv1</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_nv1'>nv1</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ax1'>ax1</span> <span class='op'>=</span> <span class='id identifier rubyid_cross_product'>cross_product</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>1</span><span class='comma'>,</span><span class='id identifier rubyid_nv1'>nv1</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_nv1'>nv1</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_nv1'>nv1</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ax1'>ax1</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_ax1'>ax1</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_ax1'>ax1</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_ax1'>ax1</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+  <span class='comment'># axis rotation
+</span>  <span class='id identifier rubyid_nmaj'>nmaj</span> <span class='op'>=</span> <span class='id identifier rubyid_rotate'>rotate</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='id identifier rubyid_ab1'>ab1</span><span class='comma'>,</span><span class='id identifier rubyid_ax1'>ax1</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_ax1'>ax1</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_ax1'>ax1</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ab2'>ab2</span> <span class='op'>=</span> <span class='id identifier rubyid_angle_between'>angle_between</span><span class='lparen'>(</span><span class='id identifier rubyid_nmaj'>nmaj</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_nmaj'>nmaj</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_nmaj'>nmaj</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_majx'>majx</span><span class='comma'>,</span><span class='id identifier rubyid_majy'>majy</span><span class='comma'>,</span><span class='id identifier rubyid_majz'>majz</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ax2'>ax2</span> <span class='op'>=</span> <span class='id identifier rubyid_cross_product'>cross_product</span><span class='lparen'>(</span><span class='id identifier rubyid_nmaj'>nmaj</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_nmaj'>nmaj</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_nmaj'>nmaj</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_majx'>majx</span><span class='comma'>,</span><span class='id identifier rubyid_majy'>majy</span><span class='comma'>,</span><span class='id identifier rubyid_majz'>majz</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ax2'>ax2</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_ax2'>ax2</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_ax2'>ax2</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_ax2'>ax2</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+  <span class='comment'># path
+</span>  <span class='int'>0</span><span class='period'>.</span><span class='id identifier rubyid_upto'>upto</span><span class='lparen'>(</span><span class='int'>2</span><span class='op'>*</span><span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span><span class='op'>*</span><span class='int'>100</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>/</span> <span class='int'>100</span> <span class='comment'># 628 data points: 0,0.01,...,6.28
+</span>    <span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='id identifier rubyid_a'>a</span> <span class='op'>*</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_cos'>cos</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='id identifier rubyid_b'>b</span> <span class='op'>*</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sin'>sin</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='id identifier rubyid_rotate'>rotate</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_ab1'>ab1</span><span class='comma'>,</span> <span class='id identifier rubyid_ax1'>ax1</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_ax1'>ax1</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_ax1'>ax1</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='id identifier rubyid_rotate'>rotate</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_ab2'>ab2</span><span class='comma'>,</span> <span class='id identifier rubyid_ax2'>ax2</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_ax2'>ax2</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_ax2'>ax2</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_n'>n</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>+=</span> <span class='id identifier rubyid_cx'>cx</span><span class='semicolon'>;</span> <span class='id identifier rubyid_n'>n</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>+=</span> <span class='id identifier rubyid_cy'>cy</span><span class='semicolon'>;</span> <span class='id identifier rubyid_n'>n</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span> <span class='op'>+=</span> <span class='id identifier rubyid_cz'>cz</span><span class='semicolon'>;</span>
+
+    <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span><span class='semicolon'>;</span>
+  <span class='rbrace'>}</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_path'>path</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gen_uuid-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>gen_uuid</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate and return a random id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_gen_uuid'>gen_uuid</span>
+  <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%02x</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>4</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%02x</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>2</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%02x</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>2</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%02x</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>2</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%02x</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='int'>6</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>-</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>%</span>
+      <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>16</span><span class='rparen'>)</span> <span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>0xff</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="normalize-class_method">
+  
+    + (<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;</tt>) <strong>normalize</strong>(x, y, z) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Normalize and return specified vector</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>x</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of vector</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>array with the normalized x,y,z components</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='id identifier rubyid_z'>z</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='id identifier rubyid_z'>z</span> <span class='kw'>if</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_y'>y</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_z'>z</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='id identifier rubyid_l'>l</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='id identifier rubyid_y'>y</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='id identifier rubyid_z'>z</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span> <span class='kw'>if</span> <span class='id identifier rubyid_l'>l</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
+
+  <span class='id identifier rubyid_x'>x</span> <span class='op'>/=</span> <span class='id identifier rubyid_l'>l</span>
+  <span class='id identifier rubyid_y'>y</span> <span class='op'>/=</span> <span class='id identifier rubyid_l'>l</span>
+  <span class='id identifier rubyid_z'>z</span> <span class='op'>/=</span> <span class='id identifier rubyid_l'>l</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='id identifier rubyid_z'>z</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="normalized?-class_method">
+  
+    + (<tt>true</tt>, <tt>false</tt>) <strong>normalized?</strong>(x, y, z) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean indicating if the specified vector is normalized</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>x</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of vector</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if vector is normalized</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_normalized?'>normalized?</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='id identifier rubyid_z'>z</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_y'>y</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_z'>z</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_l'>l</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='id identifier rubyid_y'>y</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='id identifier rubyid_z'>z</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_l'>l</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='period'>.</span><span class='id identifier rubyid_round_to'>round_to</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>1</span>  <span class='comment'># XXX not quite sure why to_f.round_to(1) is needed
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="orthogonal?-class_method">
+  
+    + (<tt>true</tt>, <tt>false</tt>) <strong>orthogonal?</strong>(x1, y1, z1, x2, y2, z2) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean inidicating if two vectors are orthogonal</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>x1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z1</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of first vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>x2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of second vector</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z2</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of second vector</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if vectors are orthogonal</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253
+254</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 251</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_orthogonal?'>orthogonal?</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span><span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span><span class='id identifier rubyid_z1'>z1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span><span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span><span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='id identifier rubyid_x1'>x1</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_y1'>y1</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_z1'>z1</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_x2'>x2</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_y2'>y2</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_z2'>z2</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='kw'>return</span> <span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span> <span class='op'>*</span> <span class='id identifier rubyid_x2'>x2</span> <span class='op'>+</span> <span class='id identifier rubyid_y1'>y1</span> <span class='op'>*</span> <span class='id identifier rubyid_y2'>y2</span> <span class='op'>+</span> <span class='id identifier rubyid_z1'>z1</span> <span class='op'>*</span> <span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span> <span class='op'>&lt;</span> <span class='float'>0.00001</span> <span class='comment'># TODO close enough?
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rand_vector-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>rand_vector</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate and reutrn a random normalized vector</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+257
+258
+259
+260
+261
+262</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 257</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_rand_vector'>rand_vector</span>
+  <span class='id identifier rubyid_nx'>nx</span><span class='comma'>,</span><span class='id identifier rubyid_ny'>ny</span><span class='comma'>,</span><span class='id identifier rubyid_nz'>nz</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>?</span> <span class='int'>1</span> <span class='op'>:</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>?</span> <span class='int'>1</span> <span class='op'>:</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>?</span> <span class='int'>1</span> <span class='op'>:</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span><span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span><span class='id identifier rubyid_z1'>z1</span> <span class='op'>=</span> <span class='id identifier rubyid_nx'>nx</span> <span class='op'>*</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_ny'>ny</span> <span class='op'>*</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_nz'>nz</span> <span class='op'>*</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span><span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span><span class='id identifier rubyid_z1'>z1</span> <span class='op'>=</span> <span class='op'>*</span><span class='const'>Motel</span><span class='op'>::</span><span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_z1'>z1</span><span class='rparen'>)</span>
+  <span class='lbracket'>[</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span><span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span><span class='id identifier rubyid_z1'>z1</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="random_axis-class_method">
+  
+    + (<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;,<span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;&gt;</tt>) <strong>random_axis</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate and return two orthogonal, normalized vectors</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to use when generating axis</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:dimensions</span>
+          <span class="type">(<tt>2</tt>, <tt>3</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>number of dimensions to create axis for. Must be 2 or 3 (if 2, z-coordinate
+will always be 0)</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:orthogonal_to</span>
+          <span class="type">(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>if pass in, axis orthogonal to the specified vector will be returned</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;,<span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>,<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>array containing two arrays containing the x,y,z coordinates of the axis</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 270</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_random_axis'>random_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dimensions'>dimensions</span>  <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:dimensions</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='int'>3</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span> <span class='kw'>if</span> <span class='id identifier rubyid_dimensions'>dimensions</span> <span class='op'>!=</span> <span class='int'>2</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_dimensions'>dimensions</span> <span class='op'>!=</span> <span class='int'>3</span>
+
+  <span class='comment'># generate random orthogonal vector if not specified
+</span>  <span class='id identifier rubyid_orthogonal'>orthogonal</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:orthogonal_to</span><span class='rbracket'>]</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_orthogonal'>orthogonal</span>
+    <span class='id identifier rubyid_orthogonal'>orthogonal</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_rand'>rand</span><span class='comma'>,</span><span class='id identifier rubyid_rand'>rand</span><span class='comma'>,</span><span class='id identifier rubyid_rand'>rand</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_orthogonal'>orthogonal</span> <span class='op'>=</span> <span class='const'>Motel</span><span class='op'>::</span><span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_orthogonal'>orthogonal</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># generate random tmp vector
+</span>  <span class='id identifier rubyid_tx'>tx</span><span class='comma'>,</span><span class='id identifier rubyid_ty'>ty</span><span class='comma'>,</span><span class='id identifier rubyid_tz'>tz</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='comma'>,</span> <span class='id identifier rubyid_rand'>rand</span><span class='comma'>,</span> <span class='id identifier rubyid_rand'>rand</span>
+  <span class='id identifier rubyid_tx'>tx</span><span class='comma'>,</span><span class='id identifier rubyid_ty'>ty</span><span class='comma'>,</span><span class='id identifier rubyid_tz'>tz</span> <span class='op'>=</span> <span class='op'>*</span><span class='const'>Motel</span><span class='op'>::</span><span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_tx'>tx</span><span class='comma'>,</span><span class='id identifier rubyid_ty'>ty</span><span class='comma'>,</span><span class='id identifier rubyid_tz'>tz</span><span class='rparen'>)</span>
+
+  <span class='comment'># generate first axis vector
+</span>  <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span><span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span><span class='id identifier rubyid_z1'>z1</span> <span class='op'>=</span> <span class='op'>*</span><span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_cross_product'>cross_product</span><span class='lparen'>(</span><span class='id identifier rubyid_tx'>tx</span><span class='comma'>,</span><span class='id identifier rubyid_ty'>ty</span><span class='comma'>,</span><span class='id identifier rubyid_tz'>tz</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_orthogonal'>orthogonal</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span><span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span><span class='id identifier rubyid_z1'>z1</span> <span class='op'>=</span> <span class='op'>*</span><span class='const'>Motel</span><span class='op'>::</span><span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span><span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span><span class='id identifier rubyid_z1'>z1</span><span class='rparen'>)</span>
+
+  <span class='comment'># rotate first axis vector by 1.57 around orthogonal to get other
+</span>  <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span><span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span><span class='id identifier rubyid_z2'>z2</span> <span class='op'>=</span> <span class='op'>*</span><span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_rotate'>rotate</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span><span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span><span class='id identifier rubyid_z1'>z1</span><span class='comma'>,</span><span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span><span class='op'>/</span><span class='int'>2</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_orthogonal'>orthogonal</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span><span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span><span class='id identifier rubyid_z2'>z2</span> <span class='op'>=</span> <span class='op'>*</span><span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span><span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span><span class='id identifier rubyid_z2'>z2</span><span class='rparen'>)</span>
+
+  <span class='comment'># 0 out z if 2D
+</span>  <span class='id identifier rubyid_z1'>z1</span> <span class='op'>=</span> <span class='id identifier rubyid_z2'>z2</span> <span class='op'>=</span> <span class='int'>0</span> <span class='kw'>if</span> <span class='id identifier rubyid_dimensions'>dimensions</span> <span class='op'>==</span> <span class='int'>2</span>
+
+  <span class='kw'>return</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span><span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span><span class='id identifier rubyid_z1'>z1</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='lbracket'>[</span><span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span><span class='id identifier rubyid_y2'>y2</span><span class='comma'>,</span><span class='id identifier rubyid_z2'>z2</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rotate-class_method">
+  
+    + (<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;</tt>) <strong>rotate</strong>(x, y, z, angle, ax, ay, az) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Rotate specified point by angle around specified axis angle</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>x</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of location to rotate</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>y</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of location to rotate</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>z</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of location to rotate</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>angle</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>angle which to rotation location</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ax</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x component of rotation axis</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ay</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>y component of rotation axis</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>az</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>z component of rotation axis</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>x,y,z components of rotated location</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_rotate'>rotate</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='id identifier rubyid_angle'>angle</span><span class='comma'>,</span> <span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span> <span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span> <span class='id identifier rubyid_az'>az</span><span class='rparen'>)</span>
+  <span class='comment'># also support rotating x,y,z via specified euler rotation (each axis individually?)
+</span>  <span class='comment'># use rodrigues rotation fomula
+</span>  <span class='comment'># rotated = orig * cos(a) + (axis x orig) * sin(a) + axis(axis . orig)(1-cos(a))
+</span>  <span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span><span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span><span class='id identifier rubyid_az'>az</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span><span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span><span class='id identifier rubyid_az'>az</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_cos'>cos</span><span class='lparen'>(</span><span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span> <span class='semicolon'>;</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sin'>sin</span><span class='lparen'>(</span><span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_dot'>dot</span> <span class='op'>=</span> <span class='id identifier rubyid_dot_product'>dot_product</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span> <span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span> <span class='id identifier rubyid_az'>az</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cross'>cross</span> <span class='op'>=</span> <span class='id identifier rubyid_cross_product'>cross_product</span><span class='lparen'>(</span><span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span> <span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span> <span class='id identifier rubyid_az'>az</span><span class='comma'>,</span> <span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rx'>rx</span> <span class='op'>=</span> <span class='id identifier rubyid_x'>x</span> <span class='op'>*</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>+</span> <span class='id identifier rubyid_cross'>cross</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>+</span> <span class='id identifier rubyid_ax'>ax</span> <span class='op'>*</span> <span class='id identifier rubyid_dot'>dot</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='int'>1</span><span class='op'>-</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ry'>ry</span> <span class='op'>=</span> <span class='id identifier rubyid_y'>y</span> <span class='op'>*</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>+</span> <span class='id identifier rubyid_cross'>cross</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>+</span> <span class='id identifier rubyid_ay'>ay</span> <span class='op'>*</span> <span class='id identifier rubyid_dot'>dot</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='int'>1</span><span class='op'>-</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rz'>rz</span> <span class='op'>=</span> <span class='id identifier rubyid_z'>z</span> <span class='op'>*</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>+</span> <span class='id identifier rubyid_cross'>cross</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_s'>s</span> <span class='op'>+</span> <span class='id identifier rubyid_az'>az</span> <span class='op'>*</span> <span class='id identifier rubyid_dot'>dot</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='int'>1</span><span class='op'>-</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span>
+  <span class='lbracket'>[</span><span class='id identifier rubyid_rx'>rx</span><span class='comma'>,</span> <span class='id identifier rubyid_ry'>ry</span><span class='comma'>,</span> <span class='id identifier rubyid_rz'>rz</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rotated_angle-class_method">
+  
+    + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>rotated_angle</strong>(x, y, z, ox, oy, oz, ax, ay, az) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return angle which corresponds to specified coordinate when rotated from
+original coordinate on specified axis.</p>
+
+<p>We utilize a bit of basic trig to calculate the angle of rotation from the
+current position, original position, and axis angle:</p>
+
+<pre class="code ruby"><code class="ruby">- the angle we want is the single/unique apex angle in
+  an isoscoles triangle residing on the surface of rotation
+- the angle we want can be computed with:
+   sin(angle/2) = 1/2 base of triangle * length of side of triangle
+- the base of the triangle is simply the distance between the
+  original &amp; new coordinates
+- the side of the triangle can be retrieved by taking the sin of the
+  angle between the axis vector and the original coordinate vector.
+- Note: We are assuming that the surace of rotation is at a distance of
+        1 from the origin, if this is not the case, the previous will
+        need to be adjusted to take this into account
+- Finally we map the result to the domain of 0-&gt;2*PI</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/common.rb', line 167</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_rotated_angle'>rotated_angle</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='id identifier rubyid_ox'>ox</span><span class='comma'>,</span> <span class='id identifier rubyid_oy'>oy</span><span class='comma'>,</span> <span class='id identifier rubyid_oz'>oz</span><span class='comma'>,</span> <span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span> <span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span> <span class='id identifier rubyid_az'>az</span><span class='rparen'>)</span>
+  <span class='comment'># base length of rotation triangle
+</span>  <span class='id identifier rubyid_nd'>nd</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='op'>-</span><span class='id identifier rubyid_ox'>ox</span><span class='rparen'>)</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_y'>y</span><span class='op'>-</span><span class='id identifier rubyid_oy'>oy</span><span class='rparen'>)</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_z'>z</span><span class='op'>-</span><span class='id identifier rubyid_oz'>oz</span><span class='rparen'>)</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
+
+  <span class='comment'># angle between rotation axis vector and original coordinate vector
+</span>  <span class='id identifier rubyid_oa'>oa</span> <span class='op'>=</span> <span class='id identifier rubyid_angle_between'>angle_between</span><span class='lparen'>(</span><span class='id identifier rubyid_ox'>ox</span><span class='comma'>,</span><span class='id identifier rubyid_oy'>oy</span><span class='comma'>,</span><span class='id identifier rubyid_oz'>oz</span><span class='comma'>,</span><span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span><span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span><span class='id identifier rubyid_az'>az</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ad'>ad</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sin'>sin</span><span class='lparen'>(</span><span class='id identifier rubyid_oa'>oa</span><span class='rparen'>)</span>
+
+  <span class='comment'># calc the rotation angle
+</span>  <span class='id identifier rubyid_hsa'>hsa</span> <span class='op'>=</span> <span class='id identifier rubyid_nd'>nd</span><span class='op'>/</span><span class='id identifier rubyid_ad'>ad</span><span class='op'>/</span><span class='int'>2</span>
+  <span class='id identifier rubyid_hsa'>hsa</span> <span class='op'>=</span> <span class='id identifier rubyid_hsa'>hsa</span><span class='period'>.</span><span class='id identifier rubyid_round_to'>round_to</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_hsa'>hsa</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span> <span class='op'>&gt;</span> <span class='int'>1</span> <span class='comment'># compensate for rounding errors
+</span>  <span class='id identifier rubyid_ra'>ra</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_asin'>asin</span><span class='lparen'>(</span><span class='id identifier rubyid_hsa'>hsa</span><span class='rparen'>)</span><span class='op'>*</span><span class='int'>2</span>
+
+  <span class='comment'># determine if &#39;negative&#39; rotation, adjust domain
+</span>  <span class='id identifier rubyid_xp'>xp</span> <span class='op'>=</span> <span class='id identifier rubyid_cross_product'>cross_product</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='id identifier rubyid_z'>z</span><span class='comma'>,</span><span class='id identifier rubyid_ox'>ox</span><span class='comma'>,</span><span class='id identifier rubyid_oy'>oy</span><span class='comma'>,</span><span class='id identifier rubyid_oz'>oz</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ia'>ia</span> <span class='op'>=</span> <span class='id identifier rubyid_dot_product'>dot_product</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_xp'>xp</span><span class='comma'>,</span> <span class='id identifier rubyid_ax'>ax</span><span class='comma'>,</span><span class='id identifier rubyid_ay'>ay</span><span class='comma'>,</span><span class='id identifier rubyid_az'>az</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_ia'>ia</span> <span class='op'>?</span> <span class='lparen'>(</span><span class='int'>2</span> <span class='op'>*</span> <span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span> <span class='op'>-</span> <span class='id identifier rubyid_ra'>ra</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_ra'>ra</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:32 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

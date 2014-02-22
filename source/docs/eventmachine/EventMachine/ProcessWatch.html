@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: EventMachine::ProcessWatch
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../EventMachine.html" title="EventMachine (module)">EventMachine</a></span></span>
+     &raquo; 
+    <span class="title">ProcessWatch</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: EventMachine::ProcessWatch
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Connection.html" title="EventMachine::Connection (class)">Connection</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Connection.html" title="EventMachine::Connection (class)">Connection</a></span></li>
+          
+            <li class="next">EventMachine::ProcessWatch</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/em/process_watch.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>This is subclassed from EventMachine::Connection for use with the process monitoring API. Read the
+documentation on the instance methods of this class, and for a full explanation see EventMachine.watch_process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pid-instance_method" title="#pid (instance method)">- (Object) <strong>pid</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the pid that EventMachine::watch_process was originally called with.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process_exited-instance_method" title="#process_exited (instance method)">- (Object) <strong>process_exited</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Should be redefined with the user’s custom callback that will be fired when the process exits.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process_forked-instance_method" title="#process_forked (instance method)">- (Object) <strong>process_forked</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Should be redefined with the user’s custom callback that will be fired when the prcess is forked.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stop_watching-instance_method" title="#stop_watching (instance method)">- (Object) <strong>stop_watching</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Discontinue monitoring of the process.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Connection.html" title="EventMachine::Connection (class)">Connection</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Connection.html#close_connection-instance_method" title="EventMachine::Connection#close_connection (method)">#close_connection</a></span>, <span class='object_link'><a href="Connection.html#close_connection_after_writing-instance_method" title="EventMachine::Connection#close_connection_after_writing (method)">#close_connection_after_writing</a></span>, <span class='object_link'><a href="Connection.html#comm_inactivity_timeout-instance_method" title="EventMachine::Connection#comm_inactivity_timeout (method)">#comm_inactivity_timeout</a></span>, <span class='object_link'><a href="Connection.html#comm_inactivity_timeout%3D-instance_method" title="EventMachine::Connection#comm_inactivity_timeout= (method)">#comm_inactivity_timeout=</a></span>, <span class='object_link'><a href="Connection.html#connection_completed-instance_method" title="EventMachine::Connection#connection_completed (method)">#connection_completed</a></span>, <span class='object_link'><a href="Connection.html#detach-instance_method" title="EventMachine::Connection#detach (method)">#detach</a></span>, <span class='object_link'><a href="Connection.html#error%3F-instance_method" title="EventMachine::Connection#error? (method)">#error?</a></span>, <span class='object_link'><a href="Connection.html#get_idle_time-instance_method" title="EventMachine::Connection#get_idle_time (method)">#get_idle_time</a></span>, <span class='object_link'><a href="Connection.html#get_peer_cert-instance_method" title="EventMachine::Connection#get_peer_cert (method)">#get_peer_cert</a></span>, <span class='object_link'><a href="Connection.html#get_peername-instance_method" title="EventMachine::Connection#get_peername (method)">#get_peername</a></span>, <span class='object_link'><a href="Connection.html#get_pid-instance_method" title="EventMachine::Connection#get_pid (method)">#get_pid</a></span>, <span class='object_link'><a href="Connection.html#get_proxied_bytes-instance_method" title="EventMachine::Connection#get_proxied_bytes (method)">#get_proxied_bytes</a></span>, <span class='object_link'><a href="Connection.html#get_sock_opt-instance_method" title="EventMachine::Connection#get_sock_opt (method)">#get_sock_opt</a></span>, <span class='object_link'><a href="Connection.html#get_sockname-instance_method" title="EventMachine::Connection#get_sockname (method)">#get_sockname</a></span>, <span class='object_link'><a href="Connection.html#get_status-instance_method" title="EventMachine::Connection#get_status (method)">#get_status</a></span>, <span class='object_link'><a href="Connection.html#notify_readable%3D-instance_method" title="EventMachine::Connection#notify_readable= (method)">#notify_readable=</a></span>, <span class='object_link'><a href="Connection.html#notify_readable%3F-instance_method" title="EventMachine::Connection#notify_readable? (method)">#notify_readable?</a></span>, <span class='object_link'><a href="Connection.html#notify_writable%3D-instance_method" title="EventMachine::Connection#notify_writable= (method)">#notify_writable=</a></span>, <span class='object_link'><a href="Connection.html#notify_writable%3F-instance_method" title="EventMachine::Connection#notify_writable? (method)">#notify_writable?</a></span>, <span class='object_link'><a href="Connection.html#pause-instance_method" title="EventMachine::Connection#pause (method)">#pause</a></span>, <span class='object_link'><a href="Connection.html#paused%3F-instance_method" title="EventMachine::Connection#paused? (method)">#paused?</a></span>, <span class='object_link'><a href="Connection.html#pending_connect_timeout-instance_method" title="EventMachine::Connection#pending_connect_timeout (method)">#pending_connect_timeout</a></span>, <span class='object_link'><a href="Connection.html#pending_connect_timeout%3D-instance_method" title="EventMachine::Connection#pending_connect_timeout= (method)">#pending_connect_timeout=</a></span>, <span class='object_link'><a href="Connection.html#post_init-instance_method" title="EventMachine::Connection#post_init (method)">#post_init</a></span>, <span class='object_link'><a href="Connection.html#proxy_completed-instance_method" title="EventMachine::Connection#proxy_completed (method)">#proxy_completed</a></span>, <span class='object_link'><a href="Connection.html#proxy_incoming_to-instance_method" title="EventMachine::Connection#proxy_incoming_to (method)">#proxy_incoming_to</a></span>, <span class='object_link'><a href="Connection.html#proxy_target_unbound-instance_method" title="EventMachine::Connection#proxy_target_unbound (method)">#proxy_target_unbound</a></span>, <span class='object_link'><a href="Connection.html#reconnect-instance_method" title="EventMachine::Connection#reconnect (method)">#reconnect</a></span>, <span class='object_link'><a href="Connection.html#resume-instance_method" title="EventMachine::Connection#resume (method)">#resume</a></span>, <span class='object_link'><a href="Connection.html#send_data-instance_method" title="EventMachine::Connection#send_data (method)">#send_data</a></span>, <span class='object_link'><a href="Connection.html#send_datagram-instance_method" title="EventMachine::Connection#send_datagram (method)">#send_datagram</a></span>, <span class='object_link'><a href="Connection.html#send_file_data-instance_method" title="EventMachine::Connection#send_file_data (method)">#send_file_data</a></span>, <span class='object_link'><a href="Connection.html#set_sock_opt-instance_method" title="EventMachine::Connection#set_sock_opt (method)">#set_sock_opt</a></span>, <span class='object_link'><a href="Connection.html#ssl_handshake_completed-instance_method" title="EventMachine::Connection#ssl_handshake_completed (method)">#ssl_handshake_completed</a></span>, <span class='object_link'><a href="Connection.html#ssl_verify_peer-instance_method" title="EventMachine::Connection#ssl_verify_peer (method)">#ssl_verify_peer</a></span>, <span class='object_link'><a href="Connection.html#start_tls-instance_method" title="EventMachine::Connection#start_tls (method)">#start_tls</a></span>, <span class='object_link'><a href="Connection.html#stop_proxying-instance_method" title="EventMachine::Connection#stop_proxying (method)">#stop_proxying</a></span>, <span class='object_link'><a href="Connection.html#stream_file_data-instance_method" title="EventMachine::Connection#stream_file_data (method)">#stream_file_data</a></span>, <span class='object_link'><a href="Connection.html#unbind-instance_method" title="EventMachine::Connection#unbind (method)">#unbind</a></span></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="pid-instance_method">
+  
+    - (<tt>Object</tt>) <strong>pid</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the pid that EventMachine::watch_process was originally called with.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/process_watch.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pid'>pid</span>
+  <span class='ivar'>@pid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="process_exited-instance_method">
+  
+    - (<tt>Object</tt>) <strong>process_exited</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Should be redefined with the user’s custom callback that will be fired when the process exits.</p>
+
+<p>stop_watching is called automatically after this callback</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/process_watch.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process_exited'>process_exited</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="process_forked-instance_method">
+  
+    - (<tt>Object</tt>) <strong>process_forked</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Should be redefined with the user’s custom callback that will be fired when the prcess is forked.</p>
+
+<p>There is currently not an easy way to get the pid of the forked child.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/process_watch.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process_forked'>process_forked</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stop_watching-instance_method">
+  
+    - (<tt>Object</tt>) <strong>stop_watching</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Discontinue monitoring of the process.
+This will be called automatically when a process dies. User code may call it as well.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/process_watch.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stop_watching'>stop_watching</span>
+  <span class='const'>EventMachine</span><span class='op'>::</span><span class='id identifier rubyid_unwatch_pid'>unwatch_pid</span><span class='lparen'>(</span><span class='ivar'>@signature</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 19:35:00 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

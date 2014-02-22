@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h2 id="rjr---ruby-json-rpc-library">RJR - Ruby Json Rpc Library</h2>
+<p><a href="https://travis-ci.org/movitto/rjr"><img src="https://travis-ci.org/movitto/rjr.png?branch=dep-fixes" alt="Build Status" /></a></p>
+
+<p>Copyright (C) 2012-2013 Mo Morsi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#109;&#111;&#064;&#109;&#111;&#114;&#115;&#105;&#046;&#111;&#114;&#103;">&#109;&#111;&#064;&#109;&#111;&#114;&#115;&#105;&#046;&#111;&#114;&#103;</a></p>
+
+<p>RJR is made available under the Apache License, Version 2.0</p>
+
+<p>RJR is an implementation of the <a href="http://en.wikipedia.org/wiki/JSON-RPC">JSON-RPC</a>
+Version 2.0 Specification. It allows a developer to register custom JSON-RPC
+method handlers which may be invoked simultaneously over a variety of transport
+mechanisms.</p>
+
+<p>Currently supported transports include:
+    tcp, amqp, http (post), websockets, local method calls, (others coming soon)</p>
+
+<p>Note some transports require additional dependencies, see rjr.gemspec for more info.</p>
+
+<h3 id="intro">Intro</h3>
+<p>RJR is currently built ontop of <a href="http://eventmachine.rubyforge.org/">eventmachine</a> and <a href="https://github.com/flori/json">json</a>, any dependencies of those are needed to run rjr.</p>
+
+<p>To install rjr simply run:
+    gem install rjr</p>
+
+<p>Source code is available via:
+    git clone http://github.com/movitto/rjr</p>
+
+<h3 id="using">Using</h3>
+
+<p>Simply require the transports which you would
+like to use:</p>
+
+<p><code>ruby
+    require 'rjr/nodes/tcp'
+    require 'rjr/nodes/amqp'
+    require 'rjr/nodes/ws'
+    require 'rjr/nodes/web'
+    require 'rjr/nodes/local'
+    require 'rjr/nodes/multi'
+</code></p>
+
+<p>server.rb:</p>
+
+<p>```ruby
+    # listen for methods via amqp, websockets, http, and via local calls
+    amqp_node  = RJR::Nodes::AMQP.new  :node_id =&gt; ‘server’, :broker =&gt; ‘localhost’
+    ws_node    = RJR::Nodes::WS.new    :node_id =&gt; ‘server’, :host   =&gt; ‘localhost’, :port =&gt; 8080
+    www_node   = RJR::Nodes::Web.new   :node_id =&gt; ‘server’, :host   =&gt; ‘localhost’, :port =&gt; 8888
+    local_node = RJR::Nodes::Local.new :node_id =&gt; ‘server’
+    multi_node = RJR::Nodes::Multi.new :nodes =&gt; [amqp_node, ws_node, www_node, local_node]</p>
+
+<pre class="code ruby"><code class="ruby"># define a rpc method called &#39;hello&#39; which takes
+# one argument and returns it in upper case
+multi_node.dispatcher.handle(&quot;hello&quot;) { |arg|
+  arg.upcase
+}
+
+# start the server and block
+multi_node.listen
+multi_node.join ```
+</code></pre>
+
+<p>amqp_client.rb:</p>
+
+<p>```ruby
+    # invoke the method over amqp and return result
+    amqp_node = RJR::Nodes::AMQP.new :node_id =&gt; ‘client’, :broker =&gt; ‘localhost’
+    puts amqp_node.invoke(‘server-queue’, ‘hello’, ‘world’)</p>
+
+<pre class="code ruby"><code class="ruby"># send a notification via amqp,
+# notifications immediately return and always return nil
+amqp_node.notify(&#39;server-queue&#39;, &#39;hello&#39;, &#39;world&#39;) ```
+</code></pre>
+
+<p>ws_client.js:</p>
+
+<p><code>javascript
+    // use the js client to invoke the method via a websocket
+    &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="site/json.js" /&gt;
+    &lt;script type="text/javascript" src="site/jrw.js" /&gt;
+    &lt;script type="text/javascript"&gt;
+    var node = new Nodes::WS('127.0.0.1', '8080');
+    node.onopen = function(){
+      node.invoke_request('hello', 'rjr',
+        function(res){
+          if(res.success)
+            alert(res.result);
+          else
+            alert(res.error);
+        });
+    };
+    node.open();
+    &lt;/script&gt;
+</code></p>
+
+<h3 id="reference">Reference</h3>
+
+<p>The source repository can be found <a href="https://github.com/movitto/rjr">here</a></p>
+
+<p>Online API documentation and examples can be found <a href="http://rubydoc.info/github/movitto/rjr">here</a></p>
+
+<p>Generate documentation via</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_rake'>rake</span> <span class='id identifier rubyid_yard'>yard</span>
+</code></pre>
+
+<p>Also see examples and specs for detailed usage.</p>
+
+<h3 id="advanced">Advanced</h3>
+
+<p>Upon receiving requests from eventmachine, rjr hands them off to a thread pool to free up the reactor.
+It is up to the developer to ensure resources accessed in the method handlers
+are protected from concurrent access.</p>
+
+<p>Various metadata fields are made available to json-rpc method handlers through
+instance variables. These include:</p>
+
+<ul>
+  <li>@rjr_node</li>
+  <li>@rjr_node_id</li>
+  <li>@rjr_node_type</li>
+  <li>@rjr_callback</li>
+  <li>@rjr_headers</li>
+  <li>@rjr_client_ip</li>
+  <li>@rjr_client_port</li>
+  <li>@rjr_method</li>
+  <li>@rjr_method_args</li>
+  <li>@rjr_handler</li>
+</ul>
+
+<p>RJR implements a callback interface through which methods may be invoked on a client
+after an initial server connection is established. Store and/or invoke @rjr_callback to make
+use of this.</p>
+
+<p><code>ruby
+    node.dispatcher.handle("register_callback") do |*args|
+      $my_registry.invoke_me_later {
+        # rjr callback will already be setup to send messages to the correct client
+        @rjr_callback.invoke 'callback_method', 'with', 'custom', 'params'
+      }
+    end
+</code></p>
+
+<p>RJR also permits arbitrary headers being set on JSON-RPC requests and responses. These
+will be stored in the json send to/from nodes, at the same level/scope as the message
+‘id’, ‘method’, and ‘params’ properties. Developers using RJR may set and leverage these headers
+in their registered handlers to store additional metadata to extend the JSON-RPC protocol and
+support any custom subsystems (an auth subsystem for example)</p>
+
+<p>```ruby
+    node.dispatcher.handle(“login”) do |*args|
+      if $my_user_registry.find(:user =&gt; args.first, :pass =&gt; args.last)
+        @headers[‘session-id’] = $my_user_registry.create_session.id
+      end
+    done</p>
+
+<pre class="code ruby"><code class="ruby">node.dispatcher.add_handler(&quot;do_secure_action&quot;) do |*args|
+  if $my_user_registry.find(:session_id =&gt; @headers[&#39;session-id&#39;]).nil?
+    raise PermissionError, &quot;invalid session&quot;
+  end
+  # ...
+end ```
+</code></pre>
+
+<p>Of course any custom headers set/used will only be of use to JSON-RPC nodes running
+RJR as this is not standard JSON-RPC.</p>
+
+<h3 id="authors">Authors</h3>
+<ul>
+  <li>Mo Morsi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#109;&#111;&#064;&#109;&#111;&#114;&#115;&#105;&#046;&#111;&#114;&#103;">&#109;&#111;&#064;&#109;&#111;&#114;&#115;&#105;&#046;&#111;&#114;&#103;</a></li>
+  <li>Ladislav Smola <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#108;&#097;&#100;&#105;&#115;&#108;&#097;&#118;&#046;&#115;&#109;&#111;&#108;&#097;&#064;&#105;&#116;&#045;&#108;&#111;&#103;&#105;&#099;&#097;&#046;&#099;&#122;">&#108;&#097;&#100;&#105;&#115;&#108;&#097;&#118;&#046;&#115;&#109;&#111;&#108;&#097;&#064;&#105;&#116;&#045;&#108;&#111;&#103;&#105;&#099;&#097;&#046;&#099;&#122;</a></li>
+</ul>
+</div></div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:45:33 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

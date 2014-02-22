@@ -1,0 +1,566 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="/docs/middleman/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: ブログ機能</title>
+  </head>
+  <body>
+    <!-- BuySellAds Ad Code -->
+    <script type="text/javascript">
+    (function(){
+      var bsa = document.createElement('script');
+         bsa.type = 'text/javascript';
+         bsa.async = true;
+         bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+    })();
+    </script>
+    <!-- End BuySellAds Ad Code -->
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/docs/middleman/jp/"><img width="225" height="225" alt="Middleman" src="/images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <div id="search">
+        <form>
+          <input type="text" id="st-search-input" class="st-search-input" placeholder="Search the documentation" />
+        </form>
+        <div id="st-results-container"></div>
+        <script type="text/javascript">
+          var Swiftype = window.Swiftype || {};
+          (function() {
+            Swiftype.key = 'q3qjGN5LmX2oq6w1V47y';
+            Swiftype.inputElement = '#st-search-input';
+            Swiftype.resultContainingElement = '#st-results-container';
+            Swiftype.attachElement = '#st-search-input';
+            Swiftype.renderStyle = "overlay";
+
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = "//swiftype.com/embed.js";
+            var entry = document.getElementsByTagName('script')[0];
+            entry.parentNode.insertBefore(script, entry);
+          }());
+        </script>
+      </div>
+
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman の基礎</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/basics/getting-started/">はじめに</a></li>
+      <li><a href="/docs/middleman/jp/basics/templates/">テンプレート</a></li>
+      <li><a href="/docs/middleman/jp/basics/helpers/">テンプレートヘルパ</a></li>
+      <li><a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a></li>
+      <li><a href="/docs/middleman/jp/basics/dynamic-pages/">動的ページ</a></li>
+      <li><a href="/docs/middleman/jp/basics/asset-pipeline/">アセットパイプライン</a></li>
+      <li><a href="/docs/middleman/jp/basics/pretty-urls/">きれいな URL (ディレクトリインデックス)</a></li>
+      <li><a href="/docs/middleman/jp/basics/livereload/">LiveReload</a></li>
+      <li><a href="/docs/middleman/jp/basics/blogging/">ブログ機能</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>高度な機能</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/advanced/configuration/">設定</a></li>
+      <li><a href="/docs/middleman/jp/advanced/local-data/">ローカルデータ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/localization/">多言語化 (i18n)</a></li>
+      <li><a href="/docs/middleman/jp/advanced/sitemap/">サイトマップ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/rack-middleware/">Rack ミドルウェア</a></li>
+      <li><a href="/docs/middleman/jp/advanced/custom/">カスタム拡張</a></li>
+      <li><a href="/docs/middleman/jp/advanced/file-size-optimization/">ファイルサイズ最適化</a></li>
+      <li><a href="/docs/middleman/jp/advanced/improving-cacheability/">キャッシュ機能の改善</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>コミュニティ</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/all">拡張機能</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">プロジェクトテンプレート</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/deployment">デプロイ方法</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">コミュニティフォーラム</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub リポジトリ</a></li>
+      <li><a href="/docs/middleman/jp/community/built-using-middleman/">Middleman 採用サイト</a></li>
+  </ul>
+</div>
+
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="ブログ機能">ブログ機能</h1>
+
+<p>Middleman にはブログ, つまり記事投稿とタグ付けに対応した公式拡張があります。 <code>middleman-blog</code> は拡張機能の 1 つで, 使うにはインストールする必要があります。簡単に <code>Gemfile</code> で gem を指定するだけです:</p>
+
+<pre><code class="ruby">gem &quot;middleman-blog&quot;
+</code></pre>
+
+<p>そして <code>config.rb</code> で拡張機能を有効化します:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  # ブログ機能のオプションを設定
+end
+</code></pre>
+
+<p>また, <code>middleman-blog</code> を一度インストールすればブログ機能がセットアップされた新しいプロジェクトを作れるようになります:</p>
+
+<pre><code class="bash">middleman init MY_BLOG_PROJECT --template=blog
+</code></pre>
+
+<p>すでに Middleman のプロジェクトがある場合, サンプルの <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/index.html.erb"><code>index.html</code></a>, <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/tag.html.erb"><code>tag.html</code></a>, <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/calendar.html.erb"><code>calendar.html</code></a> や <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/feed.xml.builder"><code>feed.xml</code></a> を作るために, blog テンプレートオプションとともに <code>middleman init</code> を再実行するか, 自分で作ってください。<a href="https://github.com/middleman/middleman-blog/tree/master/lib/middleman-blog/template/source">何が作られるのか</a> は GitHub で確認できます。</p>
+
+<p>ブログ拡張にはたくさんの設定オプションがあります (プレビューサーバを起動し <code>http://localhost:4567/__middleman/config/</code> にアクセスするとすべてのオプションが確認できます)。</p>
+
+<p><strong>Note:</strong> <a href="/docs/middleman/jp/basics/pretty-urls/">ディレクトリインデックス</a> 拡張を使いたい場合, ブログ拡張を有効化した <em>後に</em> 有効化するようにしてください。</p>
+
+<h2 id="記事">記事</h2>
+
+<p>Middleman 自体がそうであるように, ブログ拡張は個別ファイルにフォーカスしています。それぞれの記事はファイルごとに好きなテンプレート言語を使用できます。記事のデフォルトのファイル名構造は <code>{year}-{month}-{day}-{title}.html</code> です。新しい記事を作りたい場合, 正しいパスに配置し, 動作させるために基本的な <a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a> を記述します。<code>config.rb</code> で <code>:blog</code> が有効化されている場合, どのファイル形式で Middleman が記事を探すのか変更する <code>blog.source</code> オプションを設定できます。</p>
+
+<p>Middleman に関する新しい投稿を作るとしましょう。<code>source/2011-10-18-middleman.html.markdown</code> を作ります。このファイルの最小限の内容は Frontmatter に <code>title</code> を入力したものです:</p>
+
+<pre><code class="html">---
+title: Middleman ブログの投稿
+---
+
+Hello World
+</code></pre>
+
+<p>必要な場合, 同日の複数投稿に対応するために, Frontmatter に <code>date</code> として日付と時刻を指定することができます。タグページを作るために Frontmatter に <code>tags</code> リストを含めることもできます。</p>
+
+<h2 id="記事の生成">記事の生成</h2>
+
+<p>ショートカットとして, <code>middleman article TITLE</code> を実行できます。Middleman は新しい記事を正しいファイル名で正しい場所に作ります。このコマンドには <code>--date</code>, <code>--lang</code> や <code>--blog</code> オプションを渡すことができます。</p>
+
+<p>独自のテンプレートを使いたい場合, <code>middleman article</code> コマンドで使われる ERb テンプレートのパス (プロジェクトルートからの相対パス) を <code>blog.new_article_template</code> に設定することができます。このテンプレートでは新しい記事を生成するための <code>@title</code>, <code>@slug</code>, <code>@date</code> や <code>@lang</code> といったインスタンス変数を使うことができます。 </p>
+
+<h3 id="パスのカスタマイズと-url">パスのカスタマイズと URL</h3>
+
+<p>ブログのデフォルトのパスは <code>/</code> (Web サイトのルート) ですが, <code>config.rb</code> で上書きできます:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.prefix = &quot;blog&quot;
+end
+</code></pre>
+
+<p>あらゆるリンク設定 (<code>permalink</code>, <code>sources</code>, <code>taglink</code>, <code>year_link</code>, <code>month_link</code>, <code>day_link</code>) に <code>prefix</code> が追加されるので, 他の設定でこれを繰り返す必要はありません。テンプレートの置かれた場所 (<code>calendar_template</code>, <code>year_template</code>, <code>month_template</code>, <code>day_template</code>, や <code>tag_template</code>) には <code>prefix</code> が追加 <em>されない</em> ので注意してください。テンプレートを記事と同じ場所に配置したいのであれば, これからの設定に同じ prefix を追加してください。</p>
+
+<p>投稿を閲覧するためのパーマリンクは次のように簡単に変更できます:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.permalink = &quot;blog/{year}/{title}.html&quot;
+end
+</code></pre>
+
+<p>これであなたの記事は次の URL で閲覧できます: <code>blog/2011/blog.html</code>。 パーマリンクは投稿が保存されているディレクトリからは完全に独立しています。デフォルトのパーマリンクのパスは <code>{year}/{month}/{day}/{title}.html</code> です。 パーマリンクは記事の日付要素 (<code>{year}</code>, <code>{month}</code>,<code>{date}</code>), 記事タイトル (URL に最適化あるように変形された <code>{title}</code>) や <code>{lang}</code> によって構成することができます。</p>
+
+<p>また, 記事で使用される他の Frontmatter データを使うこともできます。例えば, <code>category</code> が記事の Frontmatter に定義されている場合にパーマリンクに含めることができます:</p>
+
+<pre><code class="html">---
+title: My Middleman Blog Post
+date: 2013/10/13
+category: HTML5
+---
+
+Hello World
+</code></pre>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.permalink = &quot;blog/{category}/{title}.html&quot;
+end
+</code></pre>
+
+<p>上記記事の URL は <code>blog/html5/my-middleman-blog-post.html</code> になります。</p>
+
+<p><code>blog.sources</code> に指定した URL の定義要素は <code>blog.permalinks</code> で使うことができます。例えば次のような設定です:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.sources = &quot;{category}/{year}-{month}-{day}-{title}.html&quot;
+  blog.permalink = &quot;{category}/{year}/{month}/{day}/{title}.html&quot;
+end
+</code></pre>
+
+<p><code>cats/2013-11-12-best-cats.html</code> に記事のソースを置くことができ, Frontmatter で <code>category</code> を指定しなくても <code>cats/2013/11/12/best-cats.html</code> に書き出されます。<code>current_article.metadata[:page][&#39;category&#39;]</code> を介してソースパスから抽出されたカテゴリにアクセスすることもできます。</p>
+
+<p>ブログ記事を HTML ファイルとしてではなくディレクトリとして表示させたい場合には, <a href="/docs/middleman/jp/basics/pretty-urls/">きれいな URL</a> 機能を有効化することも検討しましょう。</p>
+
+<h2 id="レイアウト">レイアウト</h2>
+
+<p><code>config.rb</code> ですべての記事に使われる <a href="/docs/middleman/jp/basics/templates/#toc_3">レイアウト</a> を指定することができます。</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.layout = &quot;blog_layout&quot;
+end
+</code></pre>
+
+<p>レイアウトに挿入する前に記事ごとにちょっとした構造で囲みたい場合, 記事レイアウトを構成してからメインのレイアウトで囲むために, Middleman の <a href="/docs/middleman/jp/basics/templates/#toc_4">入れ子レイアウト</a> 機能を使うことができます。</p>
+
+<h2 id="記事一覧">記事一覧</h2>
+
+<p>ブログの記事一覧にはテンプレートから <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogData#articles-instance_method"><code>blog.articles</code></a> でアクセスでき, <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle"><code>BlogArticle</code></a> のリストを取得できます。</p>
+
+<p><a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle"><code>BlogArticle</code></a> ごとに便利なメソッドを持っています。同時にさらに多くの情報 (<a href="/docs/middleman/jp/basics/frontmatter">Frontmatter</a> の <a href="http://rubydoc.info/gems/middleman-core/Middleman/CoreExtensions/FrontMatter/ResourceInstanceMethods#data-instance_method"><code>data</code></a> のような) をもつ <a href="/jp/advanced/sitemap">サイトマップ</a> の <a href="http://rubydoc.info/gems/middleman-core/Middleman/Sitemap/Resource"><code>Resource</code></a> でもあります。レイアウトやその記事の中からは <code>current_article</code> を介して現在の記事を取得することができます。</p>
+
+<p>例えば, 最新 5 件の記事と要約の一覧を表示する例です:</p>
+
+<pre><code class="html">&lt;% blog.articles[0...5].each do |article| %&gt;
+  &lt;article&gt;
+    &lt;h1&gt;
+      &lt;a href=&quot;&lt;%= article.url %&gt;&quot;&gt;&lt;%= article.title %&gt;&lt;/a&gt;
+      &lt;time&gt;&lt;%= article.date.strftime(&#39;%b %e %Y&#39;) %&gt;&lt;/time&gt;
+    &lt;/h1&gt;
+
+    &lt;%= article.summary %&gt;
+
+    &lt;a href=&quot;&lt;%= article.url %&gt;&quot;&gt;もっと読む&lt;/a&gt;
+  &lt;/article&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>タグアーカイブのタグデータへアクセスすることもできます:</p>
+
+<pre><code class="html">&lt;ul&gt;
+  &lt;% blog.tags.each do |tag, articles| %&gt;
+    &lt;li&gt;
+      &lt;h5&gt;&lt;%= tag %&gt;&lt;/h5&gt;
+      &lt;ul&gt;
+        &lt;% articles.each do |article| %&gt;
+          &lt;li&gt;&lt;a href=&quot;&lt;%= article.url %&gt;&quot;&gt;&lt;%= article.title %&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;% end %&gt;
+      &lt;/ul&gt;
+  &lt;% end %&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>同様にカレンダー形式の一覧もできます:</p>
+
+<pre><code class="html">&lt;ul&gt;
+  &lt;% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %&gt;
+    &lt;li&gt;
+      &lt;h5&gt;&lt;%= year %&gt;&lt;/h5&gt;
+      &lt;ul&gt;
+        &lt;% articles.each do |article| %&gt;
+          &lt;li&gt;&lt;a href=&quot;&lt;%= article.url %&gt;&quot;&gt;&lt;%= article.title %&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;% end %&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;% end %&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>Frontmatter に <code>public</code> フラグを追加している場合:</p>
+
+<pre><code class="html">&lt;h1&gt;Public Articles&lt;/h1&gt;
+&lt;% blog.articles.select {|a| a.data[:public] }.each do |article| %&gt;
+  ...
+&lt;% end %&gt;
+</code></pre>
+
+<h2 id="ヘルパ">ヘルパ</h2>
+
+<p>テンプレートを簡単に作るために使用できる <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers">いくつかのヘルパ</a> があります。これらは現在ページの記事を取得, 現在ページをブログ記事か判定, タグやカレンダーページへのパスを作成といったことができます。</p>
+
+<h2 id="タグ">タグ</h2>
+
+<p>タグを使った記事の整理なしに何がブログ機能でしょうか? 単に記事の <a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a> に <code>tag</code> を追加するだけです。<a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle"><code>BlogArticle</code></a> の <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle#tags-instance_method"><code>tag</code></a> メソッドを使うことでタグを呼び出すことができます。さらに, <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogData#tags-instance_method"><code>blog.tags</code></a> から記事に関連するタグリストを取得できます。<code>config.rb</code> で <code>blog.tag_template</code> にテンプレートを設定した場合 (<a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/config.tt">デフォルトの config.rb</a> 参照) , タグごとにページをレンダリングできます。タグテンプレートはローカル変数を持ちます。現在のタグがセットされた <code>tagname</code> とそのタグの記事リストがセットされた <code>articles</code>です。また特定のタグページへのリンクを作るために <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#tag_path-instance_method"><code>tag_path</code></a> ヘルパを使うことができます。</p>
+
+<p>デフォルトテンプレートでは <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/tag.html.erb"><code>tag.html</code></a> を作り, タグごとにページを <code>tags/{tag}.html</code> を作ります。上記の例にいくつかのタグを追加すると次のようになります:</p>
+
+<pre><code class="html">---
+title: Middleman のブログ投稿
+date: 2011/10/18
+tags: blogging, middleman, hello, world
+---
+
+Hello World
+</code></pre>
+
+<p>これで <code>tags/blogging.html</code> で表示された記事を確認できます。</p>
+
+<p>パスは <code>config.rb</code> で変更できます:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.taglink = &quot;categories/{tag}.html&quot;
+end
+</code></pre>
+
+<p>これで <code>categories/blogging.html</code> で記事一覧を確認できます。</p>
+
+<h2 id="カレンダーページ">カレンダーページ</h2>
+
+<p>多くのブログエンジンは年月日ごとの全記事を載せたページを作ります。Middleman は <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/calendar.html.erb"><code>calendar.html</code></a> テンプレートと <code>blog.calendar_template</code> 設定を使ってこれを実現します。デフォルトのテンプレートは <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/calendar.html.erb"><code>calendar.html</code></a> を作ります。このテンプレートでは <code>year</code>, <code>month</code> と <code>day</code> 変数が設定され, その日付の記事一覧を出力します。</p>
+
+<p>特定形式のカレンダーページにしたい場合 (例えば年別で日別は不要) やカレンダーページの種類ごとに異なるテンプレートを使いたい場合, <code>blog.year_template</code>, <code>blog.month_template</code> や <code>blog.day_template</code> を個別に設定できます。<code>blog.calendar_template</code> の設定はこれらすべてを設定するショートカットです。</p>
+
+<p>テンプレート内で, カレンダーページへのリンクを作るために, <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_year_path-instance_method"><code>blog_year_path</code></a>, <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_month_path-instance_method"><code>blog_month_path</code></a> や <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_day_path-instance_method"><code>blog_day_path</code></a> ヘルパを使うことができます。<code>blog.year_link</code>, <code>blog.month_link</code> や <code>blog.day_link</code> の設定でこれらのリンクがどう表示されるのかカスタマイズできます。デフォルトでは, カレンダーページは年月日ごとに <code>/2012.html</code>, <code>/2012/03.html</code> や <code>/2012/03/15.html</code> のように表示されます。</p>
+
+<h2 id="要約">要約</h2>
+
+<p>ホームページ上のようにリンクをともなった記事の要約を表示したい場合, Middleman は記事の切り取りに対応します。ブログ拡張は記事の中から <code>READMORE</code> を探し, ホームページ上にはこの文字列前までの内容を表示します。記事ページではこの情報は取り除かれます。</p>
+
+<p>ブログ拡張が検索し切り取るテキストは <code>config.rb</code> で設定できます:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.summary_separator = /SPLIT_SUMMARY_BEFORE_THIS/
+end
+</code></pre>
+
+<p>次に, ホームページ上のテンプレート (または要約を表示したい場所) に次の行を追加することで記事ページヘのリンクをともなった要約を表示することができます:</p>
+
+<pre><code class="erb">&lt;%= article.summary %&gt;
+&lt;%= link_to &#39;Read more…&#39;, article %&gt;
+</code></pre>
+
+<p><code>READMORE</code> (または設定したテキスト) が削除された状態で記事へリンクします。</p>
+
+<p><a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle"><code>BlogArticle</code></a> の <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle#summary-instance_method"><code>summary</code></a> 属性からテンプレートの中で要約を使うことができます。</p>
+
+<p><code>summary</code> は要約を切り出す長さやテキストが切り捨てられた際に表示する文字列を与えられるメソッドです:</p>
+
+<pre><code class="erb">&lt;%= article.summary(250, &#39;&gt;&gt;&#39;) %&gt;
+</code></pre>
+
+<p>250文字以下の要約と続く &quot;&gt;&gt;&quot; が出力されます。デフォルトの要約の長さは 250 文字です。無効化したい場合には, <code>blog.summary_length</code> に <code>nil</code> を設定してください。</p>
+
+<p>HTML 対応の要約の提供には, 要約を使うために <code>gem &#39;nokogiri&#39;</code> を <code>Gemfile</code> に追加しなければならないので注意してください。</p>
+
+<p>もし要約を生成する独自のメソッドがある場合, <code>blog.summary_generator</code> に <code>Proc</code> をセットできます。レンダリングされたブログの記事、切り取りたい長さ、および省略文字列を受け取り、要約を生成します。</p>
+
+<h2 id="ページネーション">ページネーション</h2>
+
+<p>長い記事の一覧は複数ページに分割できます。テンプレートは次の設定がされているとページ分割されます。</p>
+
+<pre><code class="html">---
+pageable: true
+---
+</code></pre>
+
+<p>Frontmatter で有効化に加え, ページネーションは <code>config.rb</code> の中で有効化できます:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.paginate = true
+end
+</code></pre>
+
+<p>デフォルト設定では 2 ページ目以降は <code>/2012/page/2.html</code> のようなリンクになります。これはページあたりの記事数とともに <code>config.rb</code> でカスタマイズ可能です。例えば:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.paginate = true
+  blog.page_link = &quot;p{num}&quot;
+  blog.per_page = 20
+end
+</code></pre>
+
+<p>上記の設定は, ページあたり 20 記事でリンクは <code>/2012/p2.html</code> のような結果になります。<code>per_page</code> パラメータはテンプレートの Frontmatter でテンプレートごとに設定できます。</p>
+
+<p>ページネーション対応のテンプレートでは次の変数を使うことができます:</p>
+
+<pre><code class="ruby">paginate       # ページネーションを有効化する場合には true を設定
+per_page       # ページあたりの記事数
+
+page_articles  # 記事一覧をこのページで表示する
+articles       # テンプレートのための完全な記事一覧
+
+page_number    # ページ番号
+num_pages      # 総ページ数。次のように page_numer と一緒に
+               # &quot;Page X of Y&quot; を表示する
+
+page_start     # このページの最初の記事の番号
+page_end       # このページの最後の記事の番号
+               # article.length を使って &quot;Articles X to Y of Z&quot; を表示&quot;
+
+next_page      # シーケンス内の次と前のページのためのリソース
+prev_page      # 隣接するページが存在しない場合 nil
+               # このページと他のページすべてを含む
+</code></pre>
+
+<p><code>paginate</code> が false で <code>per_page</code> がテンプレートの Frontmatter に設定されている場合, <code>page_articles</code> 変数は <code>article</code> の最初の <code>per_page</code> 分のアイテムが設定されます。これが有効になっていると改ページせずに使用できるテンプレートを作ることができます。</p>
+
+<h2 id="下書き">下書き</h2>
+
+<p>Frontmatter で下書きであることを指定できます:</p>
+
+<pre><code class="html">---
+title: Work In Progress
+published: false
+---
+
+公開されない下書き
+</code></pre>
+
+<p>下書きは development モードの場合のみ出力します。</p>
+
+<p>未来の日付の記事も未公開になります。定期的にサイトをビルドするように <code>cron</code> ジョブを使うことで, 指定した時刻に自動的に記事が公開されます。</p>
+
+<h2 id="タイムゾーン">タイムゾーン</h2>
+
+<p>RSS フィードで正確な公開時刻の取得や, 自動で正確なスケジュールで記事を公開するために, ブログのタイムゾーンを <code>config.rb</code> で設定できます:</p>
+
+<pre><code class="ruby">Time.zone = &quot;Tokyo&quot;
+</code></pre>
+
+<h2 id="カスタム記事コレクション">カスタム記事コレクション</h2>
+
+<p>Middleman ブログは <a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a> に定義したデータによって記事をグループ分けする機能に対応しています。次の一般的な例では <em>category</em> 属性を使って記事をグループ分けします。</p>
+
+<pre><code class="html">---
+title: My Middleman Blog Post
+date: 2013/10/13
+category: HTML5
+---
+
+Hello World
+</code></pre>
+
+<p>HTML5 のカテゴリに属するすべての記事を表示する <code>categories/html5.html</code> を生成するように Middleman ブログを設定できます。次の設定例を参照してください:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.custom_collections = {
+    category: {
+      link: &#39;/categories/{category}.html&#39;,
+      template: &#39;/category.html&#39;
+    }
+  }
+end
+</code></pre>
+
+<p>category 属性に基づいてコレクションを設定します。ビルドする際のカスタムページの URL 構造や使用するテンプレートを指定することができます。カスタムコレクションを生成する場合, コレクションページにアクセスする新しいヘルパ (この例では <code>category_path</code>) が生成されます。これにより <code>category_path(&#39;html5&#39;)</code> を呼び出すことができ <code>categories/html5.html</code> という URL を返します。</p>
+
+<h2 id="記事のサブディレクトリ">記事のサブディレクトリ</h2>
+
+<p>ブログ記事に紐付いた拡張子なしのサブディレクトリは, ビルド時に正しい場所へ複製されたファイルが入っています。例えば, 次のディレクトリ構造です:</p>
+
+<pre><code>source/2011-10-18-middleman.html.markdown
+source/2011-10-18-middleman/photo.jpg
+source/2011-10-18-middleman/source_code.rb
+</code></pre>
+
+<p>この出力 (<a href="/docs/middleman/jp/basics/pretty-urls/"><code>directory_indexes</code></a> が有効化された場合) は次のようになります:</p>
+
+<pre><code>build/2011/10/18/middleman/index.html
+build/2011/10/18/middleman/photo.jpg
+build/2011/10/18/middleman/source_code.rb
+</code></pre>
+
+<p>単一のブログ記事に属しているファイル (例えば画像) は source 内で一緒に保管し出力することができます。ブログ構造に依存し, 記事の中で相対リンクの使用を可能にしますが, 記事の内容がサイトの他の部分, 例えばカレンダーやタグページ, で使われる場合には注意が必要です。</p>
+
+<p>ブログ記事から記事のサブディレクトリにあるものにリンクしたい場合, ディレクトリ名を含むことに注意してください:</p>
+
+<pre><code class="markdown">Wrong: [My Photo][photo.jpg]
+Right: [My Photo][2011-10-18-middleman/photo.jpg]
+</code></pre>
+
+<p>この方法で動作するはずですが, <code>:asset_hash</code> のようなその他の Middleman の機能では動作しません。詳細については <a href="https://github.com/middleman/middleman/issues/818">この issue</a> を確認してください。</p>
+
+<h2 id="ロケール指定記事と特定言語の表示">ロケール指定記事と特定言語の表示</h2>
+
+<p>ブログ機能はロケールに対応しています。まず, <code>:blog</code> 拡張を有効化する前に <a href="/docs/middleman/jp/advanced/localization/"><code>:i18n</code></a> 拡張を有効化します。これであなたの記事はロケールに対応します。つまり記事の中で <code>t()</code> のようなヘルパが使えるということです。</p>
+
+<p>記事は特定の言語を Frontmatter で指定するか, <code>blog.sources</code> の <code>{lang}</code> 変数を使ったパスを介してもつことができます。例えば, <code>blog.sources</code> が <code>{lang}/{year}-{title}.html</code> と設定され, 記事が <code>source/de/2013-willkommen.html.markdown</code> だった場合, その記事の言語は <code>de</code> になります。<code>{lang}</code> パス変数は <code>blog.permalink</code> パスとして使うことができます。</p>
+
+<p><code>current_article.lang</code> を使ってその言語の記事にアクセスできます。さらに <code>blog.local_articles</code> を使うことでテンプレートにロケールにあった記事一覧を取得することができます。</p>
+
+<p>新しい記事を作る場合, <code>middleman article --lang &lt;locale&gt; TITLE</code> とすることでロケールを指定した記事を生成できます。</p>
+
+<h2 id="複数ブログ">複数ブログ</h2>
+
+<p>Middleman は 1 つのサイトの中で複数のブログを用意できます。1 つ以上のブログを作るには, 単に <code>:blog</code> 拡張を複数回有効化するだけです:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.name = &quot;cats&quot;
+  blog.prefix = &quot;cats&quot;
+end
+
+activate :blog do |blog|
+  blog.name = &quot;dogs&quot;
+  blog.prefix = &quot;dogs&quot;
+end
+</code></pre>
+
+<p>この設定は <code>/cats</code> と <code>/dogs</code> 2 つのブログを作ります。ブログの名前を指定することに注意してください。<code>blog()</code> のようなヘルパがあるためです (ブログ名を知らせることで, <code>blog</code> ヘルパに <code>blog(&#39;dogs&#39;)</code> のようにブログ名を与えることができます)。多くの場合には Middleman は自動的にヘルパの対象になるブログを探しますが, <code>blog</code>, <code>tag_path</code> などのヘルパを使う場合にはブログごとに名前を指定する必要があります。ページ (タグページテンプレートのような) の Frontmatter でヘルパがどのブログを使うかブログ名で指定することもできます。</p>
+
+<p>それ以外は, ブログは通常通りで完全に独立して構成することができます。</p>
+
+    </article>
+
+    <div id="support">
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+
+  <div class="sponsor">
+    <h4>Sponsors</h4>
+
+    <a href="http://fjords.cc" target="_blank">
+      <img src="/images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+
+    <a href="http://www.maxcdn.com" target="_blank" id="max">
+      <img width="130" src="/images/maxcdn.svg" />
+    </a>
+  </div>
+
+  <div class="donate">
+    <script data-gittip-username="tdreyno"
+        src="//gttp.co/v1.js"></script>
+    <p><br><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">Donate!</a><br><br></p>
+  </div>
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/localizable/basics/blogging.jp.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="/javascripts/toc.js" type="text/javascript"></script>
+    <link href="/docs/middleman/stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src='https://spacebox.io/embed/js/embed-v1.js'></script>
+    <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-90027-21']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4ef39d56613f5d017b000004');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+  </body>
+</html>

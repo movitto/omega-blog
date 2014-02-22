@@ -1,0 +1,505 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: EventMachine::Protocols::Socks4
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../EventMachine.html" title="EventMachine (module)">EventMachine</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Protocols.html" title="EventMachine::Protocols (module)">Protocols</a></span></span>
+     &raquo; 
+    <span class="title">Socks4</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: EventMachine::Protocols::Socks4
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../Connection.html" title="EventMachine::Connection (class)">Connection</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../Connection.html" title="EventMachine::Connection (class)">Connection</a></span></li>
+          
+            <li class="next">EventMachine::Protocols::Socks4</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/em/protocols/socks4.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Basic SOCKS v4 client implementation</p>
+
+<p>Use as you would any regular connection:</p>
+
+<p>class MyConn &lt; EM::P::Socks4
+  def post_init
+    send_data(“sup”)
+  end</p>
+
+<p>def receive_data(data)
+    send_data(“you said: #data”)
+  end
+end</p>
+
+<p>EM.connect socks_host, socks_port, MyConn, host, port</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Socks4) <strong>initialize</strong>(host, port) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Socks4.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#restore_methods-instance_method" title="#restore_methods (instance method)">- (Object) <strong>restore_methods</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup_methods-instance_method" title="#setup_methods (instance method)">- (Object) <strong>setup_methods</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#socks_post_init-instance_method" title="#socks_post_init (instance method)">- (Object) <strong>socks_post_init</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#socks_receive_data-instance_method" title="#socks_receive_data (instance method)">- (Object) <strong>socks_receive_data</strong>(data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Connection.html" title="EventMachine::Connection (class)">Connection</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Connection.html#close_connection-instance_method" title="EventMachine::Connection#close_connection (method)">#close_connection</a></span>, <span class='object_link'><a href="../Connection.html#close_connection_after_writing-instance_method" title="EventMachine::Connection#close_connection_after_writing (method)">#close_connection_after_writing</a></span>, <span class='object_link'><a href="../Connection.html#comm_inactivity_timeout-instance_method" title="EventMachine::Connection#comm_inactivity_timeout (method)">#comm_inactivity_timeout</a></span>, <span class='object_link'><a href="../Connection.html#comm_inactivity_timeout%3D-instance_method" title="EventMachine::Connection#comm_inactivity_timeout= (method)">#comm_inactivity_timeout=</a></span>, <span class='object_link'><a href="../Connection.html#connection_completed-instance_method" title="EventMachine::Connection#connection_completed (method)">#connection_completed</a></span>, <span class='object_link'><a href="../Connection.html#detach-instance_method" title="EventMachine::Connection#detach (method)">#detach</a></span>, <span class='object_link'><a href="../Connection.html#error%3F-instance_method" title="EventMachine::Connection#error? (method)">#error?</a></span>, <span class='object_link'><a href="../Connection.html#get_idle_time-instance_method" title="EventMachine::Connection#get_idle_time (method)">#get_idle_time</a></span>, <span class='object_link'><a href="../Connection.html#get_peer_cert-instance_method" title="EventMachine::Connection#get_peer_cert (method)">#get_peer_cert</a></span>, <span class='object_link'><a href="../Connection.html#get_peername-instance_method" title="EventMachine::Connection#get_peername (method)">#get_peername</a></span>, <span class='object_link'><a href="../Connection.html#get_pid-instance_method" title="EventMachine::Connection#get_pid (method)">#get_pid</a></span>, <span class='object_link'><a href="../Connection.html#get_proxied_bytes-instance_method" title="EventMachine::Connection#get_proxied_bytes (method)">#get_proxied_bytes</a></span>, <span class='object_link'><a href="../Connection.html#get_sock_opt-instance_method" title="EventMachine::Connection#get_sock_opt (method)">#get_sock_opt</a></span>, <span class='object_link'><a href="../Connection.html#get_sockname-instance_method" title="EventMachine::Connection#get_sockname (method)">#get_sockname</a></span>, <span class='object_link'><a href="../Connection.html#get_status-instance_method" title="EventMachine::Connection#get_status (method)">#get_status</a></span>, <span class='object_link'><a href="../Connection.html#notify_readable%3D-instance_method" title="EventMachine::Connection#notify_readable= (method)">#notify_readable=</a></span>, <span class='object_link'><a href="../Connection.html#notify_readable%3F-instance_method" title="EventMachine::Connection#notify_readable? (method)">#notify_readable?</a></span>, <span class='object_link'><a href="../Connection.html#notify_writable%3D-instance_method" title="EventMachine::Connection#notify_writable= (method)">#notify_writable=</a></span>, <span class='object_link'><a href="../Connection.html#notify_writable%3F-instance_method" title="EventMachine::Connection#notify_writable? (method)">#notify_writable?</a></span>, <span class='object_link'><a href="../Connection.html#pause-instance_method" title="EventMachine::Connection#pause (method)">#pause</a></span>, <span class='object_link'><a href="../Connection.html#paused%3F-instance_method" title="EventMachine::Connection#paused? (method)">#paused?</a></span>, <span class='object_link'><a href="../Connection.html#pending_connect_timeout-instance_method" title="EventMachine::Connection#pending_connect_timeout (method)">#pending_connect_timeout</a></span>, <span class='object_link'><a href="../Connection.html#pending_connect_timeout%3D-instance_method" title="EventMachine::Connection#pending_connect_timeout= (method)">#pending_connect_timeout=</a></span>, <span class='object_link'><a href="../Connection.html#post_init-instance_method" title="EventMachine::Connection#post_init (method)">#post_init</a></span>, <span class='object_link'><a href="../Connection.html#proxy_completed-instance_method" title="EventMachine::Connection#proxy_completed (method)">#proxy_completed</a></span>, <span class='object_link'><a href="../Connection.html#proxy_incoming_to-instance_method" title="EventMachine::Connection#proxy_incoming_to (method)">#proxy_incoming_to</a></span>, <span class='object_link'><a href="../Connection.html#proxy_target_unbound-instance_method" title="EventMachine::Connection#proxy_target_unbound (method)">#proxy_target_unbound</a></span>, <span class='object_link'><a href="../Connection.html#receive_data-instance_method" title="EventMachine::Connection#receive_data (method)">#receive_data</a></span>, <span class='object_link'><a href="../Connection.html#reconnect-instance_method" title="EventMachine::Connection#reconnect (method)">#reconnect</a></span>, <span class='object_link'><a href="../Connection.html#resume-instance_method" title="EventMachine::Connection#resume (method)">#resume</a></span>, <span class='object_link'><a href="../Connection.html#send_data-instance_method" title="EventMachine::Connection#send_data (method)">#send_data</a></span>, <span class='object_link'><a href="../Connection.html#send_datagram-instance_method" title="EventMachine::Connection#send_datagram (method)">#send_datagram</a></span>, <span class='object_link'><a href="../Connection.html#send_file_data-instance_method" title="EventMachine::Connection#send_file_data (method)">#send_file_data</a></span>, <span class='object_link'><a href="../Connection.html#set_sock_opt-instance_method" title="EventMachine::Connection#set_sock_opt (method)">#set_sock_opt</a></span>, <span class='object_link'><a href="../Connection.html#ssl_handshake_completed-instance_method" title="EventMachine::Connection#ssl_handshake_completed (method)">#ssl_handshake_completed</a></span>, <span class='object_link'><a href="../Connection.html#ssl_verify_peer-instance_method" title="EventMachine::Connection#ssl_verify_peer (method)">#ssl_verify_peer</a></span>, <span class='object_link'><a href="../Connection.html#start_tls-instance_method" title="EventMachine::Connection#start_tls (method)">#start_tls</a></span>, <span class='object_link'><a href="../Connection.html#stop_proxying-instance_method" title="EventMachine::Connection#stop_proxying (method)">#stop_proxying</a></span>, <span class='object_link'><a href="../Connection.html#stream_file_data-instance_method" title="EventMachine::Connection#stream_file_data (method)">#stream_file_data</a></span>, <span class='object_link'><a href="../Connection.html#unbind-instance_method" title="EventMachine::Connection#unbind (method)">#unbind</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="EventMachine::Protocols::Socks4 (class)">Socks4</a></span></tt>) <strong>initialize</strong>(host, port) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>A new instance of Socks4</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20
+21
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/socks4.rb', line 20</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
+  <span class='ivar'>@host</span> <span class='op'>=</span> <span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_gethostbyname'>gethostbyname</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
+  <span class='ivar'>@port</span> <span class='op'>=</span> <span class='id identifier rubyid_port'>port</span>
+  <span class='ivar'>@socks_error_code</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@buffer</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_setup_methods'>setup_methods</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="restore_methods-instance_method">
+  
+    - (<tt>Object</tt>) <strong>restore_methods</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/socks4.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_restore_methods'>restore_methods</span>
+  <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span>
+    <span class='id identifier rubyid_remove_method'>remove_method</span> <span class='symbol'>:post_init</span>
+    <span class='id identifier rubyid_remove_method'>remove_method</span> <span class='symbol'>:receive_data</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setup_methods-instance_method">
+  
+    - (<tt>Object</tt>) <strong>setup_methods</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/socks4.rb', line 28</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setup_methods'>setup_methods</span>
+  <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span>
+    <span class='kw'>def</span> <span class='id identifier rubyid_post_init'>post_init</span><span class='semicolon'>;</span> <span class='id identifier rubyid_socks_post_init'>socks_post_init</span><span class='semicolon'>;</span> <span class='kw'>end</span>
+    <span class='kw'>def</span> <span class='id identifier rubyid_receive_data'>receive_data</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='id identifier rubyid_socks_receive_data'>socks_receive_data</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="socks_post_init-instance_method">
+  
+    - (<tt>Object</tt>) <strong>socks_post_init</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/socks4.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_socks_post_init'>socks_post_init</span>
+  <span class='id identifier rubyid_header'>header</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='int'>4</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='ivar'>@port</span><span class='comma'>,</span> <span class='ivar'>@host</span><span class='comma'>,</span> <span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CCnA4C</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_send_data'>send_data</span><span class='lparen'>(</span><span class='id identifier rubyid_header'>header</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="socks_receive_data-instance_method">
+  
+    - (<tt>Object</tt>) <strong>socks_receive_data</strong>(data) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/protocols/socks4.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_socks_receive_data'>socks_receive_data</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='ivar'>@buffer</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>return</span>  <span class='kw'>if</span> <span class='ivar'>@buffer</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&lt;</span> <span class='int'>8</span>
+
+  <span class='id identifier rubyid_header_resp'>header_resp</span> <span class='op'>=</span> <span class='ivar'>@buffer</span><span class='period'>.</span><span class='id identifier rubyid_slice!'>slice!</span> <span class='int'>0</span><span class='comma'>,</span> <span class='int'>8</span>
+  <span class='id identifier rubyid__'>_</span><span class='comma'>,</span> <span class='id identifier rubyid_r'>r</span> <span class='op'>=</span> <span class='id identifier rubyid_header_resp'>header_resp</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cc</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_r'>r</span> <span class='op'>!=</span> <span class='int'>90</span>
+    <span class='ivar'>@socks_error_code</span> <span class='op'>=</span> <span class='id identifier rubyid_r'>r</span>
+    <span class='id identifier rubyid_close_connection'>close_connection</span>
+    <span class='kw'>return</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_restore_methods'>restore_methods</span>
+
+  <span class='id identifier rubyid_post_init'>post_init</span>
+  <span class='id identifier rubyid_receive_data'>receive_data</span><span class='lparen'>(</span><span class='ivar'>@buffer</span><span class='rparen'>)</span>  <span class='kw'>unless</span> <span class='ivar'>@buffer</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 19:35:00 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

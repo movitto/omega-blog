@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  API
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+		<script type="text/javascript" charset="utf-8">
+			$(function() {
+				$('.object_link').each(function() {
+					$(this).html($(this).find('a').html())
+				});
+			});
+			$(function() {
+				generateTOC();
+				if ($('#toc li').size() == 0) {
+					$('#sidebar h2.toc').hide();
+				}
+			})
+		</script>
+  </head>
+  <body>
+		<div id="top_nav">
+			<div id="inner_nav">
+				
+					<span class="title"><strong>Documentation by YARD 0.8.5.2</strong>: API</span>
+					<small class="links">
+						
+						<a href="index.html" title="&amp;larr;">&larr;</a> <a href="index.html" title="&amp;uarr;">&uarr;</a> <a href="CLIENT_HOWTO.html" title="&amp;rarr;">&rarr;</a>
+					</small>
+				
+			</div>
+		</div>
+		<div id="page">
+			<div id="sidebar">
+				<h2 class="toc">Table Of Contents</h2>
+				<div id="toc"></div>
+
+				
+				<h2>Related Topics</h2>
+				<div id="links">
+					<ol class="top">
+						
+							<li><a href="index.html" title="Documentation Overview">Documentation Overview</a></li>
+						
+						<ol>
+							
+								<li>
+									<strong>Previous:</strong>
+									<a href="index.html" title="README">README</a>
+								</li>
+							
+							
+							<li>
+								<strong>Next:</strong>
+								<a href="CLIENT_HOWTO.html" title="CLIENT_HOWTO">CLIENT_HOWTO</a>
+							</li>
+							
+						</ol>
+					</ol>
+				</div>
+				
+			</div>
+	    <div id="content"><div id='filecontents'>
+<p>## Public Omega JSON-RPC API:</p>
+
+<p>### users:</p>
+<ul><li>
+<p>users::send_message                 |message|</p>
+</li><li>
+<p>users::subscribe_to_messages</p>
+</li><li>
+<p>users::get_messages</p>
+</li><li>
+<p>users::get_entities                 |*args|</p>
+</li><li>
+<p>users::register                     |user|</p>
+</li><li>
+<p>users::confirm_register             |registration_code|</p>
+</li><li>
+<p>users::login                        |user|</p>
+</li><li>
+<p>users::logout                       |session_id|</p>
+</li><li>
+<p>users::update_user                  |user|</p>
+</li><li>
+<p>users::has_attribute                |*args|</p>
+</li></ul>
+
+<p>### motel:</p>
+<ul><li>
+<p>motel::get_location                 |*args|</p>
+</li><li>
+<p>motel::track_handler                |*args|</p>
+</li><li>
+<p>motel::remove_callbacks             |*args|</p>
+</li></ul>
+
+<p>### cosmos:</p>
+<ul><li>
+<p>cosmos::get_resource                |resource_id|</p>
+</li><li>
+<p>cosmos::get_resources               |entity_id|</p>
+</li><li>
+<p>cosmos::get_entities                |*args|</p>
+</li></ul>
+
+<p>### manufactured:</p>
+<ul><li>
+<p>manufactured::construct_entity      |manufacturer_id, *args|</p>
+</li><li>
+<p>manufactured::move_entity           |id, loc|</p>
+</li><li>
+<p>manufactured::follow_entity         |id, target_id, distance|</p>
+</li><li>
+<p>manufactured::stop_entity           |id|</p>
+</li><li>
+<p>manufactured::subscribe_to          |entity_id, event|</p>
+</li><li>
+<p>manufactured::remove_callbacks      |entity_id|</p>
+</li><li>
+<p>manufactured::dock                  |ship_id, station_id|</p>
+</li><li>
+<p>manufactured::undock                |ship_id|</p>
+</li><li>
+<p>manufactured::get_entities          |*args|</p>
+</li><li>
+<p>manufactured::collect_loot          |ship_id, loot_id|</p>
+</li><li>
+<p>manufactured::start_mining          |ship_id, resource_id|</p>
+</li><li>
+<p>manufactured::attack_entity         |attacker_id, defender_id|</p>
+</li><li>
+<p>manufactured::transfer_resource     |*args|</p>
+</li></ul>
+
+<p>### missions:</p>
+<ul><li>
+<p>missions::get_missions              |*args|</p>
+</li><li>
+<p>missions::assign_mission            |mission_id, user_id|</p>
+</li></ul>
+
+<p>### stats:</p>
+<ul><li>
+<p>stats::get_stats                    |*args|</p>
+</li></ul>
+
+<p>## Private Omega JSON-RPC API:</p>
+
+<p>### users:</p>
+<ul><li>
+<p>users::update_attribute             |user_id, attribute_id, change|</p>
+</li><li>
+<p>users::create_user                  |user|</p>
+</li><li>
+<p>users::create_role                  |role|</p>
+</li><li>
+<p>users::add_role                     |user_id, role_id|</p>
+</li><li>
+<p>users::add_privilege                |*args|</p>
+</li><li>
+<p>users::save_state                   |output|</p>
+</li><li>
+<p>users::restore_state                |input|</p>
+</li></ul>
+
+<p>### motel:</p>
+<ul><li>
+<p>motel::update_location              |loc|</p>
+</li><li>
+<p>motel::create_location              |loc|</p>
+</li><li>
+<p>motel::save_state                   |output|</p>
+</li><li>
+<p>motel::restore_state                |input|</p>
+</li><li>
+<p>motel::motel_status</p>
+</li></ul>
+
+<p>### cosmos:</p>
+<ul><li>
+<p>cosmos::set_resource                |resource|</p>
+</li><li>
+<p>cosmos::create_entity               |entity|</p>
+</li><li>
+<p>cosmos::save_state                  |output|</p>
+</li><li>
+<p>cosmos::restore_state               |input|</p>
+</li></ul>
+
+<p>### manufactured:</p>
+<ul><li>
+<p>manufactured::create_entity         |entity|</p>
+</li><li>
+<p>manufactured::add_resource          |entity_id, resource|</p>
+</li><li>
+<p>manufactured::save_state            |output|</p>
+</li><li>
+<p>manufactured::restore_state         |input|</p>
+</li><li>
+<p>manufactured::manufactured_status</p>
+</li></ul>
+
+<p>### missions:</p>
+<ul><li>
+<p>missions::create_event              |event|</p>
+</li><li>
+<p>missions::create_mission            |mission|</p>
+</li><li>
+<p>missions::save_state                |output|</p>
+</li><li>
+<p>missions::restore_state             |input|</p>
+</li></ul>
+
+<p>### stats:</p>
+</div></div>
+		</div>
+		<div style="clear:both"></div>
+    <div id="footer">
+  Generated on Fri Feb 21 16:43:35 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

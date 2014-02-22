@@ -1,0 +1,155 @@
+digraph RGL__DirectedAdjacencyGraph {
+    Athena [
+        fontsize = 8,
+        label = Athena
+    ]
+
+    Aphrodite [
+        fontsize = 8,
+        label = Aphrodite
+    ]
+
+    Philo [
+        fontsize = 8,
+        label = Philo
+    ]
+
+    Nike [
+        fontsize = 8,
+        label = Nike
+    ]
+
+    Phokas [
+        fontsize = 8,
+        label = Phokas
+    ]
+
+    Dorisi [
+        fontsize = 8,
+        label = Dorisi
+    ]
+
+    Syntyche [
+        fontsize = 8,
+        label = Syntyche
+    ]
+
+    Theodosia [
+        fontsize = 8,
+        label = Theodosia
+    ]
+
+    Aristocoles [
+        fontsize = 8,
+        label = Aristocoles
+    ]
+
+    Aphroditus [
+        fontsize = 8,
+        label = Aphroditus
+    ]
+
+    Irene [
+        fontsize = 8,
+        label = Irene
+    ]
+
+    Photina [
+        fontsize = 8,
+        label = Photina
+    ]
+
+    Zosimus [
+        fontsize = 8,
+        label = Zosimus
+    ]
+
+    Demetrium [
+        fontsize = 8,
+        label = Demetrium
+    ]
+
+    Athena -> Aphrodite [
+        fontsize = 8
+    ]
+
+    Athena -> Philo [
+        fontsize = 8
+    ]
+
+    Aphrodite -> Aphroditus [
+        fontsize = 8
+    ]
+
+    Philo -> Nike [
+        fontsize = 8
+    ]
+
+    Nike -> Phokas [
+        fontsize = 8
+    ]
+
+    Nike -> Dorisi [
+        fontsize = 8
+    ]
+
+    Nike -> Syntyche [
+        fontsize = 8
+    ]
+
+    Nike -> Theodosia [
+        fontsize = 8
+    ]
+
+    Phokas -> Dorisi [
+        fontsize = 8
+    ]
+
+    Dorisi -> Aristocoles [
+        fontsize = 8
+    ]
+
+    Dorisi -> Aphroditus [
+        fontsize = 8
+    ]
+
+    Syntyche -> Photina [
+        fontsize = 8
+    ]
+
+    Syntyche -> Theodosia [
+        fontsize = 8
+    ]
+
+    Theodosia -> Irene [
+        fontsize = 8
+    ]
+
+    Aristocoles -> Philo [
+        fontsize = 8
+    ]
+
+    Aphroditus -> Athena [
+        fontsize = 8
+    ]
+
+    Irene -> Photina [
+        fontsize = 8
+    ]
+
+    Irene -> Zosimus [
+        fontsize = 8
+    ]
+
+    Photina -> Syntyche [
+        fontsize = 8
+    ]
+
+    Zosimus -> Demetrium [
+        fontsize = 8
+    ]
+
+    Demetrium -> Athena [
+        fontsize = 8
+    ]
+}

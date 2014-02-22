@@ -1,0 +1,120 @@
+digraph RGL__DirectedAdjacencyGraph {
+    Fenrir [
+        fontsize = 8,
+        label = Fenrir
+    ]
+
+    Garm [
+        fontsize = 8,
+        label = Garm
+    ]
+
+    Vithar [
+        fontsize = 8,
+        label = Vithar
+    ]
+
+    Eir [
+        fontsize = 8,
+        label = Eir
+    ]
+
+    Vili [
+        fontsize = 8,
+        label = Vili
+    ]
+
+    Gunlad [
+        fontsize = 8,
+        label = Gunlad
+    ]
+
+    Edda [
+        fontsize = 8,
+        label = Edda
+    ]
+
+    Fenrir -> Garm [
+        fontsize = 8
+    ]
+
+    Garm -> Fenrir [
+        fontsize = 8
+    ]
+
+    Garm -> Vithar [
+        fontsize = 8
+    ]
+
+    Garm -> Eir [
+        fontsize = 8
+    ]
+
+    Garm -> Vili [
+        fontsize = 8
+    ]
+
+    Garm -> Gunlad [
+        fontsize = 8
+    ]
+
+    Garm -> Edda [
+        fontsize = 8
+    ]
+
+    Vithar -> Garm [
+        fontsize = 8
+    ]
+
+    Vithar -> Eir [
+        fontsize = 8
+    ]
+
+    Vithar -> Gunlad [
+        fontsize = 8
+    ]
+
+    Vithar -> Vili [
+        fontsize = 8
+    ]
+
+    Eir -> Garm [
+        fontsize = 8
+    ]
+
+    Eir -> Vili [
+        fontsize = 8
+    ]
+
+    Vili -> Garm [
+        fontsize = 8
+    ]
+
+    Vili -> Edda [
+        fontsize = 8
+    ]
+
+    Gunlad -> Garm [
+        fontsize = 8
+    ]
+
+    Edda -> Garm [
+        fontsize = 8
+    ]
+
+    Edda -> Eir [
+        fontsize = 8
+    ]
+
+    Edda -> Gunlad [
+        fontsize = 8
+    ]
+
+    Edda -> Fenrir [
+        fontsize = 8
+    ]
+
+    Edda -> Vithar [
+        fontsize = 8
+    ]
+}

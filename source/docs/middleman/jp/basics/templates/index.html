@@ -1,0 +1,534 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="/docs/middleman/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: テンプレート</title>
+  </head>
+  <body>
+    <!-- BuySellAds Ad Code -->
+    <script type="text/javascript">
+    (function(){
+      var bsa = document.createElement('script');
+         bsa.type = 'text/javascript';
+         bsa.async = true;
+         bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+    })();
+    </script>
+    <!-- End BuySellAds Ad Code -->
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/docs/middleman/jp/"><img width="225" height="225" alt="Middleman" src="/images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <div id="search">
+        <form>
+          <input type="text" id="st-search-input" class="st-search-input" placeholder="Search the documentation" />
+        </form>
+        <div id="st-results-container"></div>
+        <script type="text/javascript">
+          var Swiftype = window.Swiftype || {};
+          (function() {
+            Swiftype.key = 'q3qjGN5LmX2oq6w1V47y';
+            Swiftype.inputElement = '#st-search-input';
+            Swiftype.resultContainingElement = '#st-results-container';
+            Swiftype.attachElement = '#st-search-input';
+            Swiftype.renderStyle = "overlay";
+
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = "//swiftype.com/embed.js";
+            var entry = document.getElementsByTagName('script')[0];
+            entry.parentNode.insertBefore(script, entry);
+          }());
+        </script>
+      </div>
+
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman の基礎</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/basics/getting-started/">はじめに</a></li>
+      <li><a href="/docs/middleman/jp/basics/templates/">テンプレート</a></li>
+      <li><a href="/docs/middleman/jp/basics/helpers/">テンプレートヘルパ</a></li>
+      <li><a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a></li>
+      <li><a href="/docs/middleman/jp/basics/dynamic-pages/">動的ページ</a></li>
+      <li><a href="/docs/middleman/jp/basics/asset-pipeline/">アセットパイプライン</a></li>
+      <li><a href="/docs/middleman/jp/basics/pretty-urls/">きれいな URL (ディレクトリインデックス)</a></li>
+      <li><a href="/docs/middleman/jp/basics/livereload/">LiveReload</a></li>
+      <li><a href="/docs/middleman/jp/basics/blogging/">ブログ機能</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>高度な機能</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/advanced/configuration/">設定</a></li>
+      <li><a href="/docs/middleman/jp/advanced/local-data/">ローカルデータ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/localization/">多言語化 (i18n)</a></li>
+      <li><a href="/docs/middleman/jp/advanced/sitemap/">サイトマップ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/rack-middleware/">Rack ミドルウェア</a></li>
+      <li><a href="/docs/middleman/jp/advanced/custom/">カスタム拡張</a></li>
+      <li><a href="/docs/middleman/jp/advanced/file-size-optimization/">ファイルサイズ最適化</a></li>
+      <li><a href="/docs/middleman/jp/advanced/improving-cacheability/">キャッシュ機能の改善</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>コミュニティ</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/all">拡張機能</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">プロジェクトテンプレート</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/deployment">デプロイ方法</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">コミュニティフォーラム</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub リポジトリ</a></li>
+      <li><a href="/docs/middleman/jp/community/built-using-middleman/">Middleman 採用サイト</a></li>
+  </ul>
+</div>
+
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="テンプレート">テンプレート</h1>
+
+<p>Middleman は HTML の開発を簡単にするために多くのテンプレート言語へのアクセスを提供します。テンプレート言語はページ内で変数やループを使えるようにするシンプルなものから, ページを HTML に変換するまったく異なったフォーマットを提供するものにまで及びます。 Middleman は ERb, Haml, Sass, Scss や CoffeeScript のサポートを搭載しています。Tilt が有効な gem であればその他にも多くのエンジンが有効化できます。<a href="#toc_7">次のリストを参照してください</a>。</p>
+
+<h2 id="テンプレートの基礎">テンプレートの基礎</h2>
+
+<p>デフォルトのテンプレート言語は ERb です。ERb は変数の追加, メソッド呼び出し, ループの使用や if 文を除き, そのままの HTML です。このガイドの次のセクションでは使用例として ERb を使います。</p>
+
+<p>Middleman で使うテンプレートはそのファイル名にテンプレート言語の拡張子を含みます。ERb で書かれたシンプルな index ページはファイル名の <code>index.html</code> と ERb の拡張子を含む <code>index.html.erb</code> という名前になります。</p>
+
+<p>まず, このファイルには単純な HTML が書かれています:</p>
+
+<pre><code class="html">&lt;h1&gt;ようこそ&lt;/h1&gt;
+</code></pre>
+
+<p>思いつきでループを追加することができます:</p>
+
+<pre><code class="html">&lt;h1&gt;ようこそ&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;% 5.times do |num| %&gt;
+    &lt;li&gt;カウント &lt;%= num %&gt;
+  &lt;% end %&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h2 id="レイアウト">レイアウト</h2>
+
+<p>レイアウト機能はテンプレート間で共有する, 個別ページを囲むための共通 HTML の使用を可能にします。PHP 開発経験のある開発者であればページ毎に, その上部と下部に &quot;header&quot; や &quot;footer&quot; への参照をもつ使い方をしたことがあるでしょう。Ruby と Middleman では逆のアプローチを取ります。&quot;layout&quot; は &quot;header&quot; や &quot;footer&quot; 両方を含むことで個別ページのコンテンツを囲みます。</p>
+
+<p>最も基本的なレイアウトは共有コンテンツとそのテンプレートの内容を配置する <code>yield</code> を含みます。</p>
+
+<p>ERb を使ったレイアウトの例です:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;私のサイト&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;%= yield %&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+</code></pre>
+
+<p>ERb で書かれたページテンプレートが与えられます:</p>
+
+<pre><code class="html">&lt;h1&gt;Hello World&lt;/h1&gt;
+</code></pre>
+
+<p>組み合わされた最終的な HTML 出力は次のようになります:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;私のサイト&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>ファイル拡張子とパーサに関しては, レイアウト機能はビルドプロセスの中でテンプレートと異なる機能をもっているので, 正しい拡張子を与えるよう注意する必要があります。次がその理由です:</p>
+
+<p>セクション毎の異なるテンプレートを集めるような場合, ファイル拡張子は重要です。例えば, レイアウトファイルを <code>layout.html.erb</code> と名付けることで, 言語パーサにこのファイルは erb として扱えと命じることになり, html に変換されます。</p>
+
+<p>ある意味で, 拡張子を右から左に解釈することは, ファイルが左端の拡張子形式のファイルとしてパース処理されることを知らせます。例の場合, ファイルが与えられた時に erb から html に変換し, ファイルをビルドします。</p>
+
+<p>テンプレートとは異なり, レイアウトは html にレンダリングされるべきではありません。レイアウトのファイル名の左端の拡張子に <code>.html</code> を与えた場合, ビルド時のエラーの原因になります。したがって, 例えば <code>layout.erb</code> のような形式で拡張子をつける必要があります。</p>
+
+<h3 id="カスタムレイアウト">カスタムレイアウト</h3>
+
+<p>デフォルトでは, Middleman はそのサイトのあらゆるページに同じレイアウトを適用します。しかし, 複数のレイアウトを使い, どのページがその他のレイアウトを使うのか指定したい場合があります。例えば, それぞれ独自のレイアウトをもつ &quot;public&quot; サイトと &quot;admin&quot; サイトがあるような場合です。</p>
+
+<p>デフォルトのレイアウトは <code>source</code> フォルダの中で &quot;layout&quot; と名付けられ, 使用するテンプレート言語の拡張子を持ちます。デフォルトでは <code>layout.erb</code> です。あなたが作るその他のレイアウトは <code>source/layouts</code> フォルダに置かれます。</p>
+
+<p>admin 用の新しいレイアウトを作るには, <code>source/layouts</code> フォルダに新たに &quot;admin.erb&quot; ファイルを追加します。次の内容だとします:</p>
+
+<pre><code class="html">    &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;管理エリア&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;%= yield %&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<p>次に, どのページがこのレイアウトを使用するのか指定する必要があります。次の 2 つの方法で指定することができます。ページの大きなグループにこのレイアウトを適用したい場合, <code>config.rb</code> に &quot;page&quot; コマンドを使うことができます。 <code>source</code> フォルダの中に &quot;admin&quot; というフォルダがあり &quot;admin&quot; の中のテンプレートは admin レイアウトを使うとしましょう。 <code>config.rb</code> は次のようになります:</p>
+
+<pre><code class="ruby">page &quot;/admin/*&quot;, :layout =&gt; &quot;admin&quot;
+</code></pre>
+
+<p>ページのパスにワイルドカードを使うことで admin フォルダ以下のすべてのページが admin レイアウトを使うように指定しています。</p>
+
+<p>ページで直接指定することもできます。例えば, source フォルダに <code>login.html.erb</code> が置かれているが, admin レイアウトを適用したい場合です。ページテンプレートの例として次を使います。</p>
+
+<pre><code class="html">&lt;h1&gt;Login&lt;/h1&gt;
+&lt;form&gt;
+  &lt;input type=&quot;text&quot; placeholder=&quot;Email&quot;&gt;
+  &lt;input type=&quot;password&quot;&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>この特別なページに次のようにカスタムレイアウトを指定できます:</p>
+
+<pre><code class="ruby">page &quot;/login.html&quot;, :layout =&gt; &quot;admin&quot;
+</code></pre>
+
+<p>これは login ページが admin レイアウトを使うように指定しています。 <code>config.rb</code> ですべて指定する代わりに, <a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a> を使ってテンプレートのページ毎にレイアウトを指定することもできます。<code>login.html.erb</code> ページ自身にレイアウトを指定する例です。</p>
+
+<pre><code class="html">---
+layout: admin
+---
+
+&lt;h1&gt;Login&lt;/h1&gt;
+&lt;form&gt;
+  &lt;input type=&quot;text&quot; placeholder=&quot;Email&quot;&gt;
+  &lt;input type=&quot;password&quot;&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<h3 id="入れ子レイアウト">入れ子レイアウト</h3>
+
+<p>入れ子レイアウトはレイアウトの積み重ねを作成できます。この機能を理解する最も簡単なユースケースは <code>middleman-blog</code> 拡張です。ブログ記事はサイト全体のコンテンツの部分集合です。追加された内容と構造を含みますが, 最終的にサイト全体の構造によって囲まれる必要があります (header, footer など) 。</p>
+
+<p>シンプルなデフォルトのレイアウトは次のようになります:</p>
+
+<pre><code class="html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;header&gt;ヘッダ&lt;/header&gt;
+    &lt;%= yield %&gt;
+    &lt;footer&gt;フッタ&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>blog 記事が <code>blog/my-article.html.markdown</code> に置かれているとします。すべての blog 記事が デフォルトの <code>layout</code> に代わり <code>article_layout</code> を使うように指定します。 <code>config.rb</code> の記述です:</p>
+
+<pre><code class="ruby">page &quot;blog/*&quot;, :layout =&gt; :article_layout
+</code></pre>
+
+<p><code>layouts/article_layout.erb</code> は次のようになります:</p>
+
+<pre><code class="html">&lt;% wrap_layout :layout do %&gt;
+  &lt;article&gt;
+    &lt;%= yield %&gt;
+  &lt;/article&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>通常のレイアウトと同じように, <code>yield</code> はテンプレートの出力内容が配置される場所です。この例では次の出力になります:</p>
+
+<pre><code class="html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;header&gt;ヘッダ&lt;/header&gt;
+    &lt;article&gt;
+      &lt;!-- テンプレート/ブログ記事の内容 --&gt;
+    &lt;/article&gt;
+    &lt;footer&gt;フッタ&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="完全なレイアウト無効化">完全なレイアウト無効化</h3>
+
+<p>いくつかの場合では, まったくレイアウトを使いたくない場合があります。 <code>config.rb</code> でデフォルトのレイアウトを無効化することで対応できます。</p>
+
+<pre><code class="ruby">set :layout, false
+
+# もしくは個別のファイルで:
+page &#39;/foo.html&#39;, :layout =&gt; false
+</code></pre>
+
+<h2 id="パーシャル">パーシャル</h2>
+
+<p>パーシャルはコンテンツの重複を避けるためにページ全体にわたってそのコンテンツを共有する方法です。パーシャルはページテンプレートとレイアウトで使うことができます。上記 2 つのレイアウトをもつ例を続けましょう: 通常のページと admin ページです。この 2 つのレイアウトには footer のように重複する内容があります。 footer パーシャルを作成し, これらのレイアウトで使ってみましょう。</p>
+
+<p>パーシャルのファイル名は prefix にアンダースコアが付き, 使用するテンプレート言語の拡張子を含みます。例として <code>source</code> フォルダに置かれる <code>_footer.erb</code> と名付けられた footer パーシャルを示します:</p>
+
+<pre><code class="html">&lt;footer&gt;
+  Copyright 2011
+&lt;/footer&gt;
+</code></pre>
+
+<p>次に, &quot;partial&quot; メソッドを使ってデフォルトのレイアウトにパーシャルを配置します:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;私のサイト&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;%= yield %&gt;
+  &lt;%= partial &quot;footer&quot; %&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>admin レイアウトでは次のように:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;管理エリア&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;%= yield %&gt;
+  &lt;%= partial &quot;footer&quot; %&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>すると, <code>_footer.erb</code> への変更はこのパーシャルを使うそれぞれのレイアウトやレイアウトを使うページに表示されます。</p>
+
+<p>複数のページやレイアウトに Copy&amp;Paste する内容を見つけた場合, パーシャルに内容を抽出するのは良い方法です。</p>
+
+<p>パーシャルを使い始めたら, 変数を渡すことで異なった呼び出しを行いたいかもしれません。次の方法で対応出来ます:</p>
+
+<pre><code class="html">&lt;%= partial(:paypal_donate_button, :locals =&gt; { :amount =&gt; 1, :amount_text =&gt; &quot;Pay $1&quot; }) %&gt;
+&lt;%= partial(:paypal_donate_button, :locals =&gt; { :amount =&gt; 2, :amount_text =&gt; &quot;Pay $2&quot; }) %&gt;
+</code></pre>
+
+<p>すると, パーシャルの中で次のようにテキストを設定することができます:</p>
+
+<pre><code class="html">&lt;form action=&quot;https://www.paypal.com/cgi-bin/webscr&quot; method=&quot;post&quot;&gt;
+  &lt;input name=&quot;amount&quot; type=&quot;hidden&quot; value=&quot;&lt;%= &quot;#{amount}.00&quot; %&gt;&quot; &gt;
+  &lt;input type=&quot;submit&quot; value=&quot;&lt;%= amount_text %&gt;&quot; &gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>詳細については <a href="http://www.padrinorb.com/api/classes/Padrino/Helpers/RenderHelpers.html">Padrino partial helper</a> のドキュメントを読んでください。</p>
+
+<h2 id="テンプレートエンジンオプション">テンプレートエンジンオプション</h2>
+
+<p><code>config.rb</code> にテンプレートエンジンのオプションを設定することができます:</p>
+
+<pre><code class="ruby">set :haml, { :ugly =&gt; true, :format =&gt; :html5 }
+</code></pre>
+
+<h2 id="markdown">Markdown</h2>
+
+<p><code>config.rb</code> で一番好きな Markdown ライブラリを選び, オプションを設定することができます:</p>
+
+<pre><code class="ruby">set :markdown_engine, :redcarpet
+set :markdown, :fenced_code_blocks =&gt; true, :smartypants =&gt; true
+</code></pre>
+
+<p>RedCarpet を使う場合, Middleman はヘルパを用いて <code>:relative_links</code> や <code>:asset_hash</code> が行うようにリンクや画像タグを処理します。しかし, デフォルトの Markdown エンジンはインストールが簡単なことから Kramdown になっています。</p>
+
+<h3 id="他のテンプレート言語">他のテンプレート言語</h3>
+
+<p>Tilt 対応のテンプレート言語と RubyGems のリストです。動作させるにはインストール (<code>config.rb</code> で読み込む) しなければなりません。</p>
+
+<table><thead>
+<tr>
+<th>エンジン</th>
+<th>ファイル拡張子</th>
+<th>必要なライブラリ</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Slim</td>
+<td>.slim</td>
+<td>slim</td>
+</tr>
+<tr>
+<td>Erubis</td>
+<td>.erb, .rhtml, .erubis</td>
+<td>erubis</td>
+</tr>
+<tr>
+<td>Less CSS</td>
+<td>.less</td>
+<td>less</td>
+</tr>
+<tr>
+<td>Builder</td>
+<td>.builder</td>
+<td>builder</td>
+</tr>
+<tr>
+<td>Liquid</td>
+<td>.liquid</td>
+<td>liquid</td>
+</tr>
+<tr>
+<td>RDiscount</td>
+<td>.markdown, .mkd, .md</td>
+<td>rdiscount</td>
+</tr>
+<tr>
+<td>Redcarpet</td>
+<td>.markdown, .mkd, .md</td>
+<td>redcarpet</td>
+</tr>
+<tr>
+<td>BlueCloth</td>
+<td>.markdown, .mkd, .md</td>
+<td>bluecloth</td>
+</tr>
+<tr>
+<td>Kramdown</td>
+<td>.markdown, .mkd, .md</td>
+<td>kramdown</td>
+</tr>
+<tr>
+<td>Maruku</td>
+<td>.markdown, .mkd, .md</td>
+<td>maruku</td>
+</tr>
+<tr>
+<td>RedCloth</td>
+<td>.textile</td>
+<td>redcloth</td>
+</tr>
+<tr>
+<td>RDoc</td>
+<td>.rdoc</td>
+<td>rdoc</td>
+</tr>
+<tr>
+<td>Radius</td>
+<td>.radius</td>
+<td>radius</td>
+</tr>
+<tr>
+<td>Markaby</td>
+<td>.mab</td>
+<td>markaby</td>
+</tr>
+<tr>
+<td>Nokogiri</td>
+<td>.nokogiri</td>
+<td>nokogiri</td>
+</tr>
+<tr>
+<td>CoffeeScript</td>
+<td>.coffee</td>
+<td>coffee-script</td>
+</tr>
+<tr>
+<td>Creole (Wiki markup)</td>
+<td>.wiki, .creole</td>
+<td>creole</td>
+</tr>
+<tr>
+<td>WikiCloth (Wiki markup)</td>
+<td>.wiki, .mediawiki, .mw</td>
+<td>wikicloth</td>
+</tr>
+<tr>
+<td>Yajl</td>
+<td>.yajl</td>
+<td>yajl-ruby</td>
+</tr>
+<tr>
+<td>Stylus</td>
+<td>.styl</td>
+<td>stylus</td>
+</tr>
+</tbody></table>
+
+    </article>
+
+    <div id="support">
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+
+  <div class="sponsor">
+    <h4>Sponsors</h4>
+
+    <a href="http://fjords.cc" target="_blank">
+      <img src="/images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+
+    <a href="http://www.maxcdn.com" target="_blank" id="max">
+      <img width="130" src="/images/maxcdn.svg" />
+    </a>
+  </div>
+
+  <div class="donate">
+    <script data-gittip-username="tdreyno"
+        src="//gttp.co/v1.js"></script>
+    <p><br><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">Donate!</a><br><br></p>
+  </div>
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/localizable/basics/templates.jp.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="/javascripts/toc.js" type="text/javascript"></script>
+    <link href="/docs/middleman/stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src='https://spacebox.io/embed/js/embed-v1.js'></script>
+    <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-90027-21']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4ef39d56613f5d017b000004');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+  </body>
+</html>

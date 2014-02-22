@@ -1,0 +1,1115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Motel::Callbacks::Rotation
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (R)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Motel.html" title="Motel (module)">Motel</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Callbacks.html" title="Motel::Callbacks (module)">Callbacks</a></span></span>
+     &raquo; 
+    <span class="title">Rotation</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Motel::Callbacks::Rotation
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../Omega/Server/Callback.html" title="Omega::Server::Callback (class)">Omega::Server::Callback</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../../Omega/Server/Callback.html" title="Omega::Server::Callback (class)">Omega::Server::Callback</a></span></li>
+          
+            <li class="next">Motel::Callbacks::Rotation</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/motel/callbacks/rotation.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Defines a <span class='object_link'><a href="../../Omega/Server/Callback.html" title="Omega::Server::Callback (class)">Omega::Server::Callback</a></span> to only invoke callback if a location
+rotates a specified minimum axis-angle</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#axis_x-instance_method" title="#axis_x (instance method)">- (Object) <strong>axis_x</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Axis angle of rotation.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#axis_y-instance_method" title="#axis_y (instance method)">- (Object) <strong>axis_y</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Axis angle of rotation.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#axis_z-instance_method" title="#axis_z (instance method)">- (Object) <strong>axis_z</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Axis angle of rotation.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rot_theta-instance_method" title="#rot_theta (instance method)">- (Object) <strong>rot_theta</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Minimum angle location needs to have rotated.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../../Omega/Server/Callback.html" title="Omega::Server::Callback (class)">Omega::Server::Callback</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Omega/Server/Callback.html#endpoint_id-instance_method" title="Omega::Server::Callback#endpoint_id (method)">#endpoint_id</a></span>, <span class='object_link'><a href="../../Omega/Server/Callback.html#event_type-instance_method" title="Omega::Server::Callback#event_type (method)">#event_type</a></span>, <span class='object_link'><a href="../../Omega/Server/Callback.html#handler-instance_method" title="Omega::Server::Callback#handler (method)">#handler</a></span>, <span class='object_link'><a href="../../Omega/Server/Callback.html#only_if-instance_method" title="Omega::Server::Callback#only_if (method)">#only_if</a></span>, <span class='object_link'><a href="../../Omega/Server/Callback.html#rjr_event-instance_method" title="Omega::Server::Callback#rjr_event (method)">#rjr_event</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#json_create-class_method" title="json_create (class method)">+ (Object) <strong>json_create</strong>(o) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create new callback from json representation.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#check_rotation-instance_method" title="#check_rotation (instance method)">- (Object) <strong>check_rotation</strong>(loc, old_ox, old_oy, old_oz) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Helper - return bool indicating if min rotation requirement is set.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#get_rotation-instance_method" title="#get_rotation (instance method)">- (Object) <strong>get_rotation</strong>(loc) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Helper get rotation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Rotation) <strong>initialize</strong>(args = {}, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Motel::Callbacks::Rotation initializer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#invoke-instance_method" title="#invoke (instance method)">- (Object) <strong>invoke</strong>(loc, old_ox, old_oy, old_oz) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Override <span class='object_link'><a href="../../Omega/Server/Callback.html#invoke-instance_method" title="Omega::Server::Callback#invoke (method)">Omega::Server::Callback#invoke</a></span>, call original then reset local
+orientation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_json-instance_method" title="#to_json (instance method)">- (Object) <strong>to_json</strong>(*a) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert callback to json representation and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (Object) <strong>to_s</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert callback to human readable string and return it.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../../Omega/Server/Callback.html" title="Omega::Server::Callback (class)">Omega::Server::Callback</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../Omega/Server/Callback.html#should_invoke%3F-instance_method" title="Omega::Server::Callback#should_invoke? (method)">#should_invoke?</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Motel::Callbacks::Rotation (class)">Rotation</a></span></tt>) <strong>initialize</strong>(args = {}, &amp;block) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Motel::Callbacks::Rotation initializer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to initialize callback with</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:rot_theta,'rot_theta'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>minium rotation location needs to undergo before handler in invoked</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_attr_from_args'>attr_from_args</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='symbol'>:rot_theta</span> <span class='op'>=&gt;</span> <span class='int'>0</span><span class='comma'>,</span>
+                       <span class='symbol'>:axis_x</span>    <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:axis_y</span>    <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:axis_z</span>    <span class='op'>=&gt;</span> <span class='kw'>nil</span>
+  <span class='ivar'>@axis_x</span> <span class='op'>=</span> <span class='ivar'>@axis_x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='kw'>unless</span> <span class='ivar'>@axis_x</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='ivar'>@axis_y</span> <span class='op'>=</span> <span class='ivar'>@axis_y</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='kw'>unless</span> <span class='ivar'>@axis_y</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='ivar'>@axis_z</span> <span class='op'>=</span> <span class='ivar'>@axis_z</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='kw'>unless</span> <span class='ivar'>@axis_z</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='ivar'>@orig_ox</span> <span class='op'>=</span> <span class='ivar'>@orig_oy</span> <span class='op'>=</span> <span class='ivar'>@orig_oz</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+  <span class='comment'># only run handler if minimums are met
+</span>  <span class='ivar'>@only_if</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_check_rotation'>check_rotation</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span><span class='rbrace'>}</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="axis_x=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="axis_x-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>axis_x</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Axis angle of rotation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_axis_x'>axis_x</span>
+  <span class='ivar'>@axis_x</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="axis_y=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="axis_y-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>axis_y</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Axis angle of rotation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_axis_y'>axis_y</span>
+  <span class='ivar'>@axis_y</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="axis_z=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="axis_z-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>axis_z</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Axis angle of rotation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_axis_z'>axis_z</span>
+  <span class='ivar'>@axis_z</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="rot_theta=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="rot_theta-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>rot_theta</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Minimum angle location needs to have rotated</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rot_theta'>rot_theta</span>
+  <span class='ivar'>@rot_theta</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="json_create-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>json_create</strong>(o) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create new callback from json representation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_json_create'>json_create</span><span class='lparen'>(</span><span class='id identifier rubyid_o'>o</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_callback'>callback</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_o'>o</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_callback'>callback</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="check_rotation-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>check_rotation</strong>(loc, old_ox, old_oy, old_oz)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Helper - return bool indicating if min rotation requirement is set</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42
+43
+44
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_check_rotation'>check_rotation</span><span class='lparen'>(</span><span class='id identifier rubyid_loc'>loc</span><span class='comma'>,</span> <span class='id identifier rubyid_old_ox'>old_ox</span><span class='comma'>,</span> <span class='id identifier rubyid_old_oy'>old_oy</span><span class='comma'>,</span> <span class='id identifier rubyid_old_oz'>old_oz</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_orientation'>orientation</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='id identifier rubyid_old_ox'>old_ox</span><span class='comma'>,</span> <span class='id identifier rubyid_old_oy'>old_oy</span><span class='comma'>,</span> <span class='id identifier rubyid_old_oz'>old_oz</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_o'>o</span><span class='op'>|</span> <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='rbrace'>}</span>
+
+  <span class='ivar'>@orig_ox</span><span class='comma'>,</span><span class='ivar'>@orig_oy</span><span class='comma'>,</span><span class='ivar'>@orig_oz</span> <span class='op'>=</span> <span class='id identifier rubyid_old_ox'>old_ox</span><span class='comma'>,</span><span class='id identifier rubyid_old_oy'>old_oy</span><span class='comma'>,</span><span class='id identifier rubyid_old_oz'>old_oz</span> <span class='kw'>if</span> <span class='ivar'>@orig_ox</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_da'>da</span> <span class='op'>=</span> <span class='id identifier rubyid_get_rotation'>get_rotation</span><span class='lparen'>(</span><span class='id identifier rubyid_loc'>loc</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_da'>da</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span> <span class='op'>&gt;=</span> <span class='ivar'>@rot_theta</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_rotation-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>get_rotation</strong>(loc)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Helper get rotation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_rotation'>get_rotation</span><span class='lparen'>(</span><span class='id identifier rubyid_loc'>loc</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='lparen'>(</span><span class='ivar'>@axis_x</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='ivar'>@axis_y</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='ivar'>@axis_z</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span>
+    <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_rotated_angle'>rotated_angle</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_orientation'>orientation</span><span class='comma'>,</span> <span class='ivar'>@orig_ox</span><span class='comma'>,</span> <span class='ivar'>@orig_oy</span><span class='comma'>,</span> <span class='ivar'>@orig_oz</span><span class='comma'>,</span>
+                        <span class='ivar'>@axis_x</span><span class='comma'>,</span> <span class='ivar'>@axis_y</span><span class='comma'>,</span> <span class='ivar'>@axis_z</span><span class='rparen'>)</span>
+
+  <span class='comment'># if axis angle is nil/invalid and location movement strategy includes
+</span>  <span class='comment'># rotate movement strategy mixin, use axis of rotation
+</span>  <span class='kw'>elsif</span> <span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_ms'>ms</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_ancestors'>ancestors</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='const'>Motel</span><span class='op'>::</span><span class='const'>MovementStrategies</span><span class='op'>::</span><span class='const'>Rotatable</span><span class='rparen'>)</span>
+    <span class='const'>Motel</span><span class='period'>.</span><span class='id identifier rubyid_rotated_angle'>rotated_angle</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_orientation'>orientation</span><span class='comma'>,</span> <span class='ivar'>@orig_ox</span><span class='comma'>,</span> <span class='ivar'>@orig_oy</span><span class='comma'>,</span> <span class='ivar'>@orig_oz</span><span class='comma'>,</span>
+                        <span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_ms'>ms</span><span class='period'>.</span><span class='id identifier rubyid_rot_x'>rot_x</span><span class='comma'>,</span> <span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_ms'>ms</span><span class='period'>.</span><span class='id identifier rubyid_rot_y'>rot_y</span><span class='comma'>,</span> <span class='id identifier rubyid_loc'>loc</span><span class='period'>.</span><span class='id identifier rubyid_ms'>ms</span><span class='period'>.</span><span class='id identifier rubyid_rot_z'>rot_z</span><span class='rparen'>)</span>
+
+  <span class='kw'>else</span>
+    <span class='int'>0</span> <span class='comment'># throw err or other?
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="invoke-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>invoke</strong>(loc, old_ox, old_oy, old_oz) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Override <span class='object_link'><a href="../../Omega/Server/Callback.html#invoke-instance_method" title="Omega::Server::Callback#invoke (method)">Omega::Server::Callback#invoke</a></span>, call original then reset local
+orientation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>old_ox</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>old x orientation of location</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>old_oy</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>old y orientation of location</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>old_oz</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>old z orientation of location</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_invoke'>invoke</span><span class='lparen'>(</span><span class='id identifier rubyid_loc'>loc</span><span class='comma'>,</span> <span class='id identifier rubyid_old_ox'>old_ox</span><span class='comma'>,</span> <span class='id identifier rubyid_old_oy'>old_oy</span><span class='comma'>,</span> <span class='id identifier rubyid_old_oz'>old_oz</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_da'>da</span> <span class='op'>=</span> <span class='id identifier rubyid_get_rotation'>get_rotation</span><span class='lparen'>(</span><span class='id identifier rubyid_loc'>loc</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_loc'>loc</span><span class='comma'>,</span> <span class='id identifier rubyid_da'>da</span><span class='rparen'>)</span>
+  <span class='ivar'>@orig_ox</span> <span class='op'>=</span> <span class='ivar'>@orig_ox</span> <span class='op'>=</span> <span class='ivar'>@orig_oz</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_json-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_json</strong>(*a) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert callback to json representation and return it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>json_class</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data</span><span class='tstring_end'>&#39;</span></span>       <span class='op'>=&gt;</span>
+      <span class='lbrace'>{</span> <span class='symbol'>:endpoint_id</span> <span class='op'>=&gt;</span> <span class='ivar'>@endpoint_id</span><span class='comma'>,</span>
+        <span class='symbol'>:rot_theta</span>   <span class='op'>=&gt;</span> <span class='ivar'>@rot_theta</span><span class='comma'>,</span>
+        <span class='symbol'>:axis_x</span>      <span class='op'>=&gt;</span> <span class='ivar'>@axis_x</span><span class='comma'>,</span>
+        <span class='symbol'>:axis_y</span>      <span class='op'>=&gt;</span> <span class='ivar'>@axis_y</span><span class='comma'>,</span>
+        <span class='symbol'>:axis_z</span>      <span class='op'>=&gt;</span> <span class='ivar'>@axis_z</span> <span class='rbrace'>}</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_s</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert callback to human readable string and return it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/motel/callbacks/rotation.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@rot_theta</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='ivar'>@axis_x</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='ivar'>@axis_y</span><span class='embexpr_end'>}</span><span class='tstring_content'>,</span><span class='embexpr_beg'>#{</span><span class='ivar'>@axis_z</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:38 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

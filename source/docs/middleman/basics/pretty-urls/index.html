@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="/docs/middleman/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: Pretty URLs (Directory Indexes)</title>
+  </head>
+  <body>
+    <!-- BuySellAds Ad Code -->
+    <script type="text/javascript">
+    (function(){
+      var bsa = document.createElement('script');
+         bsa.type = 'text/javascript';
+         bsa.async = true;
+         bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+    })();
+    </script>
+    <!-- End BuySellAds Ad Code -->
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/docs/middleman/"><img width="225" height="225" alt="Middleman" src="/images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <div id="search">
+        <form>
+          <input type="text" id="st-search-input" class="st-search-input" placeholder="Search the documentation" />
+        </form>
+        <div id="st-results-container"></div>
+        <script type="text/javascript">
+          var Swiftype = window.Swiftype || {};
+          (function() {
+            Swiftype.key = 'q3qjGN5LmX2oq6w1V47y';
+            Swiftype.inputElement = '#st-search-input';
+            Swiftype.resultContainingElement = '#st-results-container';
+            Swiftype.attachElement = '#st-search-input';
+            Swiftype.renderStyle = "overlay";
+
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = "//swiftype.com/embed.js";
+            var entry = document.getElementsByTagName('script')[0];
+            entry.parentNode.insertBefore(script, entry);
+          }());
+        </script>
+      </div>
+
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman Basics</h3>
+  <ul>
+      <li><a href="/docs/middleman/basics/getting-started/">Getting Started</a></li>
+      <li><a href="/docs/middleman/basics/templates/">Templates</a></li>
+      <li><a href="/docs/middleman/basics/helpers/">Template Helpers</a></li>
+      <li><a href="/docs/middleman/basics/frontmatter/">Frontmatter</a></li>
+      <li><a href="/docs/middleman/basics/dynamic-pages/">Dynamic Pages</a></li>
+      <li><a href="/docs/middleman/basics/asset-pipeline/">Asset Pipeline</a></li>
+      <li><a href="/docs/middleman/basics/pretty-urls/">Pretty URLs (Directory Indexes)</a></li>
+      <li><a href="/docs/middleman/basics/livereload/">LiveReload</a></li>
+      <li><a href="/docs/middleman/basics/blogging/">Blogging</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Advanced Features</h3>
+  <ul>
+      <li><a href="/docs/middleman/advanced/configuration/">Configuring Your Site</a></li>
+      <li><a href="/docs/middleman/advanced/local-data/">Local Data</a></li>
+      <li><a href="/docs/middleman/advanced/localization/">Localization (i18n)</a></li>
+      <li><a href="/docs/middleman/advanced/sitemap/">The Sitemap</a></li>
+      <li><a href="/docs/middleman/advanced/rack-middleware/">Rack Middleware</a></li>
+      <li><a href="/docs/middleman/advanced/custom/">Custom Extensions</a></li>
+      <li><a href="/docs/middleman/advanced/file-size-optimization/">File Size Optimization</a></li>
+      <li><a href="/docs/middleman/advanced/improving-cacheability/">Improving Cacheability</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Community</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/all">Extensions</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">Project Templates</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/deployment">Deployment Solutions</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">Community Forum</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub Repository</a></li>
+      <li><a href="/docs/middleman/community/built-using-middleman/">Sites Built Using Middleman</a></li>
+  </ul>
+</div>
+
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="pretty-urls-(directory-indexes)">Pretty URLs (Directory Indexes)</h1>
+
+<p>By default Middleman will output the files exactly as you have described them in your project. For example a <code>about-us.html.erb</code> file in the <code>source</code> folder will be output as <code>about-us.html</code> when you build the project. If you were to place this project in the root of a web server at <code>example.com</code>, then this page would be accessible at: <code>http://example.com/about-us.html</code></p>
+
+<p>Middleman provides the Directory Indexes extension to tell Middleman to create a folder for each <code>.html</code> file and place the built template file as the index of that folder. In your <code>config.rb</code>:</p>
+
+<pre><code class="ruby">activate :directory_indexes
+</code></pre>
+
+<p>Now when the above project is built, the <code>about-us.html.erb</code> file will be output as <code>about-us/index.html</code>. When served by a web server that supports &quot;index files&quot; (like Apache, or Amazon S3), the page would be available at:</p>
+
+<pre><code class="ruby">http://example.com/about-us
+</code></pre>
+
+<p>If you prefer a different file be output, you can use the <code>index_file</code> variable. For example, IIS uses default.html:</p>
+
+<pre><code class="ruby">set :index_file, &quot;default.html&quot;
+</code></pre>
+
+<p>Or, you may want a PHP file:</p>
+
+<pre><code class="ruby">set :index_file, &quot;index.php&quot;
+</code></pre>
+
+<h4 id="warning-about-assets-path">Warning about assets path</h4>
+
+<p>When using directory indexes, calling assets (e.g. image files) by their filename only will fail. They need to be called with their full absolute path, like this:</p>
+
+<pre><code class="ruby">![Amazing picture](/posts/2013-09-23-some-interesting-post/amazing-image.png)
+</code></pre>
+
+<p>To slightly automate this process, the markdown may be processed by ERB first. For exemple, in a file named <code>/posts/2013-09-23-some-interesting-post.html.markdown.erb</code>:</p>
+
+<pre><code class="ruby">![Amazing picture](&lt;%= current_page.url %&gt;some-image.png)
+</code></pre>
+
+<h2 id="opt-out">Opt-out</h2>
+
+<p>If there are pages which you don&#39;t want automatically renamed, you can opt-out:</p>
+
+<pre><code class="ruby">page &quot;/i-really-want-the-extension.html&quot;, :directory_index =&gt; false
+</code></pre>
+
+<p><code>page</code> works with regexes or file globs if you want to turn off indexes for many files at once.</p>
+
+<p>You can also add a <code>directory_index: false</code> key to your page&#39;s <a href="/docs/middleman/basics/frontmatter/">Frontmatter</a> to disable directory indexes.</p>
+
+<h2 id="manual-indexes">Manual Indexes</h2>
+
+<p>If your template file is already named <code>index.html</code> it will pass through Middleman untouched. For example, <code>my-page/index.html.erb</code> will generate <code>my-page/index.html</code> as you would expect.</p>
+
+    </article>
+
+    <div id="support">
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+
+  <div class="sponsor">
+    <h4>Sponsors</h4>
+
+    <a href="http://fjords.cc" target="_blank">
+      <img src="/images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+
+    <a href="http://www.maxcdn.com" target="_blank" id="max">
+      <img width="130" src="/images/maxcdn.svg" />
+    </a>
+  </div>
+
+  <div class="donate">
+    <script data-gittip-username="tdreyno"
+        src="//gttp.co/v1.js"></script>
+    <p><br><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">Donate!</a><br><br></p>
+  </div>
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/basics/pretty-urls.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="/javascripts/toc.js" type="text/javascript"></script>
+    <link href="/docs/middleman/stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src='https://spacebox.io/embed/js/embed-v1.js'></script>
+    <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-90027-21']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4ef39d56613f5d017b000004');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+  </body>
+</html>

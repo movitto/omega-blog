@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: EventMachine::Protocols
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../EventMachine.html" title="EventMachine (module)">EventMachine</a></span></span>
+     &raquo; 
+    <span class="title">Protocols</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: EventMachine::Protocols
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/em/protocols.rb<span class="defines">,<br />
+  lib/em/protocols/stomp.rb,<br /> lib/em/protocols/socks4.rb,<br /> lib/em/protocols/tcptest.rb,<br /> lib/em/protocols/saslauth.rb,<br /> lib/em/protocols/memcache.rb,<br /> lib/em/protocols/linetext2.rb,<br /> lib/em/protocols/postgres3.rb,<br /> lib/em/protocols/httpclient.rb,<br /> lib/em/protocols/smtpclient.rb,<br /> lib/em/protocols/smtpserver.rb,<br /> lib/em/protocols/httpclient2.rb,<br /> lib/em/protocols/line_and_text.rb,<br /> lib/em/protocols/line_protocol.rb,<br /> lib/em/protocols/object_protocol.rb,<br /> lib/em/protocols/header_and_content.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>This module contains various protocol implementations, including:
+- HttpClient and HttpClient2
+- Stomp
+- Memcache
+- SmtpClient and SmtpServer
+- SASLauth and SASLauthclient
+- LineProtocol, LineAndTextProtocol and LineText2
+- HeaderAndContentProtocol
+- Postgres3
+- ObjectProtocol</p>
+
+<p>The protocol implementations live in separate files in the protocols/ subdirectory,
+but are auto-loaded when they are first referenced in your application.</p>
+
+<p>EventMachine::Protocols is also aliased to EM::P for easier usage.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Protocols/LineProtocol.html" title="EventMachine::Protocols::LineProtocol (module)">LineProtocol</a></span>, <span class='object_link'><a href="Protocols/LineText2.html" title="EventMachine::Protocols::LineText2 (module)">LineText2</a></span>, <span class='object_link'><a href="Protocols/Memcache.html" title="EventMachine::Protocols::Memcache (module)">Memcache</a></span>, <span class='object_link'><a href="Protocols/ObjectProtocol.html" title="EventMachine::Protocols::ObjectProtocol (module)">ObjectProtocol</a></span>, <span class='object_link'><a href="Protocols/SASLauth.html" title="EventMachine::Protocols::SASLauth (module)">SASLauth</a></span>, <span class='object_link'><a href="Protocols/SASLauthclient.html" title="EventMachine::Protocols::SASLauthclient (module)">SASLauthclient</a></span>, <span class='object_link'><a href="Protocols/Stomp.html" title="EventMachine::Protocols::Stomp (module)">Stomp</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Protocols/HeaderAndContentProtocol.html" title="EventMachine::Protocols::HeaderAndContentProtocol (class)">HeaderAndContentProtocol</a></span>, <span class='object_link'><a href="Protocols/HttpClient.html" title="EventMachine::Protocols::HttpClient (class)">HttpClient</a></span>, <span class='object_link'><a href="Protocols/HttpClient2.html" title="EventMachine::Protocols::HttpClient2 (class)">HttpClient2</a></span>, <span class='object_link'><a href="Protocols/LineAndTextProtocol.html" title="EventMachine::Protocols::LineAndTextProtocol (class)">LineAndTextProtocol</a></span>, <span class='object_link'><a href="Protocols/Postgres3.html" title="EventMachine::Protocols::Postgres3 (class)">Postgres3</a></span>, <span class='object_link'><a href="Protocols/SmtpClient.html" title="EventMachine::Protocols::SmtpClient (class)">SmtpClient</a></span>, <span class='object_link'><a href="Protocols/SmtpServer.html" title="EventMachine::Protocols::SmtpServer (class)">SmtpServer</a></span>, <span class='object_link'><a href="Protocols/Socks4.html" title="EventMachine::Protocols::Socks4 (class)">Socks4</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 19:34:59 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

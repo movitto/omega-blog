@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h2 id="the-omega-simulation-framework">The Omega Simulation Framework</h2>
+
+<p>The Omega Project is a Universe Simulator accessible remotely
+by registered users over the <a href="http://en.wikipedia.org/wiki/JSON-RPC">JSON-RPC</a>
+protocol.</p>
+
+<p>This allows the most users and developers to access the universe and control
+ships / stations / other entities in via many mechanisms.</p>
+
+<p>You can see an instance running on the Omegaverse at
+<a href="http://omegaverse.info">omegaverse.info</a></p>
+
+<p>For a quick user tutorial see <a href="http://github.com/movitto/omega/wiki/Tutorial">this</a>.
+To run your own node on the Omegaverse see the
+<a href="http://github.com/movitto/omega/wiki/Install">install</a> document.</p>
+
+<p>See the <a href="http://github.com/movitto/omega/wiki">wiki</a> for many other
+helpful links as well as
+<a href="http://github.com/movitto/omega/wiki/MultiMedia">screenshots &amp; videos</a>.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>At the core of the simulation is
+<a href="https://github.com/movitto/omega/blob/master/bin/omega-server">omega-server</a>,
+the process that is responsible for registering the Omega subsystems and
+listening for requests:</p>
+
+<p><img src="https://raw.github.com/wiki/movitto/omega/images/overview.png" alt="overview.png" /></p>
+
+<p>Omega consists of several subsystems:</p>
+
+<ul>
+  <li>
+    <p><strong>Motel</strong> - <strong>M</strong>ovable <strong>O</strong>bject <strong>T</strong>racking <strong>E</strong>ncompassing <strong>L</strong>ocations -
+Tracks locations, in 3d cartesian space. The location’s movement strategy periodically
+updates the location’s properties. (eg along linear, elliptical paths, to follow
+another location, rotate, etc)</p>
+  </li>
+  <li>
+    <p><strong>Users</strong> - User registrations, sessions, permissions, groups, etc</p>
+  </li>
+  <li>
+    <p><strong>Cosmos</strong> - Manages heirarchies of cosmos entities, galaxies, solar systems,
+stars, planets, moons, asteroids, etc. Each cosmos entity is associated with
+a location tracked by Motel.</p>
+  </li>
+  <li>
+    <p><strong>Manufactured</strong> - Manages player controlled and constructed entities,
+ships, stations, etc. Similar to the cosmos subsystem, each manufactured entity
+is associated with a location managed by Motel.</p>
+  </li>
+  <li>
+    <p><strong>Missions</strong> - Manages high level recurring events and goals. Privileged
+users are permitted to create sequences of checks/operations which query/impact
+other subsystems.</p>
+  </li>
+  <li>
+    <p><strong>Stats</strong> - Provides access to overall user and universe statistics. Other
+subsystems may write to stats here and/or read stats to modify operations.</p>
+  </li>
+  <li>
+    <p><strong>Omega</strong> - Convenience utilities to bind the various server side subsystems
+together, and provides simple mechanisms which to invoke functionality via a remote client.
+This includes a simple dsl which can be used to setup a simulation as well as an
+event based interface which to query/manipulate entities.</p>
+  </li>
+</ul>
+
+<h2 id="invoking">Invoking</h2>
+
+<p>Entities may be controlled and subsystems may be queried via any programming
+language and transport protocol. See the
+<a href="http://github.com/movitto/omega/wiki/Clients">Clients</a> page on the wiki for
+more details.</p>
+
+<p>The Omega Project also comes with an interactive web frontend based on
+WebGL (via <a href="http://threejs.org/">three.js</a>) and
+<a href="http://middlemanapp.com/">middleman</a>. This is a completely optional component,
+an Omegaverse node will run just fine w/out it, but if installed provides
+a rich view to the node(s) which its configured for.</p>
+
+<p>See the <a href="http://github.com/movitto/omega/wiki/Web-UI">Web UI</a> and
+<a href="http://github.com/movitto/omega/wiki/Tutorial">Tutorial</a>
+wiki pages for more details.</p>
+
+<h2 id="using">Using</h2>
+
+<p>Generate documentation via</p>
+
+<p>rake yard</p>
+
+<p>To run test suite:</p>
+
+<p>rake spec</p>
+
+<h2 id="authors">Authors</h2>
+<ul>
+  <li>Mo Morsi <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#109;&#111;&#064;&#109;&#111;&#114;&#115;&#105;&#046;&#111;&#114;&#103;">&#109;&#111;&#064;&#109;&#111;&#114;&#115;&#105;&#046;&#111;&#114;&#103;</a></li>
+  <li>Nicolas Satragno <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#110;&#115;&#097;&#116;&#114;&#097;&#103;&#110;&#111;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">&#110;&#115;&#097;&#116;&#114;&#097;&#103;&#110;&#111;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;</a></li>
+</ul>
+</div></div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:31 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

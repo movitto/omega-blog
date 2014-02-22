@@ -1,0 +1,5517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Manufactured::Ship
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Manufactured.html" title="Manufactured (module)">Manufactured</a></span></span>
+     &raquo; 
+    <span class="title">Ship</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Manufactured::Ship
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Manufactured::Ship</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Entity/HasCargo.html" title="Manufactured::Entity::HasCargo (module)">Entity::HasCargo</a></span>, <span class='object_link'><a href="Entity/InSystem.html" title="Manufactured::Entity::InSystem (module)">Entity::InSystem</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/manufactured/ship.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>A player owned vehicle, residing in a <span class='object_link'><a href="../Cosmos/Entities/SolarSystem.html" title="Cosmos::Entities::SolarSystem (class)">Cosmos::Entities::SolarSystem</a></span>.
+Ships requires <span class='object_link'><a href="../Cosmos/Entities/JumpGate.html" title="Cosmos::Entities::JumpGate (class)">Cosmos::Entities::JumpGate</a></span>s to travel in between systems
+and may mine resources and attack other manufactured entities depending on
+the ship type</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="TYPES-constant" class="">TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>General ship classification, used to determine a ship&#39;s capabilities</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='symbol'>:frigate</span><span class='comma'>,</span> <span class='symbol'>:transport</span><span class='comma'>,</span> <span class='symbol'>:escort</span><span class='comma'>,</span> <span class='symbol'>:destroyer</span><span class='comma'>,</span> <span class='symbol'>:bomber</span><span class='comma'>,</span> <span class='symbol'>:corvette</span><span class='comma'>,</span>
+<span class='symbol'>:battlecruiser</span><span class='comma'>,</span> <span class='symbol'>:exploration</span><span class='comma'>,</span> <span class='symbol'>:mining</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="ATTACK_TYPES-constant" class="">ATTACK_TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Types of ships with attack capabilities</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='symbol'>:escort</span><span class='comma'>,</span> <span class='symbol'>:destroyer</span><span class='comma'>,</span> <span class='symbol'>:bomber</span><span class='comma'>,</span> <span class='symbol'>:corvette</span><span class='comma'>,</span> <span class='symbol'>:battlecruiser</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="SIZES-constant" class="">SIZES =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Mapping of ship types to default sizes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span><span class='symbol'>:frigate</span> <span class='op'>=&gt;</span> <span class='int'>35</span><span class='comma'>,</span>  <span class='symbol'>:transport</span> <span class='op'>=&gt;</span> <span class='int'>25</span><span class='comma'>,</span> <span class='symbol'>:escort</span> <span class='op'>=&gt;</span> <span class='int'>20</span><span class='comma'>,</span>
+<span class='symbol'>:destroyer</span> <span class='op'>=&gt;</span> <span class='int'>30</span><span class='comma'>,</span> <span class='symbol'>:bomber</span> <span class='op'>=&gt;</span> <span class='int'>25</span><span class='comma'>,</span> <span class='symbol'>:corvette</span> <span class='op'>=&gt;</span> <span class='int'>25</span><span class='comma'>,</span>
+<span class='symbol'>:battlecruiser</span> <span class='op'>=&gt;</span> <span class='int'>35</span><span class='comma'>,</span> <span class='symbol'>:exploration</span> <span class='op'>=&gt;</span> <span class='int'>23</span><span class='comma'>,</span> <span class='symbol'>:mining</span> <span class='op'>=&gt;</span> <span class='int'>25</span><span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Movement Properties <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#movement_speed-instance_method" title="#movement_speed (instance method)">- (Object) <strong>movement_speed</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Distance ship travels during a single movement cycle.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rotation_speed-instance_method" title="#rotation_speed (instance method)">- (Object) <strong>rotation_speed</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Max angle ship can rotate in a single movmeent cycle.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+  <h2>Attack/Defense Properties <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#attack_distance-instance_method" title="#attack_distance (instance method)">- (Object) <strong>attack_distance</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Max distance ship may be for a target to attack it.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#attack_rate-instance_method" title="#attack_rate (instance method)">- (Object) <strong>attack_rate</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Number of attacks per second ship can launch.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#damage_dealt-instance_method" title="#damage_dealt (instance method)">- (Object) <strong>damage_dealt</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Damage ship deals per hit.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destroyed_by-instance_method" title="#destroyed_by (instance method)">- (Object) <strong>destroyed_by</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Ship which destroyed this one (or its id) if applicable.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hp-instance_method" title="#hp (instance method)">- (Object) <strong>hp</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Hit points the ship has.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#max_hp-instance_method" title="#max_hp (instance method)">- (Object) <strong>max_hp</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Max hp the ship can have.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#max_shield_level-instance_method" title="#max_shield_level (instance method)">- (Object) <strong>max_shield_level</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Max shield level of the ship.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shield_level-instance_method" title="#shield_level (instance method)">- (Object) <strong>shield_level</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Current shield level of the ship.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shield_refresh_rate-instance_method" title="#shield_refresh_rate (instance method)">- (Object) <strong>shield_refresh_rate</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Shield refresh rate in units per second.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+  <h2>Mining Properties <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mining_distance-instance_method" title="#mining_distance (instance method)">- (Object) <strong>mining_distance</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Max distance ship may be from entity to mine it.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mining_quantity-instance_method" title="#mining_quantity (instance method)">- (Object) <strong>mining_quantity</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Quatity of resource being mined that can be extracted each time mining
+operation is performed.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mining_rate-instance_method" title="#mining_rate (instance method)">- (Object) <strong>mining_rate</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Number of mining operations per second ship can perform.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+  <h2>Looting Properties <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#collection_distance-instance_method" title="#collection_distance (instance method)">- (Object) <strong>collection_distance</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Max distance ship may be from loot to collect it.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#callbacks-instance_method" title="#callbacks (instance method)">- (Object) <strong>callbacks</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Callbacks to invoke on ship events.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#distance_moved-instance_method" title="#distance_moved (instance method)">- (Object) <strong>distance_moved</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Total distance ship moved.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#docked_at-instance_method" title="#docked_at (instance method)">- (Object) <strong>docked_at</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p><span class='object_link'><a href="Station.html" title="Manufactured::Station (class)">Station</a></span> ship is docked to, nil if not docked TODO replace
+w/ foreign_reference.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#docked_at_id-instance_method" title="#docked_at_id (instance method)">- (Object) <strong>docked_at_id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p><span class='object_link'><a href="../String.html" title="String (class)">String</a></span> id of the station ship is docked to.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#id-instance_method" title="#id (instance method)">- (Object) <strong>id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Unique string id of the ship.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mining-instance_method" title="#mining (instance method)">- (Object) <strong>mining</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p><span class='object_link'><a href="../Cosmos/Resource.html" title="Cosmos::Resource (class)">Cosmos::Resource</a></span> ship is mining, nil if not mining.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#size-instance_method" title="#size (instance method)">- (Object) <strong>size</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Size of the ship.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">- (Object) <strong>type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><dl class="rdoc-list label-list"><dt>SHIP_TYPE
+<dd>
+<p>General category / classification of ship.</p>
+</dd></dl>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_id-instance_method" title="#user_id (instance method)">- (Object) <strong>user_id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>ID of user which ship belongs to.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Entity/HasCargo.html" title="Manufactured::Entity::HasCargo (module)">Entity::HasCargo</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Entity/HasCargo.html#cargo_capacity-instance_method" title="Manufactured::Entity::HasCargo#cargo_capacity (method)">#cargo_capacity</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#resources-instance_method" title="Manufactured::Entity::HasCargo#resources (method)">#resources</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#transfer_distance-instance_method" title="Manufactured::Entity::HasCargo#transfer_distance (method)">#transfer_distance</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Entity/InSystem.html" title="Manufactured::Entity::InSystem (module)">Entity::InSystem</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Entity/InSystem.html#location-instance_method" title="Manufactured::Entity::InSystem#location (method)">#location</a></span>, <span class='object_link'><a href="Entity/InSystem.html#solar_system-instance_method" title="Manufactured::Entity::InSystem#solar_system (method)">#solar_system</a></span>, <span class='object_link'><a href="Entity/InSystem.html#system_id-instance_method" title="Manufactured::Entity::InSystem#system_id (method)">#system_id</a></span></p>
+
+
+  
+    <h2>
+      Movement Properties
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_movement_speed-class_method" title="base_movement_speed (class method)">+ (Integer) <strong>base_movement_speed</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base movement speed of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_rotation_speed-class_method" title="base_rotation_speed (class method)">+ (Integer) <strong>base_rotation_speed</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base rotation speed of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Attack/Defense Properties
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_attack_distance-class_method" title="base_attack_distance (class method)">+ (Integer) <strong>base_attack_distance</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base attack distance of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_attack_rate-class_method" title="base_attack_rate (class method)">+ (Integer) <strong>base_attack_rate</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base attack rate of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_damage_dealt-class_method" title="base_damage_dealt (class method)">+ (Integer) <strong>base_damage_dealt</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base damage dealt by a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_hp-class_method" title="base_hp (class method)">+ (Integer) <strong>base_hp</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base hp of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_shield_level-class_method" title="base_shield_level (class method)">+ (Integer) <strong>base_shield_level</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base shield level of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_shield_refresh_rate-class_method" title="base_shield_refresh_rate (class method)">+ (Integer) <strong>base_shield_refresh_rate</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base shield refresh rate of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Mining Properties
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_mining_distance-class_method" title="base_mining_distance (class method)">+ (Integer) <strong>base_mining_distance</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base mining distance of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_mining_quantity-class_method" title="base_mining_quantity (class method)">+ (Integer) <strong>base_mining_quantity</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base mining quantity of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_mining_rate-class_method" title="base_mining_rate (class method)">+ (Integer) <strong>base_mining_rate</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Base mining rate of a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#construction_cost-class_method" title="construction_cost (class method)">+ (Integer) <strong>construction_cost</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Cost to construct a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#construction_time-class_method" title="construction_time (class method)">+ (Float) <strong>construction_time</strong>(type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Time (in seconds) to construct a ship of the specified type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#json_create-class_method" title="json_create (class method)">+ (Object) <strong>json_create</strong>(o) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create new ship from json representation.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#alive%3F-instance_method" title="#alive? (instance method)">- (Boolean) <strong>alive?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return true / false indicating if the ship&#39;s hp &gt; 0.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#attacking%3F-instance_method" title="#attacking? (instance method)">- (true, false) <strong>attacking?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean indicating if ship is currently attacking.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#can_attack%3F-instance_method" title="#can_attack? (instance method)">- (true, false) <strong>can_attack?</strong>(entity) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return true / false indicating if ship can attack entity.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#can_dock_at%3F-instance_method" title="#can_dock_at? (instance method)">- (true, false) <strong>can_dock_at?</strong>(station) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return true / false indicating if ship can dock at station.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#can_mine%3F-instance_method" title="#can_mine? (instance method)">- (true, false) <strong>can_mine?</strong>(resource, quantity = resource.quantity) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return true / false indicating if ship can mine entity.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dock_at-instance_method" title="#dock_at (instance method)">- (Object) <strong>dock_at</strong>(station) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Dock ship at the specified station.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#docked%3F-instance_method" title="#docked? (instance method)">- (true, false) <strong>docked?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean indicating if ship is currently docked.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Ship) <strong>initialize</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Ship initializer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#mining%3F-instance_method" title="#mining? (instance method)">- (true, false) <strong>mining?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean indicating if ship is currently mining.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_callbacks-instance_method" title="#remove_callbacks (instance method)">- (Object) <strong>remove_callbacks</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Remove callbacks matching the specified args.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run_callbacks-instance_method" title="#run_callbacks (instance method)">- (Object) <strong>run_callbacks</strong>(type, *args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Run callbacks.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#start_attacking-instance_method" title="#start_attacking (instance method)">- (Object) <strong>start_attacking</strong>(defender) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set ship&#39;s attack target.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#start_mining-instance_method" title="#start_mining (instance method)">- (Object) <strong>start_mining</strong>(resource) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set ship&#39;s mining target.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stop_attacking-instance_method" title="#stop_attacking (instance method)">- (Object) <strong>stop_attacking</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Clear ship&#39;s attacking target.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stop_mining-instance_method" title="#stop_mining (instance method)">- (Object) <strong>stop_mining</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Clear ship&#39;s mining target.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_json-instance_method" title="#to_json (instance method)">- (Object) <strong>to_json</strong>(*a) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert ship to json representation and return it TODO also add
+&#39;optimized&#39; or some other mode/flag just returning variable
+properties.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (Object) <strong>to_s</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert ship to human readable string and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#undock-instance_method" title="#undock (instance method)">- (Object) <strong>undock</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Undock ship from docked station.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update-instance_method" title="#update (instance method)">- (Object) <strong>update</strong>(ship) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Update this ship&#39;s attributes from other ship.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#valid%3F-instance_method" title="#valid? (instance method)">- (Boolean) <strong>valid?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean indicating if this ship is valid.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Entity/HasCargo.html" title="Manufactured::Entity::HasCargo (module)">Entity::HasCargo</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Entity/HasCargo.html#add_resource-instance_method" title="Manufactured::Entity::HasCargo#add_resource (method)">#add_resource</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#can_accept%3F-instance_method" title="Manufactured::Entity::HasCargo#can_accept? (method)">#can_accept?</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#can_transfer%3F-instance_method" title="Manufactured::Entity::HasCargo#can_transfer? (method)">#can_transfer?</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#cargo_empty%3F-instance_method" title="Manufactured::Entity::HasCargo#cargo_empty? (method)">#cargo_empty?</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#cargo_full%3F-instance_method" title="Manufactured::Entity::HasCargo#cargo_full? (method)">#cargo_full?</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#cargo_quantity-instance_method" title="Manufactured::Entity::HasCargo#cargo_quantity (method)">#cargo_quantity</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#cargo_space-instance_method" title="Manufactured::Entity::HasCargo#cargo_space (method)">#cargo_space</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#remove_resource-instance_method" title="Manufactured::Entity::HasCargo#remove_resource (method)">#remove_resource</a></span>, <span class='object_link'><a href="Entity/HasCargo.html#resources_valid%3F-instance_method" title="Manufactured::Entity::HasCargo#resources_valid? (method)">#resources_valid?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Entity/InSystem.html" title="Manufactured::Entity::InSystem (module)">Entity::InSystem</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Entity/InSystem.html#movement_strategy-instance_method" title="Manufactured::Entity::InSystem#movement_strategy (method)">#movement_strategy</a></span>, <span class='object_link'><a href="Entity/InSystem.html#movement_strategy%3D-instance_method" title="Manufactured::Entity::InSystem#movement_strategy= (method)">#movement_strategy=</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Manufactured::Ship (class)">Ship</a></span></tt>) <strong>initialize</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Ship initializer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to initialize ship with</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>args</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:id,'id'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>id to assign to the ship</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:user_id,'user_id'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>id of user that owns the ship</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:type,'type'</span>
+          <span class="type">(<tt>SHIP_TYPE</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>type to assign to ship, if not set a random type will be assigned</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:docked_at,'docked_at'</span>
+          <span class="type">(<tt><span class='object_link'><a href="Station.html" title="Manufactured::Station (class)">Manufactured::Station</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>station which ship is docked at</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:docked_at_id,'docked_at_id'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>id of station which ship is docked at</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:attacking,'attacking'</span>
+          <span class="type">(<tt><span class='object_link'><a href="" title="Manufactured::Ship (class)">Manufactured::Ship</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>ship which this ship is attacking</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:attacking_id,'attacking_id'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>id of ship which this ship is attacking</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:mining,'mining'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Cosmos/Resource.html" title="Cosmos::Resource (class)">Cosmos::Resource</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>resource source which the ship is mining</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:notifications,'notifications'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Array.html" title="Array (class)">Array</a></span>&lt;Manufactured::Callback&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>array of manufactured callbacks to assign to ship</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:resources,'resources'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Array.html" title="Array (class)">Array</a></span>&lt;Resource&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>list of resources to set on ship</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:hp,'hp'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt>, <tt>Int</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>hit points to assign to ship</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:shield_level,'shield_level'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt>, <tt>Int</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>shield_level to assign to ship</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:solar_system,'solar_system'</span>
+          <span class="type">(<tt>Cosmos::SolarSystem</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>solar system which the ship is in</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:location,'location'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Motel/Location.html" title="Motel::Location (class)">Motel::Location</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>location of the ship in the solar system</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:movement_strategy</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Motel/MovementStrategy.html" title="Motel::MovementStrategy (class)">Motel::MovementStrategy</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>convenience setter of ship&#39;s location&#39;s movement strategy</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 323</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:location</span><span class='rbracket'>]</span> <span class='op'>=</span>
+    <span class='const'>Motel</span><span class='op'>::</span><span class='const'>Location</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:coordinates</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                        <span class='symbol'>:orientation</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='rbracket'>]</span>  <span class='kw'>unless</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:location</span><span class='rparen'>)</span> <span class='op'>||</span>
+                                                        <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>location</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_attr_from_args'>attr_from_args</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='symbol'>:id</span>                   <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:user_id</span>              <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:type</span>                 <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:callbacks</span>            <span class='op'>=&gt;</span>  <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                       <span class='symbol'>:resources</span>            <span class='op'>=&gt;</span>  <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                       <span class='symbol'>:docked_at</span>            <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:docked_at_id</span>         <span class='op'>=&gt;</span> <span class='ivar'>@docked_at_id</span><span class='comma'>,</span>
+                       <span class='symbol'>:attacking</span>            <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:attacking_id</span>         <span class='op'>=&gt;</span> <span class='ivar'>@attacking_id</span><span class='comma'>,</span>
+                       <span class='symbol'>:mining</span>               <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:location</span>             <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:system_id</span>            <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:solar_system</span>         <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                       <span class='symbol'>:cargo_capacity</span>       <span class='op'>=&gt;</span> <span class='int'>100</span><span class='comma'>,</span>
+                       <span class='symbol'>:transfer_distance</span>    <span class='op'>=&gt;</span> <span class='int'>200</span><span class='comma'>,</span>
+                       <span class='symbol'>:collection_distance</span>  <span class='op'>=&gt;</span> <span class='int'>300</span><span class='comma'>,</span>
+                       <span class='symbol'>:shield_level</span>         <span class='op'>=&gt;</span>   <span class='int'>0</span><span class='comma'>,</span>
+                       <span class='symbol'>:hp</span>                   <span class='op'>=&gt;</span> <span class='kw'>nil</span>
+
+  <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_orientation'>orientation</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_orientation'>orientation</span> <span class='op'>==</span> <span class='lbracket'>[</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='rbracket'>]</span>
+  <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_movement_strategy'>movement_strategy</span> <span class='op'>=</span>
+    <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:movement_strategy</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:movement_strategy</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@hp</span>                   <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_hp'>base_hp</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@hp</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='ivar'>@max_hp</span>               <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_hp'>base_hp</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@movement_speed</span>       <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_movement_speed'>base_movement_speed</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@rotation_speed</span>       <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_rotation_speed'>base_rotation_speed</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@attack_distance</span>      <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_attack_distance'>base_attack_distance</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@attack_rate</span>          <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_attack_rate'>base_attack_rate</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@damage_dealt</span>         <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_damage_dealt'>base_damage_dealt</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@mining_rate</span>          <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_mining_rate'>base_mining_rate</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@mining_quantity</span>      <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_mining_quantity'>base_mining_quantity</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@mining_distance</span>      <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_mining_distance'>base_mining_distance</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@max_shield_level</span>     <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_shield_level'>base_shield_level</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+  <span class='ivar'>@shield_refresh_rate</span>  <span class='op'>=</span> <span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_base_shield_refresh_rate'>base_shield_refresh_rate</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="attack_distance=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="attack_distance-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>attack_distance</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Max distance ship may be for a target to attack it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 105</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_attack_distance'>attack_distance</span>
+  <span class='ivar'>@attack_distance</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="attack_rate=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="attack_rate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>attack_rate</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Number of attacks per second ship can launch</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 119</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_attack_rate'>attack_rate</span>
+  <span class='ivar'>@attack_rate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="callbacks=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="callbacks-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>callbacks</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Callbacks to invoke on ship events</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_callbacks'>callbacks</span>
+  <span class='ivar'>@callbacks</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="collection_distance=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="collection_distance-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>collection_distance</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Max distance ship may be from loot to collect it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+269
+270
+271</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 269</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_collection_distance'>collection_distance</span>
+  <span class='ivar'>@collection_distance</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="damage_dealt=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="damage_dealt-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>damage_dealt</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Damage ship deals per hit</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 133</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_damage_dealt'>damage_dealt</span>
+  <span class='ivar'>@damage_dealt</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="destroyed_by=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="destroyed_by-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>destroyed_by</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Ship which destroyed this one (or its id) if applicable</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+196
+197
+198</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 196</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_destroyed_by'>destroyed_by</span>
+  <span class='ivar'>@destroyed_by</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="distance_moved=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="distance_moved-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>distance_moved</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Total distance ship moved</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_distance_moved'>distance_moved</span>
+  <span class='ivar'>@distance_moved</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="docked_at=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="docked_at-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>docked_at</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p><span class='object_link'><a href="Station.html" title="Manufactured::Station (class)">Manufactured::Station</a></span> ship is docked to, nil if not docked TODO replace
+w/ foreign_reference</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+248
+249
+250</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 248</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_docked_at'>docked_at</span>
+  <span class='ivar'>@docked_at</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="docked_at_id=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="docked_at_id-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>docked_at_id</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p><span class='object_link'><a href="../String.html" title="String (class)">String</a></span> id of the station ship is docked to</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 251</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_docked_at_id'>docked_at_id</span>
+  <span class='ivar'>@docked_at_id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="hp=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="hp-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>hp</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Hit points the ship has</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+147
+148
+149</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 147</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_hp'>hp</span>
+  <span class='ivar'>@hp</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="id=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="id-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>id</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Unique string id of the ship</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='ivar'>@id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="max_hp=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="max_hp-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>max_hp</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Max hp the ship can have</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+150
+151
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 150</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_max_hp'>max_hp</span>
+  <span class='ivar'>@max_hp</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="max_shield_level=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="max_shield_level-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>max_shield_level</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Max shield level of the ship</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+164
+165
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 164</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_max_shield_level'>max_shield_level</span>
+  <span class='ivar'>@max_shield_level</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="mining=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="mining-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>mining</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p><span class='object_link'><a href="../Cosmos/Resource.html" title="Cosmos::Resource (class)">Cosmos::Resource</a></span> ship is mining, nil if not mining</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+264
+265
+266</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 264</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mining'>mining</span>
+  <span class='ivar'>@mining</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="mining_distance=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="mining_distance-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>mining_distance</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Max distance ship may be from entity to mine it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+231
+232
+233</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 231</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mining_distance'>mining_distance</span>
+  <span class='ivar'>@mining_distance</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="mining_quantity=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="mining_quantity-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>mining_quantity</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Quatity of resource being mined that can be extracted each time mining
+operation is performed</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+217
+218
+219</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 217</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mining_quantity'>mining_quantity</span>
+  <span class='ivar'>@mining_quantity</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="mining_rate=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="mining_rate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>mining_rate</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Number of mining operations per second ship can perform</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+203
+204
+205</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 203</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mining_rate'>mining_rate</span>
+  <span class='ivar'>@mining_rate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="movement_speed=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="movement_speed-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>movement_speed</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Distance ship travels during a single movement cycle</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 69</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_movement_speed'>movement_speed</span>
+  <span class='ivar'>@movement_speed</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="rotation_speed=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="rotation_speed-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>rotation_speed</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Max angle ship can rotate in a single movmeent cycle</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rotation_speed'>rotation_speed</span>
+  <span class='ivar'>@rotation_speed</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="shield_level=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="shield_level-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>shield_level</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Current shield level of the ship</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+178
+179
+180</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 178</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_shield_level'>shield_level</span>
+  <span class='ivar'>@shield_level</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="shield_refresh_rate=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="shield_refresh_rate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>shield_refresh_rate</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Shield refresh rate in units per second</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+181
+182
+183</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 181</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_shield_refresh_rate'>shield_refresh_rate</span>
+  <span class='ivar'>@shield_refresh_rate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="size=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="size-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>size</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Size of the ship</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 29</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
+  <span class='ivar'>@size</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="type=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="type-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>type</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <dl class="rdoc-list label-list"><dt>SHIP_TYPE
+<dd>
+<p>General category / classification of ship</p>
+</dd></dl>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
+  <span class='ivar'>@type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="user_id=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="user_id-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>user_id</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>ID of user which ship belongs to</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_user_id'>user_id</span>
+  <span class='ivar'>@user_id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="base_attack_distance-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_attack_distance</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base attack distance of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed distance for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base attack distance which to assign to the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+114
+115
+116</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 114</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_attack_distance'>base_attack_distance</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>400</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_attack_rate-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_attack_rate</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base attack rate of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed rate for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base attack rate which to assign to the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+128
+129
+130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 128</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_attack_rate'>base_attack_rate</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='float'>0.5</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_damage_dealt-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_damage_dealt</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base damage dealt by a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed value for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base damage dealt which to assign to the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 142</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_damage_dealt'>base_damage_dealt</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>2</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_hp-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_hp</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base hp of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed hp for every ship, eventually make more
+variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base hp which to assign to the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+159
+160
+161</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 159</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_hp'>base_hp</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>25</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_mining_distance-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_mining_distance</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base mining distance of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed distance for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base mining distance which to assign to the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+240
+241
+242</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 240</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_mining_distance'>base_mining_distance</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>400</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_mining_quantity-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_mining_quantity</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base mining quantity of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed quantity for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base mining quantity which to assign to the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+226
+227
+228</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 226</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_mining_quantity'>base_mining_quantity</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>20</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_mining_rate-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_mining_rate</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base mining rate of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed rate for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base attack rate which to assign to the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+212
+213
+214</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 212</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_mining_rate'>base_mining_rate</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='float'>0.10</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_movement_speed-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_movement_speed</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base movement speed of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed speed for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base movement speed of the ship type</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_movement_speed'>base_movement_speed</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>50</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_rotation_speed-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_rotation_speed</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base rotation speed of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed speed for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base rotation speed of the ship type</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 93</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_rotation_speed'>base_rotation_speed</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='comment'># XXX: if this is too large, rotation callback will be thrown off
+</span>  <span class='comment'>#      as entity may have rotated passed specified distance in
+</span>  <span class='comment'>#      movement interval
+</span>  <span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span> <span class='op'>/</span> <span class='int'>32</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_shield_level-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_shield_level</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base shield level of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed level for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base shield level which to assign to the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+173
+174
+175</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 173</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_shield_level'>base_shield_level</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>10</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_shield_refresh_rate-class_method">
+  
+    + (<tt>Integer</tt>) <strong>base_shield_refresh_rate</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Base shield refresh rate of a ship of the specified type.</p>
+
+<p>TODO right now just return a fixed rate for every ship, eventually make
+more variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base shield raresh rate which to assign to the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+190
+191
+192</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 190</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_base_shield_refresh_rate'>base_shield_refresh_rate</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>1</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="construction_cost-class_method">
+  
+    + (<tt>Integer</tt>) <strong>construction_cost</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Cost to construct a ship of the specified type</p>
+
+<p>TODO right now just return a fixed cost for every ship, eventually make
+more variable</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction cost</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>quantity of resources required to construct ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+292
+293
+294</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 292</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_construction_cost'>construction_cost</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>100</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="construction_time-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt>) <strong>construction_time</strong>(type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Time (in seconds) to construct a ship of the specified type</p>
+
+<p>TODO right now just return a fixed time for every ship, eventually make
+more variable</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>SHIP_TYPE</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of ship which to return construction time</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>seconds which it takes to construct the ship</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+302
+303
+304</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 302</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_construction_time'>construction_time</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+  <span class='int'>5</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="json_create-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>json_create</strong>(o) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create new ship from json representation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+563
+564
+565
+566</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 563</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_json_create'>json_create</span><span class='lparen'>(</span><span class='id identifier rubyid_o'>o</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ship'>ship</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_o'>o</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_ship'>ship</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="alive?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>alive?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return true / false indicating if the ship&#39;s hp &gt; 0</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+437
+438
+439</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 437</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_alive?'>alive?</span>
+  <span class='ivar'>@hp</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="attacking?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>attacking?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean indicating if ship is currently attacking</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if ship is attacking or not</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+498
+499
+500</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 498</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_attacking?'>attacking?</span>
+  <span class='op'>!</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_attacking'>attacking</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="can_attack?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>can_attack?</strong>(entity) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return true / false indicating if ship can attack entity</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>entity</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Entity.html" title="Manufactured::Entity (module)">Manufactured::Entity</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>entity to check if ship can attack</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if ship can attack entity</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+455
+456
+457
+458
+459
+460</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 455</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_can_attack?'>can_attack?</span><span class='lparen'>(</span><span class='id identifier rubyid_entity'>entity</span><span class='rparen'>)</span>
+  <span class='const'>ATTACK_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_docked?'>docked?</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_parent_id'>parent_id</span> <span class='op'>==</span> <span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_parent_id'>parent_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='ivar'>@location</span> <span class='op'>-</span> <span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='rparen'>)</span> <span class='op'>&lt;=</span> <span class='ivar'>@attack_distance</span>  <span class='op'>&amp;&amp;</span>
+  <span class='id identifier rubyid_alive?'>alive?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_alive?'>alive?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="can_dock_at?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>can_dock_at?</strong>(station) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return true / false indicating if ship can dock at station</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>station</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Station.html" title="Manufactured::Station (class)">Manufactured::Station</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>station which to check if ship can dock at</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if ship is in same system and within docking distance of station</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+444
+445
+446
+447
+448
+449</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 444</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_can_dock_at?'>can_dock_at?</span><span class='lparen'>(</span><span class='id identifier rubyid_station'>station</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_parent_id'>parent_id</span> <span class='op'>==</span> <span class='id identifier rubyid_station'>station</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_parent_id'>parent_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='ivar'>@location</span> <span class='op'>-</span> <span class='id identifier rubyid_station'>station</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='rparen'>)</span> <span class='op'>&lt;=</span> <span class='id identifier rubyid_station'>station</span><span class='period'>.</span><span class='id identifier rubyid_docking_distance'>docking_distance</span> <span class='op'>&amp;&amp;</span>
+  <span class='id identifier rubyid_alive?'>alive?</span>
+  <span class='comment'># TODO ensure not already docked
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="can_mine?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>can_mine?</strong>(resource, quantity = resource.quantity) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return true / false indicating if ship can mine entity</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>resource</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cosmos/Resource.html" title="Cosmos::Resource (class)">Cosmos::Resource</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>to check if ship can mine</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if ship can mine resource source</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+466
+467
+468
+469
+470
+471
+472</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 466</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_can_mine?'>can_mine?</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='comma'>,</span> <span class='id identifier rubyid_quantity'>quantity</span><span class='op'>=</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_quantity'>quantity</span><span class='rparen'>)</span>
+  <span class='comment'># TODO eventually filter per specific resource mining capabilities
+</span>   <span class='ivar'>@type</span> <span class='op'>==</span> <span class='symbol'>:mining</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_docked?'>docked?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_alive?'>alive?</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_parent_id'>parent_id</span> <span class='op'>==</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_parent_id'>parent_id</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='ivar'>@location</span> <span class='op'>-</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='rparen'>)</span> <span class='op'>&lt;=</span> <span class='ivar'>@mining_distance</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_cargo_quantity'>cargo_quantity</span> <span class='op'>+</span> <span class='id identifier rubyid_quantity'>quantity</span><span class='rparen'>)</span> <span class='op'>&lt;=</span> <span class='ivar'>@cargo_capacity</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dock_at-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dock_at</strong>(station) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Dock ship at the specified station</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>station</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Station.html" title="Manufactured::Station (class)">Manufactured::Station</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>station to dock ship at</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+485
+486
+487</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 485</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dock_at'>dock_at</span><span class='lparen'>(</span><span class='id identifier rubyid_station'>station</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_docked_at'>docked_at</span> <span class='op'>=</span> <span class='id identifier rubyid_station'>station</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="docked?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>docked?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean indicating if ship is currently docked</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if ship is docked or not</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+478
+479
+480</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 478</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_docked?'>docked?</span>
+  <span class='op'>!</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_docked_at_id'>docked_at_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="mining?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>mining?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean indicating if ship is currently mining</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>indicating if ship is mining or not</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+518
+519
+520</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 518</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mining?'>mining?</span>
+  <span class='op'>!</span><span class='ivar'>@mining</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_callbacks-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>remove_callbacks</strong>(args = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Remove callbacks matching the specified args</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_callbacks'>remove_callbacks</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@callbacks</span><span class='period'>.</span><span class='id identifier rubyid_reject!'>reject!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_cb'>cb</span><span class='op'>|</span>
+    <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:event_type</span><span class='rparen'>)</span>  <span class='op'>||</span> <span class='id identifier rubyid_cb'>cb</span><span class='period'>.</span><span class='id identifier rubyid_event_type'>event_type</span>  <span class='op'>==</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:event_type</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+    <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:endpoint_id</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_cb'>cb</span><span class='period'>.</span><span class='id identifier rubyid_endpoint_id'>endpoint_id</span> <span class='op'>==</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:endpoint_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="run_callbacks-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>run_callbacks</strong>(type, *args) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Run callbacks</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run_callbacks'>run_callbacks</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='ivar'>@callbacks</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_event_type'>event_type</span> <span class='op'>==</span> <span class='id identifier rubyid_type'>type</span> <span class='rbrace'>}</span><span class='period'>.</span>
+             <span class='id identifier rubyid_each'>each</span>   <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_invoke'>invoke</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span>  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="start_attacking-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>start_attacking</strong>(defender) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set ship&#39;s attack target</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>defender</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Manufactured::Ship (class)">Manufactured::Ship</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ship being attacked</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+505
+506
+507</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 505</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_start_attacking'>start_attacking</span><span class='lparen'>(</span><span class='id identifier rubyid_defender'>defender</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_attacking'>attacking</span> <span class='op'>=</span> <span class='id identifier rubyid_defender'>defender</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="start_mining-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>start_mining</strong>(resource) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set ship&#39;s mining target</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>resource</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cosmos/Resource.html" title="Cosmos::Resource (class)">Cosmos::Resource</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>resource ship is mining</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+525
+526
+527</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 525</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_start_mining'>start_mining</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='rparen'>)</span>
+  <span class='ivar'>@mining</span> <span class='op'>=</span> <span class='id identifier rubyid_resource'>resource</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stop_attacking-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>stop_attacking</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Clear ship&#39;s attacking target</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+510
+511
+512</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 510</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stop_attacking'>stop_attacking</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_attacking'>attacking</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stop_mining-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>stop_mining</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Clear ship&#39;s mining target</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+530
+531
+532</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 530</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stop_mining'>stop_mining</span>
+  <span class='ivar'>@mining</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_json-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_json</strong>(*a) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert ship to json representation and return it TODO also add
+&#39;optimized&#39; or some other mode/flag just returning variable
+properties</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 536</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>json_class</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data</span><span class='tstring_end'>&#39;</span></span>       <span class='op'>=&gt;</span>
+      <span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='symbol'>:user_id</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='comma'>,</span>
+       <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='symbol'>:size</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_size'>size</span><span class='comma'>,</span>
+       <span class='symbol'>:hp</span> <span class='op'>=&gt;</span> <span class='ivar'>@hp</span><span class='comma'>,</span> <span class='symbol'>:shield_level</span> <span class='op'>=&gt;</span> <span class='ivar'>@shield_level</span><span class='comma'>,</span>
+       <span class='symbol'>:max_hp</span> <span class='op'>=&gt;</span> <span class='ivar'>@max_hp</span><span class='comma'>,</span> <span class='symbol'>:max_shield_level</span> <span class='op'>=&gt;</span> <span class='ivar'>@max_shield_level</span><span class='comma'>,</span>
+       <span class='symbol'>:cargo_capacity</span> <span class='op'>=&gt;</span> <span class='ivar'>@cargo_capacity</span><span class='comma'>,</span>
+       <span class='symbol'>:attack_distance</span> <span class='op'>=&gt;</span> <span class='ivar'>@attack_distance</span><span class='comma'>,</span>
+       <span class='symbol'>:mining_distance</span> <span class='op'>=&gt;</span> <span class='ivar'>@mining_distance</span><span class='comma'>,</span>
+       <span class='symbol'>:transfer_distance</span> <span class='op'>=&gt;</span> <span class='ivar'>@transfer_distance</span><span class='comma'>,</span>
+       <span class='symbol'>:docked_at_id</span> <span class='op'>=&gt;</span> <span class='ivar'>@docked_at_id</span><span class='comma'>,</span>
+       <span class='symbol'>:attacking_id</span> <span class='op'>=&gt;</span> <span class='ivar'>@attacking_id</span><span class='comma'>,</span>
+       <span class='symbol'>:mining</span>    <span class='op'>=&gt;</span> <span class='ivar'>@mining</span><span class='comma'>,</span>
+       <span class='symbol'>:location</span> <span class='op'>=&gt;</span> <span class='ivar'>@location</span><span class='comma'>,</span>
+       <span class='symbol'>:system_id</span> <span class='op'>=&gt;</span> <span class='lparen'>(</span><span class='ivar'>@solar_system</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='ivar'>@system_id</span> <span class='op'>:</span> <span class='ivar'>@solar_system</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='comma'>,</span>
+       <span class='symbol'>:resources</span> <span class='op'>=&gt;</span> <span class='ivar'>@resources</span><span class='rbrace'>}</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>to_s</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert ship to human readable string and return it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+558
+559
+560</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 558</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ship-</span><span class='embexpr_beg'>#{</span><span class='ivar'>@id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="undock-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>undock</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Undock ship from docked station</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+490
+491
+492
+493</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 490</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_undock'>undock</span>
+  <span class='comment'># TODO check to see if station has given ship undocking clearance
+</span>  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_docked_at'>docked_at</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>update</strong>(ship) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Update this ship&#39;s attributes from other ship</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ship</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Manufactured::Ship (class)">Manufactured::Ship</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ship which to copy attributes from</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+369
+370
+371
+372
+373
+374</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 369</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_ship'>ship</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_update_from'>update_from</span><span class='lparen'>(</span><span class='id identifier rubyid_ship'>ship</span><span class='comma'>,</span> <span class='symbol'>:hp</span><span class='comma'>,</span> <span class='symbol'>:shield_level</span><span class='comma'>,</span> <span class='symbol'>:distance_moved</span><span class='comma'>,</span> <span class='symbol'>:resources</span><span class='comma'>,</span>
+                    <span class='symbol'>:parent_id</span><span class='comma'>,</span> <span class='symbol'>:parent</span><span class='comma'>,</span> <span class='symbol'>:system_id</span><span class='comma'>,</span> <span class='symbol'>:solar_system</span><span class='comma'>,</span>
+                    <span class='symbol'>:location</span><span class='comma'>,</span> <span class='symbol'>:mining</span><span class='comma'>,</span> <span class='symbol'>:attacking</span><span class='comma'>,</span> <span class='symbol'>:attacking_id</span><span class='comma'>,</span>
+                    <span class='symbol'>:docked_at</span><span class='comma'>,</span> <span class='symbol'>:docked_at_id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="valid?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>valid?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean indicating if this ship is valid</p>
+
+<p>Tests the various attributes of the Ship, returning true if everything is
+consistent, else false.</p>
+
+<p>Current tests</p>
+<ul><li>
+<p>id is set to a valid (non-empty) string</p>
+</li><li>
+<p>location is set to a Motel::Location</p>
+</li><li>
+<p>user id is set to a string</p>
+</li><li>
+<p>type is one of valid TYPES</p>
+</li><li>
+<p>size corresponds to the correct value for type</p>
+</li><li>
+<p>docked_at is set to a Manufactured::Station which permits docking</p>
+</li><li>
+<p>docked_at_id is valid if ship is docked</p>
+</li><li>
+<p>attacking is set to Manufactured::Ship that can be attacked</p>
+</li><li>
+<p>attacking_id is valid if ship is attacking</p>
+</li><li>
+<p>mining is set to Cosmos::Resource that can be mined</p>
+</li><li>
+<p>solar system is set to Cosmos::SolarSystem</p>
+</li><li>
+<p>notification_callbacks is an array of Manufactured::Callbacks</p>
+</li><li>
+<p>resources is a list of resources</p>
+</li></ul>
+
+<p>At a minimum the following should be set on the default ship to be valid:</p>
+<ul><li>
+<p>id</p>
+</li><li>
+<p>user_id</p>
+</li><li>
+<p>solar_system</p>
+</li><li>
+<p>type</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/manufactured/ship.rb', line 402</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span>
+  <span class='op'>!</span><span class='ivar'>@id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@id</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@id</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>&amp;&amp;</span>
+  <span class='op'>!</span><span class='ivar'>@user_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@user_id</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+
+  <span class='op'>!</span><span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Motel</span><span class='op'>::</span><span class='const'>Location</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='op'>!</span><span class='ivar'>@system_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='ivar'>@solar_system</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='ivar'>@solar_system</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Entities</span><span class='op'>::</span><span class='const'>SolarSystem</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+
+  <span class='op'>!</span><span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='const'>TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='op'>!</span><span class='ivar'>@size</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@size</span> <span class='op'>==</span> <span class='const'>SIZES</span><span class='lbracket'>[</span><span class='ivar'>@type</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span>
+
+   <span class='ivar'>@shield_level</span> <span class='op'>&lt;=</span> <span class='ivar'>@max_shield_level</span> <span class='op'>&amp;&amp;</span>
+
+  <span class='lparen'>(</span><span class='ivar'>@docked_at</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span>
+   <span class='lparen'>(</span><span class='ivar'>@docked_at</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Station</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_can_dock_at?'>can_dock_at?</span><span class='lparen'>(</span><span class='ivar'>@docked_at</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+    <span class='op'>!</span><span class='ivar'>@docked_at_id</span> <span class='op'>==</span> <span class='ivar'>@docked_at</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='comment'># ???
+</span>
+  <span class='lparen'>(</span><span class='ivar'>@attacking</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span>
+   <span class='lparen'>(</span><span class='ivar'>@attacking</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Ship</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_can_attack?'>can_attack?</span><span class='lparen'>(</span><span class='ivar'>@attacking</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+    <span class='ivar'>@attacking_id</span> <span class='op'>==</span> <span class='ivar'>@attacking</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+
+  <span class='lparen'>(</span><span class='ivar'>@mining</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span>
+   <span class='lparen'>(</span><span class='ivar'>@mining</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Resource</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_can_mine?'>can_mine?</span><span class='lparen'>(</span><span class='ivar'>@mining</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+
+  <span class='ivar'>@callbacks</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='ivar'>@callbacks</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='op'>!</span><span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Callback</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>&amp;&amp;</span> <span class='comment'># TODO ensure validity of callbacks
+</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_resources_valid?'>resources_valid?</span>
+
+  <span class='comment'># TODO validate cargo, mining, attack properties when they become variable
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:36 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

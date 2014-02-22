@@ -1,0 +1,115 @@
+digraph RGL__DirectedAdjacencyGraph {
+    Loki [
+        fontsize = 8,
+        label = Loki
+    ]
+
+    Heimdall [
+        fontsize = 8,
+        label = Heimdall
+    ]
+
+    Modi [
+        fontsize = 8,
+        label = Modi
+    ]
+
+    Nidhogg [
+        fontsize = 8,
+        label = Nidhogg
+    ]
+
+    Nanna [
+        fontsize = 8,
+        label = Nanna
+    ]
+
+    Fulla [
+        fontsize = 8,
+        label = Fulla
+    ]
+
+    Var [
+        fontsize = 8,
+        label = Var
+    ]
+
+    Tyr [
+        fontsize = 8,
+        label = Tyr
+    ]
+
+    Ran [
+        fontsize = 8,
+        label = Ran
+    ]
+
+    Ymi [
+        fontsize = 8,
+        label = Ymi
+    ]
+
+    Loki -> Heimdall [
+        fontsize = 8
+    ]
+
+    Loki -> Modi [
+        fontsize = 8
+    ]
+
+    Heimdall -> Nidhogg [
+        fontsize = 8
+    ]
+
+    Modi -> Nanna [
+        fontsize = 8
+    ]
+
+    Nidhogg -> Tyr [
+        fontsize = 8
+    ]
+
+    Nidhogg -> Ran [
+        fontsize = 8
+    ]
+
+    Nanna -> Fulla [
+        fontsize = 8
+    ]
+
+    Fulla -> Heimdall [
+        fontsize = 8
+    ]
+
+    Fulla -> Var [
+        fontsize = 8
+    ]
+
+    Var -> Ymi [
+        fontsize = 8
+    ]
+
+    Var -> Ran [
+        fontsize = 8
+    ]
+
+    Tyr -> Ran [
+        fontsize = 8
+    ]
+
+    Tyr -> Loki [
+        fontsize = 8
+    ]
+
+    Ran -> Var [
+        fontsize = 8
+    ]
+
+    Ymi -> Nanna [
+        fontsize = 8
+    ]
+
+    Ymi -> Modi [
+        fontsize = 8
+    ]
+}

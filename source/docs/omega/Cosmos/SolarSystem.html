@@ -1,0 +1,2250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Cosmos::SolarSystem
+  
+    &mdash; Documentation by YARD 0.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Cosmos.html" title="Cosmos (module)">Cosmos</a></span></span>
+     &raquo; 
+    <span class="title">SolarSystem</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Cosmos::SolarSystem
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Cosmos::SolarSystem</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/cosmos/solar_system.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p><a
+href="http://en.wikipedia.org/wiki/Planetary_system">en.wikipedia.org/wiki/Planetary_system</a></p>
+
+<p>Cosmos entity residing in a galaxy containing a star, planets, asteroid,
+and jump gates.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="MAX_BACKGROUNDS-constant" class="">MAX_BACKGROUNDS =
+          
+        </dt>
+        <dd><pre class="code"><span class='int'>6</span></pre></dd>
+      
+    </dl>
+  
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#asteroids-instance_method" title="#asteroids (instance method)">- (Object) <strong>asteroids</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Array of child <span class='object_link'><a href="Asteroid.html" title="Cosmos::Asteroid (class)">Asteroid</a></span> tracked locally.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#background-instance_method" title="#background (instance method)">- (Object) <strong>background</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Background to render solar system w/ (TODO this shouldn't be here / should
+be up to client).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#galaxy-instance_method" title="#galaxy (instance method)">- (Object) <strong>galaxy</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p><span class='object_link'><a href="Galaxy.html" title="Cosmos::Galaxy (class)">Galaxy</a></span> parent of the solar system.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#jump_gates-instance_method" title="#jump_gates (instance method)">- (Object) <strong>jump_gates</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Array of child <span class='object_link'><a href="JumpGate.html" title="Cosmos::JumpGate (class)">JumpGate</a></span> tracked locally.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#location-instance_method" title="#location (instance method)">- (Object) <strong>location</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p><span class='object_link'><a href="../Motel/Location.html" title="Motel::Location (class)">Motel::Location</a></span> at which solar system resides in its parent galaxy.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
+    
+
+    
+      (also: #id)
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Unique name of the solar system.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#planets-instance_method" title="#planets (instance method)">- (Object) <strong>planets</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Array of child <span class='object_link'><a href="Planet.html" title="Cosmos::Planet (class)">Planet</a></span> tracked locally.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remote_queue-instance_method" title="#remote_queue (instance method)">- (Object) <strong>remote_queue</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Remote queue which to retrieve child entities from if any (may be nil).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#star-instance_method" title="#star (instance method)">- (Object) <strong>star</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Child <span class='object_link'><a href="Star.html" title="Cosmos::Star (class)">Star</a></span> tracked locally.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#json_create-class_method" title="json_create (class method)">+ (Object) <strong>json_create</strong>(o) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create new solar system from json representation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parent_type-class_method" title="parent_type (class method)">+ (:galaxy) <strong>parent_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the <span class='object_link'><a href="Registry.html" title="Cosmos::Registry (class)">Registry</a></span> lookup key corresponding to the entity's
+parent.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remotely_trackable%3F-class_method" title="remotely_trackable? (class method)">+ (true) <strong>remotely_trackable?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns boolean indicating if remote cosmos retrieval can be performed for
+entity's children.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#accepts_resource%3F-instance_method" title="#accepts_resource? (instance method)">- (Boolean) <strong>accepts_resource?</strong>(res) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean indicating if this solar system can accept the specified
+resource.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_child-instance_method" title="#add_child (instance method)">- (Cosmos::Planet, ...) <strong>add_child</strong>(child) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Add child planet, jump gate, asteroid, or star to solar system.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#children-instance_method" title="#children (instance method)">- (Array&lt;Cosmos::Planet,Cosmos::JumpGate,Cosmos::Asteroid,Cosmos::Star]) <strong>children</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return array containing child planets, jump gates, asteroids, and star.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each_child-instance_method" title="#each_child (instance method)">- (Object) <strong>each_child</strong>(&amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Iterates over all children (star, planets, jump gates, and asteroids),
+invoking the specified block w/ the child as a parameter and then invoking
+'each_child' on the child itself.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_children%3F-instance_method" title="#has_children? (instance method)">- (Boolean) <strong>has_children?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns boolean indicating if the system has children.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (SolarSystem) <strong>initialize</strong>(args = {}) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Cosmos::SolarSystem intializer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parent-instance_method" title="#parent (instance method)">- (Cosmos::Galaxy) <strong>parent</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return galaxy parent of the SolarSystem.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parent%3D-instance_method" title="#parent= (instance method)">- (Object) <strong>parent=</strong>(galaxy) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set galaxy parent of the SolarSystem.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_child-instance_method" title="#remove_child (instance method)">- (Object) <strong>remove_child</strong>(child) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Remove child entity from planet.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_json-instance_method" title="#to_json (instance method)">- (Object) <strong>to_json</strong>(*a) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert solar system to json representation and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (Object) <strong>to_s</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Convert solar system to human readable string and return it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#valid%3F-instance_method" title="#valid? (instance method)">- (Boolean) <strong>valid?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return boolean indicating if this solar system is valid.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Cosmos::SolarSystem (class)">SolarSystem</a></span></tt>) <strong>initialize</strong>(args = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Cosmos::SolarSystem intializer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hash of options to initialize solar system with</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <h3>Options Hash (<tt>args</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:name,'name'</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>unqiue name to assign to the solar system</p>
+</div>
+        </li>
+      
+        <li>
+          <span class="name">:location,'location'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Motel/Location.html" title="Motel::Location (class)">Motel::Location</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>location of the solar system, if not specified will automatically be
+created with coordinates (0,0,0)</p>
+</div>
+        </li>
+      
+        <li>
+          <span class="name">]</span>
+          <span class="type">(<tt><span class='object_link'><a href="Star.html" title="Cosmos::Star (class)">Cosmos::Star</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>:star,'star' star to assign to solar system</p>
+</div>
+        </li>
+      
+        <li>
+          <span class="name">'planets'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Planet.html" title="Cosmos::Planet (class)">Cosmos::Planet</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>array of planets to assign to solar system</p>
+</div>
+        </li>
+      
+        <li>
+          <span class="name">'jump_gates'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="JumpGate.html" title="Cosmos::JumpGate (class)">Cosmos::JumpGate</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>array of jump gates to assign to solar system</p>
+</div>
+        </li>
+      
+        <li>
+          <span class="name">'asteroids'</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Asteroid.html" title="Cosmos::Asteroid (class)">Cosmos::Asteroid</a></span>&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>array of asteroids to assign to solar system</p>
+</div>
+        </li>
+      
+        <li>
+          <span class="name">:remote_queue,'remote_queue'</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>remote_queue to assign to solar system if any</p>
+</div>
+        </li>
+      
+    </ul>
+  
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@name</span>       <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>name</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>       <span class='op'>||</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span>
+  <span class='ivar'>@location</span>   <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>location</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>   <span class='op'>||</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:location</span><span class='rbracket'>]</span>
+  <span class='ivar'>@star</span>       <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>star</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>       <span class='op'>||</span> <span class='kw'>nil</span>
+  <span class='ivar'>@galaxy</span>     <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>galaxy</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>     <span class='op'>||</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:galaxy</span><span class='rbracket'>]</span>
+  <span class='ivar'>@planets</span>    <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>planets</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>    <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@jump_gates</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>jump_gates</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@asteroids</span>  <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>asteroids</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>  <span class='op'>||</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@remote_queue</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>remote_queue</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:remote_queue</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='kw'>nil</span>
+
+  <span class='ivar'>@background</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>system</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='const'>MAX_BACKGROUNDS</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span><span class='op'>+</span><span class='int'>1</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='kw'>if</span> <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='ivar'>@location</span> <span class='op'>=</span> <span class='const'>Motel</span><span class='op'>::</span><span class='const'>Location</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_z'>z</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="asteroids-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="asteroids-instance_method">
+  
+    - (<tt>Object</tt>) <strong>asteroids</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Array of child <span class='object_link'><a href="Asteroid.html" title="Cosmos::Asteroid (class)">Asteroid</a></span> tracked locally</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_asteroids'>asteroids</span>
+  <span class='ivar'>@asteroids</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="background-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="background-instance_method">
+  
+    - (<tt>Object</tt>) <strong>background</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Background to render solar system w/ (TODO this shouldn't be here / should
+be up to client)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_background'>background</span>
+  <span class='ivar'>@background</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="galaxy-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="galaxy-instance_method">
+  
+    - (<tt>Object</tt>) <strong>galaxy</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p><span class='object_link'><a href="Galaxy.html" title="Cosmos::Galaxy (class)">Galaxy</a></span> parent of the solar system</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_galaxy'>galaxy</span>
+  <span class='ivar'>@galaxy</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="jump_gates-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="jump_gates-instance_method">
+  
+    - (<tt>Object</tt>) <strong>jump_gates</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Array of child <span class='object_link'><a href="JumpGate.html" title="Cosmos::JumpGate (class)">JumpGate</a></span> tracked locally</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_jump_gates'>jump_gates</span>
+  <span class='ivar'>@jump_gates</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="location=-instance_method"></span>
+      <span id="location-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="location-instance_method">
+  
+    - (<tt>Object</tt>) <strong>location</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p><span class='object_link'><a href="../Motel/Location.html" title="Motel::Location (class)">Motel::Location</a></span> at which solar system resides in its parent galaxy</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_location'>location</span>
+  <span class='ivar'>@location</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="name=-instance_method"></span>
+      <span id="name-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>name</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='id-instance_method'>id</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Unique name of the solar system</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 14</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="planets-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="planets-instance_method">
+  
+    - (<tt>Object</tt>) <strong>planets</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Array of child <span class='object_link'><a href="Planet.html" title="Cosmos::Planet (class)">Planet</a></span> tracked locally</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_planets'>planets</span>
+  <span class='ivar'>@planets</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="remote_queue=-instance_method"></span>
+      <span id="remote_queue-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="remote_queue-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remote_queue</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Remote queue which to retrieve child entities from if any (may be nil)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remote_queue'>remote_queue</span>
+  <span class='ivar'>@remote_queue</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="star-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="star-instance_method">
+  
+    - (<tt>Object</tt>) <strong>star</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Child <span class='object_link'><a href="Star.html" title="Cosmos::Star (class)">Cosmos::Star</a></span> tracked locally</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_star'>star</span>
+  <span class='ivar'>@star</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="json_create-class_method">
+  
+    + (<tt>Object</tt>) <strong>json_create</strong>(o) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Create new solar system from json representation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 238</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_json_create'>json_create</span><span class='lparen'>(</span><span class='id identifier rubyid_o'>o</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_solar_system'>solar_system</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_o'>o</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>data</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_solar_system'>solar_system</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parent_type-class_method">
+  
+    + (<tt>:galaxy</tt>) <strong>parent_type</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the <span class='object_link'><a href="Registry.html" title="Cosmos::Registry (class)">Registry</a></span> lookup key corresponding to the entity's
+parent</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:galaxy</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_parent_type'>parent_type</span>
+  <span class='symbol'>:galaxy</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remotely_trackable?-class_method">
+  
+    + (<tt>true</tt>) <strong>remotely_trackable?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns boolean indicating if remote cosmos retrieval can be performed for
+entity's children</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_remotely_trackable?'>remotely_trackable?</span>
+  <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="accepts_resource?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>accepts_resource?</strong>(res) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean indicating if this solar system can accept the specified
+resource</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>false</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 100</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_accepts_resource?'>accepts_resource?</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
+  <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="add_child-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Planet.html" title="Cosmos::Planet (class)">Cosmos::Planet</a></span></tt>, ...) <strong>add_child</strong>(child) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Add child planet, jump gate, asteroid, or star to solar system</p>
+
+<p>Performs basic checks to ensure child is valid in the context of the solar
+system, after it is added to the local array tracking the specified entity
+type</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>child</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Planet.html" title="Cosmos::Planet (class)">Cosmos::Planet</a></span></tt>, <tt><span class='object_link'><a href="JumpGate.html" title="Cosmos::JumpGate (class)">Cosmos::JumpGate</a></span></tt>, <tt><span class='object_link'><a href="Asteroid.html" title="Cosmos::Asteroid (class)">Cosmos::Asteroid</a></span></tt>, <tt><span class='object_link'><a href="Star.html" title="Cosmos::Star (class)">Cosmos::Star</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>child entity to add to solar system</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Planet.html" title="Cosmos::Planet (class)">Cosmos::Planet</a></span></tt>, <tt><span class='object_link'><a href="JumpGate.html" title="Cosmos::JumpGate (class)">Cosmos::JumpGate</a></span></tt>, <tt><span class='object_link'><a href="Asteroid.html" title="Cosmos::Asteroid (class)">Cosmos::Asteroid</a></span></tt>, <tt><span class='object_link'><a href="Star.html" title="Cosmos::Star (class)">Cosmos::Star</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the child just added</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>ArgumentError if the child entity is invalid in the context of the solar
+system</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_child'>add_child</span><span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>child must be a planet, jump gate, asteroid, star</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='op'>!</span><span class='lbracket'>[</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Planet</span><span class='comma'>,</span>
+                                                                 <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>JumpGate</span><span class='comma'>,</span>
+                                                                 <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Asteroid</span><span class='comma'>,</span>
+                                                                 <span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Star</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_parent'>parent</span> <span class='op'>=</span> <span class='kw'>self</span>
+  <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_parent_id'>parent_id</span> <span class='op'>=</span> <span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_location'>location</span><span class='period'>.</span><span class='id identifier rubyid_parent'>parent</span> <span class='op'>=</span> <span class='id identifier rubyid_location'>location</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Planet</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>planet name </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> is already taken</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@planets</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>planet </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_child'>child</span><span class='rbrace'>}</span><span class='tstring_content'> already added to system</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@planets</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>planet </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_child'>child</span><span class='rbrace'>}</span><span class='tstring_content'> must be valid</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+    <span class='ivar'>@planets</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_child'>child</span>
+
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>JumpGate</span>
+    <span class='comment'>#raise ArgumentError, &quot;jump gate to #{child.endpoint.name} is already added&quot; if @jump_gates.find { |j| j.endpoint.name == child.endpoing.name }
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>jump gate </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_child'>child</span><span class='rbrace'>}</span><span class='tstring_content'> already added to system</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@jump_gates</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>jump gate </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_child'>child</span><span class='rbrace'>}</span><span class='tstring_content'> must be valid</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+    <span class='ivar'>@jump_gates</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_child'>child</span>
+
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Asteroid</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>asteroid name </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> is already taken</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@asteroids</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>==</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>asteroid </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_child'>child</span><span class='rbrace'>}</span><span class='tstring_content'> already added to system</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@asteroids</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>asteroid </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_child'>child</span><span class='rbrace'>}</span><span class='tstring_content'> must be valid</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+    <span class='ivar'>@asteroids</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_child'>child</span>
+
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Star</span>
+    <span class='comment'>#raise ArgumentError, &quot;star name #{child.name} already associated with system&quot; if @star.name == child.name
+</span>    <span class='comment'>#raise ArgumentError, &quot;star #{child} already assoicated with system&quot; if @star == child
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>star </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_child'>child</span><span class='rbrace'>}</span><span class='tstring_content'> must be valid</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+
+    <span class='ivar'>@star</span> <span class='op'>=</span> <span class='id identifier rubyid_child'>child</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_child'>child</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="children-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Planet.html" title="Cosmos::Planet (class)">Cosmos::Planet</a></span>,<span class='object_link'><a href="JumpGate.html" title="Cosmos::JumpGate (class)">Cosmos::JumpGate</a></span>,<span class='object_link'><a href="Asteroid.html" title="Cosmos::Asteroid (class)">Cosmos::Asteroid</a></span>,<span class='object_link'><a href="Star.html" title="Cosmos::Star (class)">Cosmos::Star</a></span>]</tt>) <strong>children</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return array containing child planets, jump gates, asteroids, and star</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Planet.html" title="Cosmos::Planet (class)">Cosmos::Planet</a></span>,<span class='object_link'><a href="JumpGate.html" title="Cosmos::JumpGate (class)">Cosmos::JumpGate</a></span>,<span class='object_link'><a href="Asteroid.html" title="Cosmos::Asteroid (class)">Cosmos::Asteroid</a></span>,<span class='object_link'><a href="Star.html" title="Cosmos::Star (class)">Cosmos::Star</a></span>]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Array&lt;Cosmos::Planet,Cosmos::JumpGate,Cosmos::Asteroid,Cosmos::Star]</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+130
+131
+132</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 130</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_children'>children</span>
+  <span class='ivar'>@planets</span> <span class='op'>+</span> <span class='ivar'>@jump_gates</span> <span class='op'>+</span> <span class='ivar'>@asteroids</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='ivar'>@star</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='lbracket'>[</span><span class='ivar'>@star</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="each_child-instance_method">
+  
+    - (<tt>Object</tt>) <strong>each_child</strong>(&amp;bl) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Iterates over all children (star, planets, jump gates, and asteroids),
+invoking the specified block w/ the child as a parameter and then invoking
+'each_child' on the child itself</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>callback block parameter</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 201</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each_child'>each_child</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bl'>bl</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_star'>star</span> <span class='kw'>unless</span> <span class='id identifier rubyid_star'>star</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='ivar'>@planets</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_planet'>planet</span><span class='op'>|</span>
+    <span class='id identifier rubyid_bl'>bl</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_planet'>planet</span>
+    <span class='id identifier rubyid_planet'>planet</span><span class='period'>.</span><span class='id identifier rubyid_each_child'>each_child</span> <span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span>
+  <span class='rbrace'>}</span>
+  <span class='ivar'>@jump_gates</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_gate'>gate</span><span class='op'>|</span>
+    <span class='id identifier rubyid_bl'>bl</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_gate'>gate</span>
+  <span class='rbrace'>}</span>
+  <span class='ivar'>@asteroids</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_asteroid'>asteroid</span><span class='op'>|</span>
+    <span class='id identifier rubyid_bl'>bl</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_asteroid'>asteroid</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="has_children?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>has_children?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns boolean indicating if the system has children</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+216
+217
+218
+219</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 216</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_has_children?'>has_children?</span>
+  <span class='comment'># FIXME
+</span>  <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parent-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Galaxy.html" title="Cosmos::Galaxy (class)">Cosmos::Galaxy</a></span></tt>) <strong>parent</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return galaxy parent of the SolarSystem</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Galaxy.html" title="Cosmos::Galaxy (class)">Cosmos::Galaxy</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 118</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parent'>parent</span>
+  <span class='ivar'>@galaxy</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="parent=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>parent=</strong>(galaxy) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Set galaxy parent of the SolarSystem</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>galaxy</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Galaxy.html" title="Cosmos::Galaxy (class)">Cosmos::Galaxy</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 124</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parent='>parent=</span><span class='lparen'>(</span><span class='id identifier rubyid_galaxy'>galaxy</span><span class='rparen'>)</span>
+  <span class='ivar'>@galaxy</span> <span class='op'>=</span> <span class='id identifier rubyid_galaxy'>galaxy</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_child-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_child</strong>(child) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Remove child entity from planet</p>
+
+<p>Ignores / just return if child is not found</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>child</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Planet.html" title="Cosmos::Planet (class)">Cosmos::Planet</a></span></tt>, <tt><span class='object_link'><a href="JumpGate.html" title="Cosmos::JumpGate (class)">Cosmos::JumpGate</a></span></tt>, <tt><span class='object_link'><a href="Asteroid.html" title="Cosmos::Asteroid (class)">Cosmos::Asteroid</a></span></tt>, <tt><span class='object_link'><a href="Star.html" title="Cosmos::Star (class)">Cosmos::Star</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>entity to remove from solar system or its name</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+187
+188
+189
+190
+191
+192
+193
+194</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 187</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_child'>remove_child</span><span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='rparen'>)</span>
+  <span class='ivar'>@planets</span><span class='period'>.</span><span class='id identifier rubyid_reject!'>reject!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ch'>ch</span><span class='op'>|</span> <span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Planet</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_ch'>ch</span> <span class='op'>==</span> <span class='id identifier rubyid_child'>child</span><span class='rparen'>)</span> <span class='op'>||</span>
+                          <span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span> <span class='op'>==</span> <span class='id identifier rubyid_ch'>ch</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@jump_gates</span><span class='period'>.</span><span class='id identifier rubyid_reject!'>reject!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ch'>ch</span><span class='op'>|</span> <span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>JumpGate</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_ch'>ch</span> <span class='op'>==</span> <span class='id identifier rubyid_child'>child</span><span class='rparen'>)</span> <span class='rbrace'>}</span> <span class='comment'># TODO compare string against jg.endpoint.name ?
+</span>  <span class='ivar'>@asteroids</span><span class='period'>.</span><span class='id identifier rubyid_reject!'>reject!</span>  <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ch'>ch</span><span class='op'>|</span> <span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Asteroid</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_ch'>ch</span> <span class='op'>==</span> <span class='id identifier rubyid_child'>child</span><span class='rparen'>)</span> <span class='op'>||</span>
+                             <span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span> <span class='op'>==</span> <span class='id identifier rubyid_ch'>ch</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@star</span> <span class='op'>=</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_child'>child</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Star</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@star</span> <span class='op'>==</span> <span class='id identifier rubyid_child'>child</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='op'>!</span><span class='ivar'>@star</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_child'>child</span> <span class='op'>==</span> <span class='ivar'>@star</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_json-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_json</strong>(*a) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert solar system to json representation and return it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+227
+228
+229
+230
+231
+232
+233
+234
+235</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 227</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>json_class</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>data</span><span class='tstring_end'>'</span></span>       <span class='op'>=&gt;</span>
+      <span class='lbrace'>{</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='symbol'>:location</span> <span class='op'>=&gt;</span> <span class='ivar'>@location</span><span class='comma'>,</span> <span class='symbol'>:galaxy_name</span> <span class='op'>=&gt;</span> <span class='lparen'>(</span><span class='ivar'>@galaxy</span> <span class='op'>?</span> <span class='ivar'>@galaxy</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>:</span> <span class='kw'>nil</span><span class='rparen'>)</span><span class='comma'>,</span>
+       <span class='symbol'>:star</span> <span class='op'>=&gt;</span> <span class='ivar'>@star</span><span class='comma'>,</span> <span class='symbol'>:planets</span> <span class='op'>=&gt;</span> <span class='ivar'>@planets</span><span class='comma'>,</span> <span class='symbol'>:jump_gates</span> <span class='op'>=&gt;</span> <span class='ivar'>@jump_gates</span><span class='comma'>,</span>
+       <span class='symbol'>:asteroids</span> <span class='op'>=&gt;</span> <span class='ivar'>@asteroids</span><span class='comma'>,</span> <span class='symbol'>:background</span> <span class='op'>=&gt;</span> <span class='ivar'>@background</span><span class='comma'>,</span> <span class='symbol'>:remote_queue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_remote_queue'>remote_queue</span><span class='rbrace'>}</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_s-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_s</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Convert solar system to human readable string and return it</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+222
+223
+224</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 222</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>solar_system-</span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="valid?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>valid?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return boolean indicating if this solar system is valid.</p>
+
+<p>Tests the various attributes of the SolarSystem, returning 'true' if
+everything is consistent, else false.</p>
+
+<p>Currently tests</p>
+<ul><li>
+<p>name is set to a valid (non-empty) string</p>
+</li><li>
+<p>location is set to a valid Motel::Location and is not moving</p>
+</li><li>
+<p>parent galaxy is set to a Cosmos::Galaxy</p>
+</li><li>
+<p>planets is an array of valid Cosmos::Planet instances</p>
+</li><li>
+<p>asteroids is an array of valid Cosmos::Asteroid instances</p>
+</li><li>
+<p>jump_gates is an array of valid Cosmos::JumpGate instances</p>
+</li><li>
+<p>star is nil or a valid Cosmos::Star instances</p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91
+92
+93
+94
+95
+96</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/cosmos/solar_system.rb', line 88</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_valid?'>valid?</span>
+  <span class='op'>!</span><span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@name</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>&amp;&amp;</span>
+  <span class='op'>!</span><span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Motel</span><span class='op'>::</span><span class='const'>Location</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@location</span><span class='period'>.</span><span class='id identifier rubyid_movement_strategy'>movement_strategy</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>Motel</span><span class='op'>::</span><span class='const'>MovementStrategies</span><span class='op'>::</span><span class='const'>Stopped</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='ivar'>@galaxy</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='ivar'>@galaxy</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Galaxy</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+  <span class='ivar'>@planets</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@planets</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Planet</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='op'>!</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span>
+  <span class='ivar'>@asteroids</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@asteroids</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Asteroid</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='op'>!</span><span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span>
+  <span class='ivar'>@jump_gates</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@jump_gates</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_j'>j</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_j'>j</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>JumpGate</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='op'>!</span><span class='id identifier rubyid_j'>j</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span>
+  <span class='lparen'>(</span><span class='ivar'>@star</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='ivar'>@star</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Cosmos</span><span class='op'>::</span><span class='const'>Star</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@star</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sun Nov 25 08:35:32 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

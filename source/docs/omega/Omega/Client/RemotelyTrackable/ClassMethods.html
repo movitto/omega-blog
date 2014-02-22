@@ -1,0 +1,1045 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Omega::Client::RemotelyTrackable::ClassMethods
+  
+    &mdash; Documentation by YARD 0.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (C)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Omega.html" title="Omega (module)">Omega</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Client.html" title="Omega::Client (module)">Client</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../RemotelyTrackable.html" title="Omega::Client::RemotelyTrackable (module)">RemotelyTrackable</a></span></span>
+     &raquo; 
+    <span class="title">ClassMethods</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Omega::Client::RemotelyTrackable::ClassMethods
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/omega/client2/mixins.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Methods that are defined on the class including  the RemotelyTrackable
+module</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#entity_type-instance_method" title="#entity_type (instance method)">- (Class) <strong>entity_type</strong>(type = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get/set type of server side entity to track.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#entity_validation-instance_method" title="#entity_validation (instance method)">- (Object) <strong>entity_validation</strong>(&amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Register a method to be invoked after serverside entit(y|ies) are retrieved
+to perform additional client side verification of the entity type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get-instance_method" title="#get (instance method)">- (nil, RemotelyTrackable) <strong>get</strong>(id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return entity tracked by this class corresponding to id, or nil if not
+found.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_all-instance_method" title="#get_all (instance method)">- (Array&lt;RemotelyTrackable&gt;) <strong>get_all</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return array of all server side entities tracked by this class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_method-instance_method" title="#get_method (instance method)">- (String) <strong>get_method</strong>(method_name = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get/set the method used to retrieve serverside entities.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_init-instance_method" title="#on_init (instance method)">- (Object) <strong>on_init</strong>(&amp;bl) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Register a method to be invoked after instance of this class is created by
+local mechanisms.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#owned_by-instance_method" title="#owned_by (instance method)">- (Array&lt;RemotelyTrackable&gt;) <strong>owned_by</strong>(user_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return array of all server side entities tracked by this class owned by the
+specified user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#server_event-instance_method" title="#server_event (instance method)">- (Object) <strong>server_event</strong>(events = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Define an event on this entity type which clients can register handlers for
+specific entity instances.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="entity_type-instance_method">
+  
+    - (<tt>Class</tt>) <strong>entity_type</strong>(type = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Get/set type of server side entity to track. Always returns current entity
+type and if an arg is specified, that is used to set it.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>server side entity class we are tracking</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>server side entity class being tracked</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115
+116
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client2/mixins.rb', line 113</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_entity_type'>entity_type</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='kw'>return</span> <span class='ivar'>@entity_type</span> <span class='kw'>unless</span> <span class='ivar'>@entity_type</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='kw'>return</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_entity_type'>entity_type</span> <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>==</span> <span class='const'>Object</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@entity_type</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="entity_validation-instance_method">
+  
+    - (<tt>Object</tt>) <strong>entity_validation</strong>(&amp;bl) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Register a method to be invoked after serverside entit(y|ies) are retrieved
+to perform additional client side verification of the entity type.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code"><span class='kw'>class</span> <span class='const'>MiningShip</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'>RemotelyTrackable</span>
+  <span class='id identifier rubyid_entity_type'>entity_type</span> <span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Ship</span>
+  <span class='id identifier rubyid_get_method'>get_method</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>manufactured::get_entity</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_entity_validation'>entity_validation</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='op'>==</span> <span class='symbol'>:miner</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>block to invoke w/ entity to validate it</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client2/mixins.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_entity_validation'>entity_validation</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='comment'># TODO allow registration of multiple methods
+</span>  <span class='ivar'>@entity_validation</span> <span class='op'>=</span> <span class='id identifier rubyid_bl'>bl</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get-instance_method">
+  
+    - (<tt>nil</tt>, <tt><span class='object_link'><a href="../RemotelyTrackable.html" title="Omega::Client::RemotelyTrackable (module)">RemotelyTrackable</a></span></tt>) <strong>get</strong>(id) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return entity tracked by this class corresponding to id, or nil if not
+found</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code"><span class='kw'>class</span> <span class='const'>Ship</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'>RemotelyTrackable</span>
+  <span class='id identifier rubyid_entity_type'>entity_type</span> <span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Ship</span>
+  <span class='id identifier rubyid_get_method'>get_method</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>manufactured::get_entity</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ship1</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &lt;Omega::Client::Ship#...&gt;</span></pre>
+    
+  </div>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>, <tt><span class='object_link'><a href="../RemotelyTrackable.html" title="Omega::Client::RemotelyTrackable (module)">RemotelyTrackable</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>entity corresponding to id, nil if not found</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+261
+262
+263
+264
+265</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client2/mixins.rb', line 261</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_e'>e</span> <span class='op'>=</span> <span class='id identifier rubyid_track_entity'>track_entity</span> <span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_invoke_request'>invoke_request</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_method'>get_method</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>with_id</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_validate_entity'>validate_entity</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_e'>e</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_all-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../RemotelyTrackable.html" title="Omega::Client::RemotelyTrackable (module)">RemotelyTrackable</a></span>&gt;</tt>) <strong>get_all</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return array of all server side entities tracked by this class</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code"><span class='kw'>class</span> <span class='const'>Ship</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'>RemotelyTrackable</span>
+  <span class='id identifier rubyid_entity_type'>entity_type</span> <span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Ship</span>
+  <span class='id identifier rubyid_get_method'>get_method</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>manufactured::get_entity</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_get_all'>get_all</span>
+<span class='comment'># =&gt; [&lt;Omega::Client::Ship#...&gt;,&lt;Omega::Client::Ship#...&gt;,...]</span></pre>
+    
+  </div>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../RemotelyTrackable.html" title="Omega::Client::RemotelyTrackable (module)">RemotelyTrackable</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>all entities which server returns</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+241
+242
+243
+244
+245</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client2/mixins.rb', line 241</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_all'>get_all</span>
+  <span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_invoke_request'>invoke_request</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_method'>get_method</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>of_type</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_entity_type'>entity_type</span><span class='rparen'>)</span><span class='period'>.</span>
+       <span class='id identifier rubyid_select'>select</span>  <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_validate_entity'>validate_entity</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span>
+       <span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_track_entity'>track_entity</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_method-instance_method">
+  
+    - (<tt>String</tt>) <strong>get_method</strong>(method_name = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Get/set the method used to retrieve serverside entities. Will always return
+method name. If argument is given, used to set new value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>method_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>name of method to register</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>name of method used to retrieve server entities</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+159
+160
+161
+162
+163
+164
+165
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client2/mixins.rb', line 159</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_method'>get_method</span><span class='lparen'>(</span><span class='id identifier rubyid_method_name'>method_name</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_method_name'>method_name</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='kw'>return</span> <span class='ivar'>@get_method</span> <span class='kw'>unless</span> <span class='ivar'>@get_method</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='kw'>return</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_get_method'>get_method</span> <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>==</span> <span class='const'>Object</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@get_method</span> <span class='op'>=</span> <span class='id identifier rubyid_method_name'>method_name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="on_init-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_init</strong>(&amp;bl) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Register a method to be invoked after instance of this class is created by
+local mechanisms.</p>
+
+<p>For this reason, when using RemotelyTrackable, instances of the class
+including it should only be created through the instantiation methods
+defined here.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>bl</span>
+      
+      
+        <span class='type'>(<tt>Callable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>block to invoke w/ entity after it is initialized</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+148
+149
+150
+151</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client2/mixins.rb', line 148</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_on_init'>on_init</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_bl'>bl</span><span class='rparen'>)</span>
+  <span class='comment'># TODO allow registration of multiple methods
+</span>  <span class='ivar'>@entity_init</span> <span class='op'>=</span> <span class='id identifier rubyid_bl'>bl</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="owned_by-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../RemotelyTrackable.html" title="Omega::Client::RemotelyTrackable (module)">RemotelyTrackable</a></span>&gt;</tt>) <strong>owned_by</strong>(user_id) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Return array of all server side entities tracked by this class owned by the
+specified user</p>
+
+<p>TODO move this into its own module</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code"><span class='kw'>class</span> <span class='const'>Ship</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'>RemotelyTrackable</span>
+  <span class='id identifier rubyid_entity_type'>entity_type</span> <span class='const'>Manufactured</span><span class='op'>::</span><span class='const'>Ship</span>
+  <span class='id identifier rubyid_get_method'>get_method</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>manufactured::get_entity</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='const'>Ship</span><span class='period'>.</span><span class='id identifier rubyid_owned_by'>owned_by</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Anubis</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; [&lt;Omega::Client::Ship#...&gt;,&lt;Omega::Client::Ship#...&gt;,...]</span></pre>
+    
+  </div>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../RemotelyTrackable.html" title="Omega::Client::RemotelyTrackable (module)">RemotelyTrackable</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>entities owned by specified user which server returns</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+283
+284
+285
+286
+287</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client2/mixins.rb', line 283</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_owned_by'>owned_by</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+  <span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_invoke_request'>invoke_request</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_method'>get_method</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>of_type</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_entity_type'>entity_type</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>owned_by</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span><span class='period'>.</span>
+       <span class='id identifier rubyid_select'>select</span>  <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_validate_entity'>validate_entity</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span>
+       <span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_track_entity'>track_entity</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="server_event-instance_method">
+  
+    - (<tt>Object</tt>) <strong>server_event</strong>(events = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+<p>Define an event on this entity type which clients can register handlers for
+specific entity instances.</p>
+
+<p>TODO 'server_event' is misleading as the client can raise events using this
+subsystem, rename this</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'></div></h4>
+      <pre class="example code">class MiningShip
+  include RemotelyTrackable
+  entity_type Manufactured::Ship
+  get_method &quot;manufactured::get_entity&quot;
+
+  server_event       :resource_collected =&gt; { :subscribe    =&gt; &quot;manufactured::subscribe_to&quot;,
+                                              :notification =&gt; &quot;manufactured::event_occurred&quot; },
+
+                     :mining_stopped     =&gt; { :subscribe    =&gt; &quot;manufactured::subscribe_to&quot;,
+                                              :notification =&gt; &quot;manufactured::event_occurred&quot; },
+
+                     :movement           =&gt; { :setup        =&gt; lambda { |distance| Node.invoke_request(&quot;motel::track_movement&quot;, self.location.id, distance) }
+                                              :notification =&gt; &quot;motel::on_movement&quot; }
+end</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>events</span>
+      
+      
+        <span class='type'>(<tt>Hash&lt;Symbol,Hash&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>events to register with the local tracker. The keys of this hash should
+correspond to the event identifiers with the values corresponding to hashes
+of options as elaborated below:</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <h3>Options Hash (<tt>events</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:setup</span>
+          <span class="type">(<tt>Callable</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>method to be invoked w/ entity to setup / begin listening for / processing
+events</p>
+</div>
+        </li>
+      
+        <li>
+          <span class="name">:subscribe</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>server method to invoke to being listening for event. A setup method will
+be added to invoke this method when the client registers a callback for
+this event. The entity id and event id are passed as parameters to the
+subscribe method</p>
+</div>
+        </li>
+      
+        <li>
+          <span class="name">:notification</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'>
+<p>local rjr method invoked by server to notify client event occurred. A setup
+method will be added to begin listening for this method when the client
+registers a callback for the event.</p>
+</div>
+        </li>
+      
+    </ul>
+  
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client2/mixins.rb', line 202</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_server_event'>server_event</span><span class='lparen'>(</span><span class='id identifier rubyid_events'>events</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_events'>events</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+    <span class='id identifier rubyid_event_setup'>event_setup</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_events'>events</span><span class='lbracket'>[</span><span class='id identifier rubyid_e'>e</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:setup</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_event_setup'>event_setup</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_events'>events</span><span class='lbracket'>[</span><span class='id identifier rubyid_e'>e</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:setup</span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_events'>events</span><span class='lbracket'>[</span><span class='id identifier rubyid_e'>e</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:subscribe</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_event_setup'>event_setup</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span> <span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_invoke_request'>invoke_request</span><span class='lparen'>(</span><span class='id identifier rubyid_events'>events</span><span class='lbracket'>[</span><span class='id identifier rubyid_e'>e</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:subscribe</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_entity'>entity</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_events'>events</span><span class='lbracket'>[</span><span class='id identifier rubyid_e'>e</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:notification</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_has_method_handler_for?'>has_method_handler_for?</span><span class='lparen'>(</span><span class='id identifier rubyid_events'>events</span><span class='lbracket'>[</span><span class='id identifier rubyid_e'>e</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:notification</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_event_setup'>event_setup</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+        <span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_add_method_handler'>add_method_handler</span><span class='lparen'>(</span><span class='id identifier rubyid_events'>events</span><span class='lbracket'>[</span><span class='id identifier rubyid_e'>e</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:notification</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+        <span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_add_event_handler'>add_event_handler</span><span class='lparen'>(</span><span class='ivar'>@entity_id</span><span class='comma'>,</span> <span class='id identifier rubyid_events'>events</span><span class='lbracket'>[</span><span class='id identifier rubyid_e'>e</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:notification</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='op'>|</span>
+          <span class='const'>Node</span><span class='period'>.</span><span class='id identifier rubyid_raise_event'>raise_event</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+        <span class='rbrace'>}</span>
+      <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@event_setup_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_intern'>intern</span><span class='comma'>,</span> <span class='id identifier rubyid_event_setup'>event_setup</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sun Nov 25 08:35:32 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

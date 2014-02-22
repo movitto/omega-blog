@@ -1,0 +1,467 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="/docs/middleman/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: テンプレートヘルパ</title>
+  </head>
+  <body>
+    <!-- BuySellAds Ad Code -->
+    <script type="text/javascript">
+    (function(){
+      var bsa = document.createElement('script');
+         bsa.type = 'text/javascript';
+         bsa.async = true;
+         bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+    })();
+    </script>
+    <!-- End BuySellAds Ad Code -->
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/docs/middleman/jp/"><img width="225" height="225" alt="Middleman" src="/images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <div id="search">
+        <form>
+          <input type="text" id="st-search-input" class="st-search-input" placeholder="Search the documentation" />
+        </form>
+        <div id="st-results-container"></div>
+        <script type="text/javascript">
+          var Swiftype = window.Swiftype || {};
+          (function() {
+            Swiftype.key = 'q3qjGN5LmX2oq6w1V47y';
+            Swiftype.inputElement = '#st-search-input';
+            Swiftype.resultContainingElement = '#st-results-container';
+            Swiftype.attachElement = '#st-search-input';
+            Swiftype.renderStyle = "overlay";
+
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = "//swiftype.com/embed.js";
+            var entry = document.getElementsByTagName('script')[0];
+            entry.parentNode.insertBefore(script, entry);
+          }());
+        </script>
+      </div>
+
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman の基礎</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/basics/getting-started/">はじめに</a></li>
+      <li><a href="/docs/middleman/jp/basics/templates/">テンプレート</a></li>
+      <li><a href="/docs/middleman/jp/basics/helpers/">テンプレートヘルパ</a></li>
+      <li><a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a></li>
+      <li><a href="/docs/middleman/jp/basics/dynamic-pages/">動的ページ</a></li>
+      <li><a href="/docs/middleman/jp/basics/asset-pipeline/">アセットパイプライン</a></li>
+      <li><a href="/docs/middleman/jp/basics/pretty-urls/">きれいな URL (ディレクトリインデックス)</a></li>
+      <li><a href="/docs/middleman/jp/basics/livereload/">LiveReload</a></li>
+      <li><a href="/docs/middleman/jp/basics/blogging/">ブログ機能</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>高度な機能</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/advanced/configuration/">設定</a></li>
+      <li><a href="/docs/middleman/jp/advanced/local-data/">ローカルデータ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/localization/">多言語化 (i18n)</a></li>
+      <li><a href="/docs/middleman/jp/advanced/sitemap/">サイトマップ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/rack-middleware/">Rack ミドルウェア</a></li>
+      <li><a href="/docs/middleman/jp/advanced/custom/">カスタム拡張</a></li>
+      <li><a href="/docs/middleman/jp/advanced/file-size-optimization/">ファイルサイズ最適化</a></li>
+      <li><a href="/docs/middleman/jp/advanced/improving-cacheability/">キャッシュ機能の改善</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>コミュニティ</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/all">拡張機能</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">プロジェクトテンプレート</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/deployment">デプロイ方法</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">コミュニティフォーラム</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub リポジトリ</a></li>
+      <li><a href="/docs/middleman/jp/community/built-using-middleman/">Middleman 採用サイト</a></li>
+  </ul>
+</div>
+
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="テンプレートヘルパ">テンプレートヘルパ</h1>
+
+<p>テンプレートヘルパはよくある HTML の作業を簡単にするため, 動的テンプレートの中で使用できるメソッドです。基本的なメソッドのほとんどは Rails のビューヘルパを利用したことのある人にはお馴染みのものです。すべてのヘルパは Padrino フレームワークによって組み込まれています。<a href="http://www.padrinorb.com/guides/application-helpers">完全なドキュメントはこちらを参照してください。</a></p>
+
+<h2 id="リンクヘルパ">リンクヘルパ</h2>
+
+<p>Padrino はリンクタグを作るために <code>link_to</code> メソッドを提供します。基本的な使い方では <code>link_to</code> がリンク名とリンク URL を引数に取ります:</p>
+
+<pre><code class="html">&lt;%= link_to &#39;私のサイト&#39;, &#39;http://mysite.com&#39; %&gt;
+</code></pre>
+
+<p><code>link_to</code> はより複雑な内容のリンクを生成できるように, ブロックをとることもできます:</p>
+
+<pre><code class="html">&lt;% link_to &#39;http://mysite.com&#39; do %&gt;
+  &lt;%= image_tag &#39;mylogo.png&#39; %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>Middleman は <code>link_to</code> に <a href="/docs/middleman/jp/advanced/sitemap/">サイトマップ</a> を把握させることで強化します。 source フォルダ (ファイル拡張子からテンプレート言語拡張子を除いた状態で) のページへの参照を与えると, <code>link_to</code> は <a href="/jp/basics/pretty-urls/"><code>:directory_indexes</code></a> 拡張が有効化されていたとしても, 正しいリンクを生成します。例えば, <code>source/about.html</code> ファイルがあり <code>:directory_indexes</code> が有効化されている場合, 次のようにリンクします:</p>
+
+<pre><code class="html">&lt;%= link_to &#39;About&#39;, &#39;/about.html&#39; %&gt;
+
+結果: &lt;a href=&#39;/about/&#39;&gt;About&lt;/a&gt;
+</code></pre>
+
+<p>現在ページから相対パスで参照することもできます。リンクを現在ページからの相対パスにしたいと考える人もいるでしょう。 <code>:relative =&gt; true</code> を渡すことで, <code>link_to</code> は相対 URL になります。</p>
+
+<p><code>:directory_indexes</code> が有効化され, source/foo/index.html.erb の中から相対パスを得る場合:</p>
+
+<pre><code class="html">&lt;%= link_to &#39;About&#39;, &#39;/about.html&#39;, :relative =&gt; true %&gt;
+</code></pre>
+
+<p>結果:</p>
+
+<pre><code class="html">&lt;a href=&#39;../about/&#39;&gt;About&lt;/a&gt;
+</code></pre>
+
+<p><code>link_to</code> で作られるあらゆる URL を相対パスにしたい場合, <code>config.rb</code> に次を追加します:</p>
+
+<pre><code class="ruby">set :relative_links, true
+</code></pre>
+
+<p>相対パスにしたくないリンクに <code>:relative =&gt; false</code> を追加することで個別に上書きすることもできます。</p>
+
+<p><code>link_to</code> ヘルパが与えられた URL の属するページの決定に失敗した場合, 指定された URL を変更せず使います。この場合 <code>:relative_links</code> オプションは無視されますが, <code>:relative =&gt; true</code> を指定している場合はエラーが発生します。</p>
+
+<p><a href="/docs/middleman/jp/advanced/sitemap/">サイトマップ</a> リソースの <a href="http://rdoc.info/github/middleman/middleman/Middleman/Sitemap/Resource#url-instance_method"><code>url</code> メソッド</a> (<a href="/jp/basics/blogging/">Blog 機能</a> の BlogArticle に継承される) は <em>出力 URL</em> を返すことに注意してください。<code>link_to</code> ヘルパは対応する page/article の <em>ソースパス</em> に一致させることができず, 相対 URL に変換できない場合があります。</p>
+
+<p><code>link_to</code> に出力 URL を与える代わりに, <code>link_to</code> の URL 引数として Resource/Blogarticle の <a href="http://rdoc.info/github/middleman/middleman/Middleman/Sitemap/Resource#path-instance_method"><code>path</code> 属性</a> を介した <em>ソースパス</em> を与えるか, 単にリソース自体のパスを与えます。どちらの方法も <code>link_to</code> に相対 URL を生成させます:</p>
+
+<pre><code class="html">&lt;ul&gt;
+  &lt;% blog.articles.each do |article| %&gt;
+    &lt;li&gt;
+      &lt;%= link_to article.title, article.path, :relative =&gt; true %&gt; &lt;%# 第 2 引数の `article.path` に注目 %&gt;
+    &lt;/li&gt;
+  &lt;% end %&gt;
+&lt;/ul&gt;
+
+&lt;ul&gt;
+  &lt;% sitemap.resources.select{|resource| resource.data.title}.each do |resource| %&gt;
+    &lt;li&gt;
+      &lt;%= link_to resource.data.title, resource, :relative =&gt; true %&gt; &lt;%# 第 2 引数の `resource` に注目 %&gt;
+    &lt;/li&gt;
+  &lt;% end %&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>リンクのクエリパラメータやURLフラグメントを次のように含めることができます:</p>
+
+<pre><code class="ruby">&lt;%= link_to &#39;私のフォーム&#39;, &#39;/form.html&#39;, :query =&gt; { :foo =&gt; &#39;bar&#39; }, :fragment =&gt; &#39;deep&#39; %&gt;
+</code></pre>
+
+<p>結果:</p>
+
+<pre><code class="html">&lt;a href=&#39;/form.html?foo=bar#deep&#39;&gt;私のフォーム&lt;/a&gt;
+</code></pre>
+
+<p>リンクタグなしのページ URL が必要な場合, <code>url_for</code> を使ってください。これは <code>link_to</code> や <code>form_tag</code> の処理の中でも使われています。</p>
+
+<h2 id="出力ヘルパ">出力ヘルパ</h2>
+
+<p>出力ヘルパは様々な方法で出力を管理, キャプチャ, 表示する重要なメソッドの集合で, より高いレベルのヘルパ機能をサポートするために使われます。説明すべき出力ヘルパが 3 つあります: <code>content_for</code>, <code>capture_html</code> や <code>concat_content</code>。</p>
+
+<p><code>content_for</code> はコンテンツのキャプチャを行い, レイアウトの中など異なった場所でのレンダリングをサポートします。その 1 つの例はテンプレートからレイアウトに assets を含めるものです:</p>
+
+<pre><code class="html">&lt;% content_for :assets do %&gt;
+  &lt;%= stylesheet_link_tag &#39;index&#39;, &#39;custom&#39; %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>テンプレートに追加することで, ブロックに含まれる部分をキャプチャしレイアウトで yield を用いて出力します:</p>
+
+<pre><code class="html">&lt;head&gt;
+  &lt;title&gt;例&lt;/title&gt;
+  &lt;%= stylesheet_link_tag &#39;style&#39; %&gt;
+  &lt;%= yield_content :assets %&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p>自動的にブロックの内容 (この場合はスタイルシートが含まれる) をレイアウト内で yield された場所に挿入します。</p>
+
+<p><code>content_for?</code> にキーを与えることで <code>content_for</code> ブロックが存在するか確認することもできます:</p>
+
+<pre><code class="html">&lt;% if content_for?(:assets) %&gt;
+  &lt;div&gt;&lt;%= yield_content :assets %&gt;&lt;/div&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>ブロック引数にも対応します。</p>
+
+<pre><code class="ruby">yield_content :head, param1, param2
+content_for(:head) { |param1, param2| ...content... }
+</code></pre>
+
+<h2 id="タグヘルパ">タグヘルパ</h2>
+
+<p>タグヘルパはビューテンプレート内の html &quot;タグ&quot; を生成するために使われる基本的なメソッドです。このカテゴリには 3 つの主要メソッドがあります: <code>tag</code>, <code>content_tag</code> と <code>input_tag</code>。</p>
+
+<p><code>tag</code> と <code>content_tag</code> はタグ名と指定されたオプションで任意の html タグを生成します。 html タグが &quot;中身&quot; を含む場合, <code>content_tag</code> が使われます。例:</p>
+
+<pre><code class="html">&lt;%= tag :img, :src =&gt; &quot;/my_image.png&quot; %&gt;
+  # =&gt; &lt;img src=&#39;/my_image.png&#39;&gt;
+
+&lt;%= content_tag :p, :class =&gt; &quot;stuff&quot; do %&gt;
+  こんにちわ
+&lt;% end %&gt;
+  # =&gt; &lt;p class=&#39;stuff&#39;&gt;こんにちわ&lt;/p&gt;
+</code></pre>
+
+<p><code>input_tag</code> はユーザからの入力を受け付けるタグを生成するために使われます:</p>
+
+<pre><code class="ruby">input_tag :text, :class =&gt; &quot;demo&quot;
+  # =&gt; &lt;input type=&#39;text&#39; class=&#39;demo&#39;&gt;
+input_tag :password, :value =&gt; &quot;secret&quot;, :class =&gt; &quot;demo&quot;
+  # =&gt; &lt;input type=&#39;password&#39; value=&#39;secret&#39; class=&#39;demo&#39;&gt;
+</code></pre>
+
+<h2 id="アセットヘルパ">アセットヘルパ</h2>
+
+<p>アセットヘルパはハイパーリンク, mail_to リンク, 画像, スタイルシートや JavaScript のような html をビューテンプレートに挿入する手助けをします。簡単なビューテンプレートでの使用方法は次のようになります:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;%= stylesheet_link_tag &#39;layout&#39; %&gt;
+  &lt;%= javascript_include_tag &#39;application&#39; %&gt;
+  &lt;%= favicon_tag &#39;images/favicon.png&#39; %&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;&lt;%= link_to &#39;Blog&#39;, &#39;/blog&#39;, :class =&gt; &#39;example&#39; %&gt;&lt;/p&gt;
+  &lt;p&gt;Mail me at &lt;%= mail_to &#39;fake@faker.com&#39;, &quot;Fake Email Link&quot;,
+                      :cc =&gt; &quot;test@demo.com&quot; %&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;%= image_tag &#39;padrino.png&#39;, :width =&gt; &#39;35&#39;,
+           :class =&gt; &#39;logo&#39; %&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><code>auto_stylesheet_link_tag</code> や <code>auto_javascript_include_tag</code> は現在ページのパスを元にスタイルシートや JS のタグを生成します。ページが &quot;contact.html&quot; の場合, &quot;contact.css&quot; や &quot;contact.js&quot; の参照になります。</p>
+
+<h2 id="form-ヘルパ">Form ヘルパ</h2>
+
+<p>Form ヘルパは form を作る際に使うであろう &quot;一般的な&quot; form タグのヘルパです。非オブジェクトの form が作られる場合の簡単な例は次のように:</p>
+
+<pre><code class="html">&lt;% form_tag &#39;/destroy&#39;, :class =&gt; &#39;destroy-form&#39;, :method =&gt; &#39;delete&#39; do %&gt;
+  &lt;% field_set_tag do %&gt;
+    &lt;p&gt;
+      &lt;%= label_tag :username, :class =&gt; &#39;first&#39; %&gt;
+      &lt;%= text_field_tag :username, :value =&gt; params[:username] %&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;%= label_tag :password, :class =&gt; &#39;first&#39; %&gt;
+      &lt;%= password_field_tag :password, :value =&gt; params[:password] %&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;%= label_tag :strategy %&gt;
+      &lt;%= select_tag :strategy, :options =&gt; [&#39;delete&#39;, &#39;destroy&#39;],
+          :selected =&gt; &#39;delete&#39; %&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;%= check_box_tag :confirm_delete %&gt;
+    &lt;/p&gt;
+  &lt;% end %&gt;
+  &lt;% field_set_tag(:class =&gt; &#39;buttons&#39;) do %&gt;
+    &lt;%= submit_tag &quot;削除&quot; %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<h2 id="フォーマットヘルパ">フォーマットヘルパ</h2>
+
+<p>フォーマットヘルパはテキストを目的に合わせて加工するための便利なメソッドです。
+フォーマットヘルパの代表的なものは <code>escape_html</code>, <code>distance_of_time_in_words</code>, <code>time_ago_in_words</code> と <code>js_escape_html</code> の 4 つです。</p>
+
+<p><code>escape_html</code> と <code>js_escape_html</code> メソッドは html 文字列を取得し, 特定の文字をエスケープするものです。
+<code>escape_html</code> は HTML/XML のアンパサンド, 括弧や引用符をエスケープします。テンプレートに表示する前にユーザコンテンツをエスケープするのに便利です。 <code>js_escape_html</code> は JS テンプレートから JavaScript の関数に情報を与える場合に使用されます。</p>
+
+<pre><code class="ruby">escape_html(&#39;&lt;hello&gt;&amp;&lt;goodbye&gt;&#39;) # =&gt; &amp;lt;hello&amp;gt;&amp;amp;&amp;lt;goodbye&amp;gt;
+</code></pre>
+
+<p>テンプレート内で簡単に使うために <code>h</code> という <code>escape_html</code> のエイリアスもあります。</p>
+
+<p>フォーマットヘルパは <code>simple_format</code>, <code>pluralize</code>, <code>word_wrap</code> や <code>truncate</code> のようなテキストの加工に便利な機能も含みます。</p>
+
+<pre><code class="ruby">simple_format(&quot;hello\nworld&quot;)
+  # =&gt; &quot;&lt;p&gt;hello&lt;br/&gt;world&lt;/p&gt;&quot;
+pluralize(2, &#39;人&#39;)
+  # =&gt; &#39;2 人&#39;
+word_wrap(&#39;Once upon a time&#39;, :line_width =&gt; 8)
+  # =&gt; &quot;Once upon\na time&quot;
+truncate(&quot;Once upon a time in a world far far away&quot;, :length =&gt; 8)
+  # =&gt; &quot;Once upon...&quot;
+truncate_words(&quot;Once upon a time in a world far far away&quot;, :length =&gt; 4)
+  # =&gt; &quot;Once upon a time...&quot;
+highlight(&#39;Lorem dolor sit&#39;, &#39;dolor&#39;)
+  # =&gt; &quot;Lorem &lt;strong class=&quot;highlight&quot;&gt;dolor&lt;/strong&gt; sit&quot;
+</code></pre>
+
+<h2 id="ダミーテキスト-&amp;-placehold.it-ヘルパ">ダミーテキスト &amp; Placehold.it ヘルパ</h2>
+
+<p>Sinatra の影響も受けた静的ツール <a href="https://github.com/blahed/frank">Frank プロジェクト</a> は, ランダムなテキストコンテンツとプレースホルダ画像を生成する素晴らしいヘルパセットです。 私たちはこのコードを Middleman に適合させました (MIT ライセンスを祝福します)。</p>
+
+<p>例えば, ダミーテキストを 5 文出力したい場合, 次のように書けます。
+<code>&lt;%= lorem.sentences 5 %&gt;</code></p>
+
+<p>その他のメソッドについてもテキストに関して利用できます:</p>
+
+<pre><code class="ruby">lorem.sentence      # 1 文を返す
+lorem.words 5       # 5 つの単語を返す
+lorem.word
+lorem.paragraphs 10 # 10 段落を返す
+lorem.paragraph
+lorem.date          # strftime 形式の引数を受取る
+lorem.name
+lorem.first_name
+lorem.last_name
+lorem.email
+</code></pre>
+
+<p>プレースホルダ画像の使用方法:</p>
+
+<pre><code class="ruby">lorem.image(&#39;300x400&#39;)
+  #=&gt; http://placehold.it/300x400
+lorem.image(&#39;300x400&#39;, :background_color =&gt; &#39;333&#39;, :color =&gt; &#39;fff&#39;)
+  #=&gt; http://placehold.it/300x400/333/fff
+lorem.image(&#39;300x400&#39;, :random_color =&gt; true)
+  #=&gt; http://placehold.it/300x400/f47av7/9fbc34d
+lorem.image(&#39;300x400&#39;, :text =&gt; &#39;blah&#39;)
+  #=&gt; http://placehold.it/300x400&amp;text=blah
+</code></pre>
+
+<h2 id="ページクラス">ページクラス</h2>
+
+<p>サイト階層に対応する <code>body</code> タグの class 属性が生成されると便利です。 <code>page_classes</code> はこれらの属性名を生成します。<code>projects/rockets/saturn-v.html</code> にページがあるとすると, レイアウトには次のように表示されます。</p>
+
+<pre><code class="erb">&lt;body class=&quot;&lt;%= page_classes %&gt;&quot;&gt;
+</code></pre>
+
+<p>結果:</p>
+
+<pre><code class="html">&lt;body class=&quot;projects rockets saturn-v&quot;&gt;
+</code></pre>
+
+<p>これにより簡単にページに project-specific や rocket-specific のスタイルを適用できます。</p>
+
+<h2 id="カスタム定義ヘルパ">カスタム定義ヘルパ</h2>
+
+<p>Middleman によって提供されるヘルパに加え, コントローラやビューの中からアクセスできる独自のヘルパやクラスを追加することができます。</p>
+
+<p>ヘルパメソッドを定義するには, <code>config.rb</code> の中で <code>helpers</code> ブロックを使います:</p>
+
+<pre><code class="ruby">helpers do
+  def some_method
+    # ...何らかの処理を追加...
+  end
+end
+</code></pre>
+
+<p>また, 外部の Ruby モジュール含むヘルパを作成し, 読み込むこともできます。 <code>lib</code> ディレクトリにファイルを配置します。例えば, <code>lib/custom_helpers.rb</code> という名前のファイルに上記のヘルパを抽出する場合には, モジュールを作ることができます:</p>
+
+<pre><code class="ruby">module CustomHelpers
+  def some_method
+    # ...do something here...
+  end
+end
+</code></pre>
+
+<p>次に <code>config.rb</code> に追加:</p>
+
+<pre><code class="ruby">require &quot;lib/custom_helpers&quot;
+helpers CustomHelpers
+</code></pre>
+
+<p>より簡単な方法として, <code>helpers</code> ディレクトリにヘルパを配置し, モジュールファイルの名前をつける方法です (例: <code>CustomHelpers</code> は <code>helpers/custom_helpers.rb</code> として配置)。 Middleman は自動的にファイルを読込み, ヘルパーとして受け取ります。</p>
+
+    </article>
+
+    <div id="support">
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+
+  <div class="sponsor">
+    <h4>Sponsors</h4>
+
+    <a href="http://fjords.cc" target="_blank">
+      <img src="/images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+
+    <a href="http://www.maxcdn.com" target="_blank" id="max">
+      <img width="130" src="/images/maxcdn.svg" />
+    </a>
+  </div>
+
+  <div class="donate">
+    <script data-gittip-username="tdreyno"
+        src="//gttp.co/v1.js"></script>
+    <p><br><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">Donate!</a><br><br></p>
+  </div>
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/localizable/basics/helpers.jp.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="/javascripts/toc.js" type="text/javascript"></script>
+    <link href="/docs/middleman/stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src='https://spacebox.io/embed/js/embed-v1.js'></script>
+    <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-90027-21']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4ef39d56613f5d017b000004');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+  </body>
+</html>

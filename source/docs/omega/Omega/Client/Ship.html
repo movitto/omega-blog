@@ -1,0 +1,463 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Omega::Client::Ship
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Omega.html" title="Omega (module)">Omega</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Client.html" title="Omega::Client (module)">Client</a></span></span>
+     &raquo; 
+    <span class="title">Ship</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Omega::Client::Ship
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Omega::Client::Ship</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="HasCargo.html" title="Omega::Client::HasCargo (module)">HasCargo</a></span>, <span class='object_link'><a href="HasLocation.html" title="Omega::Client::HasLocation (module)">HasLocation</a></span>, <span class='object_link'><a href="InSystem.html" title="Omega::Client::InSystem (module)">InSystem</a></span>, <span class='object_link'><a href="TrackEntity.html" title="Omega::Client::TrackEntity (module)">TrackEntity</a></span>, <span class='object_link'><a href="TrackState.html" title="Omega::Client::TrackState (module)">TrackState</a></span>, <span class='object_link'><a href="Trackable.html" title="Omega::Client::Trackable (module)">Trackable</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/omega/client/entities/ship.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Omega client Manufactured::Ship tracker</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Corvette.html" title="Omega::Client::Corvette (class)">Corvette</a></span>, <span class='object_link'><a href="Miner.html" title="Omega::Client::Miner (class)">Miner</a></span></p>
+</div>
+
+
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="TrackState.html" title="Omega::Client::TrackState (module)">TrackState</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="TrackState.html#states-instance_method" title="Omega::Client::TrackState#states (method)">#states</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Trackable.html" title="Omega::Client::Trackable (module)">Trackable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Trackable.html#entity-instance_method" title="Omega::Client::Trackable#entity (method)">#entity</a></span>, <span class='object_link'><a href="Trackable.html#event_handlers-instance_method" title="Omega::Client::Trackable#event_handlers (method)">#event_handlers</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#collect_loot-instance_method" title="#collect_loot (instance method)">- (Object) <strong>collect_loot</strong>(loot) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Collect specified loot.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dock_to-instance_method" title="#dock_to (instance method)">- (Object) <strong>dock_to</strong>(station) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Dock at the specified station.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#undock-instance_method" title="#undock (instance method)">- (Object) <strong>undock</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Undock.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="HasCargo.html" title="Omega::Client::HasCargo (module)">HasCargo</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="HasCargo.html#transfer-instance_method" title="Omega::Client::HasCargo#transfer (method)">#transfer</a></span>, <span class='object_link'><a href="HasCargo.html#transfer_all_to-instance_method" title="Omega::Client::HasCargo#transfer_all_to (method)">#transfer_all_to</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="InSystem.html" title="Omega::Client::InSystem (module)">InSystem</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="InSystem.html#closest-instance_method" title="Omega::Client::InSystem#closest (method)">#closest</a></span>, <span class='object_link'><a href="InSystem.html#jump_to-instance_method" title="Omega::Client::InSystem#jump_to (method)">#jump_to</a></span>, <span class='object_link'><a href="InSystem.html#move_to-instance_method" title="Omega::Client::InSystem#move_to (method)">#move_to</a></span>, <span class='object_link'><a href="InSystem.html#solar_system-instance_method" title="Omega::Client::InSystem#solar_system (method)">#solar_system</a></span>, <span class='object_link'><a href="InSystem.html#stop_moving-instance_method" title="Omega::Client::InSystem#stop_moving (method)">#stop_moving</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="HasLocation.html" title="Omega::Client::HasLocation (module)">HasLocation</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="HasLocation.html#included-class_method" title="Omega::Client::HasLocation.included (method)">included</a></span>, <span class='object_link'><a href="HasLocation.html#location-instance_method" title="Omega::Client::HasLocation#location (method)">#location</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="TrackState.html" title="Omega::Client::TrackState (module)">TrackState</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="TrackState.html#included-class_method" title="Omega::Client::TrackState.included (method)">included</a></span>, <span class='object_link'><a href="TrackState.html#off_state-instance_method" title="Omega::Client::TrackState#off_state (method)">#off_state</a></span>, <span class='object_link'><a href="TrackState.html#on_state-instance_method" title="Omega::Client::TrackState#on_state (method)">#on_state</a></span>, <span class='object_link'><a href="TrackState.html#set_state-instance_method" title="Omega::Client::TrackState#set_state (method)">#set_state</a></span>, <span class='object_link'><a href="TrackState.html#unset_state-instance_method" title="Omega::Client::TrackState#unset_state (method)">#unset_state</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="TrackEntity.html" title="Omega::Client::TrackEntity (module)">TrackEntity</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="TrackEntity.html#clear_entities-class_method" title="Omega::Client::TrackEntity.clear_entities (method)">clear_entities</a></span>, <span class='object_link'><a href="TrackEntity.html#entities-instance_method" title="Omega::Client::TrackEntity#entities (method)">#entities</a></span>, <span class='object_link'><a href="TrackEntity.html#entities-class_method" title="Omega::Client::TrackEntity.entities (method)">entities</a></span>, <span class='object_link'><a href="TrackEntity.html#included-class_method" title="Omega::Client::TrackEntity.included (method)">included</a></span>, <span class='object_link'><a href="TrackEntity.html#track_entity-class_method" title="Omega::Client::TrackEntity.track_entity (method)">track_entity</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Trackable.html" title="Omega::Client::Trackable (module)">Trackable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Trackable.html#clear_handlers-instance_method" title="Omega::Client::Trackable#clear_handlers (method)">#clear_handlers</a></span>, <span class='object_link'><a href="Trackable.html#clear_handlers_for-instance_method" title="Omega::Client::Trackable#clear_handlers_for (method)">#clear_handlers_for</a></span>, <span class='object_link'><a href="Trackable.html#handle-instance_method" title="Omega::Client::Trackable#handle (method)">#handle</a></span>, <span class='object_link'><a href="Trackable.html#handles%3F-instance_method" title="Omega::Client::Trackable#handles? (method)">#handles?</a></span>, <span class='object_link'><a href="Trackable.html#included-class_method" title="Omega::Client::Trackable.included (method)">included</a></span>, <span class='object_link'><a href="Trackable.html#method_missing-instance_method" title="Omega::Client::Trackable#method_missing (method)">#method_missing</a></span>, <span class='object_link'><a href="Trackable.html#node-instance_method" title="Omega::Client::Trackable#node (method)">#node</a></span>, <span class='object_link'><a href="Trackable.html#node-class_method" title="Omega::Client::Trackable.node (method)">node</a></span>, <span class='object_link'><a href="Trackable.html#raise_event-instance_method" title="Omega::Client::Trackable#raise_event (method)">#raise_event</a></span>, <span class='object_link'><a href="Trackable.html#refresh-instance_method" title="Omega::Client::Trackable#refresh (method)">#refresh</a></span></p>
+<div id="method_missing_details" class="method_details_list">
+  <h2>Dynamic Method Handling</h2>
+  <p class="notice super">
+    This class handles dynamic methods through the <tt>method_missing</tt> method
+    
+      in the class <span class='object_link'><a href="Trackable.html#method_missing-instance_method" title="Omega::Client::Trackable#method_missing (method)">Omega::Client::Trackable</a></span>
+    
+  </p>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="collect_loot-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>collect_loot</strong>(loot) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Collect specified loot</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>loot</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Manufactured/Loot.html" title="Manufactured::Loot (class)">Manufactured::Loot</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>loot which to collect</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/entities/ship.rb', line 90</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_collect_loot'>collect_loot</span><span class='lparen'>(</span><span class='id identifier rubyid_loot'>loot</span><span class='rparen'>)</span>
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Entity </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'> collecting loot </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_loot'>loot</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='ivar'>@entity</span> <span class='op'>=</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::collect_loot</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_loot'>loot</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dock_to-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>dock_to</strong>(station) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Dock at the specified station</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/entities/ship.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dock_to'>dock_to</span><span class='lparen'>(</span><span class='id identifier rubyid_station'>station</span><span class='rparen'>)</span>
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Docking </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'> at </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_station'>station</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::dock</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_station'>station</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="undock-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>undock</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Undock</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/omega/client/entities/ship.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_undock'>undock</span>
+  <span class='const'>RJR</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unocking </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_invoke'>invoke</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured::undock</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:38 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

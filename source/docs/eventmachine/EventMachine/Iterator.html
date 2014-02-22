@@ -1,0 +1,789 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: EventMachine::Iterator
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (I)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../EventMachine.html" title="EventMachine (module)">EventMachine</a></span></span>
+     &raquo; 
+    <span class="title">Iterator</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: EventMachine::Iterator
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">EventMachine::Iterator</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/em/iterator.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>A simple iterator for concurrent asynchronous work.</p>
+
+<p>Unlike ruby’s built-in iterators, the end of the current iteration cycle is signaled manually,
+instead of happening automatically after the yielded block finishes executing. For example:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>(0..10).each      <td>num</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>becomes:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>EM::Iterator.new(0..10).each{</td>
+      <td>num,iter</td>
+      <td>iter.next }</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This is especially useful when doing asynchronous work via reactor libraries and
+functions. For example, given a sync and async http api:</p>
+
+<p>response = sync_http_get(url); …
+  async_http_get(url){ |response| … }</p>
+
+<p>a synchronous iterator such as:</p>
+
+<p>responses = urls.map{ |url| sync_http_get(url) }
+  …
+  puts ‘all done!’</p>
+
+<p>could be written as:</p>
+
+<p>EM::Iterator.new(urls).map(proc{ |url,iter|
+    async_http_get(url){ |res|
+      iter.return(res)
+    }
+  }, proc{ |responses|
+    …
+    puts ‘all done!’
+  })</p>
+
+<p>Now, you can take advantage of the asynchronous api to issue requests in parallel. For example,
+to fetch 10 urls at a time, simply pass in a concurrency of 10:</p>
+
+<p>EM::Iterator.new(urls, 10).each do |url,iter|
+    async_http_get(url){ iter.next }
+  end</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#concurrency-instance_method" title="#concurrency (instance method)">- (Object) <strong>concurrency</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute concurrency.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each-instance_method" title="#each (instance method)">- (Object) <strong>each</strong>(foreach = nil, after = nil, &amp;blk) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Iterate over a set of items using the specified block or proc.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Iterator) <strong>initialize</strong>(list, concurrency = 1) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Create a new parallel async iterator with specified concurrency.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inject-instance_method" title="#inject (instance method)">- (Object) <strong>inject</strong>(obj, foreach, after) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Inject the results of an asynchronous iteration onto a given object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#map-instance_method" title="#map (instance method)">- (Object) <strong>map</strong>(foreach, after) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Collect the results of an asynchronous iteration into an array.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="EventMachine::Iterator (class)">Iterator</a></span></tt>) <strong>initialize</strong>(list, concurrency = 1) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Create a new parallel async iterator with specified concurrency.</p>
+
+<p>i = EM::Iterator.new(1..100, 10)</p>
+
+<p>will create an iterator over the range that processes 10 items at a time. Iteration
+is started via #each, #map or #inject</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/iterator.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='comma'>,</span> <span class='id identifier rubyid_concurrency'>concurrency</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>argument must be an array</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:to_a</span><span class='rparen'>)</span>
+  <span class='ivar'>@list</span> <span class='op'>=</span> <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+  <span class='ivar'>@concurrency</span> <span class='op'>=</span> <span class='id identifier rubyid_concurrency'>concurrency</span>
+
+  <span class='ivar'>@started</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='ivar'>@ended</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="concurrency=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="concurrency-instance_method">
+  
+    - (<tt>Object</tt>) <strong>concurrency</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute concurrency</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/iterator.rb', line 69</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_concurrency'>concurrency</span>
+  <span class='ivar'>@concurrency</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="each-instance_method">
+  
+    - (<tt>Object</tt>) <strong>each</strong>(foreach = nil, after = nil, &amp;blk) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Iterate over a set of items using the specified block or proc.</p>
+
+<p>EM::Iterator.new(1..100).each do |num, iter|
+    puts num
+    iter.next
+  end</p>
+
+<p>An optional second proc is invoked after the iteration is complete.</p>
+
+<p>EM::Iterator.new(1..100).each(
+    proc{ |num,iter| iter.next },
+    proc{ puts ‘all done’ }
+  )</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/iterator.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='id identifier rubyid_foreach'>foreach</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_after'>after</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_blk'>blk</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>proc or block required for iteration</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_foreach'>foreach</span> <span class='op'>||=</span> <span class='id identifier rubyid_blk'>blk</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>RuntimeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cannot iterate over an iterator more than once</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='ivar'>@started</span> <span class='kw'>or</span> <span class='ivar'>@ended</span>
+
+  <span class='ivar'>@started</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='ivar'>@pending</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='ivar'>@workers</span> <span class='op'>=</span> <span class='int'>0</span>
+
+  <span class='id identifier rubyid_all_done'>all_done</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span>
+    <span class='id identifier rubyid_after'>after</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span> <span class='kw'>if</span> <span class='id identifier rubyid_after'>after</span> <span class='kw'>and</span> <span class='ivar'>@ended</span> <span class='kw'>and</span> <span class='ivar'>@pending</span> <span class='op'>==</span> <span class='int'>0</span>
+  <span class='rbrace'>}</span>
+
+  <span class='ivar'>@process_next</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span>
+    <span class='comment'># p [:process_next, :pending=, @pending, :workers=, @workers, :ended=, @ended, :concurrency=, @concurrency, :list=, @list]
+</span>    <span class='kw'>unless</span> <span class='ivar'>@ended</span> <span class='kw'>or</span> <span class='ivar'>@workers</span> <span class='op'>&gt;</span> <span class='ivar'>@concurrency</span>
+      <span class='kw'>if</span> <span class='ivar'>@list</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+        <span class='ivar'>@ended</span> <span class='op'>=</span> <span class='kw'>true</span>
+        <span class='ivar'>@workers</span> <span class='op'>-=</span> <span class='int'>1</span>
+        <span class='id identifier rubyid_all_done'>all_done</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_item'>item</span> <span class='op'>=</span> <span class='ivar'>@list</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span>
+        <span class='ivar'>@pending</span> <span class='op'>+=</span> <span class='int'>1</span>
+
+        <span class='id identifier rubyid_is_done'>is_done</span> <span class='op'>=</span> <span class='kw'>false</span>
+        <span class='id identifier rubyid_on_done'>on_done</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span>
+          <span class='id identifier rubyid_raise'>raise</span> <span class='const'>RuntimeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>already completed this iteration</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_is_done'>is_done</span>
+          <span class='id identifier rubyid_is_done'>is_done</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+          <span class='ivar'>@pending</span> <span class='op'>-=</span> <span class='int'>1</span>
+
+          <span class='kw'>if</span> <span class='ivar'>@ended</span>
+            <span class='id identifier rubyid_all_done'>all_done</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
+          <span class='kw'>else</span>
+            <span class='const'>EM</span><span class='period'>.</span><span class='id identifier rubyid_next_tick'>next_tick</span><span class='lparen'>(</span><span class='ivar'>@process_next</span><span class='rparen'>)</span>
+          <span class='kw'>end</span>
+        <span class='rbrace'>}</span>
+        <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_on_done'>on_done</span>
+          <span class='kw'>alias</span> <span class='symbol'>:next</span> <span class='symbol'>:call</span>
+        <span class='kw'>end</span>
+
+        <span class='id identifier rubyid_foreach'>foreach</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_item'>item</span><span class='comma'>,</span> <span class='id identifier rubyid_on_done'>on_done</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='ivar'>@workers</span> <span class='op'>-=</span> <span class='int'>1</span>
+    <span class='kw'>end</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_spawn_workers'>spawn_workers</span>
+
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inject-instance_method">
+  
+    - (<tt>Object</tt>) <strong>inject</strong>(obj, foreach, after) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Inject the results of an asynchronous iteration onto a given object.</p>
+
+<p>EM::Iterator.new(%w[ pwd uptime uname date ], 2).inject({}, proc{ |hash,cmd,iter|
+    EM.system(cmd){ |output,status|
+      hash[cmd] = status.exitstatus == 0 ? output.strip : nil
+      iter.return(hash)
+    }
+  }, proc{ |results|
+    p results
+  })</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/iterator.rb', line 186</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_foreach'>foreach</span><span class='comma'>,</span> <span class='id identifier rubyid_after'>after</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_item'>item</span><span class='comma'>,</span><span class='id identifier rubyid_iter'>iter</span><span class='op'>|</span>
+    <span class='id identifier rubyid_is_done'>is_done</span> <span class='op'>=</span> <span class='kw'>false</span>
+    <span class='id identifier rubyid_on_done'>on_done</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_res'>res</span><span class='op'>|</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>RuntimeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>already returned a value for this iteration</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_is_done'>is_done</span>
+      <span class='id identifier rubyid_is_done'>is_done</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+      <span class='id identifier rubyid_obj'>obj</span> <span class='op'>=</span> <span class='id identifier rubyid_res'>res</span>
+      <span class='id identifier rubyid_iter'>iter</span><span class='period'>.</span><span class='id identifier rubyid_next'>next</span>
+    <span class='rbrace'>}</span>
+    <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_on_done'>on_done</span>
+      <span class='kw'>alias</span> <span class='symbol'>:return</span> <span class='symbol'>:call</span>
+      <span class='kw'>def</span> <span class='kw'>next</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NoMethodError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>must call #return on an inject iterator</span><span class='tstring_end'>&#39;</span></span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_foreach'>foreach</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_item'>item</span><span class='comma'>,</span> <span class='id identifier rubyid_on_done'>on_done</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span>
+    <span class='id identifier rubyid_after'>after</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="map-instance_method">
+  
+    - (<tt>Object</tt>) <strong>map</strong>(foreach, after) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Collect the results of an asynchronous iteration into an array.</p>
+
+<p>EM::Iterator.new(%w[ pwd uptime uname date ], 2).map(proc{ |cmd,iter|
+    EM.system(cmd){ |output,status|
+      iter.return(output)
+    }
+  }, proc{ |results|
+    p results
+  })</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/em/iterator.rb', line 147</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='id identifier rubyid_foreach'>foreach</span><span class='comma'>,</span> <span class='id identifier rubyid_after'>after</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='int'>0</span>
+
+  <span class='id identifier rubyid_inject'>inject</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_results'>results</span><span class='comma'>,</span><span class='id identifier rubyid_item'>item</span><span class='comma'>,</span><span class='id identifier rubyid_iter'>iter</span><span class='op'>|</span>
+    <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='id identifier rubyid_index'>index</span>
+    <span class='id identifier rubyid_index'>index</span> <span class='op'>+=</span> <span class='int'>1</span>
+
+    <span class='id identifier rubyid_is_done'>is_done</span> <span class='op'>=</span> <span class='kw'>false</span>
+    <span class='id identifier rubyid_on_done'>on_done</span> <span class='op'>=</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_res'>res</span><span class='op'>|</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>RuntimeError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>already returned a value for this iteration</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_is_done'>is_done</span>
+      <span class='id identifier rubyid_is_done'>is_done</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+      <span class='id identifier rubyid_results'>results</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_res'>res</span>
+      <span class='id identifier rubyid_iter'>iter</span><span class='period'>.</span><span class='id identifier rubyid_return'>return</span><span class='lparen'>(</span><span class='id identifier rubyid_results'>results</span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+    <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_on_done'>on_done</span>
+      <span class='kw'>alias</span> <span class='symbol'>:return</span> <span class='symbol'>:call</span>
+      <span class='kw'>def</span> <span class='kw'>next</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NoMethodError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>must call #return on a map iterator</span><span class='tstring_end'>&#39;</span></span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_foreach'>foreach</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_item'>item</span><span class='comma'>,</span> <span class='id identifier rubyid_on_done'>on_done</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_proc'>proc</span><span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_results'>results</span><span class='op'>|</span>
+    <span class='id identifier rubyid_after'>after</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_results'>results</span><span class='rparen'>)</span>
+  <span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 19:34:59 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>

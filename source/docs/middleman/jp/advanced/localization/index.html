@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="/docs/middleman/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: 多言語化 (i18n)</title>
+  </head>
+  <body>
+    <!-- BuySellAds Ad Code -->
+    <script type="text/javascript">
+    (function(){
+      var bsa = document.createElement('script');
+         bsa.type = 'text/javascript';
+         bsa.async = true;
+         bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+      (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+    })();
+    </script>
+    <!-- End BuySellAds Ad Code -->
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/docs/middleman/jp/"><img width="225" height="225" alt="Middleman" src="/images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <div id="search">
+        <form>
+          <input type="text" id="st-search-input" class="st-search-input" placeholder="Search the documentation" />
+        </form>
+        <div id="st-results-container"></div>
+        <script type="text/javascript">
+          var Swiftype = window.Swiftype || {};
+          (function() {
+            Swiftype.key = 'q3qjGN5LmX2oq6w1V47y';
+            Swiftype.inputElement = '#st-search-input';
+            Swiftype.resultContainingElement = '#st-results-container';
+            Swiftype.attachElement = '#st-search-input';
+            Swiftype.renderStyle = "overlay";
+
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.async = true;
+            script.src = "//swiftype.com/embed.js";
+            var entry = document.getElementsByTagName('script')[0];
+            entry.parentNode.insertBefore(script, entry);
+          }());
+        </script>
+      </div>
+
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman の基礎</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/basics/getting-started/">はじめに</a></li>
+      <li><a href="/docs/middleman/jp/basics/templates/">テンプレート</a></li>
+      <li><a href="/docs/middleman/jp/basics/helpers/">テンプレートヘルパ</a></li>
+      <li><a href="/docs/middleman/jp/basics/frontmatter/">Frontmatter</a></li>
+      <li><a href="/docs/middleman/jp/basics/dynamic-pages/">動的ページ</a></li>
+      <li><a href="/docs/middleman/jp/basics/asset-pipeline/">アセットパイプライン</a></li>
+      <li><a href="/docs/middleman/jp/basics/pretty-urls/">きれいな URL (ディレクトリインデックス)</a></li>
+      <li><a href="/docs/middleman/jp/basics/livereload/">LiveReload</a></li>
+      <li><a href="/docs/middleman/jp/basics/blogging/">ブログ機能</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>高度な機能</h3>
+  <ul>
+      <li><a href="/docs/middleman/jp/advanced/configuration/">設定</a></li>
+      <li><a href="/docs/middleman/jp/advanced/local-data/">ローカルデータ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/localization/">多言語化 (i18n)</a></li>
+      <li><a href="/docs/middleman/jp/advanced/sitemap/">サイトマップ</a></li>
+      <li><a href="/docs/middleman/jp/advanced/rack-middleware/">Rack ミドルウェア</a></li>
+      <li><a href="/docs/middleman/jp/advanced/custom/">カスタム拡張</a></li>
+      <li><a href="/docs/middleman/jp/advanced/file-size-optimization/">ファイルサイズ最適化</a></li>
+      <li><a href="/docs/middleman/jp/advanced/improving-cacheability/">キャッシュ機能の改善</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>コミュニティ</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/all">拡張機能</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">プロジェクトテンプレート</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/extensions/deployment">デプロイ方法</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">コミュニティフォーラム</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub リポジトリ</a></li>
+      <li><a href="/docs/middleman/jp/community/built-using-middleman/">Middleman 採用サイト</a></li>
+  </ul>
+</div>
+
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="多言語化-(i18n)">多言語化 (i18n)</h1>
+
+<p><code>:i18n</code> 拡張はサイトに多言語化対応機能を提供します。<code>config.rb</code> で次のように有効化します:</p>
+
+<pre><code class="ruby">activate :i18n
+</code></pre>
+
+<p>デフォルト設定では, この拡張機能は対応したい言語のロケール名を表す名前の YAML ファイルをプロジェクトルートの <code>locales</code> フォルダから探します。 YAML ファイルはサイトの中で多言語化する必要がある文字列ごとのキーと値のセットです。テンプレートで文字列を表示するため参照される キーは, その値は言語ごとに異なるでしょうが, ロケールごとに同じ内容を書かなければなりません。 2 つの YAML ファイルの例です:</p>
+
+<p><code>locales/en.yml</code>:</p>
+
+<pre><code class="yaml">---
+en:
+  hello: &quot;Hello&quot;
+</code></pre>
+
+<p><code>locales/es.yml</code>:</p>
+
+<pre><code class="yaml">---
+es:
+  hello: &quot;Hola&quot;
+</code></pre>
+
+<p>多言語化するテンプレートは, デフォルト設定では <code>source/Localizable</code> フォルダの中に置きます (このオプションの変更方法はページ下部で) 。このフォルダにあるテンプレートごとに <code>I18n</code> ヘルパにアクセスします。このヘルパを使うと,  YAML ファイルからキーを参照し, 言語固有の値をテンプレートに差し込みます。簡単な <code>source/localizable/hello_world.html.erb</code> テンプレートの例です:</p>
+
+<pre><code class="html">    &lt;%= I18n.t(:hello) %&gt; World
+</code></pre>
+
+<p>この場合 2 つのファイルとして出力されます:</p>
+
+<ul>
+<li>/hello_world.html の内容は: &quot;Hello World&quot;</li>
+<li>/es/hello_world.html の内容は: &quot;Hola World&quot;</li>
+</ul>
+
+<p>テンプレートで <code>I18n.t</code> のショートカットとして <code>t</code> を使うこともできます:</p>
+
+<pre><code class="html">    &lt;%= t(:hello) %&gt; World
+</code></pre>
+
+<h2 id="多言語化された場合のパス">多言語化された場合のパス</h2>
+
+<p>それぞれ個別の言語表示にはその言語の名前空間のパスでアクセスできます。デフォルト設定では, 第一言語はサイトのルートに置かれます (このオプションの変更方法はページ下部で) 。デフォルトのパス設定ではパスの中で単純に言語名 ( YAML ファイル名) を使用します:</p>
+
+<ul>
+<li>/en/index.html</li>
+<li>/es/index.html</li>
+<li>/fr/index.html</li>
+</ul>
+
+<p><code>:path</code> オプションで変更できますが, URL は YAML ファイルの名前を含むことを覚えておいてください:</p>
+
+<pre><code class="ruby">activate :i18n, :path =&gt; &quot;/langs/:locale/&quot;
+</code></pre>
+
+<p>パスは次のようになります:</p>
+
+<ul>
+<li>/langs/en/index.html</li>
+<li>/langs/es/index.html</li>
+<li>/langs/fr/index.html</li>
+</ul>
+
+<p>パスの一部に YAML ファイル名 を使いたくない場合, 違う値で書き換えることができます。</p>
+
+<pre><code class="ruby">activate :i18n, :path =&gt; &quot;/langs/:locale/&quot;,
+  :lang_map =&gt; { :en =&gt; :english, :es =&gt; :spanish, :fr =&gt; :french }
+</code></pre>
+
+<p>パスは次のようになります:</p>
+
+<ul>
+<li>/langs/english/index.html</li>
+<li>/langs/spanish/index.html</li>
+<li>/langs/french/index.html</li>
+</ul>
+
+<h2 id="パスの多言語化">パスの多言語化</h2>
+
+<p>ページの内容に加えファイル名も多言語化したい場合があります。言語固有の URL 書き換えを行う場合 YAML ファイルの中で <code>paths</code> キーを使うことで対応できます。</p>
+
+<p><code>source/localizable/hello.html.erb</code> があるとします。デフォルト設定では, 次のように出力されます:</p>
+
+<ul>
+<li>/hello.html</li>
+<li>/es/hello.html</li>
+</ul>
+
+<p>スペイン語の場合に限りファイル名を <code>hola.html</code> に書き換えたい場合, <code>locales/es.yml</code> の中で <code>paths</code> キーを使うことができます:</p>
+
+<pre><code class="yaml">---
+es:
+  hello: &quot;Hola&quot;
+  paths:
+    hello: &quot;hola&quot;
+</code></pre>
+
+<p>次のように出力されます:</p>
+
+<ul>
+<li>/hello.html</li>
+<li>/es/hola.html</li>
+</ul>
+
+<h2 id="多言語化対象のテンプレート">多言語化対象のテンプレート</h2>
+
+<p>デフォルト設定では, <code>source/localizable</code> の中身が複数の言語でビルドされ, その他のテンプレートはそのままビルドされます。このフォルダの名前を <code>:templates_dir</code> オプションで変更することができます:</p>
+
+<pre><code class="ruby"># `source/language_specific` を探す
+activate :i18n, :templates_dir =&gt; &quot;language_specific&quot;
+</code></pre>
+
+<h2 id="多言語化対象の指定">多言語化対象の指定</h2>
+
+<p><code>locales/</code> フォルダのファイルを自動で探し出すより, 対応する言語のリストを指定したい場合, <code>:langs</code> オプションを指定できます:</p>
+
+<pre><code class="ruby">activate :i18n, :langs =&gt; [:en] # :en 以外のすべての言語を無視
+</code></pre>
+
+<h2 id="デフォルト-(ルート)-言語">デフォルト (ルート) 言語</h2>
+
+<p>デフォルト設定では, 第一言語 ( <code>:langs</code> で指定されるか, <code>locales/</code> フォルダにあるもの) が &quot;標準の&quot; 言語になり, サイトのルートに置かれます。 2 つの言語が与えられた場合, <code>:en</code> で多言語化されるファイルがルートに置かれます:</p>
+
+<ul>
+<li>source/localizable/index.html.erb
+
+<ul>
+<li>build/index.html は英語</li>
+<li>build/es/index.html はスペイン語</li>
+</ul></li>
+</ul>
+
+<p><code>:mount_at_root</code> を使うことで, この設定を変更したり特定言語のルート指定を無効化できます:</p>
+
+<pre><code class="ruby">activate :i18n, :mount_at_root =&gt; :es # スペイン語をルートに設定
+# または
+activate :i18n, :mount_at_root =&gt; false # すべての言語ファイル URL に prefix がつく
+</code></pre>
+
+<h2 id="完全に多言語化されたテンプレート">完全に多言語化されたテンプレート</h2>
+
+<p>ロケールごとの YAML ファイルに大きなテキストブロックを書くのは非効率です。この問題に対応するため, Middleman にはテンプレート全体を多言語化する方法があります。例えば, <code>index.html</code> を作りたいとして, <code>index.en.html.erb</code> と <code>index.es.html.erb</code> 2 つのテンプレートを作ることができます。サイトがビルドされると, 次のように出力されます:</p>
+
+<ul>
+<li>build/index.html は英語</li>
+<li>build/es/index.html はスペイン語</li>
+</ul>
+
+<p>この多言語化の方法を使う場合, <code>localizable</code> フォルダの中にファイルを置くようにしてください。</p>
+
+    </article>
+
+    <div id="support">
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+
+  <div class="sponsor">
+    <h4>Sponsors</h4>
+
+    <a href="http://fjords.cc" target="_blank">
+      <img src="/images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+
+    <a href="http://www.maxcdn.com" target="_blank" id="max">
+      <img width="130" src="/images/maxcdn.svg" />
+    </a>
+  </div>
+
+  <div class="donate">
+    <script data-gittip-username="tdreyno"
+        src="//gttp.co/v1.js"></script>
+    <p><br><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">Donate!</a><br><br></p>
+  </div>
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/localizable/advanced/localization.jp.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="/javascripts/toc.js" type="text/javascript"></script>
+    <link href="/docs/middleman/stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script src='https://spacebox.io/embed/js/embed-v1.js'></script>
+    <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-90027-21']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+  })();
+</script>
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4ef39d56613f5d017b000004');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+  </body>
+</html>

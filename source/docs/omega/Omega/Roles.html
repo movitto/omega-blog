@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Omega::Roles
+  
+    &mdash; Documentation by YARD 0.8.5.2
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Omega.html" title="Omega (module)">Omega</a></span></span>
+     &raquo; 
+    <span class="title">Roles</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Omega::Roles
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/omega/roles.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The Roles module provides mechanisms to assign privileges to users
+depending on roles assigned to them. A role is a named list of privileges
+some of which may be applied to entities or entity types.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="PRIVILEGE_VIEW-constant" class="">PRIVILEGE_VIEW =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>view</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="PRIVILEGE_CREATE-constant" class="">PRIVILEGE_CREATE =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>create</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="PRIVILEGE_MODIFY-constant" class="">PRIVILEGE_MODIFY =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>modify</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="PRIVILEGE_DELETE-constant" class="">PRIVILEGE_DELETE =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>delete</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="PRIVILEGES-constant" class="">PRIVILEGES =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span> <span class='const'>PRIVILEGE_CREATE</span><span class='comma'>,</span> <span class='const'>PRIVILEGE_MODIFY</span><span class='comma'>,</span> <span class='const'>PRIVILEGE_DELETE</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="ENTITIES_LOCATIONS-constant" class="">ENTITIES_LOCATIONS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>locations</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_COSMOS-constant" class="">ENTITIES_COSMOS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cosmos_entities</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_MANUFACTURED-constant" class="">ENTITIES_MANUFACTURED =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured_entities</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_MANUFACTURED_RESOURCES-constant" class="">ENTITIES_MANUFACTURED_RESOURCES =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>manufactured_resources</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_USERS-constant" class="">ENTITIES_USERS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users_entities</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_USER-constant" class="">ENTITIES_USER =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_USER_ATTRIBUTES-constant" class="">ENTITIES_USER_ATTRIBUTES =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>user_attributes</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_USERS_EVENTS-constant" class="">ENTITIES_USERS_EVENTS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>users_events</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_PRIVILEGES-constant" class="">ENTITIES_PRIVILEGES =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>privileges</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_ROLES-constant" class="">ENTITIES_ROLES =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>roles</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_MISSIONS-constant" class="">ENTITIES_MISSIONS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>missions</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_UNASSIGNED_MISSIONS-constant" class="">ENTITIES_UNASSIGNED_MISSIONS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unassigned_missions</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_MISSION_EVENTS-constant" class="">ENTITIES_MISSION_EVENTS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mission_events</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_MISSIONS_HOOKS-constant" class="">ENTITIES_MISSIONS_HOOKS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>missions_hooks</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES_STATS-constant" class="">ENTITIES_STATS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stats</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITY_LOCATION-constant" class="">ENTITY_LOCATION =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>location-</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="ENTITY_COSMOS-constant" class="">ENTITY_COSMOS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cosmos_entity-</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="ENTITY_MANUFACTURED-constant" class="">ENTITY_MANUFACTURED =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>manufacture_entity-</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="ENTITY_USERS-constant" class="">ENTITY_USERS =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>users_entity-</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="ENTITY_USER-constant" class="">ENTITY_USER =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user-</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="ENTITY_MISSION-constant" class="">ENTITY_MISSION =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>mission-</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="ENTITY_USER_ATTRIBUTE-constant" class="">ENTITY_USER_ATTRIBUTE =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>user_attribute</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITY_ROLE-constant" class="">ENTITY_ROLE =
+          
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>role</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+        <dt id="ENTITIES-constant" class="">ENTITIES =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='const'>ENTITIES_LOCATIONS</span><span class='comma'>,</span> <span class='const'>ENTITIES_COSMOS</span><span class='comma'>,</span> <span class='const'>ENTITIES_MANUFACTURED</span><span class='comma'>,</span> <span class='const'>ENTITIES_MANUFACTURED_RESOURCES</span><span class='comma'>,</span>
+<span class='const'>ENTITIES_USERS</span><span class='comma'>,</span> <span class='const'>ENTITIES_USER</span><span class='comma'>,</span> <span class='const'>ENTITIES_USER_ATTRIBUTES</span><span class='comma'>,</span> <span class='const'>ENTITIES_USERS_EVENTS</span><span class='comma'>,</span> <span class='const'>ENTITIES_PRIVILEGES</span><span class='comma'>,</span> <span class='const'>ENTITIES_ROLES</span><span class='comma'>,</span>
+<span class='const'>ENTITIES_MISSIONS</span><span class='comma'>,</span> <span class='const'>ENTITIES_UNASSIGNED_MISSIONS</span><span class='comma'>,</span> <span class='const'>ENTITIES_MISSION_EVENTS</span><span class='comma'>,</span> <span class='const'>ENTITIES_MISSIONS_HOOKS</span><span class='comma'>,</span> <span class='const'>ENTITIES_STATS</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="ENTITYS-constant" class="">ENTITYS =
+          
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='const'>ENTITY_LOCATION</span><span class='comma'>,</span>    <span class='const'>ENTITY_COSMOS</span><span class='comma'>,</span>   <span class='const'>ENTITY_MANUFACTURED</span><span class='comma'>,</span>
+<span class='const'>ENTITY_USERS</span><span class='comma'>,</span>   <span class='const'>ENTITY_USER</span><span class='comma'>,</span>   <span class='const'>ENTITY_MISSION</span><span class='comma'>,</span>  <span class='const'>ENTITY_USER_ATTRIBUTE</span><span class='comma'>,</span> <span class='const'>ENTITY_ROLE</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="ROLES-constant" class="">ROLES =
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Master dictionary of role names to lists of privileges and entities that
+they correspond to</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span> <span class='symbol'>:superadmin</span> <span class='op'>=&gt;</span> <span class='const'>PRIVILEGES</span><span class='period'>.</span><span class='id identifier rubyid_product'>product</span><span class='lparen'>(</span><span class='const'>ENTITIES</span><span class='rparen'>)</span><span class='comma'>,</span>
+<span class='symbol'>:regular_user</span>            <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span> <span class='const'>ENTITIES_COSMOS</span><span class='rbracket'>]</span><span class='comma'>,</span>    <span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span> <span class='const'>ENTITIES_UNASSIGNED_MISSIONS</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span> <span class='const'>ENTITIES_STATS</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span>   <span class='const'>ENTITIES_MANUFACTURED</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span> <span class='const'>ENTITIES_LOCATIONS</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='comment'># TODO doesn&#39;t take fog of war into account
+</span><span class='symbol'>:anonymous_user</span>          <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span> <span class='const'>ENTITIES_COSMOS</span><span class='rbracket'>]</span><span class='comma'>,</span>    <span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span> <span class='const'>ENTITIES_UNASSIGNED_MISSIONS</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span> <span class='const'>ENTITIES_STATS</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span>   <span class='const'>ENTITIES_MANUFACTURED</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>PRIVILEGE_VIEW</span><span class='comma'>,</span> <span class='const'>ENTITIES_LOCATIONS</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+
+
+</div>
+
+    <div id="footer">
+  Generated on Fri Feb 21 16:44:31 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.5.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>
