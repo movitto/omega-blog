@@ -11,14 +11,18 @@ end
 
 desc 'Build the special pages'
 task 'build_special' do
-  about_page = './build/about/index.html' 
-  docs_page  = './build/docs/index.html'
+  ['about', 'docs'].each do |section|
+    dir = "./build/#{section}"
+    FileUtils.rm_rf dir if File.exists?(dir)
+    FileUtils.mkdir_p dir
 
-  FileUtils.mkdir_p './build/about'
-  FileUtils.rm_f about_page if File.exists?(about_page)
-  FileUtils.rm_f docs_page  if File.exists?(docs_page)
-  FileUtils.ln_s '../about.html', about_page
-  FileUtils.ln_s '../docs.html',  docs_page
+    FileUtils.ln_s "../#{section}.html", "#{dir}/index.html"
+    FileUtils.ln_s '../javascripts',     "#{dir}/javascripts"
+    FileUtils.ln_s '../images',          "#{dir}/images"
+    FileUtils.ln_s '../stylesheets',     "#{dir}/stylesheets"
+  end
+
+  FileUtils.ln_s '.', "build/docs/docs"
 end
 
 desc 'Build the site'
