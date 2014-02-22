@@ -4,8 +4,6 @@
 - content_for :stylesheets do
   = stylesheet_link_tag "index"
 
-/= partial :dialog
-
 %ul#post_list
   - blog.articles[0...1000].each do |article|
     %li.post_list_item

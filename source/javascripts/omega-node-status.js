@@ -1,5 +1,7 @@
 /* Omega Node Status
  *
+ * TODO support multiple retries
+ *
  * Copyright (C) 2014 Mo Morsi <mo@morsi.org>
  * Licensed under the MIT License
  */
