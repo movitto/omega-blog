@@ -1,0 +1,102 @@
+---
+title: v0.7.2 Release
+author: Mo Morsi
+date: 2014-03-29 21:51:41 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    We are pleased to announce the 0.7.2 release of Omega.
+    The release has been cut and tagged on #{project_link "github", "/"}
+    and the update deployed to
+    #{link_to "omegaverse.info", "http://omegaverse.info"}
+
+  %iframe{:width => "95%", :height=> "630", :frameborder => "0",
+          :allowfullscreen => true,
+          :style => "padding: 20px",
+          :src   => "//www.youtube.com/embed/l-_1oJEv50A"}
+
+  %p
+    Changes since the #{post_link "0.7.2", "v072-release"} version:
+
+  %ul
+    %li
+      Many performance improvements, particularily in the UI
+
+    %li
+      Improved graphics
+
+    %li
+      Added a new tech demo
+      #{link_to "cutscene", "http://omegaverse.info/title.html?autoplay=tech1"}:
+
+    %li
+      URL or config based root entity
+      #{link_to "autoloader", "http://omegaverse.info?root=Zeus"}:
+
+    %li
+      Plenty of #{link_to "progress", "https://docs.google.com/spreadsheet/ccc?key=0AobFGzrrFYAQdDM5UFZxTGU5X1hHUHlkejFENE1zeVE#gid=0"}
+      on the packaging front (thanks nitesh!)
+
+    %li
+      Autologin support to the UI (specify credentials in the config.js
+      config file)
+
+    %li
+      examples/universes/medium has been updated to reflect latest Omega DSL
+      &amp; be more concise
+
+    %li
+      Added more examples included examples/tournament,
+      examples/tournament-bot, examples/interactive (work in progress)
+
+    %li
+      Many improvmenets + additions to Omega client DSL including new
+      'moons', 'rand_orbit', and 'interconnections' methods
+
+    %li
+      Implemented cosmos::interconnects rjr method to efficiently
+      retrieve basic galaxy system map w/ coords
+
+    %li
+      Split out 'recursive' & 'children' options in Omega retrieval
+      json-rpc methods, so clients can access 0, 1, or N levels of
+      children
+
+    %li
+      The Missons Subsystem now supports subsystem-wide events.
+      Also added mission 'victory' and 'failure' events, subscribe
+      to those in UI / render popup
+
+    %li
+      Added lib/omega/client/boilerplate mixin which clients can simply
+      include to do most of the initialization / preliminary connection
+
+    %li
+      Allow stations to have an elliptical movement strategy now to orbit
+      the stars in the systems they are in
+
+    %li
+      Add 'entity_destroyed' system-wide event to the manufactured subsystem
+
+    %li
+      Increased the # of systems loaded by default in the UI from 5 to 15
+
+    %li
+      Added embedded.js page to the UI which external web-based clients can
+      include to get minimal javascript to connect to, interface with, and
+      render omega.
+
+    %li
+      Updated docs &amp; tests to be kept in sync &amp; reflect some new
+      functionality (more could always be used)
+
+    %li
+      Many various fixes &amp; improvements to the code base
+
+  %p
+    As always thanks to everyone who helped and showed their support.
+    Thats it until next time! 
+
+= omega_blog_footer
