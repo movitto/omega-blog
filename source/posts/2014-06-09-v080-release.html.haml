@@ -1,0 +1,106 @@
+---
+title: v0.8.0 Release
+author: Mo Morsi
+date: 2014-06-09 22:11:41 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    Oy! Over 2 months since the #{post_link "last post", "v072-release"},
+    but the project continues on!
+
+  = image_tag "blog-meme.png", :style => "width: 40%; display: block; margin-left: auto; margin-right: auto"
+
+  %p
+    Today we're pleased to announce the v0.8.0 release of Omega containing the last
+    several months of features added to the codebase including:
+
+  %ul
+    %li
+      Gfx improvements
+
+      %ul
+        %li
+          %p New <b>star colors</b> / <b>planet textures</b>
+
+          = screenshot_thumb("new-planet1.png")
+
+        %li
+          %p New ship/station meshes &amp; textures
+
+          = screenshot_thumb("station-mining.png")
+
+        %li
+          %p Randomize planet orientation &amp; spin rate, add gfx for <b>spin axis</b>
+
+        %li
+          %p New asteroid meshes
+
+          = screenshot_thumb("asteroids1.png")
+
+        %li
+          %p Updated <b>galaxy graphics</b>
+
+          = screenshot_thumb("new-galaxy3.png")
+
+    %li
+      %p Interaction improvements
+
+      %ul
+        %li
+          %p System details on first click
+
+          = screenshot_thumb("system-details.png")
+
+        %li
+          %p Request <b>full screen</b> when user types CTRL-F
+        %li
+          %p Focus camera on target jump gate / asteroid when clicked
+        %li
+          %p <b>Seemless audio looping</b>, many audio tracks for various events / effects
+
+          %iframe{:width => "840", :height=> "630", :frameborder => "0",
+                  :allowfullscreen => true,
+                  :style => "padding: 20px",
+                  :src   => "//www.youtube.com/embed/xpmIxu9YNDU"}
+
+        %li
+          %p Added <b>backround audio</b> / atmospheric audio effects
+        %li
+          %p Reset cam when star is clicked, remove 'reset cam' link
+
+    %li
+      %p Optimizations / Other Improvements
+
+      %ul
+        %li
+          %p Constraints, now entity attributes are generated from configurable constraints
+        %li
+          %p <b>Realistic Constraints</b>, cosmos data &amp; interaction has been modified to incorporate expanded / large distances
+        %li
+          %p Follow movement strategy: state is now dynamically computed on server / client sides
+        %li
+          %p Update to latest ShaderParticleEngine release (0.7.5)
+        %li
+          %p Many various backend &amp; frontend <b>improvements</b> &amp; <b>cleanups</b>
+        %li
+          %p Accept 'select' parameter in cosmos/manu::get json-rpc methods, limits entity attributes returns to just those specified
+
+    %li
+      %p Update &amp; Expanded tests &amp; specs
+
+    %li
+      %p Dropped <b>+</b> from the license, now Omega is simply <b>AGPLv3</b>
+
+  %p
+    Well thats it for now. On the immediate roadmap (besides the usual release-time promo drive)
+    is continuing to work on the #{link_to "packaging process", "https://docs.google.com/spreadsheet/ccc?key=0AobFGzrrFYAQdDM5UFZxTGU5X1hHUHlkejFENE1zeVE#gid=0"}
+    as well as getting to a few the things on the long term road map including improving the
+    #{project_link "distributed", "examples/distributed"} simulation support and planetary interactions.
+
+
+  %p
+    Stay tuned for updates!
+
+= omega_blog_footer
