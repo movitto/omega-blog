@@ -9,8 +9,8 @@
 if(typeof(Omega) === "undefined") Omega = {};
 
 Omega.NodeStatus = {
-  nodes : [{name : 'omegaverse.info',
-            dst  : 'omegaverse.info:8080'},
+  nodes : [{name : 'megaverse.info',
+            dst  : 'megaverse.info:8080'},
            {name : 'syracloud.net',
             dst  : 'syracloud.net:8000'}],
 

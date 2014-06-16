@@ -3,12 +3,12 @@ xml.rss :version => "2.0" do
   xml.channel do
     xml.title "The Omega Project Blog"
     xml.description "The Omega Project Blog"
-    xml.link "http://blog.omegaverse.info"
+    xml.link "http://blog.megaverse.info"
     xml.author { xml.name "Blog Author" }
     xml.updated(blog.articles.first.date.to_time.iso8601) unless blog.articles.empty?
 
     blog.articles[0..5].each do |article|
-      article_url = URI.join("http://blog.omegaverse.info/posts/", article.url)
+      article_url = URI.join("http://blog.megaverse.info/posts/", article.url)
 
       xml.item do
         xml.title article.title

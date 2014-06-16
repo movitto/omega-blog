@@ -3,13 +3,13 @@
     %meta{:charset => "utf-8"}
     %meta{:content => "IE=edge,chrome=1", :"http-equiv" => "X-UA-Compatible"}
     %meta{:name => "description", :content => "The Omega Project Blog"}
-    %meta{:name => "keywords", :content => "Omegaverse, Omega"}
+    %meta{:name => "keywords", :content => "Megaverse, Omega"}
     %meta{:name => "google-site-verification", :content => "0MDtuMVad717vLvp_Ad2cJTm9EiIN8yY8JZmEDrIfYY"}
     %title
       = current_article ? current_article.title : (current_page.data.title || "The Omega Project Blog")
     = feed_tag :rss, "#{blog.options.prefix.to_s}/feed.xml", :title => "RSS Feed"
     %link{:rel => :icon, :type => "image/x-icon",
-          :href => "http://blog.omegaverse.info/images/favicon.ico"}
+          :href => "http://blog.megaverse.info/images/favicon.ico"}
 
     = stylesheet_link_tag "normalize", "all", "omega"
     = yield_content :stylesheets
@@ -24,30 +24,30 @@
 
   = link_to image_tag("support.png",
                       :style => "position: fixed; bottom: 10px; right: 10px; border: 0; z-index: 1"),
-            "http://webchat.freenode.net/?channels=omegaverse"
+            "http://webchat.freenode.net/?channels=megaverse"
 
   = link_to image_tag("feed.png",
                       :style => "position: fixed; top: 0; right: 0; border: 0; z-index: 1"),
             "#{blog.options.prefix.to_s}/feed.xml"
 
-  = link_to "Find Out More!", "http://about.omegaverse.info",
+  = link_to "Find Out More!", "http://about.megaverse.info",
             :style => "display: block; position: fixed; top: 13px; right: 50px; padding: 2px; color: blue; font-weight: bold; text-decoration: none; z-index: 1;"
 
   = link_to image_tag("omega-large-logo.png"), "/"
 
   #node_status_widget
-    Omegaverse Node Status:
+    Megaverse Node Status:
     #node_statuses
 
   %div{:style => "clear: both"}
 
   #nav
     .nav_link
-      = link_to "the omegaverse",  "http://omegaverse.info"
+      = link_to "the megaverse",  "http://megaverse.info"
     .nav_link
       = link_to "omega",  "http://github.com/movitto/omega"
     .nav_link
-      = link_to "forum/mailing list", "https://groups.google.com/forum/#!forum/omegaverse"
+      = link_to "forum/mailing list", "https://groups.google.com/forum/#!forum/megaverse"
     %div{:style => "clear: both"}
   %div{:style => "clear: both"}
   <br/>
