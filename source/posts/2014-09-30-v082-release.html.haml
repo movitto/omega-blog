@@ -1,0 +1,93 @@
+---
+title: v0.8.2 Release
+author: Mo Morsi
+date: 2014-09-30 07:26:41 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    The last several months have brought many new features and
+    improvements to Omega. Unfortunately  this blog has been put
+    on a side burner, but I aim to post at least once every couple
+    of weeks going foward.
+
+  %p
+    Jumping right on into it, the following changes have been
+    introduced since #{post_link "v0.8.0", "v080-release"}.
+
+  %ul
+    %li
+      A significantly refactored codebase which is more modular
+      and optimized than ever (both ruby and js modules).
+
+    %li
+      %p A new 'Figure8' movement strategy for locations to use
+
+      %iframe{:width => "840", :height=> "630", :frameborder => "0",
+              :allowfullscreen => true,
+              :style => "padding: 20px",
+              :src   => "//www.youtube.com/embed/C_SEuUGSbjs"}
+
+    %li
+      %p A new construction dialog to specify enitity properties:
+
+      = screenshot_thumb("construction-dialog.png", :class => :centered_screen)
+      .clear_both
+
+    %li
+      %p
+        A new #{link_to "ship previewer", "http://megaverse.net/womega/title.html?autoplay=previewer"}
+        cutscene
+
+    %li
+      %p
+        Graphics optimization and improvements including double buffering
+        support and fully working and expanded test suites
+
+    %li
+      %p A new "universe_timestamp" stat for performance benchmarking &amp; synchronization
+
+      = screenshot_thumb("universe_timestamp.png", :class => :centered_screen)
+
+    %li
+      %p New enhanced attack graphics including missiles and artillery
+
+      %iframe{:width => "840", :height=> "630", :frameborder => "0",
+              :allowfullscreen => true,
+              :style => "padding: 20px",
+              :src   => "//www.youtube.com/embed/O7Z0ZS1FrQQ"}
+
+    %li
+      %p
+        Along with the previous, attack-class specific movement has been
+        introduced, now the client will specify a movement strategy depending
+        on entity attack-class when commencing attack
+
+    %li
+      %p
+        A new utility has been introduced to plot location's coordinates and
+        orientations using #{link_to "gnuplot", "http://www.gnuplot.info/"}.
+
+      = screenshot_thumb("omega-movement-plot.png", :class => :centered_screen)
+
+    %li
+      %p
+        Movement strategies now support linear acceleration. If set location
+        will move along its direction axis (velocity) while the acceleration
+        affects it in the specified direction. Flags control whether the
+        location's orientation is used to control the movement strategy's
+        direction or acceleration.
+
+    %li
+      %p
+        Graphics for the 'escort' class ship type has been added
+
+      = screenshot_thumb("escort-ship.png", :class => :centered_screen)
+
+  %p
+    There's alot more on the roadmap for the near future, including some
+    more blog posts pertaining to Omega internals and dependencies so
+    stay tuned!
+
+= omega_blog_footer
