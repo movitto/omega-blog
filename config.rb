@@ -9,6 +9,7 @@ end
 
 page "/feed.xml", layout: false
 
+page "/about.html",    layout: 'basic'
 page "/docs.html",     layout: 'basic'
 page "/docs/*",        layout: false
 
