@@ -1,0 +1,225 @@
+---
+title: Creating Meshes For Omega/Three.js
+author: Mo Morsi
+date: 2014-10-03 00:01:01 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    The process of creating / importing compatible meshes into the web client
+    is straightfoward though involves a few steps. This post aims to outline
+    those.
+
+  %p
+    Before we begin I'm assuming you have an omega instance running (locally
+    or elsewhere) and have write access to the directory which the meshes
+    and their textures reside.
+    See #{link_to "this", "https://github.com/movitto/omega/wiki/Install"}
+    if that is not the case.
+
+  %p
+    We'll be using #{link_to "Blender", "http://www.blender.org/"} and
+    #{link_to "ImageMagick", "http://www.imagemagick.org/"} to convert meshes and
+    textures from the open source #{link_to "Vegastrike", "http://vegastrike.sourceforge.net/"}
+    project to a three.js compatible format. Blender is a very powerful 3D graphics
+    editing program, and we could create new meshes from scratch, but my art skills
+    aren't great :-)
+
+  %p
+    = image_tag("/images/mesh-tutorial1/logos.png", :width => "75%", :class => :centered)
+
+  %p
+    To start off download and install Blender and ImageMagick, exactly how to do
+    so will depend on your platform of choice (see the sites above for instructions)
+    and grab a copy of the Vegastrike source. You should be able to download a compressed
+    archive from the Vegastrike site or check it out using version control and the
+    instructions found there.
+
+  %p
+    If using a yum or apt based Linux distro, you should be able to accomplish the
+    previous with the following:
+
+  %pre.code
+    %b
+      $ yum install blender ImageMagick vegastrike
+      %br
+      $ apt-get install blender imagemagick vegastrike
+
+  %p
+    You will also need the three.js
+    #{link_to "blender plugin", "https://github.com/mrdoob/three.js/tree/master/utils/exporters/blender"}.
+    To download follow the directions at the link, making sure to install the plugin to the
+    right location and enabling it via the Blender preferences.
+
+  %p
+    Now we select the mesh to convert. Unfortunately until you run the
+    actual conversion command and import the coverted mesh into blender,
+    the actual appearance of the mesh will not be known. You can play
+    vegastrike of course and view the entities in game, or take a look
+    at the project #{link_to "wiki", "http://wiki.vega-strike.org/Vessels_%26_Installations"}
+    which contains previews of many of them. For this guide we will
+    be converting the #{link_to "Lancelot", "http://wiki.vega-strike.org/Vessel:Lancelot"} mesh,
+    locally located at <b>/usr/share/vegastrike/units/vessels/Lancelot</b>.
+
+  %p
+    To begin we'll convert the mesh to a format which we can import into
+    Blender. The Vegastrike meshes are in <b>BFXM</b> format and while there
+    is some info about it out there, I've found resources on it to be limited.
+    Luckily Vegastrike ships with a <b>mesher</b> utility which we can use to
+    convert the bfxm mesh to <b>obj</b> which we can import into Blender.
+
+  %p
+    To start copy the #{link_to "mesh", "/images/mesh-tutorial1/lancelot.bfxm"} locally (note this
+    must be done as the mesher will fail if it doesn't have full privs on the source
+    for whatever reason):
+
+  %pre.code
+    %b
+      $ cp /usr/share/vegastrike/units/vessels/Lancelot/lancelot.bfxm .
+
+  %p
+    Then run the mesher (<b>note</b> actual location of the command many vary
+    depending on how you downloaded Vegastrike):
+
+
+  %pre.code
+    %b
+      \/usr/libexec/vegastrike/mesher ./lancelot.bfxm lancelot.obj boc
+
+  %p
+    This should generate lancelot.obj in the current working dir, next open
+    Blender and delete the default cube ('Delete' Key > 'OK') and navigate
+    to the 'File' Menu &gt; 'Import' &gt; 'Wavefront (.obj)'. Select the
+    'lancelot.obj' file that was created in the previous step.
+
+  %p
+    = link_to image_tag("/images/mesh-tutorial1/blender-import1.png", :width => "75%", :class => :centered),
+              "/images/mesh-tutorial1/blender-import1.png"
+
+  %p
+    = link_to image_tag("/images/mesh-tutorial1/blender-import2.png", :width => "75%", :class => :centered),
+              "/images/mesh-tutorial1/blender-import2.png"
+
+  %p
+    = link_to image_tag("/images/mesh-tutorial1/blender-import3.png", :width => "75%", :class => :centered),
+              "/images/mesh-tutorial1/blender-import3.png"
+
+  %p
+    At this point we can scale and otherwise edit the mesh if desired.
+    For the purposes of this tutorial I'd recommend scaling the mesh so that it's
+    3-5 times it's original size. Do this by right clicking the mesh, hitting
+    the 'S' key and then moving the mouse towards the edge of the screen. The mesh
+    should scale in size proportional to your mouse movement. Left click the mouse when
+    the mesh is an acceptable size.
+
+  %p
+    To export the mesh into a three.js compatible format, deselect everything ('A' key)
+    then right click the mesh to select it. Next navigate to 'File' &gt; 'Export' &gt;
+    three.js (if you don't have this option you may need to enable the three.js plugin,
+    see above). Save your file.
+
+  %p
+    = link_to image_tag("/images/mesh-tutorial1/blender-export1.png", :width => "75%", :class => :centered),
+              "/images/mesh-tutorial1/blender-import1.png"
+
+  %p
+    = link_to image_tag("/images/mesh-tutorial1/blender-export2.png", :width => "75%", :class => :centered),
+              "/images/mesh-tutorial1/blender-import2.png"
+
+  %p
+    <b>Note</b> the Blender plugin will save the file with a '.js' extension regardless
+    of what the user inputs. The generated file is a json file and should be renamed to
+    '.json' as such.
+
+  %pre.code
+    %b
+      $ mv lancelot.js lancelot.json
+
+  %p
+    To convert the #{link_to "texture", "/images/mesh-tutorial1/destiny.png"}
+    used by the mesh, we use ImageMagick
+    to convert the dds format to png. <b>Note</b> Vegastrike stores these files
+    with the '.png' extension even though they are DDS's.
+    Also three.js does currently support
+    the more efficient dds format, though these are larger in size so png's were
+    used for bandwidth reasons. It might be worthwhile exploring hybrid / other
+    solutions in the future.
+
+  %pre.code
+    %b
+      $ cp /usr/share/vegastrike/units/vessels/Lancelot/destiny.png destiny.dds
+      %br
+      $ convert destiny.dds destiny.png
+
+  %p
+    The final step is to install the meshes and texture in a location which the
+    Omega client can find them. This is configured via the
+    #{project_file_link "config.js", "site/source/javascripts/config.js"} config file.
+    Here a mesh and texture is mapped to each supported ship type as well as optional
+    features such as trails, lights, and attack graphics.
+    
+  %p
+    Assuming you went through the Omega setup process described 
+    #{link_to "here", "https://github.com/movitto/omega/wiki/Install"}
+    and have the <b>'images'</b> content dir linked/copied in under <b>'site'</b>,
+    you can simply copy the 'lancelot.json' mesh to the <b>site/images/meshes</b>
+    dir and the 'destiny.png' texture to the <b>site/images/textures</b> dir
+
+  %pre.code
+    %b
+      $ mv lancelot.json /path/to/omega/site/images/meshes
+      $ mv destiny.png   /path/to/omega/site/images/textures
+
+  %p
+    Update the config so as to reference the new mesh/texture. We will use
+    these resources for the 'escort' ship type, though you may use it
+    to represent any type supported by Omega
+    (see #{project_file_link "constraints.json", "lib/omega/constraints.json"}
+    for list of ship types supported by the server)
+
+  %pre.code
+    %b
+      :escaped
+        $ git diff site/source/javascripts/config.js
+        diff --git a/site/source/javascripts/config.js b/site/source/javascripts/config.js
+        index 7eee8fc..8f66005 100644
+        --- a/site/source/javascripts/config.js
+        +++ b/site/source/javascripts/config.js
+        @@ -98,8 +98,8 @@ Omega.Config = {
+                                  'geometry' : '/meshes/Leonidas/yavok.json',
+                                  'missiles' : [[20, 1, -35], [-20, 1, -45]]},
+         
+        -      'escort'       : { 'material' : '/textures/nicander.png',
+        -                         'geometry' : '/meshes/Nicander/Nicander.json' },
+        +      'escort'       : { 'material' : '/textures/destiny.png',
+        +                         'geometry' : '/meshes/lancelot.json' },
+             },
+         
+             'stations'      : {
+
+  %p
+    To see the new mesh in action add the following to
+    #{project_file_link "dev.js", "site/source/javascripts/pages/dev.js"}
+    (we could also use the 
+    #{link_to "ship viewer", "http://megaverse.net/title.html?autoplay=previewer"}
+    to view it)
+
+  %pre.code
+    %b
+      :escaped
+        custom_operations : function(){
+          var ship = Omega.Gen.ship({type : 'escort'})
+          ship.location.set(0, 0, 0); 
+          this.canvas.add(ship);
+        }
+
+  %p
+    Open up #{link_to "Omega", "http://localhost/womega/dev.js"} in a web
+    browser and whala your mesh in action!
+
+  %p
+    = link_to image_tag("/images/mesh-tutorial1/final.png", :width => "75%", :class => :centered),
+              "/images/mesh-tutorial1/final.png"
+
+= omega_blog_footer

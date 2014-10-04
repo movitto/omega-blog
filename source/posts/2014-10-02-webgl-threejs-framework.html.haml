@@ -1,0 +1,316 @@
+---
+title: A Framework Using Middleman &amp; Three.js
+author: Mo Morsi
+date: 2014-10-02 06:45:11 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    Today we'll continue exploring Omega internals by looking
+    at the web frontend (residing in the #{project_file_link "site dir", "site/"})
+    and the technologies behind it. At a high level the client is implemented
+    via a <b>static html / css / javascript site</b> generated from templates
+    that is served by a web server and runs in a user's browser.
+
+  %p
+    The benefit of using a static site vs a dynamic web framework such as
+    #{link_to "rails", "http://rubyonrails.org/"} or similar 
+    is reduced complexity and improved performance, a fairly lightweight
+    web server is all that is needed to serve the client to the user who
+    can then go onto connect to an Omega simulation on their own.
+    
+  %p
+    The #{link_to "middleman", "http://middlemanapp.com/"} framework is used
+    to facilitate the generation of the static content from templates that
+    simplify client maintenance and development. These templates are implemented
+    via #{link_to "haml", "http://haml.info/"}, #{link_to "sass", "http://sass-lang.com/"},
+    #{link_to "sprockets", "https://github.com/sstephenson/sprockets"} and more.
+    These are simple but very powerful tools which to develop and generate the
+    site.
+
+  %p
+    This is what the overall client generation &amp; execution process
+    looks like
+
+  %p
+    = link_to image_tag("/images/web-client-arch.png", :width => "75%", :class => :centered),
+              "/images/web-client-arch.png"
+    
+  %p
+    Each page to be served by the site (including the default 'index' page)
+    has its own haml <b>template</b> used to generate it residing in the
+    #{project_file_link "site/source", "site/source"} directory.
+  
+  %p
+    Note many of these templates make use of <b>partials</b> which are reusable snippets
+    of template code residing in their own files.
+    These are in the same directory but are prefixed with a leading underscore "_".
+    
+  %p
+    Each page template includes the corresponding page javascript module located in the
+    #{project_file_link "site/source/javascripts/pages", "site/source/javascripts/pages"}
+    directory. Similar to the templates, each page js module is broken down into seperate
+    submodules and mixins which provide the high level functionality needed by the
+    application. These reside in subdirs under site/source/javascripts/pages. It is up to
+    these <b>page modules</b> to <b>initialize and run the subsystems</b> used by the Omega client.
+
+
+  %p
+    The Javascript backing the Omega web client serves two primary purposes:
+
+  %ul
+    %li
+      The first is to initialize all page and graphics components and manage
+      them correctly to represent the simulation in the intended manner
+
+    %li
+      The second is to communicate with a running omega-server to issue commands
+      and syncronize server-side entities with their client representations.
+
+  %p
+    Each of these can be furthur broken down. As far as graphics:
+
+  %ul
+    %li
+      The browser #{link_to "DOM", "http://en.wikipedia.org/wiki/Document_Object_Model"}
+      needs to be manipulated so as to wire up keyboard and mouse controls, page links,
+      and the canvas.
+
+    %li
+      The WebGL context is created with the necessary scenes, cameras, meshes and such
+      (more below)
+
+  %p
+    With regards to simulation interaction:
+
+  %ul
+    %li
+      %p
+        Commands are issued to an omega-server via the RJR
+        #{link_to "js module", "https://github.com/movitto/rjr/blob/master/site/jrw.js"}.
+        These are used to
+
+      %ul
+        %li Establish an authenticated session with the simulation,
+        %li query for entities,
+        %li manipulate the ones the user has access to.
+      %p
+        The web client deduces the operations /
+        actions a user with any given permission level is allow to execute
+        and displays the interface limited to that functionality only.
+
+    %li
+      Asynchronous callback methods are registered with the json-rpc websocket handlers
+      to process notifications sent from the server. The client ensures the integrity
+      of the local simulation representation throughout the duration of the commands
+      and notifications
+
+  %p
+    The javascript's responsibilities can be summarized with the following
+    Venn diagram:
+
+  %p
+    = link_to image_tag("/images/web-client-venn.png", :width => "75%", :class => :centered),
+              "/images/web-client-venn.png"
+    
+
+  %p
+    Taking a look at the #{project_file_link "index", "site/source/javascripts/pages/index.js"}
+    page template we see the definition of the <b>index page class</b>:
+
+  %pre.code
+    :preserve
+      Omega.Pages.Index = function(){
+        this.init_page();
+        this.init_registry();
+        this.init_canvas();
+        this.init_audio();
+        this.init_index();
+      };
+        
+  %p
+    This serves as a high level wrapper which calls the various initialization routines
+    defined in the <b>mixins</b> previously included and mixed into the class immediately after.
+    Continuing on, towards the bottom we see:
+
+  %pre.code
+    :preserve
+      $(document).ready(function(){
+        if(Omega.Test) return;
+      
+        /// create index page w/ components
+        var index = new Omega.Pages.Index();
+      
+        /// immediately start preloading missing resources
+        Omega.UI.Loader.status_indicator = index.status_indicator;
+        Omega.Constraint.load(Omega.Constraint.url(), function(){
+          Omega.UI.Loader.preload();
+        });
+      
+        /// wire up / startup ui
+        index.wire_up();
+        index.start();
+      
+        $(window).on('beforeunload', function(){
+          index.unload();
+        });
+      });
+
+  %p
+    This block get executed when the browser finishes loading the page and
+    is responsible for <b>starting the dynamic environment</b>. We begin with a
+    check for Omega.Test (if running in the context of the test suite
+    this block will not be executed) after which we initialize the page
+    class, preload resources, and start execution. At the end we subscribe
+    to the page 'beforeunload' event so that we can <b>cleanup</b> when the user
+    closes the page.
+
+  %p
+    Besides the page class initialization the main initialization logic
+    resides in the <b>wire_up</b> and <b>start</b> methods. Looking at
+    <b>wire_up</b> in
+    #{project_file_link "site/source/javascripts/pages/index/init.js", "site/source/javascripts/pages/index/init.js"}
+
+  %pre.code
+    :preserve
+      wire_up : function(){
+        this.nav.wire_up();
+        this.dialog.wire_up();
+        this.dialog.follow_node(this.node);
+        this.splash.wire_up();
+        this.canvas.wire_up();
+        this.audio_controls.wire_up();
+        this.handle_scene_changes();
+        this.status_indicator.follow_node(this.node, 'loading');
+        this.effects_player.wire_up();
+        this._wire_up_fullscreen();
+        this.canvas.init_gl().append();
+      }
+
+  %p
+    Here each page component previously created in the page
+    class constructor is wired up to the page DOM and the WebGL context is initialized.
+
+  %p
+    The Canvas class defining the <b>init_gl</b> method resides in
+    #{project_file_link "site/source/javascripts/ui/canvas.js", "site/source/javascripts/ui/canvas.js"},
+    though is also split into mixins which reside in
+    #{project_file_link "site/source/javascripts/ui/canvas/mixins/", "site/source/javascripts/ui/canvas/mixins/"}.
+    <b>init_gl</b> is defined in
+    #{project_file_link "site/source/javascripts/ui/canvas/mixins/scene.js", "site/source/javascripts/ui/canvas/mixins/scene.js"}
+    and creates the base WebGL context which the web client uses.
+
+  %p
+    #{link_to "three.js", "http://threejs.org"} is used to manage the underlying WebGL
+    context. <b>init_gl</b> sets up two THREE.Scene's (one for regular entities, and other
+    for skybox and components that do not scale), along with their respective cameras. The
+    camera perspectives are tied together and an instance of THREE.OrbitControls is used
+    to manipulate them using the mouse. These are all fed into a THREE.WebGLRenderer instance
+    which is setup with the desired options for our simulation.
+
+  %p
+    The renderer is attached to the DOM canvas via the call to <b>canvas#append</b> in 
+    <b>wire_up</b>. The other main initialization / startup method invoked during the
+    page initialization is <b>start</b> defined in
+    #{project_file_link "site/source/javascripts/pages/index/runner.js", "site/source/javascripts/pages/index/runner.js"}.
+
+  %pre.code
+    :preserve
+      start : function(){
+        if(!this.canvas.detect_webgl()){
+          this._require_webgl();
+          return;
+        }
+
+        this.effects_player.start();
+        this.splash.start();
+
+        var _this = this;
+        if(this._should_autologin())
+          this.autologin();
+        else
+          this.validate_session();
+      },
+
+  %p
+    Here we ensure the browser can run the WebGL subsystems before starting the
+    #{project_file_link "effects player", "site/source/javascripts/ui/effects_player.js"},
+    which implements the main
+    #{link_to "game loop", "http://gameprogrammingpatterns.com/game-loop.html"}.
+    The effects player iterates over the entities in the current scene, running their
+    '<b>effects</b>', (callbacks which update entity graphics based on the current state),
+    finally issuing an animation command, triggering the render cycle. 
+
+  %p
+    The effects player can be configured
+    to run the effects loop to ensure a certain <b>framerate</b> and/or process a certain number
+    of entities per cycle. Because the loop is continuously issuing <b>animation</b> commands
+    and the scene is being re-rendered, we do not issue these commands elsewhere, the
+    other js subsystems not having to worry about it.
+
+  %p
+    The final action the Index Page <b>start</b> method performs is to determine if
+    a session should be established, whether via configured credentials or
+    #{project_file_link "existing session", "site/source/javascripts/pages/mixins/validates_session.js"}
+    info stored in a cookie. If a session cannot be created this way, the anon user
+    #{project_file_link "is used", "site/source/javascripts/pages/index/session.js"},
+    and the user can perform furthur authentication via the presented navigation.
+    
+  %p
+    As a prerequisite to all of this, each page creates an instance of <b>Omega.Node</b>
+    as part of its #{project_file_link "base init", "site/source/javascripts/pages/mixins/base.js"}.
+    This instance is made available to various callback handlers invoked on page events
+    and is used to issue #{link_to "JSON-RPC", "http://en.wikipedia.org/wiki/JSON-RPC"} calls
+    to the #{project_file_link "configured", "site/source/javascripts/config.js"} omega server.
+    The various navigation, DOM, and canvas interaction handlers make use of this to synchronize
+    the client with the server.
+
+  %p
+    = link_to image_tag("/images/web-client-workflow.png", :width => "75%", :class => :centered),
+              "/images/web-client-workflow.png"
+    
+
+  %p
+    There are many more details but at a high level this is the crux of the Omega client
+    framework.
+    
+  %ul
+    %li
+      Templates containing the concise application logic are used to generate
+      a static site using middleman.
+    %li
+      The Javascript simply serves as the middleware between
+      the page DOM, WebGL context, and running omega-server.
+      
+    %li
+      As various events are encountered,
+      both on the page and server side, the js issues the commands needed to
+      manipulate the client and/or server entities accordingly.
+  
+  %p
+    Some example events include:
+
+  %ul
+    %li
+      logging in - which populates the systems &amp; entities menus
+
+    %li
+      clicking a menu item - loads the corresponding Omega system / galaxy, initializes
+      three.js graphics representations for all entities
+
+    %li
+      clicking an entity - brings up a menu of accessible commands
+
+    %li
+      issuing a command - issues a server call to manipulate the running simulation
+
+    %li
+      receiving a server notification - manipulates local entity to correctly
+      represent server side state.
+
+  %p
+    Thats it for now, in the future we'll dive into how various operations / events
+    are handled by the Omega client.
+
+= omega_blog_footer
