@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="2160"
+   height="1620"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="web-client-constructs.svg"
+   inkscape:export-filename="/home/mmorsi/workspace/omega-blog/source/images/web-client-constructs.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="1565.7143"
+     inkscape:cy="742.85714"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1032"
+     inkscape:window-x="0"
+     inkscape:window-y="26"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,567.63782)">
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0088aa;fill-opacity:1;stroke:none;font-family:Dominator;-inkscape-font-specification:Dominator Medium"
+       x="65.714287"
+       y="171.42857"
+       id="text2985"
+       sodipodi:linespacing="125%"
+       transform="translate(0,-567.63782)"><tspan
+         sodipodi:role="line"
+         id="tspan2987"
+         x="65.714287"
+         y="171.42857" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006680;fill-opacity:1;stroke:#006680;font-family:Dominator;-inkscape-font-specification:Dominator Medium"
+       x="48.57143"
+       y="120"
+       id="text2989"
+       sodipodi:linespacing="125%"
+       transform="translate(0,-567.63782)"><tspan
+         sodipodi:role="line"
+         id="tspan2991"
+         x="48.57143"
+         y="120" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Dominator;-inkscape-font-specification:Dominator Medium"
+       x="85.714287"
+       y="305.71429"
+       id="text2997"
+       sodipodi:linespacing="125%"
+       transform="translate(0,-567.63782)"><tspan
+         sodipodi:role="line"
+         id="tspan2999"
+         x="85.714287"
+         y="305.71429" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+       x="911.42859"
+       y="971.42859"
+       id="text3009"
+       sodipodi:linespacing="125%"
+       transform="translate(0,-567.63782)"><tspan
+         sodipodi:role="line"
+         id="tspan3011"
+         x="911.42859"
+         y="971.42859" /></text>
+    <g
+       id="g3244">
+      <rect
+         ry="92.603378"
+         transform="translate(0,-567.63782)"
+         y="28.571428"
+         x="51.42857"
+         height="1011.4286"
+         width="611.42859"
+         id="rect3240"
+         style="fill:#c4c8b7;fill-opacity:1;stroke:#006680;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text2993"
+         y="-463.40094"
+         x="90.591476"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006680;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="-463.40094"
+           x="90.591476"
+           id="tspan2995"
+           sodipodi:role="line">THREE.JS</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3037"
+         y="-404.78067"
+         x="171.42857"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="-404.78067"
+           x="171.42857"
+           id="tspan3039"
+           sodipodi:role="line">Scene</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="171.42857"
+         y="-334.73297"
+         id="text3041"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3043"
+           x="171.42857"
+           y="-334.73297">Camera</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3045"
+         y="-264.82193"
+         x="171.42857"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="-264.82193"
+           x="171.42857"
+           id="tspan3047"
+           sodipodi:role="line">LiGHT</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="171.42857"
+         y="-195.14542"
+         id="text3049"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3051"
+           x="171.42857"
+           y="-195.14542">Object-3D</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="171.42857"
+         y="-125.29315"
+         id="text3053"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3055"
+           x="171.42857"
+           y="-125.29315">Sprite</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3057"
+         y="-55.538391"
+         x="171.42857"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="-55.538391"
+           x="171.42857"
+           id="tspan3059"
+           sodipodi:role="line">Line</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="171.42857"
+         y="14.587568"
+         id="text3061"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3063"
+           x="171.42857"
+           y="14.587568">Mesh</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3065"
+         y="84.303139"
+         x="228.57143"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="84.303139"
+           x="228.57143"
+           id="tspan3067"
+           sodipodi:role="line">Geometry</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="282.85712"
+         y="154.15553"
+         id="text3069"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3071"
+           x="282.85712"
+           y="154.15553">Cube/sphere/</tspan><tspan
+           id="tspan3154"
+           sodipodi:role="line"
+           x="282.85712"
+           y="204.15553">text/custom</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3073"
+         y="272.6575"
+         x="228.57143"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="272.6575"
+           x="228.57143"
+           id="tspan3075"
+           sodipodi:role="line">Material</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="228.57143"
+         y="342.39264"
+         id="text3077"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3079"
+           x="228.57143"
+           y="342.39264">Texture</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3081"
+         y="412.36218"
+         x="171.42857"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="412.36218"
+           x="171.42857"
+           id="tspan3083"
+           sodipodi:role="line">Particle SYSTEM</tspan></text>
+    </g>
+    <g
+       id="g3419"
+       transform="translate(214.28571,-108.57143)">
+      <g
+         id="g3379">
+        <g
+           id="g3340">
+          <rect
+             ry="59.10305"
+             y="-304.68988"
+             x="745.80499"
+             height="645.53271"
+             width="1139.8185"
+             id="rect3274"
+             style="fill:#c4c8b7;fill-opacity:1;stroke:#006680;stroke-width:2.1815567;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+          <text
+             sodipodi:linespacing="125%"
+             id="text3005"
+             y="-260.65121"
+             x="1039.3973"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006680;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               y="-260.65121"
+               x="1039.3973"
+               id="tspan3007"
+               sodipodi:role="line">Components</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3013"
+             y="-211.98216"
+             x="959.99994"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006680;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               id="tspan3017"
+               y="-211.98216"
+               x="959.99994"
+               sodipodi:role="line">Global</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3021"
+             y="-212.02122"
+             x="1251.4286"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006680;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               y="-212.02122"
+               x="1251.4286"
+               id="tspan3023"
+               sodipodi:role="line">Generic</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             x="1019.9999"
+             y="-159.06639"
+             id="text3085"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3087"
+               x="1019.9999"
+               y="-159.06639">Axis</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             x="1073.0247"
+             y="-112.68126"
+             id="text3089"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3091"
+               x="1073.0247"
+               y="-112.68126">LineS</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             x="1012.0898"
+             y="-53.907345"
+             id="text3085-9"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3087-5"
+               x="1012.0898"
+               y="-53.907345">Skybox</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3114"
+             y="1.6044791"
+             x="1078.5715"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               y="1.6044791"
+               x="1078.5715"
+               id="tspan3116"
+               sodipodi:role="line">Cube</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3118"
+             y="66.092644"
+             x="1012.0898"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               y="66.092644"
+               x="1012.0898"
+               id="tspan3120"
+               sodipodi:role="line">Star Dust</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             x="768.57141"
+             y="115.89018"
+             id="text3122"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3124"
+               x="768.57141"
+               y="115.89018">Particle Emitter</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3126"
+             y="-159.06639"
+             x="1348.5714"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               y="-159.06639"
+               x="1348.5714"
+               id="tspan3128"
+               sodipodi:role="line">EnTity GFX</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             x="1348.5714"
+             y="-96.209244"
+             id="text3130"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3132"
+               x="1348.5714"
+               y="-96.209244">LAMP</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             x="1404.2858"
+             y="-41.252666"
+             id="text3134"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3136"
+               x="1404.2858"
+               y="-41.252666">Sphere</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3138"
+             y="23.790773"
+             x="1348.5714"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               y="23.790773"
+               x="1348.5714"
+               id="tspan3140"
+               sodipodi:role="line">Orbit</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3142"
+             y="67.318748"
+             x="1410.1675"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               y="67.318748"
+               x="1410.1675"
+               id="tspan3144"
+               sodipodi:role="line">Line</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             x="1348.5714"
+             y="135.21935"
+             id="text3146"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3148"
+               x="1348.5714"
+               y="135.21935">Progress Bar</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             x="1410.1675"
+             y="184.46161"
+             id="text3150"
+             sodipodi:linespacing="125%"><tspan
+               sodipodi:role="line"
+               id="tspan3152"
+               x="1410.1675"
+               y="184.46161">Sprite</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3156"
+             y="246.6479"
+             x="1348.5714"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               y="246.6479"
+               x="1348.5714"
+               id="tspan3158"
+               sodipodi:role="line">Particles</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3160"
+             y="295.89017"
+             x="1410.1675"
+             style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+             xml:space="preserve"><tspan
+               y="295.89017"
+               x="1410.1675"
+               id="tspan3162"
+               sodipodi:role="line">Particle Emitter</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g3460"
+       transform="translate(-637.14286,151.42857)">
+      <rect
+         style="fill:#c4c8b7;fill-opacity:1;stroke:#006680;stroke-width:1.20155346;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect3336"
+         width="595.08423"
+         height="375.08411"
+         x="728.17218"
+         y="451.96301"
+         ry="34.341583" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006680;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="756.54016"
+         y="516.58441"
+         id="text3029"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3031"
+           x="756.54016"
+           y="516.58441">Extensions</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="828.57141"
+         y="580.93359"
+         id="text3164"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3166"
+           x="828.57141"
+           y="580.93359">WebGL Detector</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3168"
+         y="646.64789"
+         x="828.57141"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="646.64789"
+           x="828.57141"
+           id="tspan3170"
+           sodipodi:role="line">ORBIT CONTROLS</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="828.57141"
+         y="709.505"
+         id="text3172"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3174"
+           x="828.57141"
+           y="709.505">Window RESIZE</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3176"
+         y="775.2193"
+         x="828.57141"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff6600;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="775.2193"
+           x="828.57141"
+           id="tspan3178"
+           sodipodi:role="line">Particle Emitter</tspan></text>
+    </g>
+    <g
+       id="g3473"
+       transform="translate(-551.42857,151.42857)">
+      <rect
+         ry="34.869099"
+         y="451.93936"
+         x="1459.577"
+         height="380.84573"
+         width="540.84576"
+         id="rect3338"
+         style="fill:#c4c8b7;fill-opacity:1;stroke:#006680;stroke-width:1.15425241;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006680;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="1502.0201"
+         y="516.71136"
+         id="text3033"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3035"
+           x="1502.0201"
+           y="516.71136">Callbacks</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="1571.4286"
+         y="575.21936"
+         id="text3180"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3182"
+           x="1571.4286"
+           y="575.21936">added_to</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3184"
+         y="629.50507"
+         x="1571.4286"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="629.50507"
+           x="1571.4286"
+           id="tspan3186"
+           sodipodi:role="line">removed_From</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="1571.4286"
+         y="686.64795"
+         id="text3188"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3190"
+           x="1571.4286"
+           y="686.64795">run_EFFECTS</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3192"
+         y="749.50507"
+         x="1571.4286"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="749.50507"
+           x="1571.4286"
+           id="tspan3194"
+           sodipodi:role="line">rendered_in</tspan></text>
+    </g>
+    <g
+       id="g3276"
+       transform="translate(-105.71424,811.42858)">
+      <rect
+         style="fill:#c4c8b7;fill-opacity:1;stroke:#006680;stroke-width:1.35255444;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+         id="rect3242"
+         width="412.07605"
+         height="686.36169"
+         x="1756.8191"
+         y="-525.10437"
+         ry="62.841232" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3025"
+         y="-463.44"
+         x="1859.163"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#006680;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="-463.44"
+           x="1859.163"
+           id="tspan3027"
+           sodipodi:role="line">Entities</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="1939.9999"
+         y="-373.35208"
+         id="text3196"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3198"
+           x="1939.9999"
+           y="-373.35208">Galaxy</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3208"
+         y="-307.64758"
+         x="1781.7772"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="-307.64758"
+           x="1781.7772"
+           id="tspan3210"
+           sodipodi:role="line">SolarSystem</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="2007.5975"
+         y="-241.92351"
+         id="text3216"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3218"
+           x="2007.5975"
+           y="-241.92351">Star</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3220"
+         y="-176.21906"
+         x="1852.3632"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="-176.21906"
+           x="1852.3632"
+           id="tspan3222"
+           sodipodi:role="line">Jump Gate</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="1947.246"
+         y="-110.49497"
+         id="text3224"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3226"
+           x="1947.246"
+           y="-110.49497">Planet</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3228"
+         y="-44.780548"
+         x="1907.6366"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="-44.780548"
+           x="1907.6366"
+           id="tspan3230"
+           sodipodi:role="line">Asteroid</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         x="1936.1913"
+         y="86.647942"
+         id="text3232"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3234"
+           x="1936.1913"
+           y="86.647942">Station</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3236"
+         y="21.021509"
+         x="2023.9647"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+         xml:space="preserve"><tspan
+           y="21.021509"
+           x="2023.9647"
+           id="tspan3238"
+           sodipodi:role="line">Ship</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Subatomic Tsoonami;-inkscape-font-specification:Subatomic Tsoonami"
+       x="914.28583"
+       y="-479.06641"
+       id="text3486"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3488"
+         x="914.28583"
+         y="-479.06641">Omega: Web Frontend Constructs</tspan></text>
+  </g>
+</svg>

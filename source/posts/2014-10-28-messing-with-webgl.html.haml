@@ -1,0 +1,560 @@
+---
+title: Messin' w/ WebGL via Javascript
+author: Mo Morsi
+date: 2014-10-28 07:32:12 -05:00
+---
+= omega_blog_title
+
+.post.justify_post{:style => "padding: 10px 0 10px 0;"}
+  %p
+    #{post_link "Last Week", "webgl-threejs-framework"} we explored the
+    high-level architecture behind the Omega Web-based frontend. Today
+    we're going to continue diving into the WebGL details, discussing
+    the various aspects that go into the initialization process and
+    the various constructs that represent Omega entities.
+
+  %p
+    The Omega frontend consists of a static
+    html/javascript/css based website that is generated ahead of time
+    from templates using the #{link_to "Middleman", "http://middlemanapp.com"}
+    Framework. Each page on the site has a corresponding
+    #{link_to "HAML", "http://haml.info"} template, including the
+    <b>index</b> page which is presented to the user when they navigate
+    to the primary site url (eg #{link_to "http://megaverse.net", "http://megaverse.net"}
+    as opposed to
+    #{link_to "http://megaverse.net/account.html", "http://megaverse.net/account.html"}).
+
+  %p
+    Each page template includes the corresponding javascript file; <b>index.html.haml</b>
+    includes </b>pages/index.js</b>, <b>account.html.haml</b> includes <b>pages/account.js</b>, and so
+    on and so forth. Each page Javascript module defines the initialization code
+    needed for that specific page and listens for the <b>document.ready</b> event
+    to begin operations when everything is loaded by the user's browser.
+
+  %p
+    <b>index.html.haml as of #{commit_link "944d4353c", "944d4353c"}</b>:
+
+  %pre.code
+    :plain
+            ---
+      title: The Megaverse
+      ---
+      - content_for :javascripts do
+        = javascript_include_tag "pages/index"
+      
+      - content_for :stylesheets do
+        = stylesheet_link_tag "index"
+      
+      - content_for :secondary_navigation do
+        = link_to "Register", "#", :id => "register_link"
+        = link_to "My Account",  "account.html", :id => "account_link"
+        \/
+        = link_to "Login",    "#", :id => "login_link"
+        = link_to "Logout",   "#", :id => "logout_link"
+      
+      = partial :audio
+      = partial :effects_player
+      = partial :canvas
+      = partial :status_indicator
+      = partial :dialog
+
+  %p
+    The Javascript code is organized into maintainable / reusable modules
+    which are pulled into the page-specific Javascript via
+    #{link_to "Sprockets", "https://github.com/sstephenson/sprockets"}.
+    Various modules are responsible for specific functionality / subsystems
+    including the initialization and management of the 
+    #{link_to "WebGL", "http://en.wikipedia.org/wiki/WebGL"} context.
+    
+
+  %p
+    WebGL is a very lightweight wrapper ontop of 
+    #{link_to "OpenGL", "http://en.wikipedia.org/wiki/OpenGL"}
+    intended to be run in the web browser. Much of the raw power
+    of the OpenGL library is available through WebGL with little
+    overhead making it a nice option to consider when developing
+    3D graphics (especially when combined with many of the other
+    bleeding-edge APIs and technologies that
+    #{link_to "HTML5", "http://en.wikipedia.org/wiki/HTML5"} brings).
+
+  %p
+    = link_to image_tag("/images/web-client-arch2.png", :width => "75%", :class => :centered),
+              "/images/web-client-arch2.png"
+    
+  %p
+    Omega uses the <b>#{link_to "THREE.JS", "http://threejs.org"}</b> library
+    to create and manipulate WebGL constructs as well as render them to a
+    #{link_to "HTML Canvas", "http://www.w3schools.com/tags/ref_canvas.asp"}
+    bound to a 3D context. The <b>Omega.UI.Canvas</b> class
+    wraps / adapts many of the high level three.js operations for use in the
+    local subsystems. This class is defined in
+    #{project_file_link "canvas.js", "site/source/javascripts/ui/canvas.js"},
+    though most of the functionality resides in
+    #{link_to "mixins", "http://en.wikipedia.org/wiki/Mixin"}
+    defined in
+    the #{project_link "ui/canvas/mixins/", "site/source/javascripts/ui/canvas/mixins"}
+    directory. Omega.UI.Canvas itself is instantiated in the
+    #{project_file_link "Omega.Pages.HasCanvas", "site/source/javascripts/pages/mixins/has_canvas.js"}
+    mixin which is pulled into each page which requires the 3D context (eg has a canvas).
+
+  %p
+    THREE.JS primarily operates using one or more <b>Scene Graphs</b> which 3D objects
+    are added to. These objects include <b>Meshes</b> which contain geometries and materials,
+    for example a sphere with a fire / lava texture to represent a star or a more complex
+    geometry &amp; texture generated from 3D manipulation program such as
+    #{link_to "Blender", "http://www.blender.org"}. Cameras and lights are also added to the 3D
+    scene which affect how the entities added to the scene are rendered to the screen.
+
+  %p
+    There are
+    #{link_to "many", "http://threejs.org/examples/#webgl_geometry_cube"}
+    #{link_to "many", "http://threejs.org/examples/#webgl_lensflares"}
+    #{link_to "examples", "http://threejs.org/examples/#webgl_shaders_sky"}
+    of scenes generated with three.js online, a very simple hello world application
+    can be seen #{link_to "here", "http://stemkoski.github.io/Three.js/HelloWorld.html"}.
+
+  %p
+    On startup Omega.UI.Canvas sets up two
+    #{link_to "THREE.Scene", "http://threejs.org/docs/#Reference/Scenes/Scene"} instances
+    (one for the regular scene, one for the skybox) each with a corresponding
+    #{link_to "THREE.Camera", "http://threejs.org/docs/#Reference/Cameras/Camera"}
+    and a
+    #{link_to "THREE.WebGLRenderer", "http://threejs.org/docs/#Reference/Renderers/WebGLRenderer"}
+    to render it all to the canvas. The
+    #{link_to "THREE.JS WebGL Detector", "https://github.com/mrdoob/three.js/blob/master/examples/js/Detector.js"}
+    plugin is used to determine if the user's browser supports WebGL, and gracefully fail if not.
+
+  %p
+    This initialization can be seen in the <b>Omega.UI.CanvasSceneManager</b> object
+    which is mixed into the Omega.UI.Canvas class (abbreviated):
+
+  %pre.code
+    :plain
+            Omega.UI.CanvasSceneManager = {
+        /// init Canvas 3D operations
+        init_gl : function(){
+          if(!this.detect_webgl()) return;
+
+          this._init_stats();
+          this._init_scenes();
+          this._init_renderer();
+          this._init_cams();
+          this._init_components();
+          return this;
+        },
+
+        detect_webgl : function(){
+          return Detector.webgl;
+        },
+
+        _init_scenes : function(){
+          this.scene    = new THREE.Scene();
+          this.skyScene = new THREE.Scene();
+      
+          this.scene.omega_id    = 'scene';
+          this.skyScene.omega_id = 'sky';
+        },
+
+        _init_renderer : function(){
+          var sw = window.innerWidth;
+              sh = window.innerHeight;
+
+          this.renderer = new THREE.WebGLRenderer({antialias : true,
+                                                   preserveDrawingBuffer: true});
+          this.renderer.setSize(sw, sh);
+
+          this.renderer.autoClear = false;
+          this.renderer.setClearColor(0x000000, 0.0);
+        },
+
+        _init_cams : function(){
+          var sw = window.innerWidth;
+              sh = window.innerHeight;
+          var aspect = sw / sh;
+          if(isNaN(aspect)) aspect = 1;
+
+          this.cam    = new THREE.PerspectiveCamera(75, aspect, 1, 500000 );
+          this.skyCam = new THREE.PerspectiveCamera(75, aspect, 1,   1000 );
+
+          /// tie scene / sky camera rotation
+          this.skyCam.quaternion = this.cam.quaternion;
+
+          this._init_cam_controls();
+        },
+
+        _init_cam_controls : function(){
+          var _this = this;
+          this.cam_controls = new THREE.OrbitControls(this.cam);
+          this.cam_controls.minDistance = Omega.Config.cam.distance.min;
+          this.cam_controls.maxDistance = Omega.Config.cam.distance.max;
+          this.cam_controls.addEventListener('change', function(){ _this.render(); });
+          this.cam_controls.domElement = this.renderer.domElement;
+          this.reset_cam();
+        },
+
+        _init_components : function(){
+          var _this = this;
+          this.skybox.init_gfx();
+          this.axis.init_gfx();
+          this.star_dust.init_gfx(function(){ _this._init_gfx(); });
+        },
+
+        /// append canvas components to page
+        append : function(){
+          if(this.render_stats) $('#render_stats').append(this.stats.domElement);
+
+          this.canvas.append(this.renderer.domElement);
+
+          THREEx.WindowResize(this.renderer, this.cam);
+
+          return this;
+        },
+
+  %p
+    Here we can see the
+    #{link_to "THREE.OrbitControls", "https://github.com/mrdoob/three.js/blob/master/examples/js/controls/OrbitControls.js"}
+    plugin in used for
+    camera manipulation and
+    #{link_to "THREEx.WindowResize", "https://github.com/jeromeetienne/threex.windowresize/blob/master/threex.windowresize.js"}
+    is used to track
+    changes to the window size and modify the playing area accordingly (so as to
+    always occupy the full window screen). We also see that
+    #{link_to "antialiasing", "http://en.wikipedia.org/wiki/Spatial_anti-aliasing#Object-based_anti-aliasing"} and
+    #{link_to "double buffering", "http://en.wikipedia.org/wiki/Multiple_buffering#Double_buffering_in_computer_graphics"}
+    are enabled via
+    the three.js renderer instance and that we're currently using
+    #{link_to "perspective projection", "http://en.wikipedia.org/wiki/3D_projection#Perspective_projection"}
+    to view the scenes.
+    
+  %p
+    Various graphics components representing 'global' entities including the
+    #{project_file_link "Skybox", "site/source/javascripts/ui/canvas/components/skybox.js"},
+    #{project_file_link "Axis", "site/source/javascripts/ui/canvas/components/axis.js"}, and
+    #{project_file_link "StarDust", "site/source/javascripts/ui/canvas/components/star_dust.js"}
+    are also initialized here.
+    Like many of the entity specific component
+    classes (for example
+    #{project_file_link "asteroid meshes", "site/source/javascripts/omega/asteroid/components/mesh.js"},
+    #{project_file_link "ship trails", "site/source/javascripts/omega/ship/components/trails.js"},
+    #{project_file_link "planet orbit lines", "site/source/javascripts/ui/canvas/components/orbit.js"},
+    and more) these wrap THREE.JS objects which are added to the scene during the course of
+    the client's operations. These are managed via composition instead of inheritance due
+    to various #{link_to "benefits", "http://en.wikipedia.org/wiki/Composition_over_inheritance"}.
+    
+  %p
+    These global components can be found in the
+    #{project_link "ui/canvas/components", "site/source/javascripts/ui/canvas/components"}
+    directory along with generic/general-purpose components which other entity specific
+    components use (for example animated lamps, progress bars, and more). The <b>Skybox</b> added
+    to all scenes can be seen here:
+
+  %pre.code
+    :plain
+            Omega.UI.CanvasSkybox = function(parameters){
+        this.components        = [];
+        $.extend(this, parameters);
+      };
+      
+      Omega.UI.CanvasSkybox.prototype = {
+        id   : 'canvas_skybox',
+        size : 500,
+      
+        load_gfx : function(){
+          if(typeof(Omega.UI.CanvasSkybox.gfx) !== 'undefined') return;
+          Omega.UI.CanvasSkybox.gfx = {};
+      
+          var geo  = new THREE.CubeGeometry(this.size, this.size, this.size, 7, 7, 7);
+      
+          var shader = $.extend(true, {}, THREE.ShaderLib["cube"]); // deep copy needed
+          var material = new THREE.ShaderMaterial({
+            fragmentShader : shader.fragmentShader,
+            vertexShader   : shader.vertexShader,
+            uniforms       : shader.uniforms,
+            depthWrite     : false,
+            side           : THREE.BackSide
+          });
+      
+          Omega.UI.CanvasSkybox.gfx.mesh = new THREE.Mesh(geo, material);
+        },
+      
+        init_gfx : function(){
+          if(this.components.length > 0) return;
+          this.load_gfx();
+      
+          /// just reference it, assuming we're only going to need the one skybox
+          this.mesh = Omega.UI.CanvasSkybox.gfx.mesh;
+          this.components = [this.mesh];
+        },
+      
+        set: function(bg, event_cb){
+          var format = 'png';
+          var path   = Omega.Config.url_prefix + Omega.Config.images_path +
+                       '/skybox/skybox' + bg + '/';
+          var materials = [
+            path + 'px.' + format, path + 'nx.' + format,
+            path + 'pz.' + format, path + 'nz.' + format,
+            path + 'py.' + format, path + 'ny.' + format
+          ];
+      
+          this.mesh.material.uniforms["tCube"].value =
+            THREE.ImageUtils.loadTextureCube(materials, {}, event_cb);
+        },
+      
+        scene_components : function(){
+          return this.components;
+        },
+      
+        has_effects : function(){ return false; },
+        scale_position : function(){}
+      };
+
+      THREE.EventDispatcher.prototype.apply( Omega.UI.CanvasSkybox.prototype );
+    
+  %p
+    By standard, Omega Entities and Components define the following methods:
+
+  %ul
+    %li
+      <b>load_gfx</b>: preloads generic graphics resources. Called on generic
+      template object immediately on web client initialization
+    %li
+      <b>init_gfx</b>: initializes entity-specific graphics resources. Called
+      whenever specific entity representations are needed (a particular
+      ship's mesh, star's light, etc). Often will clone and modify the preloaded
+      graphics initialized in load_gfx unless entity will only be instantiated once
+      (skybox, axis, etc) in which case components are just referenced
+    %li
+      <b>scene_components</b>: returns an array of components to be added to the THREE.Scene.
+
+  %p
+    Currently all primary Omega Entities (galaxies, systems, stars, planets, asteroids, jump gates,
+    ships, stations) extend #{project_file_link "Omega.UI.CanvasEntityGfx", "site/source/javascripts/ui/canvas/entity/gfx.js"}
+    which defines helpers to assist with graphic component intialization and more:
+
+  %ul
+    %li
+      <b>scene_location</b>: returns the location which the entity resides, overridable
+    %li
+      <b>position_tracker</b>: a generic
+      #{link_to "THREE.Object3D", "http://threejs.org/docs/#Reference/Core/Object3D"}
+      kept in sync with
+      the entity's coordinates. Child components added to this will always kept in sync with
+      the entity's location (at the optional offset specified by their positions)
+    %li
+      <b>location_tracker</b>: another generic THREE.Object3D which is kept in sync with the
+      entity's rotation. The location tracker is added to the position tracker so that is is
+      always kept in sync with both the location's position and rotation
+    %li
+      <b>scale_position</b>: overrides scene_location to return a the location scaled with
+      the specified value.
+    %li
+      <b>unscale_position</b>: reset scene_location to return original entity location
+    %li
+      <b>_loaded_gfx</b>: invoked when load_gfx completes, and all entity-class graphics
+      are preloaded
+    %li
+      <b>gfx_loaded</b>: returns boolean indicating if entity-class graphics have been preloaded
+    %li
+      <b>gfx_initialized</b>: returns boolean indicating if entity-class graphics have been initialized
+    %li
+      <b>_store_resource</b>: store an entity-class graphic in a static graphic resources db.
+      Entities will be stored by class and optional type if inferred from the templated instance
+      (eg store 'mining' ship meshes, 'manufacturing' station lights, etc).
+    %li
+      <b>_retrieve_resource</b>: returns a graphic instance from the resource db.
+
+  %p
+    Omega.UI.CanvasEntityGfx also defines various base callbacks and helpers used in the 3D
+    scene management process
+
+  %ul
+    %li
+      <b>added_to</b>: callback invoked with canvas and scene when entity is added to it
+    %li
+      <b>removed_from</b>: callback invoked with canvas and scene when entity is removed
+      from it
+    %li
+      <b>reload_in_scene</b>: invoke to reload the entity in the current scene
+    %li
+      <b>in_scene</b>: returns bool indicating if entity is in scene
+    %li
+      <b>has_effects</b>: returns bool indicating if entity defines the <b>run_effects</b>
+      method. If so it will be called via the
+      #{project_file_link "Effects Player", "site/source/javascripts/ui/effects_player.js"}
+      which implements the primary game loop
+
+  %p
+    Also of relevance but not defined here is the <b>rendered_in</b> callback which
+    will be detected when components are added to the scene. If defined
+    this method will be invoked every time the component is rendered allowing the developer
+    to customize the component behaviour real-time.
+
+  %p
+    = link_to image_tag("/images/web-client-constructs.png", :width => "75%", :class => :centered),
+              "/images/web-client-constructs.png"
+    
+  %p
+    Whenever a user selects a system or galaxy to view via the main
+    navigation and / or interaction with the canvas, the <b>Omega.UI.Canvas#set_scene_root</b> method is called
+    with the corresponding system or galaxy entity. This method iterates over all the entity children
+    (a system's stars, planets, asteroids, etc) and adds the graphical components to the primary scene.
+    The components used to represent a scene vary on a per entity basis and often are parameterized to
+    reflect the current state of the entity.
+
+  %p
+    Graphics components reside in the <b>components/</b> dir under the <b>omega/&lt;entity&gt;/</b>
+    dirs and are created via the entity intialization methods described above, implemented
+    on a per-entity basis in the <b>omega/&lt;entity&gt;/gfx</b> directories.
+
+  %p
+    Asteroids define the simplest component set, consisting of a single mesh randomly chosen from
+    a fixed set of asteroid meshes with a single
+    #{link_to "LambertMaterial", "http://threejs.org/docs/#Reference/Materials/MeshLambertMaterial"}.
+
+  %p
+    <b>#{project_file_link "omega/asteroid/components/mesh.js", "site/source/javascripts/omega/asteroid/components/mesh.js"}</b>
+    defines the base graphic components, wrapping three.js constructs:
+
+  %pre.code
+    :plain
+            Omega.AsteroidMeshMaterial = function(args){
+        if(!args) args = {};
+        var event_cb = args['event_cb'];
+      
+        var texture_path = Omega.Config.url_prefix + Omega.Config.images_path +
+                           Omega.Config.resources.asteroid.material;
+      
+        var texture      = THREE.ImageUtils.loadTexture(texture_path, {}, event_cb);
+        texture.omega_id = 'asteroid.material';
+        this.material = new THREE.MeshLambertMaterial({ map: texture });
+      };
+      
+      Omega.AsteroidMesh = function(args){
+        if(!args) args = {};
+        var mesh     = args['mesh'];
+        var material = args['material'];
+        var geometry = args['geometry'];
+      
+        if(mesh) this.tmesh = mesh;
+        else if(material && geometry) this.tmesh = new THREE.Mesh(geometry, material);
+        this.tmesh.omega_obj = this;
+      };
+      
+      Omega.AsteroidMesh.prototype = {
+        clone : function(){
+          return new Omega.AsteroidMesh({mesh: this.tmesh.clone()});
+        }
+      };
+      
+      Omega.AsteroidMesh.geometry_paths = function(){
+        var geometry_paths = Omega.Config.resources.asteroid.geometry.slice(0);
+        for(var g = 0; g < geometry_paths.length; g++)
+          geometry_paths[g] = Omega.Config.url_prefix + Omega.Config.images_path +
+                              geometry_paths[g];
+      
+        var geometry_prefix = Omega.Config.url_prefix + Omega.Config.images_path +
+                              Omega.Config.meshes_path;
+        return [geometry_paths, geometry_prefix]; 
+      };
+
+  %p
+    <b>#{project_file_link "omega/asteroid/gfx/load.js", "site/source/javascripts/omega/asteroid/gfx/load.js"}</b>
+    preloads entity resources
+
+  %pre.code
+    :plain
+            Omega.AsteroidGfxLoader = {
+        /// material + geometries (all loaded w/ one call)
+        async_gfx : 2,
+      
+        _load_material : function(event_cb){
+          this._store_resource('mesh_material',
+                               new Omega.AsteroidMeshMaterial({event_cb : event_cb}));
+        },
+      
+        _load_geometries : function(event_cb){
+          var resource = 'asteroid.meshes';
+          var geometry_paths  = Omega.AsteroidMesh.geometry_paths();
+          this._load_async_resource(resource, geometry_paths, event_cb);
+        },
+      
+        load_gfx : function(event_cb){
+          if(this.gfx_loaded()) return;
+          this._load_material(event_cb);
+          this._load_geometries(event_cb);
+          this._loaded_gfx();
+        }
+      };
+
+  %p
+    <b>#{project_file_link "omega/asteroid/gfx/init.js", "site/source/javascripts/omega/asteroid/gfx/init.js"}</b>
+    clones/initializes resources on a per-entity basis:
+
+  %pre.code
+    :plain
+            Omega.AsteroidGfxInitializer = {
+        init_mesh : function(){
+          /// pick a random mesh from those available
+          var num_meshes = Omega.AsteroidMesh.geometry_paths()[0].length;
+          var mesh_num   = Math.floor(Math.random() * num_meshes);
+      
+          var _this = this;
+          this._retrieve_async_resource('asteroid.meshes', function(geometries){
+            var material = _this._retrieve_resource('mesh_material').material;
+            var geometry = geometries[mesh_num];
+            var mesh = new Omega.AsteroidMesh({material: material, geometry: geometry});
+      
+            _this.mesh = mesh;
+            _this.mesh.omega_entity = _this;
+            _this.position_tracker().add(_this.mesh.tmesh);
+      
+            _this.update_gfx();
+            _this._gfx_initialized = true;
+          });
+        },
+      
+        init_components : function(){
+          this.components = [this.position_tracker(), this.camera_tracker()];
+        },
+      
+        init_gfx : function(event_cb){
+          if(this.gfx_initialized()) return;
+          this.load_gfx(event_cb);
+          this.init_mesh();
+          this.init_components();
+        }
+      };
+
+  %p
+    Other Omega Entity representations are more complex. Stars include a
+    #{project_file_link "light", "site/source/javascripts/omega/star/components/light.js"}
+    to illuminate the system as well as #{link_to "shader", "http://en.wikipedia.org/wiki/OpenGL_Shading_Language"}
+    based graphics (more on these in the future). Various components make use of
+    #{link_to "THREE.ParticleSystem", "http://threejs.org/docs/#Reference/Objects/PointCloud"}
+    (renamed to PointCloud) to render particle effects. For example Galaxies arrainge
+    particles according to a #{link_to "Density Wave", "http://en.wikipedia.org/wiki/Density_wave_theory"}
+    algorithm before moving via simple transformations.
+
+  %p
+    = link_to image_tag("/images/screenshots/new-galaxy.png", :width => "75%", :class => :centered),
+              "/images/screenshots/new-galaxy.png"
+
+  %p
+    #{link_to "THREE.Meshes", "http://threejs.org/docs/#Reference/Objects/Mesh"} and
+    #{link_to "THREE.Lines", "http://threejs.org/docs/#Reference/Objects/Line"}
+    are heavily used as are
+    #{link_to "THREE.Sprites", "http://threejs.org/docs/#Reference/Objects/Sprite"}
+    which are 2D constructs rendered at a 3D location. THREE.JS implements these
+    as standard Web/OpenGL constructs with a little extra flare to take the asynchronous
+    nature of Javascript (which I feel meshes very nicely with the game loop and other
+    standard 3D engine design patterns).
+
+  %p
+    = link_to image_tag("/images/web-gfx-init.png", :width => "75%", :class => :centered),
+              "/images/web-gfx-init.png"
+
+  %p
+    That wraps up this week's post. Going forward we'll continue diving into both
+    client and server details and continue exploring backend constructs.
+
+= omega_blog_footer
